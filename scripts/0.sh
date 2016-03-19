@@ -12,3 +12,12 @@ cryptsetup luksOpen /dev/sda3 sda3 ### abre a partição criptografada e atribui
 
 mkfs.ext4 /dev/sda2 ### cria o sistema de arquivos na partição de boot que não pode ser criptografada
 mkfs.ext4 /dev/mapper/sda3 ### cria o sistema de arquivos através do mapeamento para a partição criptografada
+
+mkdir /mnt/boot ### para criar a raiz (/mnt) e o boot (/mnt/boot)
+mount /dev/sda2 /mnt/boot ### monta a partição de boot
+mount /dev/mapper/sda3 /mnt ### monta a partição raiz
+
+pacstrap -i /mnt base base-devel grub-bios ### instala o sistema na partição raiz
+genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
+
+arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
