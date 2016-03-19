@@ -14,11 +14,16 @@
 #grub-install --recheck /dev/sda
 #grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
 
+clear
+echo " * * * DIGITE OS PROXIMOS COMANDOS * * * "
 echo ""
-echo ""
-echo " * * * PROXIMOS COMANDOS * * * "
 echo "exit"
+echo ""
 echo "umount -R /mnt"
+echo ""
 echo "umount -R /mnt/boot"
+echo ""
 echo "cryptsetup close sda3"
+echo ""
 echo "systemctl reboot"
+echo ""
