@@ -19,6 +19,7 @@ pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias
 pacman -S wget curl --noconfirm ### instala gerenciadores de download
 pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplemento (tab) no terminal
 pacman -S mlocate --noconfirm ### instala as funções de pesquisa (updatedb, locate)
+pacman -S gnupg --noconfirm ### instala gnupg (GPG)
 
 #> PACOTES ESSENCIAIS GUI
 # pacman -S firefox --noconfirm ### instala o firefox
@@ -60,14 +61,6 @@ hwclock --systohc --utc ### sincroniza o horário
 # systemctl enable netctl-auto@wlp9s0 ### habilita permanentemente o cliente de DHCP para a interface wireless
 systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g'` ### habilita permanetemente o cliente de DHCP para o interface ethernet
 
-#>CONFIGURA USUARIO
-useradd -m ricardokeso ### adiciona o usuário
-passwd ricardokeso ### altera a senha do usuário
-# (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
-groupadd sudo ### cria o grupo sudo
-gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
-sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
-
 #>SERVIDOR GRAFICO
 # pacman -S xorg xorg-xinit --noconfirm ### instala o servidor X
 # echo "" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
@@ -98,6 +91,22 @@ sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAc
 # echo "[multilib]" >> /etc/pacman.conf 
 # echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
-#>INSTALAR GNUPG
-pacman -S gnupg --noconfirm
-#gtk2 # com gtk2 aparece uma janelinha
+#>CONFIGURA USUARIO
+useradd -m ricardokeso ### adiciona o usuário
+passwd ricardokeso ### altera a senha do usuário
+# (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
+groupadd sudo ### cria o grupo sudo
+gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
+sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
+
+su ricardokeso
+echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
+echo RELOADAGENT | gpg-connect-agent
+exit
+
+clear
+echo ""
+echo " * * * * * SYSTEMA CONFIGURADO * * * * * "
+echo ""
+echo ""
+echo ""
