@@ -5,7 +5,7 @@ hostnamectl set-hostname ArchLinux_VM
 echo "" >> /etc/pacman.conf
 echo "[archlinuxfr]" >> /etc/pacman.conf
 echo "SigLevel = Never" >> /etc/pacman.conf
-echo "Server = http://repo.archlinux.fr/`uname -m`/" /etc/pacman.conf
+echo "Server = http://repo.archlinux.fr/`uname -m`/" >> /etc/pacman.conf
 
 #> ATUALIZACAO DE SISTEMA
 pacman -Syu ### sincroniza o repositorio e procura por atualizações
