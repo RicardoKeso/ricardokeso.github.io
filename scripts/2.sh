@@ -61,7 +61,7 @@ hwclock --systohc --utc ### sincroniza o horário
 systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g'` ### habilita permanetemente o cliente de DHCP para o interface ethernet
 
 #>CONFIGURA USUARIO
-useradd -m usuario ### adiciona o usuário
+useradd -m ricardokeso ### adiciona o usuário
 passwd ricardokeso ### altera a senha do usuário
 groupadd sudo ### cria o grupo sudo
 gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
