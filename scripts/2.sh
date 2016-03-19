@@ -52,6 +52,7 @@ sed -i '/pt_BR/s/#//g' /etc/locale.gen ### descomenta a linha do arquivo de loca
 locale.gen ## configura a localização
 echo LANG=pt_BR.UTF-8 > /etc/locale.conf ### define a codificação de localização do sistema
 export LANG=pt_BR.UTF-8
+mv /etc/localtime /etc/localtime_orig
 ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime ### define a região
 hwclock --systohc --utc ### sincroniza o horário
 
@@ -97,5 +98,5 @@ sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAc
 # echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
 #>INSTALAR GNUPG
-pacman -S gnupg
+pacman -S gnupg --noconfirm
 #gtk2 # com gtk2 aparece uma janelinha
