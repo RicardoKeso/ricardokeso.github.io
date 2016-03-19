@@ -63,6 +63,7 @@ systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{
 #>CONFIGURA USUARIO
 useradd -m ricardokeso ### adiciona o usuário
 passwd ricardokeso ### altera a senha do usuário
+# (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
 groupadd sudo ### cria o grupo sudo
 gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
 sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
