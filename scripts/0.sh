@@ -1,7 +1,7 @@
 parted -s /dev/sda mklabel msdos
-parted -s /dev/sda mkpart primary linux-swap 1MiB 1024MiB ### cria uma particao de swap de 1GB
-parted -s /dev/sda mkpart primary ext4 1024MiB 1124MiB
-parted -s /dev/sda mkpart primary ext4 1124MiB 8GiB # para setar o max substituir 8GiB por 100%
+parted -s /dev/sda mkpart primary linux-swap 1MiB 1025MiB ### cria uma particao de swap de 1GB
+parted -s /dev/sda mkpart primary ext4 1025MiB 1126MiB
+parted -s /dev/sda mkpart primary ext4 1126MiB 100%
 parted -s /dev/sda set 2 boot on
 
 mkswap /dev/sda1 && swapon /dev/sda1 ### formata a partição de swap e a ativa
