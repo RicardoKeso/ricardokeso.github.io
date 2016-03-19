@@ -13,6 +13,7 @@ pacman -Syu ### sincroniza o repositorio e procura por atualizações
 #> PACOTES ESSENCIAIS
 pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
 pacman -S sudo --noconfirm ### instala o sudo
+pacman -S vim --noconfirm ### instala o sudo
 pacman -S tar gzip bzip2 unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
 pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias para acesso e formatação de sistemas de arquivos microsoft
 pacman -S wget curl --noconfirm ### instala gerenciadores de download
