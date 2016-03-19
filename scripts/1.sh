@@ -13,9 +13,3 @@ mkinitcpio -p linux ### compila a imagem do sistema
 
 grub-install --recheck /dev/sda
 grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
-
-exit
-umount -R /mnt
-umount -R /mnt/boot
-cryptsetup close sda3
-systemctl reboot
