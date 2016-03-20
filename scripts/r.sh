@@ -8,23 +8,24 @@
 #arch-chroot /mnt /bin/bash
 
 
-echo "#" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
+echo "#" > /root/.bashrc
 echo "# ~/.bashrc" >> /root/.bashrc
-echo "# ~/.bash_profile" >> /root/.bash_profile
-echo "#" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "alias ls='ls --color=auto'" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "alias grep='grep --color=auto'" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "# If not running interactively, don't do anything" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "[[ $- != *i* ]] && return" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
-echo "" >> /root/.bashrc; cat /root/.bashrc >> /root/.bash_profile
+echo "#" >> /root/.bashrc
+echo "" >> /root/.bashrc
+echo "alias ls='ls --color=auto'" >> /root/.bashrc
+echo "alias grep='grep --color=auto'" >> /root/.bashrc
+echo "" >> /root/.bashrc
+echo "# If not running interactively, don't do anything" >> /root/.bashrc
+echo "[[ $- != *i* ]] && return" >> /root/.bashrc
+echo "" >> /root/.bashrc
+cp /root/.bashrc /root/.bash_profile
 echo "if [ $UID -eq "0" ]; then" >> /root/.bashrc
 echo "  PS1='\[\033[1;37m\]rk\[\033[0;31m\] \$ \[\033[0m\]'" >> /root/.bashrc
-echo "  PS1='\[\033[0;31m\] \$ \[\033[0m\]'" >> /root/.bash_profile
 echo "else" >> /root/.bashrc
 echo "	PS1='\[\033[1;37m\]rk \$ \[\033[0m\]'" >> /root/.bashrc
 echo "fi" >> /root/.bashrc
+echo "PS1='\[\033[0;31m\] \$ \[\033[0m\]'" >> /root/.bash_profile
+sed -i 's/"# ~\/.bashrc"/"# ~\/.bash_profile"/g' /root/.bash_profile
 
 mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
 cp /root/.bashrc /home/ricardokeso/.bashrc
