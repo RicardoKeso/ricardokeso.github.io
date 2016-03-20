@@ -22,7 +22,7 @@ cp /root/.bashrc /root/.bash_profile
 echo "if [ $UID -eq "0" ]; then" >> /root/.bashrc
 echo "  PS1='\[\033[1;37m\]rk\[\033[0;31m\] \$ \[\033[0m\]'" >> /root/.bashrc
 echo "else" >> /root/.bashrc
-echo "	PS1='\[\033[1;37m\]rk \$ \[\033[0m\]'" >> /root/.bashrc
+echo "  PS1='\[\033[1;37m\]rk \$ \[\033[0m\]'" >> /root/.bashrc
 echo "fi" >> /root/.bashrc
 echo "PS1='\[\033[0;31m\] \$ \[\033[0m\]'" >> /root/.bash_profile
 sed -i 's/"# ~\/.bashrc"/"# ~\/.bash_profile"/g' /root/.bash_profile
