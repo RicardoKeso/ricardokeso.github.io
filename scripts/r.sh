@@ -27,6 +27,6 @@ echo "	PS1='\[\033[1;37m\]rk \$ \[\033[0m\]'" >> /root/.bashrc
 echo "fi" >> /root/.bashrc
 
 mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
-cp /root/.bashrc /home/ricardokeso/
+cp /root/.bashrc /home/ricardokeso/.bashrc
 chown ricardokeso:ricardokeso /home/ricardokeso/.bashrc
 chmod 644 /home/ricardokeso/.bashrc
