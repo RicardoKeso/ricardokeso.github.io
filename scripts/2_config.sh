@@ -1,32 +1,21 @@
+echo ""
 echo " * * * * * ALTERAR SENHA ROOT * * * * * "
 passwd # define a senha do root
-
+echo ""
 #pacman -Syyu (verificar necessidade)
-
 #pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
 sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub ###
 #sed -i '/GRUB_GFXMODE=/s/"auto"/"1024x768"/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em vc sem GUI)
-
 sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
 grub-install /dev/sda ### instala o grub no disco
 mkinitcpio -p linux ### compila a imagem do sistema
-
+echo ""
+echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
+echo ""
 grub-install --recheck /dev/sda
 grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
-
-
-
-
-
-
-
-
-
-
-
-
 
 #> NOME DA ESTACAO
 hostnamectl set-hostname ArchLinux_VM
@@ -36,10 +25,9 @@ echo "" >> /etc/pacman.conf
 echo "[archlinuxfr]" >> /etc/pacman.conf
 echo "SigLevel = Never" >> /etc/pacman.conf
 echo "Server = http://repo.archlinux.fr/`uname -m`/" >> /etc/pacman.conf
-
-#> ATUALIZACAO DE SISTEMA
-pacman -Syu ### sincroniza o repositorio e procura por atualizações
-
+echo ""
+echo " * * * * * INSTALANDO PACOTES * * * * * "
+echo ""
 #> PACOTES ESSENCIAIS (os pacotes tar bzip2 gzip pertencem ao grupo "base", sudo pertence ao grupo base-devel)
 pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
 pacman -S vim --noconfirm ### instala o sudo
@@ -77,11 +65,13 @@ pacman -S gnu-netcat --noconfirm ###
 #> FERRAMENTAS EXTRAS
 # pacman -S lm_sensors --noconfirm ### sensores de temperatura
 # sensors-detect
-
+echo ""
+echo " * * * * * CONFIGURANDO LINGUAGEM E REGIAO * * * * * "
+echo ""
 #>CONFIGURA LINGUAGEM E REGIAO
 echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf ### configura definitivamente o teclado
 sed -i '/pt_BR/s/#//g' /etc/locale.gen ### descomenta a linha do arquivo de localização com que tem os valores pt_BR
-locale.gen ## configura a localização
+locale-gen ## configura a localização
 echo LANG=pt_BR.UTF-8 > /etc/locale.conf ### define a codificação de localização do sistema
 export LANG=pt_BR.UTF-8
 mv /etc/localtime /etc/localtime_orig
@@ -89,10 +79,12 @@ ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime ### define a região
 hwclock --systohc --utc ### sincroniza o horário
 
 #>CONFIGURACAO DE REDE
-rm /etc/systemd/system/multi-user.target.wants/netctl*
 # systemctl enable netctl-auto@wlp9s0 ### habilita permanentemente o cliente de DHCP para a interface wireless
 systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g'` ### habilita permanetemente o cliente de DHCP para o interface ethernet
 
+#echo ""
+#echo " * * * * * CONFIGURANDO INTERFACE GRAFICA * * * * * "
+#echo ""
 #>SERVIDOR GRAFICO
 # pacman -S xorg xorg-xinit --noconfirm ### instala o servidor X
 # echo "" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
@@ -123,18 +115,21 @@ systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{
 # echo "[multilib]" >> /etc/pacman.conf 
 # echo "Include = /etc/pacman.d/mirrorlist" >> /etc/pacman.conf
 
+echo ""
+echo " * * * * * CONFIGURANDO USUARIO * * * * * "
+echo ""
 #>CONFIGURA USUARIO
 useradd -m ricardokeso ### adiciona o usuário
 echo " * * * * * ALTERAR SENHA RICARDOKESO * * * * * "
 passwd ricardokeso ### altera a senha do usuário
 # (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
-groupadd sudo ### cria o grupo sudo
-gpasswd -a ricardokeso sudo ### adiciona o usuário ao grupo sudo
-sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
+#groupadd sudo ### cria o grupo sudo
+#gpasswd -a ricardokeso sudo ### adiciona o usuário ao grupo sudo
+#sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
 
-#> CONFIGURAR SSR SERVER
-echo "AllowUsers ricardokeso" >> /etc/ssh/sshd_config
-
+echo ""
+echo " * * * * * CRIANDO ARQUIVOS DE PERSONALIZACAO DO TERMINAL * * * * * "
+echo ""
 #> PERSONALIZAR O TERMINAL
 curl ricardokeso.github.io/scripts/rk_bashrc > /root/.bashrc
 curl ricardokeso.github.io/scripts/rk_bash_profile > /root/.bash_profile
@@ -147,31 +142,17 @@ cp /home/ricardokeso/.bashrc /home/ricardokeso/.bash_profile
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 chmod 644 /home/ricardokeso/.bash_profile
 
-su ricardokeso
-echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
-echo RELOADAGENT | gpg-connect-agent
-exit
+#> CONFIGURAR SSR SERVER
+echo "AllowUsers ricardokeso" >> /etc/ssh/sshd_config
+
+#> CONFIGURAR GNUPG
+echo "pinentry-program /usr/bin/pinentry-curses" > /home/ricardokeso/.gnupg/gpg-agent.conf
+#echo RELOADAGENT | gpg-connect-agent
 
 clear
 echo ""
 echo " * * * * * SYSTEMA CONFIGURADO * * * * * "
 echo ""
-echo ""
-echo ""
-
-
-
-
-
-
-
-
-
-
-
-
-
-clear
 echo " * * * DIGITE OS PROXIMOS COMANDOS * * * "
 echo ""
 echo "exit"
