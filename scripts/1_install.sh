@@ -38,7 +38,7 @@ echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 echo ""
 curl ricardokeso.github.io/scripts/2_grub.sh > /tmp/2_grub.sh
 chmod +x /tmp/2_grub.sh
-curl ricardokeso.github.io/scripts/3_config.sh >/tmp/3_config.sh
+curl ricardokeso.github.io/scripts/3_config.sh > /tmp/3_config.sh
 chmod +x /tmp/3_config.sh
 echo ""
 echo " * * * * * DIGITE: /tmp/2_grub.sh* * * * * "
