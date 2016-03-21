@@ -10,11 +10,10 @@ echo "Server = http://repo.archlinux.fr/`uname -m`/" >> /etc/pacman.conf
 #> ATUALIZACAO DE SISTEMA
 pacman -Syu ### sincroniza o repositorio e procura por atualizações
 
-#> PACOTES ESSENCIAIS
+#> PACOTES ESSENCIAIS (os pacotes tar bzip2 gzip pertencem ao grupo "base", sudo pertence ao grupo base-devel)
 pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
-pacman -S sudo --noconfirm ### instala o sudo
 pacman -S vim --noconfirm ### instala o sudo
-pacman -S tar gzip bzip2 unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
+pacman -S unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
 pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias para acesso e formatação de sistemas de arquivos microsoft
 pacman -S wget curl --noconfirm ### instala gerenciadores de download
 pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplemento (tab) no terminal
