@@ -36,10 +36,10 @@ genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
 echo ""
 echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 echo ""
-curl ricardokeso.github.io/scripts/2_grub.sh > /mnt/tmp/2_grub.sh
-chmod +x /mnt/tmp/2_grub.sh
-curl ricardokeso.github.io/scripts/3_config.sh >/mnt/tmp/3_config.sh
-chmod +x /mnt/tmp/3_config.sh
+curl ricardokeso.github.io/scripts/2_grub.sh > /tmp/2_grub.sh
+chmod +x /tmp/2_grub.sh
+curl ricardokeso.github.io/scripts/3_config.sh >/tmp/3_config.sh
+chmod +x /tmp/3_config.sh
 echo ""
-echo " * * * * * DIGITE: /mnt/tmp/2_grub.sh* * * * * "
+echo " * * * * * DIGITE: /tmp/2_grub.sh* * * * * "
 arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
