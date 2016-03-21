@@ -15,6 +15,8 @@ mkinitcpio -p linux ### compila a imagem do sistema
 grub-install --recheck /dev/sda
 grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
 
+/tmp/3_config.sh
+
 clear
 echo " * * * DIGITE OS PROXIMOS COMANDOS * * * "
 echo ""
