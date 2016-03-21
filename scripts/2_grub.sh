@@ -11,6 +11,7 @@ sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 
 sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
+sleep 1
 mkinitcpio -p linux ### compila a imagem do sistema
 
 grub-install --recheck /dev/sda
