@@ -29,10 +29,10 @@ echo " * * * * * GERANDO A TABELA DE ARQUIVOS DE SISTEMAS * * * * * "
 genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
 echo ""
 echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
-curl ricardokeso.github.io/scripts/2grub.sh > /mnt/root/2.grub.sh
-chmod +x /mnt/root/2.grub.sh
-curl ricardokeso.github.io/scripts/3config.sh >/mnt/root/3config.sh
-chmod +x /mnt/root/3config.sh
+curl ricardokeso.github.io/scripts/2grub.sh > /mnt/tmp/2grub.sh
+chmod +x /mnt/tmp/2grub.sh
+curl ricardokeso.github.io/scripts/3config.sh >/mnt/tmp/3config.sh
+chmod +x /mnt/tmp/3config.sh
 echo ""
-echo " * * * * * DIGITE: ./2.grub * * * * * "
+echo " * * * * * DIGITE: /mnt/tmp/2grub.sh* * * * * "
 arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
