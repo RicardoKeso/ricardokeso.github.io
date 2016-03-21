@@ -5,8 +5,8 @@ parted -s /dev/sda mkpart primary linux-swap 1MiB 257MiB ### cria uma particao d
 parted -s /dev/sda mkpart primary ext4 257MiB 321MiB ### cria particao de BOOT 64MB
 parted -s /dev/sda mkpart primary ext4 321MiB 2369MB ### cria particao raiz com 2GB
 parted -s /dev/sda set 2 boot on ### 
-mkswap /dev/sda1  > /dev/null ### formata a partição de swap
-swapon /dev/sda1  > /dev/null ### ativa a partição de swap
+mkswap /dev/sda1  ### formata a partição de swap
+swapon /dev/sda1  ### ativa a partição de swap
 echo ""
 echo " * * * * * CRIPTOGRAFANDO PARTICAO RAIZ * * * * * "
 modprobe dm-crypt ### carrega o módulo de criptografia
