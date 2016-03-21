@@ -101,12 +101,17 @@ groupadd sudo ### cria o grupo sudo
 gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
 sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
 
+#> PERSONALIZAR O TERMINAL
 curl ricardokeso.github.io/scripts/rk_bashrc > .bashrc
 curl ricardokeso.github.io/scripts/rk_bash_profile > .bash_profile
 mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
 cp /root/.bashrc /home/ricardokeso/.bashrc
 chown ricardokeso:ricardokeso /home/ricardokeso/.bashrc
 chmod 644 /home/ricardokeso/.bashrc
+mv /home/ricardokeso/.bash_profile /home/ricardokeso/.bash_profile_original
+cp /home/ricardokeso/.bashrc /home/ricardokeso/.bash_profile
+chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
+chmod 644 /home/ricardokeso/.bash_profile
 
 su ricardokeso
 echo "pinentry-program /usr/bin/pinentry-curses" > ~/.gnupg/gpg-agent.conf
