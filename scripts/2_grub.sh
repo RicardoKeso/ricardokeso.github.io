@@ -15,6 +15,8 @@ mkinitcpio -p linux ### compila a imagem do sistema
 grub-install --recheck /dev/sda
 grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
 
+curl ricardokeso.github.io/scripts/3_install.sh > /tmp/3_config.sh
+chmod +x 3_config.sh
 /tmp/3_config.sh
 
 clear
