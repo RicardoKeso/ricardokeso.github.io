@@ -22,10 +22,10 @@ mkdir /mnt/boot ### para criar a raiz (/mnt) e o boot (/mnt/boot)
 mount /dev/sda2 /mnt/boot ### monta a partição de boot
 mount /dev/mapper/sda3 /mnt ### monta a partição raiz
 echo ""
-#echo " * * * * * INSTALANDO SISTEMA * * * * * "
-#pacstrap /mnt base base-devel grub-bios -i ### instala o sistema na partição raiz
-#echo ""
-#echo " * * * * * GERANDO A TABELA DE ARQUIVOS DE SISTEMAS * * * * * "
-#genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
-#echo ""
-#arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
+echo " * * * * * INSTALANDO SISTEMA * * * * * "
+pacstrap /mnt base base-devel grub-bios ### instala o sistema na partição raiz
+echo ""
+echo " * * * * * GERANDO A TABELA DE ARQUIVOS DE SISTEMAS * * * * * "
+genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
+echo ""
+arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
