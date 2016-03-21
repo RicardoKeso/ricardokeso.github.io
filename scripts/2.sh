@@ -101,6 +101,9 @@ groupadd sudo ### cria o grupo sudo
 gpasswd -a ricarodkeso sudo ### adiciona o usuário ao grupo sudo
 sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
 
+#> CONFIGURAR SSR SERVER
+echo "AllowUsers ricardokeso" >> /etc/ssh/sshd_config
+
 #> PERSONALIZAR O TERMINAL
 curl ricardokeso.github.io/scripts/rk_bashrc > .bashrc
 curl ricardokeso.github.io/scripts/rk_bash_profile > .bash_profile
