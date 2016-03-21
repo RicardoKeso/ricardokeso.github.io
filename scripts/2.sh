@@ -39,6 +39,7 @@ pacman -S tcpdump --noconfirm ###
 pacman -S kismet --noconfirm ###
 pacman -S aircrack-ng --noconfirm ###
 pacman -S nikto --noconfirm ###
+pacman -S gnu-netcat --noconfirm ###
 
 #> FERRAMENTAS DE ANALISE GUI
 # pacman -S wireshark --noconfirm ###
