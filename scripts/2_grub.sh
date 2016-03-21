@@ -1,3 +1,4 @@
+echo " * * * * * ALTERAR SENHA ROOT * * * * * "
 passwd # define a senha do root
 
 pacman -Syyu
@@ -124,6 +125,7 @@ systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{
 
 #>CONFIGURA USUARIO
 useradd -m ricardokeso ### adiciona o usuário
+echo " * * * * * ALTERAR SENHA RICARDOKESO * * * * * "
 passwd ricardokeso ### altera a senha do usuário
 # (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
 groupadd sudo ### cria o grupo sudo
