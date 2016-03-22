@@ -1,5 +1,3 @@
-hostnamectl set-hostname ArchLinux_VM
-
 senhaRoot(){
   echo " * * * * * ALTERAR SENHA ROOT * * * * * "
   echo ""
@@ -163,7 +161,7 @@ configsDiversas(){
   #echo RELOADAGENT | gpg-connect-agent
 }
 
-gerenciamentoenergi(){
+gerenciamentoenergia(){
   #-adicionar "resume" (sem aspas) na linha HOOKS descomentada
   # sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=suspend/g' /etc/systemd/logind.conf # altera a função do botao de desligar para suspender
 }
@@ -193,3 +191,27 @@ final(){
   echo "systemctl reboot"
   echo ""
 }
+
+
+hostnamectl set-hostname ArchLinux_VM
+
+senhaRoot
+grub
+yaourt
+essenciais
+#essenciaisGUI
+#notebook
+ferramentasAnalise
+#ferramentasAnaliseGUI
+#ferramentasExtras
+linguagemRegiao
+#rede
+#servidorX
+#i3
+#audio
+#multilib
+usuario
+personalizarTerminal
+configsDiversas
+sincronizarAtualizar
+final
