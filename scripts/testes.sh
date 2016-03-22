@@ -7,21 +7,26 @@
 #mount /dev/mapper/sda3 /mnt
 #arch-chroot /mnt /bin/bash
 
-#curl ricardokeso.github.io/scripts/rk_bashrc > .bashrc
-#curl ricardokeso.github.io/scripts/rk_bash_profile > .bash_profile
-
-#mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
-#cp /root/.bashrc /home/ricardokeso/.bashrc
-#chown ricardokeso:ricardokeso /home/ricardokeso/.bashrc
-#chmod 644 /home/ricardokeso/.bashrc
-
-
-echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 echo ""
-curl ricardokeso.github.io/scripts/2_grub.sh > /mnt/tmp/2_grub.sh
-chmod +x /mnt/tmp/2_grub.sh
-curl ricardokeso.github.io/scripts/3_config.sh >/mnt/tmp/3_config.sh
-chmod +x /mnt/tmp/3_config.sh
+echo " * * * * * ALTERAR SENHA ROOT * * * * * "
 echo ""
-echo " * * * * * DIGITE: /mnt/tmp/2_grub.sh* * * * * "
-arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
+passwd # define a senha do root
+
+echo ""
+echo " * * * * * SINCRONIZANDO E ATUALIZANDO PACOTES * * * * * "
+echo ""
+pacman -Syyu ### sincronizacao e atualizacao total
+
+echo ""
+echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
+echo ""
+#pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
+echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
+sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
+sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub ###
+#sed -i '/GRUB_GFXMODE=/s/"auto"/"1024x768"/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em vc sem GUI)
+sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
+grub-install /dev/sda ### instala o grub no disco
+mkinitcpio -p linux ### compila a imagem do sistema
+grub-install --recheck /dev/sda
+grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
