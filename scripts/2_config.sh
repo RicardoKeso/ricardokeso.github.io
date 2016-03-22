@@ -11,7 +11,7 @@ pacman -Syyu ### sincronizacao e atualizacao total
 echo ""
 echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
 echo ""
-#pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
+pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
 echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
 sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
 sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub ###
@@ -44,6 +44,7 @@ pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplement
 pacman -S mlocate --noconfirm ### instala as funções de pesquisa (updatedb, locate)
 pacman -S gnupg --noconfirm ### instala gnupg (GPG)
 pacman -S openssh --noconfirm ### instala openSSH
+pacman -S cronie --noconfirm ### instala cron
 
 #> * * * * * PACOTES ESSENCIAIS GUI
 # pacman -S firefox --noconfirm ### instala o firefox
