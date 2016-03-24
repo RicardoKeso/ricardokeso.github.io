@@ -199,6 +199,7 @@ padrao(){
   senhaRoot
   grub
   yaourt
+  sincronizarAtualizar
 }
 
 install(){
@@ -224,7 +225,7 @@ multimidia(){
 }
 
 padrao
-install
+# install
 # notebook
 # ferramentasExtras
 # rede
