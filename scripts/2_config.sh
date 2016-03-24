@@ -192,26 +192,42 @@ final(){
   echo ""
 }
 
+##*******************************************************************************
 
-hostnamectl set-hostname ArchLinux_VM
+padrao(){
+  hostnamectl set-hostname ArchLinux_VM
+  senhaRoot
+  grub
+  yaourt
+}
 
-senhaRoot
-grub
-yaourt
-essenciais
-#essenciaisGUI
-#notebook
-ferramentasAnalise
-#ferramentasAnaliseGUI
-#ferramentasExtras
-linguagemRegiao
-#rede
-#servidorX
-#i3
-#audio
-#multilib
-usuario
-personalizarTerminal
-configsDiversas
-sincronizarAtualizar
-final
+install(){
+  essenciais
+  ferramentasAnalise
+}
+
+personalizacao(){
+  linguagemRegiao
+  usuario
+  personalizarTerminal
+  configsDiversas
+  sincronizarAtualizar
+  final
+}
+
+multimidia(){
+  essenciaisGUI
+  ferramentasAnaliseGUI
+  servidorX
+  i3
+  audio
+}
+
+padrao
+install
+# notebook
+# ferramentasExtras
+# rede
+# multilib
+# multimidia
+# personalizacao
