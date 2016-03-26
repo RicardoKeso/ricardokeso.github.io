@@ -112,7 +112,7 @@ servidorX(){
 }
 
 i3(){
-  pacman -S i3 dmenu --noconfirm ### instala o gerenciador de janelas i3 e o lançador de aplicativos dmenu
+  pacman -S i3 dmenu terminator --noconfirm ### instala o gerenciador de janelas i3 e o lançador de aplicativos dmenu
   echo "exec i3" > ~/.xinitrc ### define a inicialização do i3 junto com o X
 }
 
