@@ -157,6 +157,8 @@ personalizarTerminal(){
 
 configsDiversas(){
   echo "AllowUsers ricardokeso" >> /etc/ssh/sshd_config
+  systemctl enable sshd.service
+  
   echo "pinentry-program /usr/bin/pinentry-curses" > /home/ricardokeso/.gnupg/gpg-agent.conf
   #echo RELOADAGENT | gpg-connect-agent
 }
