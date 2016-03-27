@@ -10,6 +10,7 @@ exec_always "amixer set Master unmute"
 #exec_always "feh --bg-fill ~/.i3/i3_lock.png &"
 font pango:Lucida-console 8
 new_window pixel 1
+#hide_edge_borders both
 
 # ainda nao sei para que servem
 floating_minimum_size 150 x 150
