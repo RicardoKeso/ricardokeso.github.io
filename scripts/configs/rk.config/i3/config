@@ -11,6 +11,7 @@ exec_always "amixer set Master unmute"
 font pango:Lucida-console 8
 new_window pixel 1
 #hide_edge_borders both
+client.focused #4c7899 #285577 #ffffff #083455 #083455
 
 # ainda nao sei para que servem
 floating_minimum_size 150 x 150
