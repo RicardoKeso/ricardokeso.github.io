@@ -4,7 +4,9 @@ curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > ~/.config
 
 mkdir -p ~/.config/i3/
 curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > ~/.config/i3/config
+curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > ~/.config/i3/i3status.conf
 
 curl www.ricardokeso.com/scripts/configs/rk.bash_profile > ~/.bash_profile
 
 curl www.ricardokeso.com/scripts/configs/rk.bashrc > ~/.bashrc
+
