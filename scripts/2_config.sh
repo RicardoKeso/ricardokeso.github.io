@@ -164,7 +164,8 @@ configsDiversas(){
 }
 
 gerenciamentoenergia(){
-  #-adicionar "resume" (sem aspas) na linha HOOKS descomentada
+  echo ""
+  # -adicionar "resume" (sem aspas) na linha HOOKS descomentada
   # sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=suspend/g' /etc/systemd/logind.conf # altera a função do botao de desligar para suspender
 }
 
