@@ -50,6 +50,7 @@ essenciaisGUI(){
   pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
   pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
   pacman -S scrot --noconfirm ### ferramenta de printscreen
+  pacman -S imagemagick --noconfirm ### manipulador de imagem
 }
 
 notebook(){
