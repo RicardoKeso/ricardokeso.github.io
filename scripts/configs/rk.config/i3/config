@@ -7,6 +7,7 @@ exec_always "amixer -c 0 set Headphone 100%;"
 exec_always "amixer -c 0 set Headphone unmute;"
 exec_always "amixer set Master 30%"
 exec_always "amixer set Master unmute"
+#exec_always "feh --bg-fill ~/.i3/i3_lock.png &"
 font pango:Lucida-console 8
 new_window pixel 1
 
@@ -19,6 +20,13 @@ set $mod Mod4
 
 # tecla Alt_L
 #set $modA Mod1
+
+# bloquear tela
+#bindsym $mod+l exec "i3lock -i ~/.i3/i3_lock.png"
+bindsym $mod+l exec i3lock
+
+# gerenciador de arquivos gráfico
+#bindsym $mod+o exec pcmanfm &
 
 # energy control
 #bindsym $mod+Ctrl+Shift+s exec "sleep '1'; systemctl suspend" # comando substituido pelo botao de poweroff em /etc/systemd/logind.conf
