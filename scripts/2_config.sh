@@ -49,6 +49,7 @@ essenciaisGUI(){
   pacman -S firefox --noconfirm ### instala o firefox
   pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
   pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
+  pacman -S scrot --noconfirm ### ferramenta de printscreen
 }
 
 notebook(){
