@@ -1,4 +1,3 @@
-su ricardokeso
 mkdir -p ~/.config/terminator/
 curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > ~/.config/terminator/config
 mkdir -p ~/.i3/
