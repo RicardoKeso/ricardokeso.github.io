@@ -1,14 +1,5 @@
-#systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g'`
-
-#modprobe dm-crypt
-#cryptsetup luksOpen /dev/sda3 sda3
-#mkdir /mnt/boot
-#mount /dev/sda2 /mnt/boot
-#mount /dev/mapper/sda3 /mnt
-#arch-chroot /mnt /bin/bash
-
-teste(){
-  echo "funciona"
-}
-
-#teste
+su ricardokeso
+curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > ~/.config/terminator/config
+curl www.ricardokeso.com/scripts/configs/rk.i3/config > ~/.i3/config
+curl www.ricardokeso.com/scripts/configs/rk.bash_profile > ~/.bash_profile
+curl www.ricardokeso.com/scripts/configs/rk.bashrc > ~/.bashrc
