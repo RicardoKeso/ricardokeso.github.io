@@ -1,6 +1,6 @@
 mkdir -p ~/.config/terminator/
 curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > ~/.config/terminator/config
-mkdir -p ~/.i3/
-curl www.ricardokeso.com/scripts/configs/rk.i3/config > ~/.i3/config
+mkdir -p ~/.config/i3/
+curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > ~/.config/i3/config
 curl www.ricardokeso.com/scripts/configs/rk.bash_profile > ~/.bash_profile
 curl www.ricardokeso.com/scripts/configs/rk.bashrc > ~/.bashrc
