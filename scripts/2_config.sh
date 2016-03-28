@@ -145,8 +145,8 @@ usuario(){
 personalizarTerminal(){
   echo " * * * * * CRIANDO ARQUIVOS DE PERSONALIZACAO DO TERMINAL * * * * * "
   echo ""
-  curl ricardokeso.github.io/scripts/rk_bashrc > /root/.bashrc
-  curl ricardokeso.github.io/scripts/rk_bash_profile > /root/.bash_profile
+  curl www.ricardokeso.com/scripts/configs/rk.bashrc > /root/.bashrc
+  curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /root/.bash_profile
   mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
   cp /root/.bashrc /home/ricardokeso/.bashrc
   chown ricardokeso:ricardokeso /home/ricardokeso/.bashrc
@@ -157,10 +157,21 @@ personalizarTerminal(){
   chmod 644 /home/ricardokeso/.bash_profile
 }
 
+personalizar_i3_terminator(){
+  mkdir -p ~/.config/terminator/
+  curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > /home/ricardokeso/.config/terminator/config
+  mkdir -p ~/.config/i3/
+  curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > /home/ricardokeso/.config/i3/config
+  curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > /home/ricardokeso/.config/i3/i3status.conf
+  curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /home/ricardokeso/.bash_profile
+  curl www.ricardokeso.com/scripts/configs/rk.bashrc > /home/ricardokeso/.bashrc
+}
+
 configsDiversas(){
   echo "AllowUsers ricardokeso" >> /etc/ssh/sshd_config
   systemctl enable sshd.service
   
+  mkdir -p /home/ricardokeso/.gnupg/
   echo "pinentry-program /usr/bin/pinentry-curses" > /home/ricardokeso/.gnupg/gpg-agent.conf
   #echo RELOADAGENT | gpg-connect-agent
 }
@@ -226,6 +237,7 @@ multimidia(){
   ferramentasAnaliseGUI
   servidorX
   i3
+  personalizar_i3_terminator
   audio
 }
 
