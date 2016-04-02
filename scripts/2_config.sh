@@ -12,7 +12,7 @@ grub(){
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
   sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub ###
-  sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em vc sem GUI)
+  #sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
   sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
   grub-install /dev/sda ### instala o grub no disco
   mkinitcpio -p linux ### compila a imagem do sistema
@@ -56,6 +56,7 @@ essenciaisGUI(){
 notebook(){
   pacman -S wireless_tools wpa_supplicant wpa_actiond dialog ### instala os pacotes para a wireless
   pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
+  curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
 }
 
 ferramentasAnalise(){
@@ -93,8 +94,8 @@ linguagemRegiao(){
 }
 
 rede(){
-  # systemctl enable netctl-auto@wlp9s0 ### habilita permanentemente o cliente de DHCP para a interface wireless
-  systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g'` ### habilita permanetemente o cliente de DHCP para o interface ethernet
+  systemctl enable netctl-auto@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep w` ### habilita permanentemente o cliente de DHCP para a interface wireless
+  systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep e` ### habilita permanetemente o cliente de DHCP para o interface ethernet
 }
 
 servidorX(){
@@ -243,9 +244,9 @@ multimidia(){
 
 padrao
 install
-# notebook
 # ferramentasExtras
 # rede
 # multilib
 personalizacao
 multimidia
+# notebook
