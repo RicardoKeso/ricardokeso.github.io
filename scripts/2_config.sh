@@ -42,7 +42,8 @@ essenciais(){
   pacman -S gnupg --noconfirm ### instala gnupg (GPG)
   pacman -S openssh --noconfirm ### instala openSSH
   pacman -S cronie --noconfirm ### instala cron
-  pacman -S zsh --noconfirm ### outro shell
+  #pacman -S zsh --noconfirm ### outro shell
+  pacman -S git --noconfirm ### github
   echo ""
 }
 
@@ -251,3 +252,7 @@ install
 personalizacao
 multimidia
 # notebook
+
+
+# para personalizar o ZSH executar no usuario ricardokeso o seguinte comando (disponivel em: http://ohmyz.sh/)
+# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
