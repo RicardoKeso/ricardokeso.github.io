@@ -42,6 +42,7 @@ essenciais(){
   pacman -S gnupg --noconfirm ### instala gnupg (GPG)
   pacman -S openssh --noconfirm ### instala openSSH
   pacman -S cronie --noconfirm ### instala cron
+  pacman -S zsh --noconfirm ### outro shell
   echo ""
 }
 
