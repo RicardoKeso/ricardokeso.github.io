@@ -43,15 +43,15 @@ scriptsPosInstalacao(){
 	echo ""
 	echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 	echo ""
-	curl www.ricardokeso.com/scripts/2_config.sh > /mnt/root/2_default.sh
-	chmod +x /mnt/root/2_default.sh
+	curl www.ricardokeso.com/scripts/default_2.sh > /mnt/root/default_2.sh
+	chmod +x /mnt/root/default_2.sh
 	echo ""
-	echo " * * * * * DIGITE: /root/2_default.sh* * * * * "
+	echo " * * * * * DIGITE: /root/default_2.sh* * * * * "
 	arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
 }
 
 criarParticoes
-# formatarParticoes
-# montarParticoes
-# instalarSistema
-# scriptsPosInstalacao
+formatarParticoes
+montarParticoes
+instalarSistema
+scriptsPosInstalacao
