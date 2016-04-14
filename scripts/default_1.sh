@@ -3,9 +3,9 @@ criarParticoes(){
 	echo " * * * * * CRIANDO PARTICOES * * * * * "
 	echo ""
 	parted -s /dev/sda mklabel msdos
-	parted -s /dev/sda mkpart primary linux-swap 1MiB 257MiB ### cria uma particao de SWAP de 256MB
-	parted -s /dev/sda mkpart primary ext4 257MiB 321MiB ### cria particao de BOOT 64MB
-	parted -s /dev/sda mkpart primary ext4 321MiB 100% ### cria particao raiz com 4GB (4417 = 3.8) ()
+	parted -s /dev/sda mkpart primary linux-swap 1024kB 257MB ### cria uma particao de SWAP de 256MB
+	parted -s /dev/sda mkpart primary ext4 257MB 321MB ### cria particao de BOOT 64MB
+	parted -s /dev/sda mkpart primary ext4 321MB 100% ### cria particao raiz com 4GB (4417 = 3.8) ()
 	parted -s /dev/sda set 2 boot on ### 
 	mkswap /dev/sda1  ### formata a partição de swap
 	swapon /dev/sda1  ### ativa a partição de swap
