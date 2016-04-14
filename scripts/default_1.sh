@@ -51,7 +51,7 @@ scriptsPosInstalacao(){
 }
 
 criarParticoes
-formatarParticoes
-montarParticoes
-instalarSistema
-scriptsPosInstalacao
+# formatarParticoes
+# montarParticoes
+# instalarSistema
+# scriptsPosInstalacao
