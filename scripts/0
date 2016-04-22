@@ -13,8 +13,8 @@ particionamento(){
 	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	1G	Dados3		/dev/sda7
 	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G	Dados1		/dev/sda4
 	
-	parted -s /dev/sda set 1 boot on ### 
-	mkswap /dev/sda5  ### formata a partição de swap
+	# parted -s /dev/sda set 1 boot on ### 
+	# mkswap /dev/sda5  ### formata a partição de swap
 	swapon /dev/sda5  ### ativa a partição de swap
 	
 	echo "SDB"
