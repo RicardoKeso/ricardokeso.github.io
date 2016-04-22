@@ -15,7 +15,7 @@ particionamento(){
 	
 	# parted -s /dev/sda set 1 boot on ### 
 	# mkswap /dev/sda5  ### formata a partição de swap
-	swapon /dev/sda5  ### ativa a partição de swap
+	# swapon /dev/sda5  ### ativa a partição de swap
 	
 	echo "SDB"
 	parted -s /dev/sdb -- mklabel msdos
