@@ -41,15 +41,16 @@ configurarSDA(){
 }
 
 configurarRAID1(){
-	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda4
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1
 	echo 'DEVICE partitions' > /etc/mdadm.conf
 	mdadm --detail --scan >> /etc/mdadm.conf
 }
 
 titulo
 particionarSDA
-#particionarSDB
-#particionarSDC
-#particiononarSDD
+particionarSDB
+particionarSDC
+particiononarSDD
 #configurarSDA
 #configurarRAID1
