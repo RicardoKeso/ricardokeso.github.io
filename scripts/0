@@ -23,11 +23,11 @@ particionamento(){
 	
 	echo "SDC"
 	parted -s /dev/sdc -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 1MiB -1
+	parted -s /dev/sdc mkpart primary ext4 1MiB -1
 	
 	echo "SDD"
 	parted -s /dev/sdd -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 1MiB -1
+	parted -s /dev/sdd mkpart primary ext4 1MiB -1
 	
 	# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
 	# echo 'DEVICE partitions' > /etc/mdadm.conf
