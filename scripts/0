@@ -1,4 +1,4 @@
-titulo{
+titulo(){
 	clear
 	echo " * * * * * CRIANDO PARTICOES * * * * * "
 	echo ""
@@ -16,31 +16,31 @@ particionarSDA(){
 	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G	Dados1		/dev/sda4
 }
 
-particionarSDB{
+particionarSDB(){
 	echo "SDB"
 	parted -s /dev/sdb -- mklabel msdos
 	parted -s /dev/sdb mkpart primary ext4 1MiB -1		#	3G	/Dados1		/dev/sdb1
 }
 
-particionarSDC{
+particionarSDC(){
 	echo "SDC"
 	parted -s /dev/sdc -- mklabel msdos
 	parted -s /dev/sdc mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdc1
 }
 
-particiononarSDD{
+particiononarSDD(){
 	echo "SDD"
 	parted -s /dev/sdd -- mklabel msdos
 	parted -s /dev/sdd mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdd1
 }
 
-configurarSDA{
+configurarSDA(){
 	parted -s /dev/sda set 1 boot on ### 
 	mkswap /dev/sda5  ### formata a partição de swap
 	swapon /dev/sda5  ### ativa a partição de swap
 }
 
-configurarRAID1{
+configurarRAID1(){
 	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
 	echo 'DEVICE partitions' > /etc/mdadm.conf
 	mdadm --detail --scan >> /etc/mdadm.conf
