@@ -1,57 +1,33 @@
-
-mkdir -p ~/.config/terminator/
-curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > ~/.config/terminator/config
-
-mkdir -p ~/.config/i3/
-curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > ~/.config/i3/config
-curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > ~/.config/i3/i3status.conf
-
-curl www.ricardokeso.com/scripts/configs/rk.bash_profile > ~/.bash_profile
-
-curl www.ricardokeso.com/scripts/configs/rk.bashrc > ~/.bashrc
-
-
-
-
-
-
-
-
-criarParticoes(){
+particionamento(){
 	clear
 	echo " * * * * * CRIANDO PARTICOES * * * * * "
 	echo ""
 	
-	parted -s /dev/sda mklabel msdos	
-	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB #			64M			/boot
-	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB # 		3G			/
-	parted -s /dev/sda mkpart extended 3137MiB 4649MiB #	 	1.536G		extended
+	parted -s /dev/sda -- mklabel msdos	
+	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M	/boot		/dev/sda1
+	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB	#	3G	/		/dev/sda2
+	parted -s /dev/sda mkpart extended 3137MiB 4676MiB	# 	1.539G	extended	/dev/sda3
+	parted -s /dev/sda mkpart logical ext4 3138MiB 3394MiB	#	256M	/home		/dev/sda5
+	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	256M	linux-swap	/dev/sda6
+	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	1G	Dados3		/dev/sda7
+	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G	Dados1		/dev/sda4
 	
-	parted -s /dev/sda mkpart logical ext4 3138MiB 3394MiB #	256M		/home
-	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB #	256M		linux-swap
-	parted -s /dev/sda mkpart logical ext4 3652MiB 4673MiB #	1G			Dados3
+	parted -s /dev/sda set 1 boot on ### 
+	mkswap /dev/sda5  ### formata a partição de swap
+	swapon /dev/sda5  ### ativa a partição de swap
 	
-	parted -s /dev/sda mkpart primary ext4 4673MiB 100% #		3G			Dados1
+	parted -s /dev/sdb -- mklabel msdos
+	parted -s /dev/sdb mkpart primary ext4 512B 100%
 	
+	parted -s /dev/sdc -- mklabel msdos
+	parted -s /dev/sdb mkpart primary ext4 512B 100%
 	
-	3072	dados1
-	1024	dados3
-	3072	raiz
-	0064	boot
-	0128	home
-	0128	swap
+	parted -s /dev/sdd -- mklabel msdos
+	parted -s /dev/sdb mkpart primary ext4 512B 100%
 	
-	
-	
-	
-	parted -s /dev/sdb mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 1MiB 4095MiB
-	
-	parted -s /dev/sda set 2 boot on ### 
-	mkswap /dev/sda1  ### formata a partição de swap
-	swapon /dev/sda1  ### ativa a partição de swap
-	
-	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
-	echo 'DEVICE partitions' > /etc/mdadm.conf
-	mdadm --detail --scan >> /etc/mdadm.conf
+	# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
+	# echo 'DEVICE partitions' > /etc/mdadm.conf
+	# mdadm --detail --scan >> /etc/mdadm.conf
 }
+
+particionamento
