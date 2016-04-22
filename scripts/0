@@ -17,13 +17,13 @@ particionamento(){
 	swapon /dev/sda5  ### ativa a partição de swap
 	
 	parted -s /dev/sdb -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 512B 100%
+	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
 	parted -s /dev/sdc -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 512B 100%
+	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
 	parted -s /dev/sdd -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 512B 100%
+	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
 	# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
 	# echo 'DEVICE partitions' > /etc/mdadm.conf
