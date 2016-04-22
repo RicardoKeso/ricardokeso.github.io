@@ -1,8 +1,10 @@
-particionamento(){
+titulo{
 	clear
 	echo " * * * * * CRIANDO PARTICOES * * * * * "
 	echo ""
-	
+}
+
+particionarSDA(){
 	echo "SDA"
 	parted -s /dev/sda -- mklabel msdos	
 	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M	/boot		/dev/sda1
@@ -12,26 +14,42 @@ particionamento(){
 	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	256M	linux-swap	/dev/sda6
 	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	1G	Dados3		/dev/sda7
 	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G	Dados1		/dev/sda4
-	
-	# parted -s /dev/sda set 1 boot on ### 
-	# mkswap /dev/sda5  ### formata a partição de swap
-	# swapon /dev/sda5  ### ativa a partição de swap
-	
-	echo "SDB"
-	parted -s /dev/sdb -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 1MiB -1
-	
-	echo "SDC"
-	parted -s /dev/sdc -- mklabel msdos
-	parted -s /dev/sdc mkpart primary ext4 1MiB -1
-	
-	echo "SDD"
-	parted -s /dev/sdd -- mklabel msdos
-	parted -s /dev/sdd mkpart primary ext4 1MiB -1
-	
-	# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
-	# echo 'DEVICE partitions' > /etc/mdadm.conf
-	# mdadm --detail --scan >> /etc/mdadm.conf
 }
 
-particionamento
+particionarSDB{
+	echo "SDB"
+	parted -s /dev/sdb -- mklabel msdos
+	parted -s /dev/sdb mkpart primary ext4 1MiB -1		#	3G	/Dados1		/dev/sdb1
+}
+
+particionarSDC{
+	echo "SDC"
+	parted -s /dev/sdc -- mklabel msdos
+	parted -s /dev/sdc mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdc1
+}
+
+particiononarSDD{
+	echo "SDD"
+	parted -s /dev/sdd -- mklabel msdos
+	parted -s /dev/sdd mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdd1
+}
+
+configurarSDA{
+	parted -s /dev/sda set 1 boot on ### 
+	mkswap /dev/sda5  ### formata a partição de swap
+	swapon /dev/sda5  ### ativa a partição de swap
+}
+
+configurarRAID1{
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sdb1 /dev/sda3
+	echo 'DEVICE partitions' > /etc/mdadm.conf
+	mdadm --detail --scan >> /etc/mdadm.conf
+}
+
+titulo
+particionarSDA
+#particionarSDB
+#particionarSDC
+#particiononarSDD
+#configurarSDA
+#configurarRAID1
