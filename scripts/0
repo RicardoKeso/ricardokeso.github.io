@@ -3,6 +3,7 @@ particionamento(){
 	echo " * * * * * CRIANDO PARTICOES * * * * * "
 	echo ""
 	
+	echo "SDA"
 	parted -s /dev/sda -- mklabel msdos	
 	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M	/boot		/dev/sda1
 	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB	#	3G	/		/dev/sda2
@@ -16,12 +17,15 @@ particionamento(){
 	mkswap /dev/sda5  ### formata a partição de swap
 	swapon /dev/sda5  ### ativa a partição de swap
 	
+	echo "SDB"
 	parted -s /dev/sdb -- mklabel msdos
 	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
+	echo "SDC"
 	parted -s /dev/sdc -- mklabel msdos
 	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
+	echo "SDD"
 	parted -s /dev/sdd -- mklabel msdos
 	parted -s /dev/sdb mkpart primary ext4 1MiB -1
 	
