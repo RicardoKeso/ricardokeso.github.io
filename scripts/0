@@ -19,19 +19,19 @@ particionarSDA(){
 particionarSDB(){
 	echo "SDB"
 	parted -s /dev/sdb -- mklabel msdos
-	parted -s /dev/sdb mkpart primary ext4 1MiB -1		#	3G	/Dados1		/dev/sdb1
+	parted -s /dev/sdb -- mkpart primary ext4 1MiB -1		#	3G	/Dados1		/dev/sdb1
 }
 
 particionarSDC(){
 	echo "SDC"
 	parted -s /dev/sdc -- mklabel msdos
-	parted -s /dev/sdc mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdc1
+	parted -s /dev/sdc -- mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdc1
 }
 
 particiononarSDD(){
 	echo "SDD"
 	parted -s /dev/sdd -- mklabel msdos
-	parted -s /dev/sdd mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdd1
+	parted -s /dev/sdd -- mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdd1
 }
 
 configurarSDA(){
