@@ -34,11 +34,15 @@ configurarSDA(){
 	swapon /dev/sda6			# ativa a partição de swap
 }
 
-formatarParticoesSDA(){
+formatarParticoes(){
 	mkfs.ext4 /dev/sda1			# boot
 	mkfs.ext4 /dev/sda2			# raiz
 	mkfs.ext4 /dev/sda5			# home
 	mkfs.ext4 /dev/sda7			# dados3
+	mkfs.ext4 /dev/sda4			# dados2
+	mkfs.ext4 /dev/sdb1			# dados2
+	mkfs.ext4 /dev/sdc1			# dados1
+	mkfs.ext4 /dev/sdd1			# dados1
 }
 
 montarParticoesSDA(){
@@ -96,9 +100,9 @@ particionar(){
 
 apagarParticoes
 #particionar
+#formatarParticoes
 #configurarRAID1
 
 #configurarSDA
-#formatarParticoesSDA
 #montarParticoesSDA
 #instalarSistema
