@@ -1,6 +1,10 @@
 particionarSDA(){
 	echo "SDA"
-	parted -s /dev/sda -- mklabel msdos	
+	parted -s /dev/sda rm 1
+	parted -s /dev/sda rm 2
+	parted -s /dev/sda rm 3
+	parted -s /dev/sda rm 4
+	parted -s /dev/sda -- mklabel msdos
 	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M	/boot		/dev/sda1
 	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB	#	3G	/		/dev/sda2
 	parted -s /dev/sda mkpart extended 3137MiB 4676MiB	# 	1.539G	extended	/dev/sda3
@@ -12,18 +16,30 @@ particionarSDA(){
 
 particionarSDB(){
 	echo "SDB"
+	parted -s /dev/sdb rm 1
+	parted -s /dev/sdb rm 2
+	parted -s /dev/sdb rm 3
+	parted -s /dev/sdb rm 4
 	parted -s /dev/sdb -- mklabel msdos
 	parted -s /dev/sdb -- mkpart primary ext4 1MiB -1		#	3G	/Dados1		/dev/sdb1
 }
 
 particionarSDC(){
 	echo "SDC"
+	parted -s /dev/sdc rm 1
+	parted -s /dev/sdc rm 2
+	parted -s /dev/sdc rm 3
+	parted -s /dev/sdc rm 4
 	parted -s /dev/sdc -- mklabel msdos
 	parted -s /dev/sdc -- mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdc1
 }
 
 particionarSDD(){
 	echo "SDD"
+	parted -s /dev/sdd rm 1
+	parted -s /dev/sdd rm 2
+	parted -s /dev/sdd rm 3
+	parted -s /dev/sdd rm 4
 	parted -s /dev/sdd -- mklabel msdos
 	parted -s /dev/sdd -- mkpart primary ext4 1MiB -1		#	2G	/Dados2		/dev/sdd1
 }
