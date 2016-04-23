@@ -67,26 +67,28 @@ sss(){
 }
 
 apagarParticoes(){
-	parted -s /dev/sda rm 1
-	parted -s /dev/sda rm 2
-	parted -s /dev/sda rm 3
-	parted -s /dev/sda rm 4
-	parted -s /dev/sdb rm 1
-	parted -s /dev/sdb rm 2
-	parted -s /dev/sdb rm 3
-	parted -s /dev/sdb rm 4
-	parted -s /dev/sdc rm 1
-	parted -s /dev/sdc rm 2
-	parted -s /dev/sdc rm 3
-	parted -s /dev/sdc rm 4
-	parted -s /dev/sdd rm 1
-	parted -s /dev/sdd rm 2
-	parted -s /dev/sdd rm 3
-	parted -s /dev/sdd rm 4
-	mdadm --zero-superblock /dev/sda
-	mdadm --zero-superblock /dev/sdb
-	mdadm --zero-superblock /dev/sdc
-	mdadm --zero-superblock /dev/sdd
+	#parted -s /dev/sda rm 1
+	#parted -s /dev/sda rm 2
+	#parted -s /dev/sda rm 3
+	#parted -s /dev/sda rm 4
+	#parted -s /dev/sdb rm 1
+	#parted -s /dev/sdb rm 2
+	#parted -s /dev/sdb rm 3
+	#parted -s /dev/sdb rm 4
+	#parted -s /dev/sdc rm 1
+	#parted -s /dev/sdc rm 2
+	#parted -s /dev/sdc rm 3
+	#parted -s /dev/sdc rm 4
+	#parted -s /dev/sdd rm 1
+	#parted -s /dev/sdd rm 2
+	#parted -s /dev/sdd rm 3
+	#parted -s /dev/sdd rm 4
+	dd of=/dev/zero of=/dev/hda
+	dd of=/dev/zero of=/dev/hdb
+	dd of=/dev/zero of=/dev/hdc
+	dd of=/dev/zero of=/dev/hdd
+	#mdadm --zero-superblock /dev/md0
+	#mdadm --zero-superblock /dev/md1
 }
 
 particionar(){
