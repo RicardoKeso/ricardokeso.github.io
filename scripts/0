@@ -67,10 +67,22 @@ sss(){
 }
 
 apagarParticoes(){
-	parted -s /dev/sda rm 1 rm 2 rm 3 rm 4
-	parted -s /dev/sdb rm 1 rm 2 rm 3 rm 4
-	parted -s /dev/sdc rm 1 rm 2 rm 3 rm 4
-	parted -s /dev/sdd rm 1 rm 2 rm 3 rm 4
+	parted -s /dev/sda rm 1
+	parted -s /dev/sda rm 2
+	parted -s /dev/sda rm 3
+	parted -s /dev/sda rm 4
+	parted -s /dev/sdb rm 1
+	parted -s /dev/sdb rm 2
+	parted -s /dev/sdb rm 3
+	parted -s /dev/sdb rm 4
+	parted -s /dev/sdc rm 1
+	parted -s /dev/sdc rm 2
+	parted -s /dev/sdc rm 3
+	parted -s /dev/sdc rm 4
+	parted -s /dev/sdd rm 1
+	parted -s /dev/sdd rm 2
+	parted -s /dev/sdd rm 3
+	parted -s /dev/sdd rm 4
 }
 
 apagarParticoes
