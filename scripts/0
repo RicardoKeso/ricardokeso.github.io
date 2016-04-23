@@ -87,8 +87,21 @@ apagarParticoes(){
 	parted -s /dev/sdd rm 2
 	parted -s /dev/sdd rm 3
 	parted -s /dev/sdd rm 4
-	#mdadm --zero-superblock /dev/md0
-	#mdadm --zero-superblock /dev/md1
+	
+	mdadm --fail /dev/md0 /dev/sda4
+	mdadm --fail /dev/md0 /dev/sdb1
+	mdadm --fail /dev/md1 /dev/sdc1
+	mdadm --fail /dev/md1 /dev/sdd1
+	
+	mdadm -r /dev/md0 /dev/sda4
+	mdadm -r /dev/md0 /dev/sdb1
+	mdadm -r /dev/md1 /dev/sdc1
+	mdadm -r /dev/md1 /dev/sdd1
+	
+	mdadm --zero-superblock /dev/sda4
+	mdadm --zero-superblock /dev/sdb1
+	mdadm --zero-superblock /dev/sdc1
+	mdadm --zero-superblock /dev/sdd1
 }
 
 particionar(){
