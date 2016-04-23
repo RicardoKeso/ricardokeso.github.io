@@ -53,8 +53,8 @@ configurarRAID1(){
 	echo 'DEVICE partitions' > /etc/mdadm.conf
 	mdadm --detail --scan >> /etc/mdadm.conf
 	### mdadm --assemble --scan # montagem do raid depois da atualizacao (ATENCAO)
-	mkfs.ext4 /dev/md0
-	mkfs.ext4 /dev/md1
+	#mkfs.ext4 /dev/md0
+	#mkfs.ext4 /dev/md1
 }
 
 instalarSistema(){
@@ -94,9 +94,9 @@ particionarSDA
 particionarSDB
 particionarSDC
 particionarSDD
-configurarSDA
-formatarParticoesSDA
-montarParticoesSDA
-instalarSistema
+configurarRAID1
 
-#configurarRAID1
+#configurarSDA
+#formatarParticoesSDA
+#montarParticoesSDA
+#instalarSistema
