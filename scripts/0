@@ -89,12 +89,16 @@ apagarParticoes(){
 	mdadm --zero-superblock /dev/sdd
 }
 
+particionar(){
+	particionarSDA
+	particionarSDB
+	particionarSDC
+	particionarSDD
+}
+
 apagarParticoes
-particionarSDA
-particionarSDB
-particionarSDC
-particionarSDD
-configurarRAID1
+#particionar
+#configurarRAID1
 
 #configurarSDA
 #formatarParticoesSDA
