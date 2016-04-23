@@ -83,6 +83,10 @@ apagarParticoes(){
 	parted -s /dev/sdd rm 2
 	parted -s /dev/sdd rm 3
 	parted -s /dev/sdd rm 4
+	mdadm --zero-superblock /dev/sda
+	mdadm --zero-superblock /dev/sdb
+	mdadm --zero-superblock /dev/sdc
+	mdadm --zero-superblock /dev/sdd
 }
 
 apagarParticoes
