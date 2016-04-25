@@ -1,7 +1,5 @@
-essenciaisGUI(){
-  pacman -S firefox --noconfirm ### instala o firefox
-  pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
-  pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
-  pacman -S scrot --noconfirm ### ferramenta de printscreen
-  pacman -S imagemagick --noconfirm ### manipulador de imagem
+notebook(){
+  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog ### instala os pacotes para a wireless
+  pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
+  curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
 }
