@@ -1,0 +1,4 @@
+ferramentasExtras(){
+  pacman -S lm_sensors --noconfirm ### sensores de temperatura
+  sensors-detect
+}
