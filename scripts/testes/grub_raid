@@ -1,3 +1,10 @@
+senhaRoot(){
+  echo " * * * * * ALTERAR SENHA ROOT * * * * * "
+  echo ""
+  passwd # define a senha do root
+  echo ""
+}
+
 grub(){
   echo " * * * * * INSTALANDO E CONFIGURANDO O GRpacmanUB * * * * * "
   echo ""
