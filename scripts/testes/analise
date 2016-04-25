@@ -1,0 +1,10 @@
+ferramentasAnalise(){
+  pacman -S mtr --noconfirm ### combina ping com traceroute (ex.: mtp -c 1 --report 8.8.8.8)
+  pacman -S nmap --noconfirm ### Utility for network discovery and security auditing
+  pacman -S nethogs --noconfirm ### A net top tool which displays traffic used per process instead of per IP or interface
+  pacman -S tcpdump --noconfirm ###
+  pacman -S kismet --noconfirm ###
+  pacman -S aircrack-ng --noconfirm ###
+  pacman -S nikto --noconfirm ###
+  pacman -S gnu-netcat --noconfirm ###
+}
