@@ -1,0 +1,12 @@
+linguagemRegiao(){
+  echo " * * * * * CONFIGURANDO LINGUAGEM E REGIAO * * * * * "
+  echo ""
+  echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf ### configura definitivamente o teclado
+  sed -i '/pt_BR/s/#//g' /etc/locale.gen ### descomenta a linha do arquivo de localização com que tem os valores pt_BR
+  locale-gen ## configura a localização
+  echo LANG=pt_BR.UTF-8 > /etc/locale.conf ### define a codificação de localização do sistema
+  export LANG=pt_BR.UTF-8
+  mv /etc/localtime /etc/localtime_orig
+  ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime ### define a região
+  hwclock --systohc --utc ### sincroniza o horário
+}
