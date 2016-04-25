@@ -1,10 +1,12 @@
 grub(){
-  echo " * * * * * INSTALANDO E CONFIGURANDO O GRpacmanUB * * * * * "
+  echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
   echo ""
   pacman -S grub --noconfirm
+  echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub
-  sed -i '/GRUB_GFXMODE=/s/auto/800x600/g' /etc/default/grub
-  sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1mdadm_udev filesystems/' /etc/mkinitcpio.conf
+  sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub
+  # sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
+  sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
   grub-install /dev/sda
   mkinitcpio -p linux
   grub-install --recheck /dev/sda
