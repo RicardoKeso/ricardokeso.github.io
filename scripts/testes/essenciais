@@ -1,0 +1,26 @@
+yaourt(){
+  echo "" >> /etc/pacman.conf
+  echo "[archlinuxfr]" >> /etc/pacman.conf
+  echo "SigLevel = Never" >> /etc/pacman.conf
+  echo "Server = http://repo.archlinux.fr/`uname -m`/" >> /etc/pacman.conf
+}
+
+essenciais(){
+  # (os pacotes tar bzip2 gzip pertencem ao grupo "base", sudo pertence ao grupo base-devel)
+  echo " * * * * * INSTALANDO PACOTES * * * * * "
+  echo ""
+  pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
+  pacman -S vim --noconfirm ### instala o sudo
+  pacman -S unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
+  pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias para acesso e formatação de sistemas de arquivos microsoft
+  pacman -S wget curl --noconfirm ### instala gerenciadores de download
+  pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplemento (tab) no terminal
+  pacman -S mlocate --noconfirm ### instala as funções de pesquisa (updatedb, locate)
+  pacman -S gnupg --noconfirm ### instala gnupg (GPG)
+  pacman -S openssh --noconfirm ### instala openSSH
+  pacman -S cronie --noconfirm ### instala cron
+  #pacman -S zsh --noconfirm ### outro shell
+  pacman -S git --noconfirm ### github
+  pacman -S parted --noconfirm ### github
+  echo ""
+}
