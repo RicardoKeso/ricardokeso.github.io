@@ -1,0 +1,20 @@
+servidorX(){
+  echo " * * * * * CONFIGURANDO INTERFACE GRAFICA * * * * * "
+  echo ""
+  pacman -S xorg xorg-xinit --noconfirm ### instala o servidor X
+  echo "" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "Section \"InputClass\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    Identifier \"evdev keyboard catchall\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    MatchIsKeyboard \"on\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    MatchDevicePath \"/dev/input/event*\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    Driver \"evdev\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    Option \"XkbLayout\" \"br\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "    Option \"XkbVariant\" \"abnt2\"" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "EndSection" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+  echo "" >> /usr/share/X11/xorg.conf.d/10-evdev.conf
+}
+
+i3(){
+  pacman -S i3 dmenu terminator --noconfirm ### instala o gerenciador de janelas i3 e o lançador de aplicativos dmenu
+  echo "exec i3" > /home/ricardokeso/.xinitrc ### define a inicialização do i3 junto com o X
+}
