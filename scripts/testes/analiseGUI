@@ -1,0 +1,4 @@
+ferramentasAnaliseGUI(){
+  pacman -S wireshark --noconfirm ###
+  pacman -S openvas --noconfirm ###
+}
