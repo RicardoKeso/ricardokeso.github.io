@@ -1,0 +1,13 @@
+grub(){
+  echo " * * * * * INSTALANDO E CONFIGURANDO O GRpacmanUB * * * * * "
+  echo ""
+  pacman -S grub --noconfirm
+  sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub
+  sed -i '/GRUB_GFXMODE=/s/auto/800x600/g' /etc/default/grub
+  sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1mdadm_udev filesystems/' /etc/mkinitcpio.conf
+  grub-install /dev/sda
+  mkinitcpio -p linux
+  grub-install --recheck /dev/sda
+  grub-mkconfig --output /boot/grub/grub.cfg
+  echo ""
+}
