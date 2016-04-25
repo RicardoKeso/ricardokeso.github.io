@@ -1,0 +1,4 @@
+audio(){
+  pacman -S alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio --noconfirm ### instala os pacotes para o funcionamento do audio
+  pacman -S cmus vlc --noconfirm ### instala o players multimídia (cmus media player termnal)
+}
