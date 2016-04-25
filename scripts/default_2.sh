@@ -97,8 +97,6 @@ final(){
   echo ""
   echo "umount -R /mnt/boot"
   echo ""
-  echo "cryptsetup close sda3"
-  echo ""
   echo "systemctl reboot"
   echo ""
 }
