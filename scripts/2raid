@@ -1,0 +1,62 @@
+senhaRoot(){
+  echo " * * * * * ALTERAR SENHA ROOT * * * * * "
+  echo ""
+  passwd # define a senha do root
+  echo ""
+}
+
+grub(){
+  echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
+  echo ""
+  pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
+  sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
+  sed -i '/GRUB_GFXMODE=/s/auto/800x600/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
+  sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1mdadm_udev filesystems/' /etc/mkinitcpio.conf
+  grub-install /dev/sda ### instala o grub no disco
+  mkinitcpio -p linux ### compila a imagem do sistema
+  grub-install --recheck /dev/sda
+  grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
+  echo ""
+}
+
+rede(){
+  #systemctl enable netctl-auto@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep w` ### habilita permanentemente o cliente de DHCP para a interface wireless
+  systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep e` ### habilita permanetemente o cliente de DHCP para o interface ethernet
+}
+
+sincronizarAtualizar(){
+  echo ""
+  echo " * * * * * SINCRONIZANDO E ATUALIZANDO PACOTES * * * * * "
+  pacman -Syyu ### sincronizacao e atualizacao total
+  echo ""
+}
+
+final(){
+  clear
+  echo ""
+  echo " * * * * * SYSTEMA CONFIGURADO * * * * * "
+  echo ""
+  echo " * * * DIGITE OS PROXIMOS COMANDOS * * * "
+  echo ""
+  echo "exit"
+  echo ""
+  echo "umount -R /mnt"
+  echo ""
+  echo "umount -R /mnt/boot"
+  echo ""
+  echo "systemctl reboot"
+  echo ""
+}
+
+##*******************************************************************************
+
+padrao(){
+  hostnamectl set-hostname Proxy_Arch
+  senhaRoot
+  grub
+  rede
+  sincronizarAtualizar
+  final
+}
+
+padrao
