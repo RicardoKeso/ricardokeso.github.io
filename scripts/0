@@ -47,10 +47,10 @@ formatarParticoes(){
 	mkfs.ext4 /dev/sda2	# raiz
 	mkfs.ext4 /dev/sda5	# home
 	mkfs.ext4 /dev/sda7	# dados3
-	mkfs.ext4 /dev/sda4	# dados1
-	mkfs.ext4 /dev/sdb1	# dados1
-	mkfs.ext4 /dev/sdc1	# dados2
-	mkfs.ext4 /dev/sdd1	# dados2
+	# mkfs.ext4 /dev/sda4	# dados1
+	# mkfs.ext4 /dev/sdb1	# dados1
+	# mkfs.ext4 /dev/sdc1	# dados2
+	# mkfs.ext4 /dev/sdd1	# dados2
 	echo ""
 }
 
