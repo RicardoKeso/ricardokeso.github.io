@@ -120,8 +120,8 @@ scriptsPosInstalacao(){
 
 criarParticoes
 formatarParticoes
-#configurarSDA
-#montarParticoes
-#configurarRAID1
+configurarSDA
+montarParticoes
+configurarRAID1
 #instalarSistema
 #scriptsPosInstalacao
