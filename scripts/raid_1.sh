@@ -72,6 +72,16 @@ montarParticoes(){
 	echo ""
 }
 
+configurarRAID1(){
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sda4 /dev/sdb1
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1
+	echo 'DEVICE partitions' > /etc/mdadm.conf
+	mdadm --detail --scan >> /etc/mdadm.conf
+	### mdadm --assemble --scan # montagem do raid depois da atualizacao (ATENCAO)
+	#mkfs.ext4 /dev/md0
+	#mkfs.ext4 /dev/md1
+}
+
 instalarSistema(){	
 	echo ""
 	echo " * * * * * INSTALANDO SISTEMA * * * * * "
@@ -96,7 +106,8 @@ scriptsPosInstalacao(){
 
 criarParticoes
 formatarParticoes
-configurarSDA
-montarParticoes
-instalarSistema
-scriptsPosInstalacao
+#configurarSDA
+#montarParticoes
+#configurarRAID1
+#instalarSistema
+#scriptsPosInstalacao
