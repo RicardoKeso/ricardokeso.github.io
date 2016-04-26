@@ -51,7 +51,7 @@ final(){
 ##*******************************************************************************
 
 padrao(){
-  hostnamectl set-hostname Proxy_Arch
+  hostnamectl set-hostname raid_Arch
   senhaRoot
   grub
   rede
