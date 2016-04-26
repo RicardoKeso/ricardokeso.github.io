@@ -1,13 +1,13 @@
 particionarSDA(){
 	echo "SDA"
 	parted -s /dev/sda -- mklabel msdos
-	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M     /boot		    /dev/sda1
-	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB	#	3G      /		        /dev/sda2
-	parted -s /dev/sda mkpart extended 3137MiB 4676MiB	#	1.539G	extended	  /dev/sda3
-	parted -s /dev/sda mkpart logical ext4 3138MiB 3394MiB	#	256M    /home		    /dev/sda5
-	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	256M	  linux-swap	/dev/sda6
-	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	1G      Dados3		  /dev/sda7
-	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G      Dados1      /dev/sda4
+	parted -s /dev/sda mkpart primary ext4 1MiB 65MiB	#	64M     /boot		/dev/sda1
+	parted -s /dev/sda mkpart primary ext4 65MiB 3137MiB	#	3G      /		/dev/sda2
+	parted -s /dev/sda mkpart extended 3137MiB 4676MiB	#	1.539G	extended	/dev/sda3
+	parted -s /dev/sda mkpart logical ext4 3138MiB 3394MiB	#	256M    /home		/dev/sda5
+	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	256M	linux-swap	/dev/sda6
+	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	1G      Dados3		/dev/sda7
+	parted -s /dev/sda mkpart primary ext4 4676MiB 7748MiB	#	3G      Dados1		/dev/sda4
 }
 
 particionarSDB(){
