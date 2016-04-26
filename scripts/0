@@ -89,6 +89,7 @@ configurarRAID1(){
 			echo "Sincronizacao dos Raids"
 			echo $retorno
 		fi
+		sleep 15
 	done
 	
 	mdadm --assemble --scan # montagem do raid apenas depois da sincronizacao
