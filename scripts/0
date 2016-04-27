@@ -70,7 +70,7 @@ montarParticoes(){
 	mkdir mnt/Dados1	     	# para criar /mnt/Dados1
 	mkdir mnt/Dados2     		# para criar /mnt/Dados2
 	mkdir mnt/Dados3     		# para criar /mnt/Dados3
-	mount /dev/mn0 /mnt/mnt/Dados1	# monta a partição home
+	mount /dev/md0 /mnt/mnt/Dados1	# monta a partição home
 	mount /dev/md1 /mnt/mnt/Dados2	# monta a partição home
 	mount /dev/sda7 /mnt/mnt/Dados3	# monta a partição home
 	cd
