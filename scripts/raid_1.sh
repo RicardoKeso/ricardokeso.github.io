@@ -66,9 +66,9 @@ montarParticoes(){
 	echo ""
 	mkdir /mnt/boot           # para criar a raiz (/mnt) e o boot (/mnt/boot)
 	mkdir /mnt/home           # para criar a raiz (/mnt) e o boot (/mnt/boot)
-	mount /dev/sda2 /mnt/boot # monta a partição de boot
+	mount /dev/sda2 /mnt/boot # monta a partição boot
 	mount /dev/sda3 /mnt      # monta a partição raiz
-	mount /dev/sda5 /home     # monta a partição home
+	mount /dev/sda5 /mnt/home # monta a partição home
 	echo ""
 }
 
