@@ -47,10 +47,6 @@ formatarParticoes(){
 	mkfs.ext4 /dev/sda2	# raiz
 	mkfs.ext4 /dev/sda5	# home
 	mkfs.ext4 /dev/sda7	# dados3
-	mkfs.ext4 /dev/sda4	# dados1
-	mkfs.ext4 /dev/sdb1	# dados1
-	mkfs.ext4 /dev/sdc1	# dados2
-	mkfs.ext4 /dev/sdd1	# dados2
 	echo ""
 }
 
@@ -66,8 +62,8 @@ montarParticoes(){
 	echo ""
 	mkdir /mnt/boot           # para criar a raiz (/mnt) e o boot (/mnt/boot)
 	mkdir /mnt/home           # para criar a raiz (/mnt) e o boot (/mnt/boot)
-	mount /dev/sda2 /mnt/boot # monta a partição boot
-	mount /dev/sda3 /mnt      # monta a partição raiz
+	mount /dev/sda1 /mnt/boot # monta a partição de boot
+	mount /dev/sda2 /mnt      # monta a partição raiz
 	mount /dev/sda5 /mnt/home # monta a partição home
 	echo ""
 }
@@ -75,11 +71,26 @@ montarParticoes(){
 configurarRAID1(){
 	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sda4 /dev/sdb1
 	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1
-	echo 'DEVICE partitions' > /etc/mdadm.conf
-	mdadm --detail --scan >> /etc/mdadm.conf
-	### mdadm --assemble --scan # montagem do raid depois da atualizacao (ATENCAO)
-	#mkfs.ext4 /dev/md0
-	#mkfs.ext4 /dev/md1
+	echo 'DEVICE partitions' > /mnt/etc/mdadm.conf
+	mdadm --detail --scan >> /mnt/etc/mdadm.conf
+	
+	sincronizando=1
+	while [ $sincronizando -eq 1 ]; do
+		retorno=`cat /proc/mdstat | grep resync`
+		if [ -z "$retorno" ]; then
+			echo "Raids Sincronizados"
+			sincronizando=$((sincronizando-1))
+		else
+			clear
+			echo "Sincronizacao dos Raids"
+			echo $retorno
+		fi
+		sleep 3
+	done
+	
+	mdadm --assemble --scan # montagem do raid apenas depois da sincronizacao
+	mkfs.ext4 /dev/md0
+	mkfs.ext4 /dev/md1
 }
 
 instalarSistema(){	
@@ -106,8 +117,8 @@ scriptsPosInstalacao(){
 
 criarParticoes
 formatarParticoes
-#configurarSDA
-#montarParticoes
-#configurarRAID1
-#instalarSistema
-#scriptsPosInstalacao
+configurarSDA
+configurarRAID1
+montarParticoes
+instalarSistema
+scriptsPosInstalacao
