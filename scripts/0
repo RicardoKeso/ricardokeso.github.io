@@ -130,10 +130,10 @@ scriptsPosInstalacao(){
 	arch-chroot /mnt /bin/bash 	# retorna para o sistema instalado
 }
 
-criarParticoes
-formatarParticoes
-configurarSDA
-configurarRAID1
-#montarParticoes
+#criarParticoes
+#formatarParticoes
+#configurarSDA
+#configurarRAID1
+montarParticoes
 #instalarSistema
 #scriptsPosInstalacao
