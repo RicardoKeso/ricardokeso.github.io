@@ -108,13 +108,13 @@ padrao(){
   senhaRoot
   grub
   yaourt
-  # multilib # apenas para sistemas 64bits
-  essenciais
-  ferramentasAnalise
-  rede
-  linguagemRegiao
-  sincronizarAtualizar
-  final
+  ## multilib # apenas para sistemas 64bits
+  #essenciais
+  #ferramentasAnalise
+  #rede
+  #linguagemRegiao
+  #sincronizarAtualizar
+  #final
 }
 
 padrao
