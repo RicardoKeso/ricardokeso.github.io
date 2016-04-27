@@ -79,21 +79,22 @@ montarParticoes(){
 
 configurarRAID1(){
 	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sda4 /dev/sdb1 > raidLog
-	echo "" >> raidLog
+	echo "" >> /mnt/root/raidLog
 	
 	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1 >> raidLog
-	echo "" >> raidLog
+	echo "" >> /mnt/root/raidLog
 	
 	echo 'DEVICE partitions' > /mnt/etc/mdadm.conf
 	mdadm --detail --scan >> /mnt/etc/mdadm.conf
-	cat "/mnt/etc/mdadm.conf" >> raidLog
-	echo "" >> raidLog
+	cat "/mnt/etc/mdadm.conf" >> /mnt/root/raidLog
+	echo "" >> /mnt/root/raidLog
 	
 	sincronizando=1
 	while [ $sincronizando -eq 1 ]; do
 		retorno=`cat /proc/mdstat | grep resync`
 		if [ -z "$retorno" ]; then
 			echo "Raids Sincronizados"
+			echo "Raids Sincronizados" >> /mnt/root/raidLog
 			sincronizando=$((sincronizando-1))
 		else
 			clear
@@ -126,7 +127,7 @@ scriptsPosInstalacao(){
 	curl www.ricardokeso.com/scripts/raid_2.sh > /mnt/root/raid_2.sh
 	chmod +x /mnt/root/raid_2.sh
 	echo ""
-	echo " * * * * * DIGITE: /root/default_2.sh* * * * * "
+	echo " * * * * * DIGITE: /root/raid_2.sh* * * * * "
 	arch-chroot /mnt /bin/bash 	# retorna para o sistema instalado
 }
 
