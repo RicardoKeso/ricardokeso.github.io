@@ -60,8 +60,10 @@ montarParticoes(){
 	echo ""
 	echo " * * * * * MONTANDO PARTICOES * * * * * "
 	echo ""
-	mkdir /mnt/boot           	# para criar /boot
-	mkdir /mnt/home           	# para criar /home
+	mkdir /mnt/boot           	# para criar /boot e raiz
+	cd /mnt
+	mkdir /mnt/home			# para criar /home
+	mkdir /mnt           	
 	mkdir /mnt/mnt/Dados1     	# para criar /mnt/Dados1
 	mkdir /mnt/mnt/Dados2     	# para criar /mnt/Dados2
 	mkdir /mnt/mnt/Dados3     	# para criar /mnt/Dados3
@@ -71,6 +73,7 @@ montarParticoes(){
 	mount /dev/mn0 /mnt/mnt/Dados1	# monta a partição home
 	mount /dev/md1 /mnt/mnt/Dados2	# monta a partição home
 	mount /dev/sda7 /mnt/mnt/Dados3	# monta a partição home
+	cd
 	echo ""
 }
 
@@ -126,5 +129,5 @@ formatarParticoes
 configurarSDA
 configurarRAID1
 montarParticoes
-instalarSistema
-scriptsPosInstalacao
+#instalarSistema
+#scriptsPosInstalacao
