@@ -60,11 +60,17 @@ montarParticoes(){
 	echo ""
 	echo " * * * * * MONTANDO PARTICOES * * * * * "
 	echo ""
-	mkdir /mnt/boot           # para criar a raiz (/mnt) e o boot (/mnt/boot)
-	mkdir /mnt/home           # para criar a raiz (/mnt) e o boot (/mnt/boot)
-	mount /dev/sda1 /mnt/boot # monta a partição de boot
-	mount /dev/sda2 /mnt      # monta a partição raiz
-	mount /dev/sda5 /mnt/home # monta a partição home
+	mkdir /mnt/boot           	# para criar /boot
+	mkdir /mnt/home           	# para criar /home
+	mkdir /mnt/mnt/Dados1     	# para criar /mnt/Dados1
+	mkdir /mnt/mnt/Dados2     	# para criar /mnt/Dados2
+	mkdir /mnt/mnt/Dados3     	# para criar /mnt/Dados3
+	mount /dev/sda1 /mnt/boot 	# monta a partição de boot
+	mount /dev/sda2 /mnt      	# monta a partição raiz
+	mount /dev/sda5 /mnt/home 	# monta a partição home
+	mount /dev/mn0 /mnt/mnt/Dados1	# monta a partição home
+	mount /dev/md1 /mnt/mnt/Dados2	# monta a partição home
+	mount /dev/sda7 /mnt/mnt/Dados3	# monta a partição home
 	echo ""
 }
 
