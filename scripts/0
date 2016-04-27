@@ -78,10 +78,16 @@ montarParticoes(){
 }
 
 configurarRAID1(){
-	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sda4 /dev/sdb1
-	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md0 /dev/sda4 /dev/sdb1 > raidLog
+	echo "" >> raidLog
+	
+	mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md1 /dev/sdc1 /dev/sdd1 >> raidLog
+	echo "" >> raidLog
+	
 	echo 'DEVICE partitions' > /mnt/etc/mdadm.conf
 	mdadm --detail --scan >> /mnt/etc/mdadm.conf
+	cat "/mnt/etc/mdadm.conf" >> raidLog
+	echo "" >> raidLog
 	
 	sincronizando=1
 	while [ $sincronizando -eq 1 ]; do
