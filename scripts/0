@@ -135,5 +135,5 @@ formatarParticoes
 configurarSDA
 configurarRAID1
 montarParticoes
-#instalarSistema
-#scriptsPosInstalacao
+instalarSistema
+scriptsPosInstalacao
