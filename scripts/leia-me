@@ -1,0 +1,19 @@
+A mídia de instalação do Arch Linux provê as seguintes ferramentas de particionamento:
+gdisk – Suporta apenas tabelas de partição GPT.
+cfdisk – Suporta apenas tabelas de partição MBR.
+parted – Suporta ambas.
+
+listar os discos disponíveis e suas respectivas estruturas de partições
+lsblk
+
+A instalação do Arch Linux pode ser feita apenas com as partições raiz / e a swap;
+Geralmente se recomenda colocar o dobro do tamanho de sua memória RAM para a partição swap, pois esse espaço será necessário caso você "hiberne" o sistema;
+É recomendável o mínimo de 512MB na partição /boot para que não se tenha problemas ao atualizar o kernel do sistema;
+Se você pretende utilizar LVM (Logical Volume Manager) é importante deixar a partição /boot fora da partição utilizada para a LVM;
+Os diretórios /bin, /sbin, /lib, /etc, /dev e /proc devem permanecer na mesma partição que a raiz /, ou seja, não devem ser particionados.
+
+exemplo:
+2048MB (2GB) para a partição swap (utilizando como base um computador com 1GB de memória RAM);
+512MB para a partição /boot;
+15360MB (15GB) para a partição raiz /; e
+Todo o espaço restante para a partição /home.
