@@ -1,6 +1,6 @@
 parted -s /dev/sda -- mklabel msdos
-parted -s /dev/sda mkpart primary linux-swap 1MiB 129MiB	# sda1 swap
-parted -s /dev/sda mkpart primary ext4 129MiB 1856MiB		# sda2 raiz
+parted -s /dev/sda mkpart primary linux-swap 1MiB 1025MiB	# sda1 swap
+parted -s /dev/sda mkpart primary ext4 1025MiB 4096MiB		# sda2 raiz
 
 mkswap /dev/sda1
 swapon /dev/sda1
