@@ -25,4 +25,4 @@ scriptsPosInstalacao(){
 	arch-chroot /mnt ### retorna para o sistema instalado
 }
 
-#scriptsPosInstalacao
+scriptsPosInstalacao
