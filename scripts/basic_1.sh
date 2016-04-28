@@ -5,7 +5,7 @@ criarParticoes(){
 	parted -s /dev/sda mklabel msdos
 	parted -s /dev/sda mkpart primary linux-swap 1MiB 129MiB ### cria uma particao de SWAP de 128MB
 	parted -s /dev/sda mkpart primary ext4 129MiB 193MiB ### cria particao de BOOT 64MB
-	parted -s /dev/sda mkpart primary ext4 193MiB 1855MiB ### cria particao raiz
+	parted -s /dev/sda mkpart primary ext4 193MiB 832MiB ### cria particao raiz
 	parted -s /dev/sda set 2 boot on
 	mkswap /dev/sda1
 	swapon /dev/sda1
