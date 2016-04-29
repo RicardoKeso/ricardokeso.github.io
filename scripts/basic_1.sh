@@ -22,7 +22,7 @@ scriptsPosInstalacao(){
 	chmod +x /mnt/root/basic_2.sh
 	echo ""
 	echo " * * * * * DIGITE: /root/basic_2.sh* * * * * "
-	arch-chroot /mnt ### retorna para o sistema instalado
+	arch-chroot /mnt  /bin/bash### retorna para o sistema instalado
 }
 
 scriptsPosInstalacao
