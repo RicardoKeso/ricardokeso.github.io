@@ -21,6 +21,7 @@ essenciais(){
   echo " * * * * * INSTALANDO PACOTES * * * * * "
   echo ""
   pacman -S wget curl bash-completion openssh --noconfirm
+  pacman -S wpa_supplicant # instalado apenas para testes de configuracoes de wifi
   echo ""
 }
 
@@ -73,7 +74,7 @@ padrao(){
   grub
   essenciais
   rede
-  linguagemRegiao
+  #linguagemRegiao
   sincronizarAtualizar
   final
 }
