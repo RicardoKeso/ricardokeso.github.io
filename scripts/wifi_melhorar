@@ -1,3 +1,5 @@
+### netctl start wlan0-AKM\ Advogados # para iniciar a interface 
+
 
 essid=""
 pass=""
