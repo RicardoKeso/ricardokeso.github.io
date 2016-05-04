@@ -4,7 +4,7 @@ pass=""
 configRede="/etc/netctl/wlan0-$essid"
 #configRede="wlan0-$essid"
 
-wifi-menu -o
+#wifi-menu -o
 
 echo "Interface=wlan0" > $configRede
 echo "Connection=wireless" >> $configRede
