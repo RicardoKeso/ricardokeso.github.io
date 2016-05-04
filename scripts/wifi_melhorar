@@ -1,0 +1,18 @@
+
+essid=""
+pass=""
+configRede="/etc/netctl/wlan0-$essid"
+#configRede="wlan0-$essid"
+
+wifi-menu -o
+
+echo "Interface=wlan0" > $configRede
+echo "Connection=wireless" >> $configRede
+echo "Security=wpa" >> $configRede
+echo "IP=dhcp" >> $configRede
+echo "ESSID=$essid" >> $configRede
+echo "`wpa_passphrase $essid $pass | sed 's/\tpsk/Key/g' | grep Key=`" >> $configRede
+echo "" >> $configRede
+echo "# Uncomment this if your ssid is hidden" >> $configRede
+echo "Hidden=yes" >> $configRede
+echo "Priority=1" >> $configRede
