@@ -52,6 +52,9 @@ final(){
 ##*******************************************************************************
 
 padrao(){
+  
+  pacman -S rsync --noconfirm
+  
   hostnamectl set-hostname raid_Arch
   senhaRoot
   grub
