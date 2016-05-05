@@ -1,4 +1,8 @@
 ### netctl start wlan0-AKM\ Advogados # para iniciar a interface 
+### netctl enable wlan0-AKM
+#ln -s '/etc/systemd/system/netctl@wlan0\x2dAKM.service' '/etc/systemd/system/multi-user.target.wants/netctl@wlan0\x2dAKM.service'
+### netctl start wlan0-AKM
+
 
 
 essid=""
