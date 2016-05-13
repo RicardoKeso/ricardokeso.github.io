@@ -21,6 +21,7 @@ echo "`wpa_passphrase $essid $pass | sed 's/\tpsk/Key/g' | grep Key=`" >> $confi
 echo "Hidden=$hidden" >> $configRede
 echo "#Priority=1" >> $configRede
 
+chmod +r "${configRede}"
 
 echo ""
 echo ""
