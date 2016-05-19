@@ -1,0 +1,8 @@
+#!/bin/sh
+
+mount /dev/sda1 /mnt/storage
+
+cd /etc/systemd/system/
+systemctl start rk_monitorTorrent
+systemctl start rk_conexoesWifi
+systemctl start rk_transmission
