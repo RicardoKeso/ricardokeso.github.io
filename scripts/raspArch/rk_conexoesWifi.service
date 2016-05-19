@@ -1,0 +1,8 @@
+[Unit]
+Description=monitorar as redes wifi disponiveis
+
+[Service]
+ExecStart=/bin/rk_conexoesWifi
+
+[Install]
+WantedBy=multi-user.target
