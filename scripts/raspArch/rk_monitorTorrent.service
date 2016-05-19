@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitorar os arquivos transferidos por ftp
+
+[Service]
+ExecStart=/bin/rk_monitorTorrent
+
+[Install]
+WantedBy=multi-user.target
