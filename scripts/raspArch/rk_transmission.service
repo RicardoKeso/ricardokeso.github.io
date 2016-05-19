@@ -1,0 +1,8 @@
+[Unit]
+Description=Iniciar o transmission com parametros
+
+[Service]
+ExecStart=/usr/bin/transmission-daemon -c /mnt/storage/torrents
+
+[Install]
+WantedBy=multi-user.target
