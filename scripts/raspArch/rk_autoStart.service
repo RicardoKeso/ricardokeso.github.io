@@ -1,0 +1,8 @@
+[Unit]
+Description=AUTOSTART
+
+[Service]
+ExecStart=/bin/rk_autoStart
+
+[Install]
+WantedBy=multi-user.target
