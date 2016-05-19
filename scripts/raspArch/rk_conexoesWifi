@@ -1,0 +1,100 @@
+#!/bin/sh
+
+ip link set wlan0 up
+ip link set wlan1 up
+
+conectarWlan1(){
+        echo "wlan1 - pesquisando..."
+        wifiCelular=`iw dev wlan1 scan | grep SSID: | sed 's/\tSSID: //g' | grep \!`
+
+        if [ "${wifiCelular}" == "!" ]; then
+                echo "wlan1 - conectando..."
+                ip link set wlan1 down
+                cd /etc/netctl/
+#                netctl stop-all
+                netctl start wlan1-\!
+                echo "wlan1 - conectada!"
+                echo ""
+        else
+                echo "wlan1 - rede nao encontrada."
+        fi
+        echo ""
+}
+
+
+pesquisarConectar(){
+        echo "wlan0 - pesquisando..."
+        parar=0
+        iw dev wlan0 scan | grep SSID: | sed 's/\tSSID: //g' > /tmp/redesWifi
+
+        IFS=$'\n'
+        for line in `cat /tmp/redesWifi`; do
+                for file in /etc/netctl/wlan0-*; do
+                        file2=`echo ${file} | sed 's/\/etc\/netctl\/wlan0-//g'`
+
+                        if [ "${file2}" == "${line}" ]; then
+                                echo "wlan0 - conctando..."
+                                ip link set wlan0 down
+                                cd /etc/netctl/
+#                                netctl stop-all
+                                netctl start wlan0-${file2}
+                                parar=1
+                                break
+                        fi
+                done
+                if [ ${parar} -eq 1 ]; then
+                        echo "wlan0 - conectada!"
+                        echo ""
+                        break
+                fi
+        done
+        if [ ${parar} -eq 0 ]; then
+                echo "wlan0 - rede nao encontrada."
+        fi
+        echo ""
+}
+
+
+while [ 1 ]; do
+
+        redeConectada=0
+        wlan0off=`ip a | grep wlan0 | grep UP`
+        wlan1off=`ip a | grep wlan1 | grep UP`
+
+        if [ "${wlan0off}" = "" ]; then
+               ip link set wlan0 up
+        fi
+
+        if [ "${wlan1off}" = "" ]; then
+               ip link set wlan1 up
+        fi
+
+        wlan1conectado=`ip a | grep wlan1 | grep NO-CARRIER`
+
+        if [ "${wlan1conectado}" != "" ]; then
+#                echo "wlan1 desconectada."
+                conectarWlan1
+        else
+                echo "wlan1 - conectada."
+                echo ""
+                redeConectada=1
+        fi
+
+        wlan0conectado=`ip a | grep wlan0 | grep NO-CARRIER`
+
+        if [ "${wlan0conectado}" != "" ]; then
+#                echo "wlan0 desconectada."
+                pesquisarConectar
+        else
+                echo "wlan0 - conectada."
+                echo ""
+                redeConectada=1
+        fi
+
+
+        if [ ${redeConectada} -eq 1 ]; then
+                sleep 30
+        else
+                sleep 3
+        fi
+done
