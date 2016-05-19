@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while [ 1 ]; do
+        echo -n "" > /home/kingbradley/vazio
+        rsync -au --remove-source-files --include '*.torrent' --exclude '*' /home/kingbradley/* /mnt/storage/torrents/
+        echo `df -h | grep storage | awk '{print "disponivel: " $4 " - utilizado: " $5}'` > /srv/http/dados
+        sleep 10
+done;
