@@ -1,0 +1,29 @@
+/bin/ 755 root:root
+rk_autoStart
+rk_conexoesWifi
+rk_monitorTorrent
+
+/etc/systemd/system/ 744 root:root
+rk_autoStart.service
+rk_conexoesWifi.service
+rk_monitorTorrent.service
+rk_transmission.service
+
+cd /etc/systemd/system/
+systemctl enable rk_autoStart.service
+systemctl enable rk_transmission.service
+systemctl start rk_autoStart.service
+systemctl start rk_transmission.service
+
+criar as configuracoes das redes wifi com o script
+
+apache
+mlocate
+php-apache
+python 3
+rsync
+transmission
+transmission-cli
+vim
+vsftpd
+nethogs
