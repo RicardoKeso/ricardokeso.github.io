@@ -33,7 +33,13 @@ nethogs
 Pendrive montado em /mnt/storage/
 pastas criadas depois de montado: finish, incomplete, torrents
 
-horario configurado para ntp brasil
+*******horario configurado para ntp brasil
+rm /etc/localtime
+ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime
+mv /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf_orig
+echo "[Time]" > /etc/systemd/timesyncd.conf
+echo "NTP=pool.ntp.br" > /etc/systemd/timesyncd.conf
+echo "FallbackNTP=pool.ntp.br" > /etc/systemd/timesyncd.conf
 
 FTP - usuário: kingbradley, senha: S1gmUndF!
 Os arquivos .torrent que sao adicionados por ftp na raiz nso usuario kingbradley, sao movidos para a pasta /mnt/storage/torrents
