@@ -28,11 +28,12 @@ python 3
 rsync
 vim
 nethogs
-openntpd
 
 ---------------------------------------------------
 Pendrive montado em /mnt/storage/
 pastas criadas depois de montado: finish, incomplete, torrents
+
+horario configurado para ntp brasil
 
 FTP - usuário: kingbradley, senha: S1gmUndF!
 Os arquivos .torrent que sao adicionados por ftp na raiz nso usuario kingbradley, sao movidos para a pasta /mnt/storage/torrents
