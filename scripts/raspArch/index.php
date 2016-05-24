@@ -78,13 +78,26 @@
                         //------------------------------------------------------------------------
 
                         echo "<div>";
+
+                        echo "<b>";
+                        echo shell_exec('date');
+                        echo "</b>";
+
                         $ponteiro = fopen("dados", "r");
 
                         while (!feof ($ponteiro)) {
-                                $linha = fgets($ponteiro, 4096);
                                 echo $linha."<br>";
+                                $linha = fgets($ponteiro, 4096);
                         }
                         fclose($ponteiro);
+
+                        echo shell_exec('awk \'{printf "Temp: %3.1f C\n", $1/1000}\' /sys/class/thermal/thermal_zone0/temp');
+                        echo "<br>";
+                        echo shell_exec('curl -s http://checkip.amazonaws.com');
+                        echo " - public<br>";
+                        echo shell_exec('ip a | grep "inet " | grep -v "127.0.0.1" | awk \'{print $2 " - " $7}\' | sed \':a;$!N;s/\n/<br>/g;ta\'');
+                        echo "<br><br>";
+
                         echo "</div><hr><br>";
                 ?>
                 <div style="color: white;">
