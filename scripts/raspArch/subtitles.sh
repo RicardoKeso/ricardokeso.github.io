@@ -1,7 +1,5 @@
 #!/bin/sh
 
-clear
-
 titulo=`echo $1`
 tituloOrig=""
 tituloPadrao=""
@@ -12,6 +10,16 @@ codSub=""
 arquivo=""
 arquivoHtml=""
 saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
+
+TituloScript (){
+	clear
+	echo " * * * RK Subs and Datas * * * "
+	echo ""
+	echo "Este script tenta encontrar:"
+	echo "A legenda em Português do Brasil, os dados e o poster do filme. "
+	echo ""
+	echo ""
+}
 
 ImdbData () {
 
@@ -59,27 +67,27 @@ Subtitle () {
 		echo ""
 		echo "Error: codSub empty"
 	fi
-
-	echo ""
 }
 
 Principal () {
 
 	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
-	#echo "titulo HTML: "$tituloHtml >> searchLog
+	
 	ImdbData
+	
 	Subtitle
-	echo "Title: "$tituloOrig
-	echo "Imdb ID: "$imdbID
-	echo ""
 }
 
 TestePing (){
 	if [ "$saidaPing" = "" ]; then
 		echo "Off Line"
+		echo ""
 	else
-		echo "On Line"
 		Principal
+		TituloScript
+		echo "Title: "$tituloOrig
+		echo "Imdb ID: "$imdbID
+		echo ""
 	fi
 }
 
@@ -89,5 +97,7 @@ if [ "$1" = "" ]; then
 	echo "Ex.: ./sub.s \"constantine\""
 	echo ""
 else
+	TituloScript
+	echo "Aguarde..."
 	TestePing
 fi
