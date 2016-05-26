@@ -10,6 +10,7 @@ codSub=""
 arquivo=""
 arquivoHtml=""
 saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
+erroTitulo="0"
 
 TituloScript (){
 	clear
@@ -29,6 +30,11 @@ ImdbData () {
 
         tituloOrig=`cat imdbData | grep "Title" | cut -d ":" -f2 | sed 's/"//g'`
 	
+	if [ "$tituloOrig" = "" ]; then
+		erroTitulo="1"
+		return	
+	fi
+
 	tituloPadrao=`echo "$tituloOrig"`
 
         poster=`cat imdbData | grep "Poster" | sed 's/\":\"/|/g' | cut -d "|" -f2 |\
@@ -65,7 +71,7 @@ Subtitle () {
 		rm -f $arquivoHtml
 	else
 		echo ""
-		echo "Error: codSub empty"
+		echo "Error: Codigo da legenda nao encontrado"
 	fi
 }
 
@@ -74,8 +80,17 @@ Principal () {
 	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
 	
 	ImdbData
-	
-	Subtitle
+	if [ "$erroTitulo" = "0" ]; then
+		Subtitle	
+		TituloScript
+		echo "Title: "$tituloOrig
+		echo "Imdb ID: "$imdbID
+		echo ""
+	else
+		TituloScript
+		echo "Erro: Titulo nao encontrado - $titulo"
+		echo ""
+	fi
 }
 
 TestePing (){
@@ -84,10 +99,6 @@ TestePing (){
 		echo ""
 	else
 		Principal
-		TituloScript
-		echo "Title: "$tituloOrig
-		echo "Imdb ID: "$imdbID
-		echo ""
 	fi
 }
 
