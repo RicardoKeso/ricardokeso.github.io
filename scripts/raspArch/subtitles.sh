@@ -108,7 +108,7 @@ TestePing (){
 if [ "$titulo" = "" ] || [ "$2" != "" ]; then
 	echo ""
 	echo "Um titulo deve ser passado entre aspas"
-	echo "Ex.: ./sub.s \"constantine\""
+	echo "Ex.: ./subtitles.sh \"constantine\""
 	echo ""
 else
 	TituloScript
