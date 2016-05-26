@@ -1,45 +1,93 @@
 #!/bin/sh
 
 clear
-echo ""
 
-mkdir -p Subtitles
+titulo=`echo $1`
+tituloOrig=""
+tituloPadrao=""
+tituloHtml=""
+poster=""
+imdbID=""
+codSub=""
+arquivo=""
+arquivoHtml=""
+saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
 
-echo "Title: "$1 | awk '{print toupper($0)}'
-titulo=`echo $1 | awk '{print tolower($0)}'`
-echo $titulo > searchLog
+ImdbData () {
 
-tituloHtml=`echo $titulo | sed "s/ /%20/g"`
-echo "titulo HTML: "$tituloHtml >> searchLog
+        curl -s http://www.omdbapi.com/?t=$tituloHtml | sed 's/\",\"/\"\n\"/g' |\
+         sed 's/{//g' | sed 's/}/\n/g' | grep -vi "\"rated\"\|\"response\"" |\
+         sed 's/\\//g' > imdbData
 
-#imdbID=`curl -s "http://www.omdbapi.com/?t=$tituloHtml&plot=full&r=json" | sed "s/imdbID\":\"/\|/" | cut -d '|' -f2 | cut -d '"' -f1`
-imdbID_ok=`curl -s http://www.yifysubtitles.com/search?q=$tituloHtml | grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" | cut -d '|' -f2 | cut -d '"' -f1`
+        tituloOrig=`cat imdbData | grep "Title" | cut -d ":" -f2 | sed 's/"//g'`
+	
+	tituloPadrao=`echo "$tituloOrig"`
 
-echo "IMDb ID: "$imdbID_ok >> searchLog
-echo "IMDb ID: "$imdbID_ok
+        poster=`cat imdbData | grep "Poster" | sed 's/\":\"/|/g' | cut -d "|" -f2 |\
+         sed 's/"//g'`
 
-codSub=`curl -s http://www.yifysubtitles.com/movie-imdb/$imdbID_ok | grep "brazilian-portuguese" | sed "s/brazilian-portuguese-yify-/|/" | cut -d '|' -f2 | cut -d '"' -f1`
-echo "Cod Sub: "$codSub >> searchLog
+        mkdir -p "$tituloPadrao"
 
-if [ "$codSub" != "" ]; then
-        arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
-        echo "Arquivo: "$arquivo >> searchLog
+        cat imdbData | grep -v "Poster" | sed 's/"//g' | sed 's/:/: /g'\
+         > "$tituloPadrao"/"$tituloPadrao.imdb"
 
-        arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
+        wget -q "$poster" -O "$tituloPadrao"/"$tituloPadrao.jpg"
+}
 
-        wget -q "http://www.yifysubtitles.com/subtitle/$arquivoHtml"
+Subtitle () {
+	imdbID=`curl -s http://www.yifysubtitles.com/search?q=$tituloHtml |\
+	 grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" |\
+	 cut -d '|' -f2 | cut -d '"' -f1`
 
-        mkdir -p Subtitles/temp
-        unzip -q $arquivoHtml -d Subtitles/temp
-        mv Subtitles/temp/*.srt Subtitles/
-        rm -rf Subtitles/temp
+	codSub=`curl -s http://www.yifysubtitles.com/movie-imdb/$imdbID |\
+	 grep "brazilian-portuguese" | sed "s/brazilian-portuguese-yify-/|/" |\
+	 cut -d '|' -f2 | cut -d '"' -f1`
 
-        rm -f $arquivoHtml
-        echo ""
-        echo "Done!"
+	if [ "$codSub" != "" ]; then
+		arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
+		arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
+
+		wget -q "http://www.yifysubtitles.com/subtitle/$arquivoHtml"
+
+		mkdir -p "$tituloOrig"/temp
+		unzip -q $arquivoHtml -d "$tituloOrig"/temp
+		mv "$tituloOrig"/temp/*.srt "$tituloOrig"/
+		rm -rf "$tituloOrig"/temp
+
+		rm -f $arquivoHtml
+	else
+		echo ""
+		echo "Error: codSub empty"
+	fi
+
+	echo ""
+}
+
+Principal () {
+
+	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
+	#echo "titulo HTML: "$tituloHtml >> searchLog
+	ImdbData
+	Subtitle
+	echo "Title: "$tituloOrig
+	echo "Imdb ID: "$imdbID
+	echo ""
+}
+
+TestePing (){
+	if [ "$saidaPing" = "" ]; then
+		echo "Off Line"
+	else
+		echo "On Line"
+		Principal
+	fi
+}
+
+if [ "$1" = "" ]; then
+	echo ""
+	echo "Um titulo deve ser passado entre aspas"
+	echo "Ex.: ./sub.s \"constantine\""
+	echo ""
 else
-        echo ""
-        echo "Error: codSub empty"
+	TestePing
 fi
-
-echo ""
