@@ -22,19 +22,24 @@ codSub=`curl -s http://www.yifysubtitles.com/movie-imdb/$imdbID_ok | grep "brazi
 echo "Cod Sub: "$codSub >> searchLog
 
 if [ "$codSub" != "" ]; then
-	arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
-	echo "Arquivo: "$arquivo >> searchLog
+        arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
+        echo "Arquivo: "$arquivo >> searchLog
 
-	arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
+        arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
 
-	wget -q "http://www.yifysubtitles.com/subtitle/$arquivoHtml"
+        wget -q "http://www.yifysubtitles.com/subtitle/$arquivoHtml"
 
-	unzip -q $arquivoHtml -d Subtitles/
+        mkdir -p Subtitles/temp
+        unzip -q $arquivoHtml -d Subtitles/temp
+        mv Subtitles/temp/*.srt Subtitles/
+        rm -rf Subtitles/temp
 
-	rm -f $arquivoHtml
+        rm -f $arquivoHtml
+        echo ""
+        echo "Done!"
 else
-	echo ""
-	echo "Error: codSub empty"
+        echo ""
+        echo "Error: codSub empty"
 fi
 
 echo ""
