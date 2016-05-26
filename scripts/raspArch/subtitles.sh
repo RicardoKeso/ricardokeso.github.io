@@ -67,7 +67,7 @@ Subtitle () {
 
 		mkdir -p "$tituloOrig"/temp
 		unzip -q $arquivoHtml -d "$tituloOrig"/temp
-#		mv "$tituloOrig"/temp/*.srt "$tituloOrig"/
+		mv -f "$tituloOrig"/temp/*.srt "$tituloOrig"/
 		rm -rf "$tituloOrig"/temp
 
 		rm -f $arquivoHtml
