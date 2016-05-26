@@ -46,6 +46,8 @@ ImdbData () {
          > "$tituloPadrao"/"$tituloPadrao.imdb"
 
         wget -q "$poster" -O "$tituloPadrao"/"$tituloPadrao.jpg"
+	
+	rm -f imdbData
 }
 
 Subtitle () {
@@ -80,6 +82,7 @@ Principal () {
 	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
 	
 	ImdbData
+
 	if [ "$erroTitulo" = "0" ]; then
 		Subtitle	
 		TituloScript
@@ -102,7 +105,7 @@ TestePing (){
 	fi
 }
 
-if [ "$1" = "" ]; then
+if [ "$titulo" = "" ] || [ "$2" != "" ]; then
 	echo ""
 	echo "Um titulo deve ser passado entre aspas"
 	echo "Ex.: ./sub.s \"constantine\""
