@@ -67,7 +67,7 @@ Subtitle () {
 
 		mkdir -p "$tituloOrig"/temp
 		unzip -q $arquivoHtml -d "$tituloOrig"/temp
-		mv "$tituloOrig"/temp/*.srt "$tituloOrig"/
+#		mv "$tituloOrig"/temp/*.srt "$tituloOrig"/
 		rm -rf "$tituloOrig"/temp
 
 		rm -f $arquivoHtml
@@ -79,6 +79,7 @@ Subtitle () {
 
 Principal () {
 
+	titulo=`echo $titulo | awk '{print tolower($0)}'`
 	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
 	
 	ImdbData
@@ -87,7 +88,7 @@ Principal () {
 		Subtitle	
 		TituloScript
 		echo "Title: "$tituloOrig
-		echo "Imdb ID: "$imdbID
+		echo "Imdb ID: "$imdbID	
 		echo ""
 	else
 		TituloScript
@@ -108,7 +109,7 @@ TestePing (){
 if [ "$titulo" = "" ] || [ "$2" != "" ]; then
 	echo ""
 	echo "Um titulo deve ser passado entre aspas"
-	echo "Ex.: ./subtitles.sh \"constantine\""
+	echo "Ex.: ./sub.s \"constantine\""
 	echo ""
 else
 	TituloScript
