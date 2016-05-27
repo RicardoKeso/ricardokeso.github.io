@@ -6,18 +6,21 @@ tituloPadrao=""
 tituloHtml=""
 poster=""
 imdbID=""
+ano=""
 codSub=""
 arquivo=""
 arquivoHtml=""
 saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
 erroTitulo="0"
+linkFilme=""
+linkTorrent=""
 
 TituloScript (){
 	clear
 	echo " * * * RK Subs and Datas * * * "
 	echo ""
 	echo "Este script tenta encontrar:"
-	echo "A legenda em Português do Brasil, os dados e o poster do filme. "
+	echo "O arquivo .torrent, a legenda em Português do Brasil, os dados e o poster do filme. "
 	echo ""
 	echo ""
 }
@@ -28,7 +31,9 @@ ImdbData () {
          sed 's/{//g' | sed 's/}/\n/g' | grep -vi "\"rated\"\|\"response\"" |\
          sed 's/\\//g' > imdbData
 
-        tituloOrig=`cat imdbData | grep "Title" | cut -d ":" -f2 | sed 's/"//g'`
+        tituloOrig=`cat imdbData | grep "Title" | sed 's/:/|/'  | cut -d "|" -f2 |\
+	 sed 's/"//g'`
+	ano=`cat imdbData | grep "Year" | cut -d ":" -f2 | sed 's/"//g'`
 	
 	if [ "$tituloOrig" = "" ]; then
 		erroTitulo="1"
@@ -47,7 +52,7 @@ ImdbData () {
 
         wget -q "$poster" -O "$tituloPadrao"/"$tituloPadrao.jpg"
 	
-	rm -f imdbData
+#	rm -f imdbData
 }
 
 Subtitle () {
@@ -77,6 +82,18 @@ Subtitle () {
 	fi
 }
 
+Torrent (){
+	
+	linkFilme=`curl -s "https://yifyme.com/search?query=$titulo ($ano)" |\
+	 grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
+	 cut -d '|' -f2`
+  
+ 	linkTorrent=`curl -s "$linkFilme" | grep -m 1 "/download/" |\
+	 sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
+  
+ 	wget -q "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
+}
+
 Principal () {
 
 	titulo=`echo $titulo | awk '{print tolower($0)}'`
@@ -87,6 +104,7 @@ Principal () {
 	if [ "$erroTitulo" = "0" ]; then
 		Subtitle	
 		TituloScript
+		Torrent
 		echo "Title: "$tituloOrig
 		echo "Imdb ID: "$imdbID	
 		echo ""
