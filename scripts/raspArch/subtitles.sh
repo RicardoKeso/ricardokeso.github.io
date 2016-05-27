@@ -52,7 +52,7 @@ ImdbData () {
 
         wget -q "$poster" -O "$tituloPadrao"/"$tituloPadrao.jpg"
 	
-#	rm -f imdbData
+	rm -f imdbData
 }
 
 Subtitle () {
