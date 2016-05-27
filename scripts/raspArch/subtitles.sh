@@ -125,8 +125,8 @@ TestePing (){
 }
 
 if [ "$titulo" = "" ] || [ "$2" != "" ]; then
-	echo ""
-	echo "Um titulo deve original (inglês) e ser passado entre aspas"
+	TituloScript
+	echo "O título deve original (inglês) e ser passado entre aspas"
 	echo "Ex.: ./subtitles.sh \"dust in high seas\""
 	echo ""
 else
