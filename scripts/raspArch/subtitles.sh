@@ -102,9 +102,9 @@ Principal () {
 	ImdbData
 
 	if [ "$erroTitulo" = "0" ]; then
-		Subtitle	
+		Subtitle
+		Torrent	
 		TituloScript
-		Torrent
 		echo "Title: "$tituloOrig
 		echo "Imdb ID: "$imdbID	
 		echo ""
@@ -126,8 +126,8 @@ TestePing (){
 
 if [ "$titulo" = "" ] || [ "$2" != "" ]; then
 	echo ""
-	echo "Um titulo deve ser passado entre aspas"
-	echo "Ex.: ./sub.s \"constantine\""
+	echo "Um titulo deve original (inglês) e ser passado entre aspas"
+	echo "Ex.: ./subtitles.sh \"dust in high seas\""
 	echo ""
 else
 	TituloScript
