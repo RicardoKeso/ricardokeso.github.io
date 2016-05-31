@@ -1,7 +1,6 @@
 #!/bin/sh
 
 #Region Variaveis
-tituloBusca=`echo $1 | awk '{print tolower($0)}'`
 tituloOrig=""
 imdbID=""
 ano=""
@@ -107,23 +106,28 @@ ImdbData () { #Region
 Subtitle () { #Region
 
         linkSubtitles="$1"
-        tituloOriginalHtml="$2"
+	tituloOrig="$2"
+	tituloOrigLow="`echo "$tituloOrig" | awk '{print tolower($0)}'`"
+	tituloOrigHtml=`echo "$tituloOrigLow" | sed "s/ /%20/g" `
         imdbIdLocal=""
-        imddIdData=""
-        arquivo=""
+	codSub=""
         arquivoHtml=""
 
-        imdbIdLocal=`curl -s "$linkSubtitles/search?q=$tituloOriginalHtml" |\
+        imdbIdLocal=`curl -s "$linkSubtitles/search?q=$tituloOrigHtml" |\
          grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" |\
          cut -d '|' -f2 | cut -d '"' -f1`
-
-        codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIDLocal" |\
-         grep "brazilian-portuguese" | sed "s/brazilian-portuguese-yify-/|/" |\
+        
+	codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdLocal" |\
+         grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
          cut -d '|' -f2 | cut -d '"' -f1`
-
-        if [ "$codSub" != "" ]; then
-                arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
-                arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
+	
+        if [ "$codSub" = "" ] && [ "$imdbIdLocal" != "$imdbIdData"  ]; then
+		codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdData" |\
+        	 grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
+        	 cut -d '|' -f2 | cut -d '"' -f1`
+	elif [ "$codSub" != "" ]; then
+                arquivoHtml=`echo "$tituloOrigLow-brazilian-portuguese-yify-$codSub.zip" |\
+		 sed 's/ /-/g'`
                 wget -q "$linkSubtitles/subtitle/$arquivoHtml"
                 mkdir -p "$tituloOrig"/temp
                 unzip -q $arquivoHtml -d "$tituloOrig"/temp
@@ -161,9 +165,11 @@ TesteConexao (){ #Region
 Principal (){ #Region
 
         linkIMDB_="http://www.omdbapi.com"
-        tituloHtml_=`echo $tituloBusca | sed "s/ /%20/g"`
-        dadosImdbErro=""
-        tituloOriginalHtml_=`echo $tituloOrig | sed "s/ /%20/g"`
+	linkSubtitles_="http://www.yifysubtitles.com"
+        tituloHtml_=`echo "$tituloBusca" | sed "s/ /%20/g"`
+        dadosImdbErro_=""
+	tituloOrig_="$tituloOrig"
+	tituloBusca=`echo "$1" | awk '{print tolower($0)}'`
 
         #erro padrao de entrada
         #aguarde
@@ -172,16 +178,16 @@ Principal (){ #Region
         #off line
         #codigo legenda nao encontrado
 
-        if [ "$titulo" = "" ] || [ "$2" != "" ]; then
+        if [ "$tituloBusca" = "" ] || [ "$2" != "" ]; then
                 Mensagens 1
         else
                 Mensagens 2
                 if [ "`TesteConexao`" = "1" ]; then
 
-                        dadosImdbErro=`ImdbData $linkIMDB_ $tituloHtml_`
+                        dadosImdbErro_=`ImdbData "$linkIMDB_" "$tituloHtml_"`
 
                         if [ "$dadosImdbErro" = "0" ]; then
-                                Subtitle
+                                Subtitle "$linkSubtitles_" "$titloOrig_"
                                 Torrent720p
                                 Mensagens 3
                         else
@@ -193,9 +199,4 @@ Principal (){ #Region
         fi
 } #EndRegion
 
-tituloOrig="after earth"
-
-tituloOriginalHtml_=`echo $tituloOrig | sed "s/ /%20/g"`
-linkSubtitles_="http://www.yifysubtitles.com"
-
-Subtitle $linkSubtitles_ $tituloOriginalHtml_
+Principal $1 $2
