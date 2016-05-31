@@ -166,10 +166,10 @@ Principal (){ #Region
 
         linkIMDB_="http://www.omdbapi.com"
 	linkSubtitles_="http://www.yifysubtitles.com"
-        tituloHtml_=`echo "$tituloBusca" | sed "s/ /%20/g"`
+	tituloBusca_=`echo "$1" | awk '{print tolower($0)}'`
+        tituloHtml_=`echo "$tituloBusca_" | sed "s/ /%20/g"`
         dadosImdbErro_=""
 	tituloOrig_="$tituloOrig"
-	tituloBusca=`echo "$1" | awk '{print tolower($0)}'`
 
         #erro padrao de entrada
         #aguarde
@@ -178,7 +178,7 @@ Principal (){ #Region
         #off line
         #codigo legenda nao encontrado
 
-        if [ "$tituloBusca" = "" ] || [ "$2" != "" ]; then
+        if [ "$tituloBusca_" = "" ] || [ "$2" != "" ]; then
                 Mensagens 1
         else
                 Mensagens 2
