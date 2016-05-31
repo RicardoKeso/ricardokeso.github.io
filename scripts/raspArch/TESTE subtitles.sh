@@ -1,9 +1,6 @@
 #!/bin/sh
 
 #Region Variaveis
-tituloOrig=""
-imdbID=""
-ano=""
 codSub=""
 erro="0"
 linkFilme=""
@@ -12,6 +9,7 @@ linkTorrent="https://yifyme.com"
 #EndRegion
 
 TituloScript (){ #Region
+:<<'@@@'
         clear
         echo " * * * RK Subs and Datas * * * "
         echo ""
@@ -19,6 +17,8 @@ TituloScript (){ #Region
         echo "O arquivo .torrent, a legenda em Português do Brasil, os dados e o poster do filme. "
         echo ""
         echo ""
+@@@
+echo "..."
 } #EndRegion
 
 Mensagens () { #Region
@@ -39,14 +39,14 @@ Mensagens () { #Region
 
         3)
         TituloScript
-        echo "Title: "$tituloOrig
-        echo "Imdb ID: "$imdbID
+        echo "Title: ""$2"
+        echo "Imdb ID: ""$3"
         echo ""
         ;;
 
         4)
         TituloScript
-        echo "Erro: Titulo nao encontrado - $titulo"
+        echo "Erro: Titulo nao encontrado - $2"
         echo ""
         ;;
 
@@ -62,9 +62,14 @@ Mensagens () { #Region
         echo ""
         ;;
 
+        0)
+        clear
+        echo "vazio"
+        ;;
+
         *)
         TituloScript
-        echo "Erro: funcao Mensagens"
+        echo "Erro: Parametro invalido"
         echo ""
         ;;
 
@@ -80,24 +85,21 @@ ImdbData () { #Region
          sed 's/{//g' | sed 's/}/\n/g' | grep -vi "\"rated\"\|\"response\"" |\
          sed 's/\\//g' > imdbData
 
-        tituloOrig=`cat imdbData | grep "Title" | sed 's/:/|/'  | cut -d "|" -f2 |\
+        tituloOrigIMDB=`cat imdbData | grep "Title" | sed 's/:/|/'  | cut -d "|" -f2 |\
          sed 's/"//g'`
 
-        if [ "$tituloOrig" = "" ]; then
+        if [ "$tituloOrigIMDB" = "" ]; then
                 echo "1"
                 return
         fi
 
-        ano=`cat imdbData | grep "Year" | cut -d ":" -f2 | sed 's/"//g'`
-
         poster=`cat imdbData | grep "Poster" | sed 's/\":\"/|/g' | cut -d "|" -f2 |\
          sed 's/"//g'`
 
-        mkdir -p "$tituloOrig"
+        mkdir -p "$tituloOrigIMDB"
         cat imdbData | grep -v "Poster" | sed 's/"//g' | sed 's/:/: /g'\
-         > "$tituloOrig"/"$tituloOrig.imdb"
-        wget -q "$poster" -O "$tituloOrig"/"$tituloOrig.jpg"
-        rm -f imdbData
+         > "$tituloOrigIMDB"/"$tituloOrigIMDB.imdb"
+        wget -q "$poster" -O "$tituloOrigIMDB"/"$tituloOrigIMDB.jpg"
 
         echo "0"
         return
@@ -106,28 +108,29 @@ ImdbData () { #Region
 Subtitle () { #Region
 
         linkSubtitles="$1"
-	tituloOrig="$2"
-	tituloOrigLow="`echo "$tituloOrig" | awk '{print tolower($0)}'`"
-	tituloOrigHtml=`echo "$tituloOrigLow" | sed "s/ /%20/g" `
+        tituloOrig="$2"
+        tituloOrigLow="`echo "$tituloOrig" | awk '{print tolower($0)}'`"
+        tituloOrigHtml=`echo "$tituloOrigLow" | sed "s/ /%20/g" `
         imdbIdLocal=""
-	codSub=""
+        imdbIdData="$3"
+        codSub=""
         arquivoHtml=""
 
         imdbIdLocal=`curl -s "$linkSubtitles/search?q=$tituloOrigHtml" |\
          grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" |\
          cut -d '|' -f2 | cut -d '"' -f1`
-        
-	codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdLocal" |\
+
+        codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdLocal" |\
          grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
          cut -d '|' -f2 | cut -d '"' -f1`
-	
+
         if [ "$codSub" = "" ] && [ "$imdbIdLocal" != "$imdbIdData"  ]; then
-		codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdData" |\
-        	 grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
-        	 cut -d '|' -f2 | cut -d '"' -f1`
-	elif [ "$codSub" != "" ]; then
+                codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdData" |\
+                 grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
+                 cut -d '|' -f2 | cut -d '"' -f1`
+        elif [ "$codSub" != "" ]; then
                 arquivoHtml=`echo "$tituloOrigLow-brazilian-portuguese-yify-$codSub.zip" |\
-		 sed 's/ /-/g'`
+                 sed 's/ /-/g'`
                 wget -q "$linkSubtitles/subtitle/$arquivoHtml"
                 mkdir -p "$tituloOrig"/temp
                 unzip -q $arquivoHtml -d "$tituloOrig"/temp
@@ -165,38 +168,52 @@ TesteConexao (){ #Region
 Principal (){ #Region
 
         linkIMDB_="http://www.omdbapi.com"
-	linkSubtitles_="http://www.yifysubtitles.com"
-	tituloBusca_=`echo "$1" | awk '{print tolower($0)}'`
-        tituloHtml_=`echo "$tituloBusca_" | sed "s/ /%20/g"`
+        linkSubtitles_="http://www.yifysubtitles.com"
+        tituloBuscaHtml_=`echo "$1"  | awk '{print tolower($0)}' | sed 's/ /%20/g'`
         dadosImdbErro_=""
-	tituloOrig_="$tituloOrig"
+        tituloOrigIMDB_=""
+        ano_=""
+        imdbIdData_=""
 
-        #erro padrao de entrada
-        #aguarde
-        #ok completo
-        #titulo nao encontrado
-        #off line
-        #codigo legenda nao encontrado
-
-        if [ "$tituloBusca_" = "" ] || [ "$2" != "" ]; then
+:<<'@@@' #Region
+        erro padrao de entrada
+        aguarde
+        ok completo
+        titulo nao encontrado
+        off line
+        codigo legenda nao encontrado
+@@@
+        if [ "$tituloBuscaHtml_" = "" ] || [ "$2" != "" ]; then
                 Mensagens 1
         else
                 Mensagens 2
                 if [ "`TesteConexao`" = "1" ]; then
 
-                        dadosImdbErro_=`ImdbData "$linkIMDB_" "$tituloHtml_"`
+                        dadosImdbErro_="`ImdbData "$linkIMDB_" "$tituloBuscaHtml_"`"
 
-                        if [ "$dadosImdbErro" = "0" ]; then
-                                Subtitle "$linkSubtitles_" "$titloOrig_"
-                                Torrent720p
-                                Mensagens 3
+                        if [ "$dadosImdbErro_" = "0" ]; then
+
+                                tituloOrigIMDB_=`cat imdbData | grep "Title" | sed 's/:/|/'  |\
+                                 cut -d "|" -f2 | sed 's/"//g'`
+
+                                ano_=`cat imdbData | grep "Year" | cut -d ":" -f2 | sed 's/"//g'`
+
+                                imdbIdData_=`cat imdbData | grep "imdbID" | cut -d ":" -f2 |\
+                                 sed 's/"//g'`
+
+                                rm -f imdbData
+
+                                Subtitle "$linkSubtitles_" "$tituloOrigIMDB_"
+#                                Torrent720p
+                                Mensagens 3 "$tituloOrigIMDB_" "$imdbIdData_"
                         else
-                                Mensagens 4
+                                Mensagens 4 "$tituloBuscaHtml_"
                         fi
                 else
                         Mensagens 5
                 fi
         fi
+
 } #EndRegion
 
-Principal $1 $2
+Principal "$1" "$2"
