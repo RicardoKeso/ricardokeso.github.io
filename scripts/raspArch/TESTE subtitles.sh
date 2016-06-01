@@ -1,13 +1,5 @@
 #!/bin/sh
 
-#Region Variaveis
-codSub=""
-erro="0"
-linkFilme=""
-linkTorrent=""
-linkTorrent="https://yifyme.com"
-#EndRegion
-
 TituloScript (){ #Region
 :<<'@@@'
         clear
@@ -143,12 +135,20 @@ Subtitle () { #Region
 } #EndRegion
 
 Torrent720p (){ #Region
-        linkFilme=`curl -s "$linkTorrent/search?query=$titulo ($ano)" |\
+
+        linkTorrentFonte="$1"
+        tituloOrig="$2"
+        ano="$3"
+        linkFilme=""
+
+        linkFilme=`curl -s "$linkTorrentFonte/search?query=$tituloOrig ($ano)" |\
          grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
          cut -d '|' -f2`
+
         linkTorrent=`curl -s "$linkFilme" | grep -m 1 "/download/" |\
          sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
         wget -q "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
+
 } #EndRegion
 
 TesteConexao (){ #Region
@@ -174,8 +174,9 @@ Principal (){ #Region
         tituloOrigIMDB_=""
         ano_=""
         imdbIdData_=""
+        linkTorrent_="https://yifyme.com"
 
-:<<'@@@' #Region
+:<<'@@@'
         erro padrao de entrada
         aguarde
         ok completo
@@ -204,7 +205,7 @@ Principal (){ #Region
                                 rm -f imdbData
 
                                 Subtitle "$linkSubtitles_" "$tituloOrigIMDB_"
-#                                Torrent720p
+                                Torrent720p "$linkTorrent_" "$tituloOrigIMDB_" "$ano_"
                                 Mensagens 3 "$tituloOrigIMDB_" "$imdbIdData_"
                         else
                                 Mensagens 4 "$tituloBuscaHtml_"
