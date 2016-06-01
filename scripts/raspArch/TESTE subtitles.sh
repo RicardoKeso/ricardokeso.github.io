@@ -1,8 +1,8 @@
 #!/bin/sh
 
 TituloScript (){ #Region
+clear
 :<<'@@@'
-        clear
         echo " * * * RK Subs and Datas * * * "
         echo ""
         echo "Este script tenta encontrar:"
