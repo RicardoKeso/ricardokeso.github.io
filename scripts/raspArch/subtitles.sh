@@ -1,136 +1,236 @@
 #!/bin/sh
 
-titulo=`echo $1`
-tituloOrig=""
-tituloPadrao=""
-tituloHtml=""
-poster=""
-imdbID=""
-ano=""
-codSub=""
-arquivo=""
-arquivoHtml=""
-saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
-erroTitulo="0"
-linkFilme=""
-linkTorrent=""
+TituloScript (){ #Region
+clear
+:<<'@@@'
+        echo " * * * RK Subs and Datas * * * "
+        echo ""
+        echo "Este script tenta encontrar:"
+        echo "O arquivo .torrent, a legenda em Português do Brasil, os dados e o poster do filme. "
+        echo ""
+        echo ""
+@@@
+echo "..."
+} #EndRegion
 
-TituloScript (){
-	clear
-	echo " * * * RK Subs and Datas * * * "
-	echo ""
-	echo "Este script tenta encontrar:"
-	echo "O arquivo .torrent, a legenda em Português do Brasil, os dados e o poster do filme. "
-	echo ""
-	echo ""
-}
+Mensagens () { #Region
+        case $1 in
 
-ImdbData () {
+        1)
+        TituloScript
+        echo "O título deve original (inglês) e ser passado entre aspas"
+        echo "Ex.: ./subtitles.sh \"dust in high seas\""
+        echo ""
+        ;;
 
-        curl -s http://www.omdbapi.com/?t=$tituloHtml | sed 's/\",\"/\"\n\"/g' |\
+        2)
+        TituloScript
+        echo "Aguarde..."
+        echo ""
+        ;;
+
+        3)
+        TituloScript
+        echo "Title: ""$2"
+        echo "Imdb ID: ""$3"
+        echo ""
+        ;;
+
+        4)
+        TituloScript
+        echo "Erro: Titulo nao encontrado - $2"
+        echo ""
+        ;;
+
+        5)
+        TituloScript
+        echo "Off Line"
+        echo ""
+        ;;
+
+        6)
+        TituloScript
+        echo "Erro: Codigo da legenda nao encontrado"
+        echo ""
+        ;;
+
+        0)
+        clear
+        echo "vazio"
+        ;;
+
+        *)
+        TituloScript
+        echo "Erro: Parametro invalido"
+        echo ""
+        ;;
+
+        esac
+} #EndRegion
+
+ImdbData () { #Region
+
+        linkIMDB="$1"
+        tituloHtml="$2"
+
+        curl -s "$linkIMDB/?t=$tituloHtml" | sed 's/\",\"/\"\n\"/g' |\
          sed 's/{//g' | sed 's/}/\n/g' | grep -vi "\"rated\"\|\"response\"" |\
          sed 's/\\//g' > imdbData
 
-        tituloOrig=`cat imdbData | grep "Title" | sed 's/:/|/'  | cut -d "|" -f2 |\
-	 sed 's/"//g'`
-	ano=`cat imdbData | grep "Year" | cut -d ":" -f2 | sed 's/"//g'`
-	
-	if [ "$tituloOrig" = "" ]; then
-		erroTitulo="1"
-		return	
-	fi
+        tituloOrigIMDB=`cat imdbData | grep "Title" | sed 's/:/|/'  | cut -d "|" -f2 |\
+         sed 's/"//g'`
 
-	tituloPadrao=`echo "$tituloOrig"`
+        if [ "$tituloOrigIMDB" = "" ]; then
+                echo "1"
+                return
+        fi
 
         poster=`cat imdbData | grep "Poster" | sed 's/\":\"/|/g' | cut -d "|" -f2 |\
          sed 's/"//g'`
 
-        mkdir -p "$tituloPadrao"
-
+        mkdir -p "$tituloOrigIMDB"
         cat imdbData | grep -v "Poster" | sed 's/"//g' | sed 's/:/: /g'\
-         > "$tituloPadrao"/"$tituloPadrao.imdb"
+         > "$tituloOrigIMDB"/"$tituloOrigIMDB.imdb"
+        wget -q "$poster" -O "$tituloOrigIMDB"/"$tituloOrigIMDB.jpg"
 
-        wget -q "$poster" -O "$tituloPadrao"/"$tituloPadrao.jpg"
-	
-	rm -f imdbData
-}
+        echo "0"
+        return
+} #EndRegion
 
-Subtitle () {
-	imdbID=`curl -s http://www.yifysubtitles.com/search?q=$tituloHtml |\
-	 grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" |\
-	 cut -d '|' -f2 | cut -d '"' -f1`
+Subtitle () { #Region
 
-	codSub=`curl -s http://www.yifysubtitles.com/movie-imdb/$imdbID |\
-	 grep "brazilian-portuguese" | sed "s/brazilian-portuguese-yify-/|/" |\
-	 cut -d '|' -f2 | cut -d '"' -f1`
+        linkSubtitles="$1"
+        tituloOrig="$2"
+        tituloOrigLow="`echo "$tituloOrig" | awk '{print tolower($0)}'`"
+        tituloOrigHtml=`echo "$tituloOrigLow" | sed "s/ /%20/g" `
+        imdbIdLocal=""
+        imdbIdData="$3"
+        codSub=""
+        arquivoHtml=""
 
-	if [ "$codSub" != "" ]; then
-		arquivo=`echo $titulo-brazilian-portuguese-yify-$codSub.zip | sed 's/ /_/g'`
-		arquivoHtml=`echo $arquivo | sed 's/_/-/g'`
+        imdbIdLocal=`curl -s "$linkSubtitles/search?q=$tituloOrigHtml" |\
+         grep "movie-imdb/tt" | grep "movie-imdb\/" | sed "s/movie-imdb\//|/" |\
+         cut -d '|' -f2 | cut -d '"' -f1`
 
-		wget -q "http://www.yifysubtitles.com/subtitle/$arquivoHtml"
+        codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdLocal" |\
+         grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
+         cut -d '|' -f2 | cut -d '"' -f1`
 
-		mkdir -p "$tituloOrig"/temp
-		unzip -q $arquivoHtml -d "$tituloOrig"/temp
-		mv -f "$tituloOrig"/temp/*.srt "$tituloOrig"/
-		rm -rf "$tituloOrig"/temp
+        if [ "$codSub" = "" ] && [ "$imdbIdLocal" != "$imdbIdData"  ]; then
+                codSub=`curl -s "$linkSubtitles/movie-imdb/$imdbIdData" |\
+                 grep "brazilian-portuguese" | sed 's/brazilian-portuguese-yify-/|/' |\
+                 cut -d '|' -f2 | cut -d '"' -f1`
+        elif [ "$codSub" != "" ]; then
+                arquivoHtml=`echo "$tituloOrigLow-brazilian-portuguese-yify-$codSub.zip" |\
+                 sed 's/ /-/g'`
+                wget -q "$linkSubtitles/subtitle/$arquivoHtml"
+                mkdir -p "$tituloOrig"/temp
+                unzip -q $arquivoHtml -d "$tituloOrig"/temp
+                mv -f "$tituloOrig"/temp/*.srt "$tituloOrig"/
+                rm -rf "$tituloOrig"/temp
+                rm -f $arquivoHtml
+        else
+                Mensagens 6
+        fi
+} #EndRegion
 
-		rm -f $arquivoHtml
-	else
-		echo ""
-		echo "Error: Codigo da legenda nao encontrado"
-	fi
-}
+Torrent720p (){ #Region
 
-Torrent (){
-	
-	linkFilme=`curl -s "https://yifyme.com/search?query=$titulo ($ano)" |\
-	 grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
-	 cut -d '|' -f2`
-  
- 	linkTorrent=`curl -s "$linkFilme" | grep -m 1 "/download/" |\
-	 sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
-  
- 	wget -q "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
-}
+        linkTorrentFonte="$1"
+        tituloOrig="$2"
+        ano="$3"
+        tituloBuscaHtml=`echo "$tituloOrig"" ($ano)"  | awk '{print tolower($0)}' |\
+         sed 's/ /%20/g'`
 
-Principal () {
+        linkFilme=""
 
-	titulo=`echo $titulo | awk '{print tolower($0)}'`
-	tituloHtml=`echo $titulo | sed "s/ /%20/g"`
-	
-	ImdbData
+echo "$tituloBuscaHtml" > log
+echo "$linkTorrentFonte" >> log
+echo "$tituloOrig" >> log
+echo "$ano" >> log
+echo "$linkTorrentFonte/search?query=$tituloBuscaHtml" >> log
 
-	if [ "$erroTitulo" = "0" ]; then
-		Subtitle
-		Torrent	
-		TituloScript
-		echo "Title: "$tituloOrig
-		echo "Imdb ID: "$imdbID	
-		echo ""
-	else
-		TituloScript
-		echo "Erro: Titulo nao encontrado - $titulo"
-		echo ""
-	fi
-}
+#        linkFilme=`curl -s "$linkTorrentFonte/search?query=$tituloBuscaHtml" |\
+#         grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
+#         cut -d '|' -f2`
 
-TestePing (){
-	if [ "$saidaPing" = "" ]; then
-		echo "Off Line"
-		echo ""
-	else
-		Principal
-	fi
-}
+ linkFilme=`curl -sk "$linkTorrentFonte/search?query=$tituloBuscaHtml" | grep -m 1 "/movie/" | sed 's/<a href="/|/' | sed 's/"></|/' | cut -d '|' -f2`
 
-if [ "$titulo" = "" ] || [ "$2" != "" ]; then
-	TituloScript
-	echo "O título deve original (inglês) e ser passado entre aspas"
-	echo "Ex.: ./subtitles.sh \"dust in high seas\""
-	echo ""
-else
-	TituloScript
-	echo "Aguarde..."
-	TestePing
-fi
+
+echo "$linkFilme" >> log
+
+        linkTorrent=`curl -sk "$linkFilme" | grep -m 1 "/download/" |\
+         sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
+        wget -q --no-check-certificate "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
+
+echo "$linkTorrent" >> log
+
+} #EndRegion
+
+TesteConexao (){ #Region
+
+        saidaPing=`ping 8.8.8.8 -c 1 | grep "bytes from"`
+
+        if [ "$saidaPing" = "" ]; then
+                echo "0"
+                return
+        else
+                echo "1"
+                return
+        fi
+
+} #EndRegion
+
+Principal (){ #Region
+
+        linkIMDB_="http://www.omdbapi.com"
+        linkSubtitles_="http://www.yifysubtitles.com"
+        tituloBuscaHtml_=`echo "$1"  | awk '{print tolower($0)}' | sed 's/ /%20/g'`
+        dadosImdbErro_=""
+        tituloOrigIMDB_=""
+        ano_=""
+        imdbIdData_=""
+        linkTorrent_="https://yifyme.com"
+
+:<<'@@@'
+        erro padrao de entrada
+        aguarde
+        ok completo
+        titulo nao encontrado
+        off line
+        codigo legenda nao encontrado
+@@@
+        if [ "$tituloBuscaHtml_" = "" ] || [ "$2" != "" ]; then
+                Mensagens 1
+        else
+                Mensagens 2
+                if [ "`TesteConexao`" = "1" ]; then
+
+                        dadosImdbErro_="`ImdbData "$linkIMDB_" "$tituloBuscaHtml_"`"
+
+                        if [ "$dadosImdbErro_" = "0" ]; then
+
+                                tituloOrigIMDB_=`cat imdbData | grep "Title" | sed 's/:/|/'  |\
+                                 cut -d "|" -f2 | sed 's/"//g'`
+
+                                ano_=`cat imdbData | grep "Year" | cut -d ":" -f2 | sed 's/"//g'`
+
+                                imdbIdData_=`cat imdbData | grep "imdbID" | cut -d ":" -f2 |\
+                                 sed 's/"//g'`
+
+                                rm -f imdbData
+
+                                Subtitle "$linkSubtitles_" "$tituloOrigIMDB_"
+                                Torrent720p "$linkTorrent_" "$tituloOrigIMDB_" "$ano_"
+                                Mensagens 3 "$tituloOrigIMDB_" "$imdbIdData_"
+                        else
+                                Mensagens 4 "$tituloBuscaHtml_"
+                        fi
+                else
+                        Mensagens 5
+                fi
+        fi
+
+} #EndRegion
+
+Principal "$1" "$2"
