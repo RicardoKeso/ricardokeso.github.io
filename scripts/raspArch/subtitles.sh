@@ -144,26 +144,12 @@ Torrent720p (){ #Region
 
         linkFilme=""
 
-echo "$tituloBuscaHtml" > log
-echo "$linkTorrentFonte" >> log
-echo "$tituloOrig" >> log
-echo "$ano" >> log
-echo "$linkTorrentFonte/search?query=$tituloBuscaHtml" >> log
-
-#        linkFilme=`curl -s "$linkTorrentFonte/search?query=$tituloBuscaHtml" |\
-#         grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
-#         cut -d '|' -f2`
-
- linkFilme=`curl -sk "$linkTorrentFonte/search?query=$tituloBuscaHtml" | grep -m 1 "/movie/" | sed 's/<a href="/|/' | sed 's/"></|/' | cut -d '|' -f2`
-
-
-echo "$linkFilme" >> log
+        linkFilme=`curl -sk "$linkTorrentFonte/search?query=$tituloBuscaHtml" |\
+         grep -m 1 "/movie/" | sed 's/<a href="/|/' | sed 's/"></|/' | cut -d '|' -f2`
 
         linkTorrent=`curl -sk "$linkFilme" | grep -m 1 "/download/" |\
          sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
-        wget -q --no-check-certificate "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
-
-echo "$linkTorrent" >> log
+        wget -q --no-check-certificate "$linkTorrent" -O "$caminho""$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
 
 } #EndRegion
 
