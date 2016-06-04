@@ -139,15 +139,17 @@ Torrent720p (){ #Region
         linkTorrentFonte="$1"
         tituloOrig="$2"
         ano="$3"
+        tituloBuscaHtml=`echo "$tituloOrig"" ($ano)"  | awk '{print tolower($0)}' |\
+         sed 's/ /%20/g'`
+
         linkFilme=""
 
-        linkFilme=`curl -s "$linkTorrentFonte/search?query=$tituloOrig ($ano)" |\
-         grep -m 1 "/movie/" | sed '    s/<a href="/|/' | sed 's/"></|/' |\
-         cut -d '|' -f2`
+        linkFilme=`curl -sk "$linkTorrentFonte/search?query=$tituloBuscaHtml" |\
+         grep -m 1 "/movie/" | sed 's/<a href="/|/' | sed 's/"></|/' | cut -d '|' -f2`
 
-        linkTorrent=`curl -s "$linkFilme" | grep -m 1 "/download/" |\
+        linkTorrent=`curl -sk "$linkFilme" | grep -m 1 "/download/" |\
          sed 's/<a href="/|/' | sed 's/"/|/' | cut -d '|' -f2`
-        wget -q "$linkTorrent" -O "$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
+        wget -q --no-check-certificate "$linkTorrent" -O "$caminho""$tituloOrig"/"$tituloOrig"".(""$ano"").[720p].torrent"
 
 } #EndRegion
 
