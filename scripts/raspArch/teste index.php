@@ -13,25 +13,20 @@
                 </form>
                 <?php
 #                       header("Refresh:10");
-
                         echo "<div>";
                         $path = "files/";
                         $diretorio = dir($path);
                         $cont = 0;
-
                         echo "<br/><strong>Files</strong><br/><br/>";
-
                         while($arquivo = $diretorio -> read()){
                                 if (($arquivo != "..") && ($arquivo != ".") && ($arquivo != "sub.sh") && ($arquivo != "sub.php")){
                         echo "<a href='".$path.$arquivo."'>".$arquivo."</a><br />";
                         $cont++;
                                 }
                         }
-
                         if ($cont == 0) {
                                 echo "empty";
                         }
-
                         $diretorio -> close();
                         echo "</div><br><hr><br>";
                         echo $_POST["title"];
