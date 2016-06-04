@@ -7,12 +7,12 @@
         </script>
         </head>
         <body>
-                <form action="sub.php" method="post">
+                <form action="files/sub.php" method="post">
                         Title: <input type="text" name="title">
                         <input type="submit" value="ok">
                 </form>
                 <?php
-                        header("Refresh:10");
+#                       header("Refresh:10");
 
                         echo "<div>";
                         $path = "files/";
@@ -23,8 +23,8 @@
 
                         while($arquivo = $diretorio -> read()){
                                 if (($arquivo != "..") && ($arquivo != ".") && ($arquivo != "sub.sh") && ($arquivo != "sub.php")){
-                                        echo $arquivo."<br />";
-                                        $cont++;
+                        echo "<a href='".$path.$arquivo."'>".$arquivo."</a><br />";
+                        $cont++;
                                 }
                         }
 
@@ -35,7 +35,6 @@
                         $diretorio -> close();
                         echo "</div><br><hr><br>";
                         echo $_POST["title"];
-                        echo shell_exec('mkdir teste');
                 ?>
         </body>
 </html>
