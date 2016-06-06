@@ -39,7 +39,7 @@ essenciais(){
   pacman -S cronie --noconfirm ### instala cron
   pacman -S rsync --noconfirm
   #pacman -S zsh --noconfirm ### outro shell
-  pacman -S git --noconfirm ### github
+  #pacman -S git --noconfirm ### github
   echo ""
 }
 
@@ -68,7 +68,7 @@ linguagemRegiao(){
 }
 
 rede(){
-  systemctl enable netctl-auto@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep w` ### habilita permanentemente o cliente de DHCP para a interface wireless
+  #systemctl enable netctl-auto@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep w` ### habilita permanentemente o cliente de DHCP para a interface wireless
   systemctl enable netctl-ifplugd@`ip addr | grep "<" | grep -vi loopback | awk '{print $2}' | sed 's/://g' | grep e` ### habilita permanetemente o cliente de DHCP para o interface ethernet
 }
 
@@ -110,12 +110,12 @@ padrao(){
   grub
   yaourt
   ## multilib # apenas para sistemas 64bits
-  #essenciais
+  essenciais
   #ferramentasAnalise
-  #rede
+  rede
   #linguagemRegiao
-  #sincronizarAtualizar
-  #final
+  sincronizarAtualizar
+  final
 }
 
 padrao
