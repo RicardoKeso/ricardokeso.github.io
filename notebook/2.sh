@@ -37,13 +37,13 @@ linguagemRegiao(){
 }
 linguagemRegiao
 
-sincronizarAtualizar(){
+SincronizarAtualizar(){
   echo ""
   echo " * * * * * SINCRONIZANDO E ATUALIZANDO PACOTES * * * * * "
   pacman -Syyu ### sincronizacao e atualizacao total
   echo ""
 }
-sincronizarAtualizar
+SincronizarAtualizar
 
 final(){
   clear
@@ -63,7 +63,6 @@ final(){
   echo "systemctl reboot"
   echo ""
 }
+final
 
 ##*******************************************************************************
-
-final
