@@ -26,7 +26,6 @@ LVM(){
 	mkswap /dev/mapper/main-swap
 	mkfs.ext4 /dev/mapper/main-root
 	mkfs.ext4 /dev/mapper/main-home
-	mkfs.ext4 /dev/sda1
 }
 LVM
 
