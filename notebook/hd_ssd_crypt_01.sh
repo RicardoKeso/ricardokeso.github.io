@@ -43,18 +43,18 @@ InstalacaoBase(){
 	pacstrap /mnt base
 }
 
-InstalacaoBase-Devel(){
+InstalacaoBase_Devel(){
 	pacstrap /mnt base-devel
 }
 
-InstalacaoGrub-Bios(){
+InstalacaoGrub_Bios(){
 	pacstrap /mnt grub-bios
 }
 
 InstalacaoSistema(){
 	InstalacaoBase
-	InstalacaoBase-Devel
-	InstalacaoGrub-Bios
+	InstalacaoBase_Devel
+	InstalacaoGrub_Bios
 }
 
 GeracaoFSTAB(){
