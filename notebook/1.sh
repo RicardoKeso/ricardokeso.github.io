@@ -6,12 +6,14 @@ Particionamento(){
 	parted -s /dev/sda set 1 boot on 
 	parted -s /dev/sda set 2 lvm on 
 }
+Particionamento
 
 Criptografia(){
 	modprobe dm-crypt
-	#cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
+	cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
 	cryptsetup luksOpen /dev/sda2 lvm
 }
+Criptografia
 
 LVM(){
 	pvcreate /dev/mapper/lvm
@@ -24,42 +26,48 @@ LVM(){
 	mkswap /dev/mapper/main-swap
 	mkfs.ext4 /dev/mapper/main-root
 	mkfs.ext4 /dev/mapper/main-home
+	mkfs.ext4 /dev/sda1
 }
+LVM
 
 Montagem(){
 	mount /dev/mapper/main-root /mnt
 	mkdir /mnt/boot
-	mount /dev/sda1 /mnt/boot
 	mkdir /mnt/home
+	mount /dev/sda1 /mnt/boot
 	mount /dev/mapper/main-home /mnt/home
 }
+Montagem
 
-LinguagemRegiao(){
-	sed -i '/en_US.UTF-8 UTF-8/s/#//g' /etc/locale.gen
-	locale-gen
-}
+#LinguagemRegiao(){
+#	sed -i '/en_US.UTF-8 UTF-8/s/#//g' /etc/locale.gen
+#	locale-gen
+#}
 
 InstalacaoBase(){
 	pacstrap /mnt base
 }
+InstalacaoBase
 
-InstalacaoBase_Devel(){
-	pacstrap /mnt base-devel
-}
+#InstalacaoBase_Devel(){
+#	pacstrap /mnt base-devel
+#}
 
 InstalacaoGrub_Bios(){
 	pacstrap /mnt grub-bios
 }
+InstalacaoGrub_Bios
 
-InstalacaoSistema(){
-	InstalacaoBase
-	InstalacaoBase_Devel
-	InstalacaoGrub_Bios
-}
+#InstalacaoSistema(){
+#	InstalacaoBase
+#	InstalacaoBase_Devel
+#	InstalacaoGrub_Bios
+#}
 
 GeracaoFSTAB(){
 	genfstab -U -p /mnt >> /mnt/etc/fstab
 }
+GeracaoFSTAB
 
 ScriptPosInstalacao(){
 	curl www.ricardokeso.com/notebook/2.sh > /mnt/root/2.sh
@@ -68,12 +76,4 @@ ScriptPosInstalacao(){
 	echo " * * * * * DIGITE: /root/2.sh* * * * * "
 	arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
 }
-
-#Particionamento
-Criptografia
-#LVM
-Montagem
-LinguagemRegiao
-#InstalacaoSistema
-GeracaoFSTAB
 ScriptPosInstalacao
