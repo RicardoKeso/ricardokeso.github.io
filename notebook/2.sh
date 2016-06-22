@@ -215,6 +215,7 @@ final(){
 ##*******************************************************************************
 
 padrao(){
+  linguagemRegiao
   hostnamectl set-hostname ArchLinux_VM
   senhaRoot
   grub
@@ -228,7 +229,6 @@ install(){
 }
 
 personalizacao(){
-  linguagemRegiao
   usuario
   personalizarTerminal
   configsDiversas
@@ -246,11 +246,11 @@ multimidia(){
 }
 
 padrao
-install
+##install
 # ferramentasExtras
 # rede
 # multilib
-personalizacao
+##personalizacao
 # multimidia
 # notebook
 
