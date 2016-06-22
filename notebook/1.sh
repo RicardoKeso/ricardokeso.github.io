@@ -72,7 +72,7 @@ ScriptPosInstalacao(){
 #Particionamento
 Criptografia
 #LVM
-#Montagem
+Montagem
 LinguagemRegiao
 #InstalacaoSistema
 GeracaoFSTAB
