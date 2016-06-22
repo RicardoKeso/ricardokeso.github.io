@@ -1,5 +1,5 @@
 
-Particionamento_GPT(){
+Particionamento(){
 	parted -s /dev/sda mklabel msdos
 	parted -s /dev/sda mkpart primary ext4 0% 513MiB
 	parted -s /dev/sda mkpart primary ext4 513MiB 100%
@@ -9,7 +9,7 @@ Particionamento_GPT(){
 
 Criptografia(){
 	modprobe dm-crypt
-	cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
+	#cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
 	cryptsetup luksOpen /dev/sda2 lvm
 }
 
@@ -62,18 +62,18 @@ GeracaoFSTAB(){
 }
 
 ScriptPosInstalacao(){
-	curl www.ricardokeso.com/scripts/2_config.sh > /mnt/root/2_config.sh
-	chmod +x /mnt/root/2_config.sh
+	curl www.ricardokeso.com/notebook/2.sh > /mnt/root/2.sh
+	chmod +x /mnt/root/2.sh
 	echo ""
-	echo " * * * * * DIGITE: /root/2_config.sh* * * * * "
+	echo " * * * * * DIGITE: /root/2.sh* * * * * "
 	arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
 }
 
-#Particionamento_GPT
-#Criptografia
+#Particionamento
+Criptografia
 #LVM
 #Montagem
-#LinguagemRegiao
+LinguagemRegiao
 #InstalacaoSistema
-#GeracaoFSTAB
-#ScriptPosInstalacao
+GeracaoFSTAB
+ScriptPosInstalacao
