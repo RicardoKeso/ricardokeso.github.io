@@ -243,14 +243,14 @@ multimidia(){
 }
 
 padrao
-install
+##install
 # ferramentasExtras
 # rede
 # multilib
-personalizacao
+##personalizacao
 # multimidia
 # notebook
-sincronizarAtualizar
+##sincronizarAtualizar
 final
 
 
