@@ -21,7 +21,6 @@ LVM(){
 	lvcreate -L 2GB -n root lvmcrypt
 	lvcreate -l 100%FREE -n home lvmcrypt
 	
-	mkfs.ext4 /dev/sda1
 	mkswap /dev/mapper/lvmcrypt-swap
 	mkfs.ext4 /dev/mapper/lvmcrypt-root
 	mkfs.ext4 /dev/mapper/lvmcrypt-home
