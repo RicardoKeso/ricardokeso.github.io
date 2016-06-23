@@ -17,22 +17,22 @@ LVM(){
 	pvcreate /dev/mapper/lvm
 	vgcreate main /dev/mapper/lvm
 
-	lvcreate -L 1GB -n swap main
-	lvcreate -L 2GB -n root main
-	lvcreate -l 100%FREE -n home main
+	lvcreate -L 1GB -n swap lvmcrypt
+	lvcreate -L 2GB -n root lvmcrypt
+	lvcreate -l 100%FREE -n home lvmcrypt
 	
 	mkfs.ext4 /dev/sda1
-	mkswap /dev/mapper/main-swap
-	mkfs.ext4 /dev/mapper/main-root
-	mkfs.ext4 /dev/mapper/main-home
+	mkswap /dev/mapper/lvmcrypt-swap
+	mkfs.ext4 /dev/mapper/lvmcrypt-root
+	mkfs.ext4 /dev/mapper/lvmcrypt-home
 }
 
 Montagem(){
-	mount /dev/mapper/main-root /mnt
+	mount /dev/mapper/lvmcrypt-root /mnt
 	mkdir /mnt/boot
 	mkdir /mnt/home
 	mount /dev/sda1 /mnt/boot
-	mount /dev/mapper/main-home /mnt/home
+	mount /dev/mapper/lvmcrypt-home /mnt/home
 }
 
 LinguagemRegiao(){
