@@ -37,6 +37,9 @@ Montagem(){
 LinguagemRegiao(){
 	echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
 	sed -i '/en_US.UTF-8 UTF-8/s/#//g' /etc/locale.gen
+	export LANGUAGE=en_US.UTF-8
+	export LANG=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
 	locale-gen
 }
 
