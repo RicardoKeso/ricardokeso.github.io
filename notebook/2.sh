@@ -90,7 +90,9 @@ linguagemRegiao(){
   sed -i '/en_US.UTF-8 UTF-8/s/#//g' /etc/locale.gen ### descomenta a linha do arquivo de localização com que tem os valores pt_BR
   locale-gen ## configura a localização
   echo LANG=en_US.UTF-8 > /etc/locale.conf ### define a codificação de localização do sistema
+  export LANGUAGE=en_US.UTF-8
   export LANG=en_US.UTF-8
+  export LC_ALL=en_US.UTF-8
   mv /etc/localtime /etc/localtime_orig
   ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime ### define a região
   hwclock --systohc --utc ### sincroniza o horário
