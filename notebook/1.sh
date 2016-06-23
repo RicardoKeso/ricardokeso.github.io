@@ -15,7 +15,7 @@ Criptografia(){
 
 LVM(){
 	pvcreate /dev/mapper/lvm
-	vgcreate main /dev/mapper/lvm
+	vgcreate lvmcrypt /dev/mapper/lvm
 
 	lvcreate -L 1GB -n swap lvmcrypt
 	lvcreate -L 2GB -n root lvmcrypt
