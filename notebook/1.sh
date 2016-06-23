@@ -1,8 +1,8 @@
 
 Particionamento(){
 	parted -s /dev/sda mklabel msdos
-	parted -s /dev/sda mkpart primary ext4 0% 513MiB
-	parted -s /dev/sda mkpart primary ext4 513MiB 100%
+	parted -s /dev/sda mkpart primary ext4 0% 257MiB
+	parted -s /dev/sda mkpart primary ext4 257MiB 100%
 	parted -s /dev/sda set 1 boot on 
 	parted -s /dev/sda set 2 lvm on 
 }
