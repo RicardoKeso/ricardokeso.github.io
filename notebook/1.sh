@@ -17,7 +17,7 @@ LVM(){
 	pvcreate /dev/mapper/lvm
 	vgcreate main /dev/mapper/lvm
 
-	lvcreate -L 2GB -n swap main
+	lvcreate -L 1GB -n swap main
 	lvcreate -L 2GB -n root main
 	lvcreate -l 100%FREE -n home main
 	
