@@ -57,8 +57,8 @@ InstalacaoGrub_Bios(){
 
 InstalacaoSistema(){
 	InstalacaoBase
-#	InstalacaoBase_Devel
-#	InstalacaoGrub_Bios
+	InstalacaoBase_Devel
+	InstalacaoGrub_Bios
 }
 
 GeracaoFSTAB(){
