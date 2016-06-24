@@ -4,7 +4,6 @@ senhaRoot(){
   passwd # define a senha do root
   echo ""
 }
-#lvmcrypt
 
 grub(){
   echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
