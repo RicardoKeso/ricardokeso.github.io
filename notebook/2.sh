@@ -220,7 +220,8 @@ final(){
 
 padrao(){
   linguagemRegiao
-  hostnamectl set-hostname ArchLinux_VM
+  #hostnamectl set-hostname ArchLinux_VM
+  echo "ArchLinux_VM" > /etc/hostname
   senhaRoot
   grub
   yaourt
