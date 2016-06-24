@@ -34,31 +34,10 @@ Montagem(){
 	mount /dev/mapper/lvmcrypt-home /mnt/home
 }
 
-LinguagemRegiao(){
-	echo "KEYMAP=br-abnt2" >> /etc/vconsole.conf
-	sed -i '/en_US.UTF-8 UTF-8/s/#//g' /etc/locale.gen
-	export LANGUAGE=en_US.UTF-8
-	export LANG=en_US.UTF-8
-	export LC_ALL=en_US.UTF-8
-	locale-gen
-}
-
-InstalacaoBase(){
-	pacstrap /mnt base
-}
-
-InstalacaoBase_Devel(){
-	pacstrap /mnt base-devel
-}
-
-InstalacaoGrub_Bios(){
-	pacstrap /mnt grub-bios
-}
-
 InstalacaoSistema(){
-	InstalacaoBase
-	InstalacaoBase_Devel
-	InstalacaoGrub_Bios
+	pacstrap /mnt base
+	pacstrap /mnt base-devel
+	pacstrap /mnt grub-bios
 }
 
 GeracaoFSTAB(){
@@ -77,7 +56,6 @@ Particionamento
 Criptografia
 LVM
 Montagem
-#LinguagemRegiao
 InstalacaoSistema
 GeracaoFSTAB
-criptPosInstalacao
+ScriptPosInstalacao
