@@ -11,7 +11,7 @@ grub(){
   pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/0/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 0 segundos
-  sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:lvmcrypt root=/dev/mapper/lvmcrypt-root"/g' /etc/default/grub ###
+  sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:lvmcrypt root=\/dev\/mapper\/lvmcrypt-root"/g' /etc/default/grub ###
   #sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
   sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt lvm2 filesystems/' /etc/mkinitcpio.conf
   #grub-install /dev/sda ### instala o grub no disco
