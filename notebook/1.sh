@@ -57,8 +57,8 @@ InstalacaoGrub_Bios(){
 
 InstalacaoSistema(){
 	InstalacaoBase
-	InstalacaoBase_Devel
-	InstalacaoGrub_Bios
+#	InstalacaoBase_Devel
+#	InstalacaoGrub_Bios
 }
 
 GeracaoFSTAB(){
@@ -77,7 +77,7 @@ Particionamento
 Criptografia
 LVM
 Montagem
-LinguagemRegiao
+#LinguagemRegiao
 InstalacaoSistema
-GeracaoFSTAB
-ScriptPosInstalacao
+#GeracaoFSTAB
+#ScriptPosInstalacao
