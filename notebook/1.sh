@@ -79,5 +79,5 @@ LVM
 Montagem
 #LinguagemRegiao
 InstalacaoSistema
-#GeracaoFSTAB
-#ScriptPosInstalacao
+GeracaoFSTAB
+criptPosInstalacao
