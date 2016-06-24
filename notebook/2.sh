@@ -15,7 +15,7 @@ grub(){
   sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:lvmcrypt root=/dev/mapper/lvmcrypt-root"/g' /etc/default/grub ###
   #sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
   sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt lvm2 filesystems/' /etc/mkinitcpio.conf
-  grub-install /dev/sda ### instala o grub no disco
+  #grub-install /dev/sda ### instala o grub no disco
   mkinitcpio -p linux ### compila a imagem do sistema
   grub-install --recheck /dev/sda
   grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
