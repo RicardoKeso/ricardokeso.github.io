@@ -22,25 +22,11 @@ grub(){
 }
 
 yaourt(){
+  pacman -S yaourt --noconfirm
   echo "" >> /etc/pacman.conf
   echo "[archlinuxfr]" >> /etc/pacman.conf
   echo "SigLevel = Never" >> /etc/pacman.conf
   echo "Server = http://repo.archlinux.fr/`uname -m`/" >> /etc/pacman.conf
-}
-
-essenciais(){
-  # (os pacotes tar bzip2 gzip pertencem ao grupo "base", sudo pertence ao grupo base-devel)
-  echo " * * * * * INSTALANDO PACOTES * * * * * "
-  echo ""
-  pacman -S vim --noconfirm ### instala o sudo
-  pacman -S unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
-  pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias para acesso e formatação de sistemas de arquivos microsoft
-  pacman -S wget curl --noconfirm ### instala gerenciadores de download
-  pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplemento (tab) no terminal
-  pacman -S mlocate --noconfirm ### instala as funções de pesquisa (updatedb, locate)
-  pacman -S openssh --noconfirm ### instala openSSH
-  pacman -S rsync --noconfirm
-  echo ""
 }
 
 linguagemRegiao(){
@@ -95,7 +81,6 @@ sincronizarAtualizar(){
 }
 
 final(){
-	pacman -Syyu
 	clear
 	echo ""
 	echo " * * * * * SYSTEMA CONFIGURADO * * * * * "
@@ -117,11 +102,11 @@ final(){
 ##*******************************************************************************
 
 senhaRoot
+yaourt
 sincronizarAtualizar
 grub
-yaourt
-essenciais
 linguagemRegiao
 usuario
 personalizarTerminal
+sincronizarAtualizar
 final
