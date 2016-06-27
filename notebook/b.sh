@@ -3,6 +3,7 @@ senhaRoot(){
 }
 
 grub(){
+  pacman -S grub --noconfirm
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/0/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 0 segundos
   sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:lvmcrypt root=\/dev\/mapper\/lvmcrypt-root"/g' /etc/default/grub ###
@@ -57,8 +58,8 @@ ferramentasAnalise(){
   pacman -S gnu-netcat --noconfirm ###
 }
 
-#senhaRoot
-#grub
+senhaRoot
+grub
 multilib
 yaourt
 essenciais
