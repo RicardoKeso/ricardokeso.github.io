@@ -56,6 +56,7 @@ ferramentasAnalise(){
   pacman -S aircrack-ng --noconfirm ###
   pacman -S nikto --noconfirm ###
   pacman -S gnu-netcat --noconfirm ###
+  pacman -S dsniff --noconfirm ###
 }
 
 senhaRoot
