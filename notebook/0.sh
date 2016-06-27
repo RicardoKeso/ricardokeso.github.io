@@ -32,14 +32,6 @@ Montagem(){
 	mount /dev/sda1 /mnt/boot
 	mount /dev/mapper/lvmcrypt-home /mnt/home
 }
-part01(){
-	Particionamento
-	Criptografia
-	LVM
-	Montagem
-
-	InstalacaoSistema
-}
 
 InstalacaoSistema(){
 	pacstrap /mnt base
@@ -60,5 +52,14 @@ ScriptPosInstalacao(){
 	arch-chroot /mnt /bin/bash
 }
 
-GeracaoFSTAB
-ScriptPosInstalacao
+PARTE_01(){
+	Particionamento
+	Criptografia
+	LVM
+	Montagem
+	InstalacaoSistema
+	GeracaoFSTAB
+	ScriptPosInstalacao
+}
+
+PARTE_01
