@@ -32,3 +32,8 @@ Montagem(){
 	mount /dev/sda1 /mnt/boot
 	mount /dev/mapper/lvmcrypt-home /mnt/home
 }
+
+Particionamento
+Criptografia
+LVM
+Montagem
