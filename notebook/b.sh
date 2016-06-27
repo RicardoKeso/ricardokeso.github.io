@@ -63,3 +63,4 @@ multilib
 yaourt
 essenciais
 ferramentasAnalise
+pacman -Syyu --noconfirm
