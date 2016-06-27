@@ -37,6 +37,8 @@ part01(){
 	Criptografia
 	LVM
 	Montagem
+
+	InstalacaoSistema
 }
 
 InstalacaoSistema(){
@@ -45,4 +47,18 @@ InstalacaoSistema(){
 	pacstrap /mnt grub-bios
 }
 
-InstalacaoSistema
+
+GeracaoFSTAB(){
+	genfstab -U -p /mnt >> /mnt/etc/fstab
+}
+
+ScriptPosInstalacao(){
+	curl www.ricardokeso.com/notebook/2.sh > /mnt/root/2.sh
+	chmod +x /mnt/root/2.sh
+	echo ""
+	echo " * * * * * DIGITE: /root/2.sh* * * * * "
+	arch-chroot /mnt /bin/bash
+}
+
+GeracaoFSTAB
+ScriptPosInstalacao
