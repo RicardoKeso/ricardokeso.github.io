@@ -1,13 +1,8 @@
 senhaRoot(){
-  echo " * * * * * ALTERAR SENHA ROOT * * * * * "
-  echo ""
   passwd # define a senha do root
-  echo ""
 }
 
 grub(){
-  echo " * * * * * INSTALANDO E CONFIGURANDO O GRUB * * * * * "
-  echo ""
   pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/0/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 0 segundos
@@ -18,7 +13,6 @@ grub(){
   mkinitcpio -p linux ### compila a imagem do sistema
   grub-install --recheck /dev/sda
   grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
-  echo ""
 }
 
 multilib(){ # apenas para sistemas 64bits
@@ -63,3 +57,10 @@ ferramentasAnalise(){
   pacman -S nikto --noconfirm ###
   pacman -S gnu-netcat --noconfirm ###
 }
+
+senhaRoot
+grub
+multilib
+yaourt
+essenciais
+ferramentasAnalise
