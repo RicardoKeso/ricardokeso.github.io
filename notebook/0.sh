@@ -32,8 +32,17 @@ Montagem(){
 	mount /dev/sda1 /mnt/boot
 	mount /dev/mapper/lvmcrypt-home /mnt/home
 }
+part01(){
+	Particionamento
+	Criptografia
+	LVM
+	Montagem
+}
 
-Particionamento
-Criptografia
-LVM
-Montagem
+InstalacaoSistema(){
+	pacstrap /mnt base
+	pacstrap /mnt base-devel
+	pacstrap /mnt grub-bios
+}
+
+InstalacaoSistema
