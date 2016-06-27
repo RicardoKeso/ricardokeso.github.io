@@ -45,10 +45,10 @@ GeracaoFSTAB(){
 }
 
 ScriptPosInstalacao(){
-	curl www.ricardokeso.com/notebook/2.sh > /mnt/root/2.sh
-	chmod +x /mnt/root/2.sh
+	curl www.ricardokeso.com/notebook/a.sh > /mnt/root/a.sh
+	chmod +x /mnt/root/a.sh
 	echo ""
-	echo " * * * * * DIGITE: /root/2.sh* * * * * "
+	echo " * * * * * DIGITE: /root/a.sh* * * * * "
 	arch-chroot /mnt /bin/bash
 }
 
