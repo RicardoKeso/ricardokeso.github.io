@@ -47,10 +47,9 @@ GeracaoFSTAB(){
 ScriptPosInstalacao(){
 	curl www.ricardokeso.com/notebook/b.sh > /mnt/root/b.sh
 	chmod +x /mnt/root/b.sh
-	echo "/root/b.sh" >> /mnt/root/.bashrc
-	echo ""
-	echo " * * * * * DIGITE: /root/b.sh* * * * * "
+	echo "/root/b.sh" > /mnt/root/.bashrc
 	arch-chroot /mnt /bin/bash
+	rm -f /root/.bashrc
 }
 
 Particionamento
