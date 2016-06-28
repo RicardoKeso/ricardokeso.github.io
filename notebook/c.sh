@@ -1,20 +1,6 @@
-essenciaisGUI(){
-  pacman -S firefox --noconfirm ### instala o firefox
-  pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
-  pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
-  pacman -S scrot --noconfirm ### ferramenta de printscreen
-  pacman -S imagemagick --noconfirm ### manipulador de imagem
-}
-
-notebook(){
-  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog ### instala os pacotes para a wireless
-  pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
-  curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
-}
-
-ferramentasAnaliseGUI(){
-  pacman -S wireshark --noconfirm ###
-  pacman -S openvas --noconfirm ###
+usuario(){
+  useradd -m ricardokeso 
+  passwd ricardokeso
 }
 
 servidorX(){
@@ -34,52 +20,46 @@ servidorX(){
 }
 
 i3(){
-  pacman -S i3 dmenu terminator --noconfirm ### instala o gerenciador de janelas i3 e o lançador de aplicativos dmenu
+  pacman -S i3 dmenu terminator --noconfirm ### instala o gerenciador de janelas i3, o lançador de aplicativos dmenu, multiterminal
   echo "exec i3" > /home/ricardokeso/.xinitrc ### define a inicialização do i3 junto com o X
 }
 
-audio(){
-  pacman -S alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio --noconfirm ### instala os pacotes para o funcionamento do audio
-  pacman -S cmus vlc --noconfirm ### instala o players multimídia (cmus media player termnal)
+essenciaisGUI(){
+  pacman -S firefox --noconfirm ### instala o firefox
+  pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
+  pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
+  pacman -S scrot --noconfirm ### ferramenta de printscreen
+  pacman -S imagemagick --noconfirm ### manipulador de imagem
 }
 
-usuario(){
-  echo ""
-  echo " * * * * * CONFIGURANDO USUARIO * * * * * "
-  echo ""
-  useradd -m ricardokeso ### adiciona o usuário
-  echo " * * * * * ALTERAR SENHA RICARDOKESO * * * * * "
-  passwd ricardokeso ### altera a senha do usuário
-  # (ATENCAO, os 3 comandos a seguir eu não aconselho. É mais seguro utilizar SuperUsuario apenas para demandas especificas)
-  #groupadd sudo ### cria o grupo sudo
-  #gpasswd -a ricardokeso sudo ### adiciona o usuário ao grupo sudo
-  #sed -i '/# %sudo/s/#//g' /etc/sudoers ### descomenta a linha que permite superAcesso aos usuários do grupo sudo
+ferramentasAnaliseGUI(){
+  pacman -S wireshark --noconfirm ###
+  pacman -S openvas --noconfirm ###
 }
 
 personalizarTerminal(){
-  echo " * * * * * CRIANDO ARQUIVOS DE PERSONALIZACAO DO TERMINAL * * * * * "
-  echo ""
-  curl www.ricardokeso.com/scripts/configs/rk.bashrc > /root/.bashrc
-  curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /root/.bash_profile
-  mv /home/ricardokeso/.bashrc /home/ricardokeso/.bashrc_original
-  cp /root/.bashrc /home/ricardokeso/.bashrc
-  chown ricardokeso:ricardokeso /home/ricardokeso/.bashrc
-  chmod 644 /home/ricardokeso/.bashrc
-  mv /home/ricardokeso/.bash_profile /home/ricardokeso/.bash_profile_original
-  cp /home/ricardokeso/.bashrc /home/ricardokeso/.bash_profile
-  chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
-  chmod 644 /home/ricardokeso/.bash_profile
+  echo "alias ls='ls --color=auto'" > /root/.bash_profile
+  echo "alias grep='grep --color=auto'" >> /root/.bash_profile  
+  echo "clear" >> /root/.bash_profile
+  cp /root/.bash_profile /home/ricardokeso/.bash_profile
+  echo "PS1='\[\033[1;37m\]rk > \[\033[0m\]'" >> /home/ricardokeso/.bash_profile
+  cp /home/ricardokeso/.bash_profile /home/ricardokeso/.bashrc  
+  echo "PS1='\[\033[0;31m\]\\$ \[\033[0m\]'" >> /root/.bash_profile
+  
+  chmod 600 /home/ricardokeso/.bashrc
+  chmod 600 /home/ricardokeso/.bash_profile
 }
 
 personalizar_i3_terminator(){
-  mkdir -p ~/.config/terminator/
+  mkdir -p /home/ricardokeso/.config/terminator/
   curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > /home/ricardokeso/.config/terminator/config
-  mkdir -p ~/.config/i3/
+
+  mkdir -p /home/ricardokeso/.config/i3/
   curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > /home/ricardokeso/.config/i3/config
   curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > /home/ricardokeso/.config/i3/i3status.conf
+
   curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /home/ricardokeso/.bash_profile
   curl www.ricardokeso.com/scripts/configs/rk.bashrc > /home/ricardokeso/.bashrc
-  chown -R ricardokeso:ricardokeso /home/ricardokeso/.config
 }
 
 configsDiversas(){
@@ -97,16 +77,26 @@ gerenciamentoenergia(){
   # sed -i 's/#HandlePowerKey=poweroff/HandlePowerKey=suspend/g' /etc/systemd/logind.conf # altera a função do botao de desligar para suspender
 }
 
-#usuario
+notebook(){
+  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog ### instala os pacotes para a wireless
+  pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
+  curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
+}
+
+audio(){
+  pacman -S alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio --noconfirm ### instala os pacotes para o funcionamento do audio
+  pacman -S cmus vlc --noconfirm ### instala o players multimídia (cmus media player termnal)
+}
+
+usuario
 servidorX
 i3
-personalizar_i3_terminator
-personalizarTerminal
 essenciaisGUI
 ferramentasAnaliseGUI
-
+personalizarTerminal
+personalizar_i3_terminator
+configsDiversas
+gerenciamentoenergia
 notebook
 audio
-configsDiversas
-
-#gerenciamentoenergia
+chown -R ricardokeso:ricardokeso /home/ricardokeso
