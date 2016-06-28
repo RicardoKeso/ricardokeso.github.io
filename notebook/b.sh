@@ -37,10 +37,10 @@ ferramentasAnalise(){
   pacman -S mtr nmap nethogs tcpdump kismet aircrack-ng nikto gnu-netcat dsniff --noconfirm
 }
 
-senhaRoot
 grub
 multilib
 yaourt
 essenciais
 ferramentasAnalise
 pacman -Syyu --noconfirm
+senhaRoot
