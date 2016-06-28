@@ -79,6 +79,7 @@ personalizar_i3_terminator(){
   curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > /home/ricardokeso/.config/i3/i3status.conf
   curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /home/ricardokeso/.bash_profile
   curl www.ricardokeso.com/scripts/configs/rk.bashrc > /home/ricardokeso/.bashrc
+  chown -R ricardokeso:ricardokeso /home/ricardokeso/.config
 }
 
 configsDiversas(){
