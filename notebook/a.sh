@@ -17,7 +17,7 @@ LVM(){
 	vgcreate lvmcrypt /dev/mapper/lvm
 
 	lvcreate -L 1GB -n swap lvmcrypt
-	lvcreate -L 2GB -n root lvmcrypt
+	lvcreate -L 8GB -n root lvmcrypt
 	lvcreate -l 100%FREE -n home lvmcrypt
 	
 	mkswap /dev/mapper/lvmcrypt-swap
@@ -47,19 +47,16 @@ GeracaoFSTAB(){
 ScriptPosInstalacao(){
 	curl www.ricardokeso.com/notebook/b.sh > /mnt/root/b.sh
 	chmod +x /mnt/root/b.sh
+	echo "/root/b.sh" >> /mnt/root/.bash_profile
 	echo ""
 	echo " * * * * * DIGITE: /root/b.sh* * * * * "
 	arch-chroot /mnt /bin/bash
 }
 
-PARTE_01(){
-	Particionamento
-	Criptografia
-	LVM
-	Montagem
-	InstalacaoSistema
-	GeracaoFSTAB
-	ScriptPosInstalacao
-}
-
-PARTE_01
+Particionamento
+Criptografia
+LVM
+Montagem
+InstalacaoSistema
+GeracaoFSTAB
+ScriptPosInstalacao
