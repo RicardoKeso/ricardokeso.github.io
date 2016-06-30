@@ -1,4 +1,5 @@
 senhaRoot(){
+  echo "* * * ROOT * * *"
   passwd
 }
 
