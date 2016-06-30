@@ -26,6 +26,7 @@ i3(){
 
 essenciaisGUI(){
   pacman -S firefox --noconfirm ### instala o firefox
+  pacman -S chromium --noconfirm ### instala o firefox
   pacman -S pcmanfm --noconfirm ### gerenciado de arquivos grafico
   pacman -S feh --noconfirm ### visualizador de imagens (serve para gerir o wallpaper do desktop)
   pacman -S scrot --noconfirm ### ferramenta de printscreen
@@ -34,6 +35,12 @@ essenciaisGUI(){
 
 ferramentasAnaliseGUI(){
   pacman -S wireshark --noconfirm ###
+  
+  usermod -a -G wireshark ricardokeso
+  chgrp wireshark /usr/bin/dumpcap
+  chmod 754 /usr/bin/dumpcap
+  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+  
   pacman -S openvas --noconfirm ###
 }
 
@@ -85,7 +92,7 @@ notebook(){
 
 audio(){
   pacman -S alsa-lib alsa-utils alsa-firmware alsa-plugins pulseaudio-alsa pulseaudio --noconfirm ### instala os pacotes para o funcionamento do audio
-  pacman -S cmus vlc --noconfirm ### instala o players multimídia (cmus media player termnal)
+  pacman -S cmus vlc qt4 --noconfirm ### instala o players multimídia (cmus media player termnal)
 }
 
 usuario
