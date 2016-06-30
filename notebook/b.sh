@@ -7,7 +7,7 @@ grub(){
   pacman -S grub --noconfirm
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/0/g' /etc/default/grub
-  #sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/s/quiet/quiet video=hyperv_fb:1920x1080/g' /etc/default/grub # resolucao 1366x768 hyper-v
+  #sed -i '/GRUB_CMDLINE_LINUX_DEFAULT=/s/quiet/quiet video=hyperv_fb:1366x768/g' /etc/default/grub # resolucao 1366x768 hyper-v
   sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:lvmcrypt root=\/dev\/mapper\/lvmcrypt-root"/g' /etc/default/grub
   sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt lvm2 filesystems/' /etc/mkinitcpio.conf
   mkinitcpio -p linux
