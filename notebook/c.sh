@@ -1,5 +1,9 @@
 usuario(){
   useradd -m ricardokeso 
+}
+
+senhaUsuario(){
+  echo "* * * USUARIO * * *"
   passwd ricardokeso
 }
 
@@ -107,3 +111,4 @@ gerenciamentoenergia
 notebook
 audio
 chown -R ricardokeso:ricardokeso /home/ricardokeso
+senhaUsuario
