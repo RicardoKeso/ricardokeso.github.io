@@ -89,7 +89,7 @@ gerenciamentoenergia(){
 }
 
 notebook(){
-  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog ### instala os pacotes para a wireless
+  pacman -S wireless_tools wpa_supplicant wpa_actiond dialog --noconfirm ### instala os pacotes para a wireless
   pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
   curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
 }
