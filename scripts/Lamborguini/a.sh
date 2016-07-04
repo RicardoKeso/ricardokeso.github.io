@@ -45,7 +45,7 @@ GeracaoFSTAB(){
 }
 
 ScriptPosInstalacao(){
-	curl www.ricardokeso.com/notebook/b.sh > /mnt/root/b.sh
+	curl www.ricardokeso.com/scripts/Lamborguini/b.sh > /mnt/root/b.sh
 	chmod +x /mnt/root/b.sh
 	echo "/root/b.sh" > /mnt/root/.bashrc
 	arch-chroot /mnt /bin/bash
