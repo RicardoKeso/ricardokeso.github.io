@@ -6,7 +6,7 @@ particionarSDA(){
 	parted -s /dev/sda mkpart extended 8449MiB 4676MiB	#	232G    extended	/dev/sda3 (verificar tamanho final)
 	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	2G	linux-swap	/dev/sda5 (verificar tamanho final)
 	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	230G    Dados3	  	/dev/sda6 (verificar tamanho final)
-	parted -s /dev/sda mkpart primary ext4 4676MiB 100%	#	750G    Dados1  	/dev/sda4 (verificar tamanho final)
+	parted -s /dev/sda mkpart primary ext4 4676MiB 100%	#	750G    Dados1  	/dev/sda4 (verificar tamanho inicial)
 }
 
 particionarSDB(){
@@ -62,7 +62,6 @@ montarParticoes(){
 	mkdir /mnt/boot           	# para criar /boot e raiz
 	mount /dev/sda1 /mnt/boot 	# monta a partição de boot
 	mount /dev/sda2 /mnt      	# monta a partição raiz
-	mkdir /mnt/home			# para criar /home
 	mount /dev/sda5 /mnt/home 	# monta a partição home
 	cd /mnt
 	mkdir mnt           	
