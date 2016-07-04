@@ -1,12 +1,12 @@
 particionarSDA(){
 	echo "SDA"
 	parted -s /dev/sda -- mklabel msdos
-	parted -s /dev/sda mkpart primary ext4 0% 257MiB	      #	256M    /boot		    /dev/sda1
-	parted -s /dev/sda mkpart primary ext4 257MiB 3137MiB	  #	8G      /		        /dev/sda2
-	parted -s /dev/sda mkpart extended 3137MiB 4676MiB	    #	232G    extended	  /dev/sda3
-	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	2G	    linux-swap	/dev/sda5
-	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	230G    Dados3	  	/dev/sda6
-	parted -s /dev/sda mkpart primary ext4 4676MiB 100%	    #	750G    Dados1  		/dev/sda4
+	parted -s /dev/sda mkpart primary ext4 0% 257MiB	#	256M    /boot		/dev/sda1 (fixo)
+	parted -s /dev/sda mkpart primary ext4 257MiB 8449MiB	#	8G      /	        /dev/sda2 (fixo)
+	parted -s /dev/sda mkpart extended 8449MiB 4676MiB	#	232G    extended	/dev/sda3 (verificar tamanho final)
+	parted -s /dev/sda mkpart logical ext4 3395MiB 3651MiB	#	2G	linux-swap	/dev/sda5 (verificar tamanho final)
+	parted -s /dev/sda mkpart logical ext4 3652MiB 4676MiB	#	230G    Dados3	  	/dev/sda6 (verificar tamanho final)
+	parted -s /dev/sda mkpart primary ext4 4676MiB 100%	#	750G    Dados1  	/dev/sda4 (verificar tamanho final)
 }
 
 particionarSDB(){
