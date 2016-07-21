@@ -20,7 +20,6 @@ criar as configuracoes das redes wifi com o script
 APLICATIVOS
 apache
 php-apache
-transmission
 transmission-cli
 vsftpd
 mlocate
