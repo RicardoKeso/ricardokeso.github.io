@@ -27,6 +27,7 @@ python3
 rsync
 vim
 nethogs
+pacman -S ssmtp mutt --noconfirm # enviar email com anexo
 
 ---------------------------------------------------
 Pendrive montado em /mnt/storage/
