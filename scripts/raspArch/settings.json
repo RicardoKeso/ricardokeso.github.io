@@ -43,7 +43,7 @@
     "rpc-authentication-required": true,
     "rpc-bind-address": "0.0.0.0",
     "rpc-enabled": true,
-    "rpc-password": "{d7add8c3bbc42b722e55a7c67153781146bfcf13q6grqGaN",
+    "rpc-password": "123456",
     "rpc-port": 9091,
     "rpc-url": "/transmission/",
     "rpc-username": "ricardokeso",
