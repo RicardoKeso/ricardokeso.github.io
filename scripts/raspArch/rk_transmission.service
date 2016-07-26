@@ -2,7 +2,8 @@
 Description=Iniciar o transmission com parametros
 
 [Service]
-ExecStart=/usr/bin/transmission-daemon -c /mnt/storage/torrents
+User=transmission
+ExecStart=/usr/bin/transmission-daemon -c /mnt/storage/torrents -f --log-error
 
 [Install]
 WantedBy=multi-user.target
