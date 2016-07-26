@@ -28,6 +28,10 @@ rsync
 vim
 nethogs
 pacman -S ssmtp mutt --noconfirm # enviar email com anexo
+---------------------------------------------------
+
+chown ricardokeso:ricardokeso /home/ricardokeso/.config/transmission-daemon/settings.json
+chmod 600 /home/ricardokeso/.config/transmission-daemon/settings.json
 
 ---------------------------------------------------
 Pendrive montado em /mnt/storage/
@@ -44,3 +48,15 @@ echo "FallbackNTP=pool.ntp.br" > /etc/systemd/timesyncd.conf
 FTP - usuário: kingbradley, senha: S1gmUndF!
 Os arquivos .torrent que sao adicionados por ftp na raiz nso usuario kingbradley, sao movidos para a pasta /mnt/storage/torrents
 O transmission le os arquivos e adiciona automaticamente os torrents, ao termino, os move para a pasta finish
+
+
+
+
+
+servicos:
+  rk_transmission (inicia o servico transmission com parametros)
+  rk_conexoesWifi (inicia o servico de scanner e conexao wifi)
+  rk_emails (inicia o servico de envio de emails (internet e torrents concluidos))
+
+
+
