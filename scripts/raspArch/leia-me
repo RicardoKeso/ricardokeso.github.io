@@ -20,7 +20,7 @@ criar as configuracoes das redes wifi com o script
 APLICATIVOS
 apache
 php-apache
-transmission-cli
+pacman -S transmission-cli transmission-remote-cli --noconfirm
 vsftpd
 mlocate
 python3
