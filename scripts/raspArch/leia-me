@@ -58,5 +58,24 @@ servicos:
   rk_conexoesWifi (inicia o servico de scanner e conexao wifi)
   rk_emails (inicia o servico de envio de emails (internet e torrents concluidos))
 
+--- FUNCIONOU ASSIM ---
+#useradd transmission -m
+#systemctl start transmission
+#systemctl stop transmission
 
+***em "/usr/lib/systemd/system/transmission.service" substituir:
+  ExecStart=/usr/bin/transmission-daemon -f --log-error
+por:
+  ExecStart=/usr/bin/transmission-daemon -c /mnt/storage/torrents -f --log-error
 
+***editar o arquivo "/home/transmission/.config/transmission-daemon/settings.json"
+  de: "download-dir": "/home/transmission/Downloads", - para: "download-dir": "/mnt/storage/finish",
+  de: "incomplete-dir": "/home/transmission/Downloads", - para: "incomplete-dir": "/mnt/storage/incomplete",
+  de: "incomplete-dir-enabled": false, - para: "incomplete-dir-enabled": true,
+  de: "rpc-whitelist": "127.0.0.1", - para: "rpc-whitelist": "*",
+  de: "speed-limit-up": 100, - para: "speed-limit-up": 50,
+  de: "speed-limit-up-enabled": false, - para: "speed-limit-up-enabled": true,
+  adicionar ao final da lista uma virgula e:
+    "watch-dir": "/mnt/storage/torrents",
+    "watch-dir-enable": true,
+    "watch-dir-enabled": true
