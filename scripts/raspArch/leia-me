@@ -60,6 +60,7 @@ servicos:
 
 --- FUNCIONOU ASSIM ---
 #useradd transmission -m
+#gpasswd -a transmission transmission
 #systemctl start transmission
 #systemctl stop transmission
 
@@ -79,3 +80,4 @@ por:
     "watch-dir": "/mnt/storage/torrents",
     "watch-dir-enable": true,
     "watch-dir-enabled": true
+
