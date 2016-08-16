@@ -1,0 +1,8 @@
+color_prompt=yes
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+PS1='\[\033[0;33m\]\h\[\033[00m\] \$ '
+
+clear
