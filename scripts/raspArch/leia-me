@@ -81,3 +81,6 @@ por:
     "watch-dir-enable": true,
     "watch-dir-enabled": true
 
+Disable ipv6
+/boot/cmdline.txt
+ipv6.disable=1
