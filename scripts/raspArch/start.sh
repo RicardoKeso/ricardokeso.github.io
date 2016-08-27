@@ -26,7 +26,7 @@ pacman -S dsniff --noconfirm
 mkdir /mnt/storage
 mount /dev/sda1 /mnt/storage/
 
-cp /mnt/storage/config/wifi/wlan0* /etc/netctl/
+cp /mnt/storage/bkp/etcNetctl/* /etc/netctl/
 cp /mnt/storage/bkp/usrBin/* /usr/bin/
 cp /mnt/storage/bkp/usrLibSystemdSystem/* /usr/lib/systemd/system/
 systemctl enable rkm_autoStart
@@ -42,9 +42,9 @@ echo "clear" >> /root/.bash_profile
 cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 
-cp /mnt/storage/bkp/httpd.conf /etc/httpd/conf/
+cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
 mv /srv/http /srv/http_orig
-ln -s /mnt/storage/bkp/srvHttp /srv/http
+ln -s /mnt/storage/bkp/srvHttp/ /srv/http
 
 
 # hostnamectl set-hostname NOME
