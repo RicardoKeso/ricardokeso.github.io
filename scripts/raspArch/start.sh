@@ -43,6 +43,8 @@ cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 
 cp /mnt/storage/bkp/httpd.conf /etc/httpd/conf/
+mv /srv/http /srv/http_orig
+ln -s /mnt/storage/bkp/srvHttp /srv/http
 
 
 # hostnamectl set-hostname NOME
