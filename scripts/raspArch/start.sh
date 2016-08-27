@@ -42,7 +42,7 @@ echo "clear" >> /root/.bash_profile
 cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 
-
+cp /mnt/storage/bkp/httpd.conf /etc/httpd/conf/
 
 
 # hostnamectl set-hostname NOME
