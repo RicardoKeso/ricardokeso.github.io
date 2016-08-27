@@ -2,7 +2,7 @@
 
 passwd
 
-usedadd ricardokeso -m
+useradd ricardokeso -m
 passwd ricardokeso
 
 rm /etc/localtime
