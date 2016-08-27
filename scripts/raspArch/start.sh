@@ -36,7 +36,7 @@ echo "" >> /root/.bash_profile
 echo "alias ls='ls --color=auto'" >> /root/.bash_profile
 echo "alias grep='grep --color=auto'" >> /root/.bash_profile
 echo "" >> /root/.bash_profile
-echo "PS1='\[\033[0;33m\]\h\[\033[00m\] \$ '" >> /root/.bash_profile
+echo "PS1='\[\033[0;33m\]\h\[\033[00m\] \\$ '" >> /root/.bash_profile
 echo "" >> /root/.bash_profile
 echo "clear" >> /root/.bash_profile
 cp /root/.bash_profile /home/ricardokeso/
@@ -45,6 +45,6 @@ chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 
 
 
-
-
+# hostnamectl set-hostname NOME
+# pacman -Sc --noconfirm
 # shutdown -r now
