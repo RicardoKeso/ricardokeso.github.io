@@ -84,3 +84,9 @@ por:
 Disable ipv6
 /boot/cmdline.txt
 ipv6.disable=1
+
+
+*** instalar GPIO ARCH
+pacman -S python2-pip # verificar se existe a versao para python3
+pip2.7 install RPi.GPIO
+pacman -Sy file base-devel abs git # verificar se existe a necessidade de algum desses pacotes
