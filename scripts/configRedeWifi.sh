@@ -8,11 +8,11 @@ read -p "PASS: " pass
 read -p "INTERFACE: " interface
 read -p "HIDDEN: " hidden
 
-configRede="/etc/netctl/wlan0-$essid"
-#configRede=`pwd`"/wlan0-$essid"
+configRede="/etc/netctl/$interface-$essid"
+#configRede=`pwd`"/$interface-$essid"
 
 echo "Description='Gerado atraves do script (criarRede.sh) - $pass'" > $configRede
-echo "Interface=wlan0" >> $configRede
+echo "Interface=$interface" >> $configRede
 echo "Connection=wireless" >> $configRede
 echo "Security=wpa" >> $configRede
 echo "IP=dhcp" >> $configRede
