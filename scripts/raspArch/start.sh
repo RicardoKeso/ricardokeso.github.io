@@ -24,6 +24,7 @@ pacman -S mlocate --noconfirm
 pacman -S rsync --noconfirm
 pacman -S ssmtp mutt --noconfirm
 pacman -S dsniff --noconfirm
+pacman -S wpa_actiond --noconfirm
 
 mkdir /mnt/storage
 mount /dev/sda1 /mnt/storage/
