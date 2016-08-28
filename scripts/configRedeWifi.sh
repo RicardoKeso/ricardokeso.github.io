@@ -19,7 +19,7 @@ echo "IP=dhcp" >> $configRede
 echo "ESSID=$essid" >> $configRede
 echo "`wpa_passphrase $essid $pass | sed 's/\tpsk/Key/g' | grep Key=`" >> $configRede
 echo "Hidden=$hidden" >> $configRede
-echo "#Priority=1" >> $configRede
+echo "Priority=3" >> $configRede
 
 chmod +r "${configRede}"
 
