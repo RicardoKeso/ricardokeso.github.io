@@ -5,6 +5,8 @@ passwd
 useradd ricardokeso -m
 passwd ricardokeso
 
+sed -i 's/$/ ipv6.disable=1/' /boot/cmdline.txt # desabilita ipv6 para rkm_conexoesWifi funcionar
+
 rm /etc/localtime
 ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime
 mv /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf_orig
@@ -41,7 +43,6 @@ echo "" >> /root/.bash_profile
 echo "clear" >> /root/.bash_profile
 cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
-
 
 ******DESFAZER AS PROXIMAS 3 LINHAS
 cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
