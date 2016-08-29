@@ -87,9 +87,10 @@ ipv6.disable=1
 
 
 *** instalar GPIO ARCH
+pacman -S base-devel
 pacman -S python2-pip # verificar se existe a versao para python3
 pip2.7 install RPi.GPIO
-pacman -Sy file base-devel abs git # verificar se existe a necessidade de algum desses pacotes
 
 gatilho led vermelho
-echo default-on | sudo tee /sys/class/leds/led1/trigger
+echo input | sudo tee /sys/class/leds/led1/trigger
+echo "0" > /sys/class/leds/led1/brightness
