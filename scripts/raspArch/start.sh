@@ -26,6 +26,10 @@ pacman -S ssmtp mutt --noconfirm
 pacman -S dsniff --noconfirm
 pacman -S wpa_actiond --noconfirm
 
+pacman -S python2-pip --noconfirm
+pacmna -S base-devel --noconfirm
+pip2.7 install RPi.GPIO
+
 mkdir /mnt/storage
 mount /dev/sda1 /mnt/storage/
 
