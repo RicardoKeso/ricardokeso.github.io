@@ -1,5 +1,6 @@
 #!/bin/python2.7
 
+import threading
 import RPi.GPIO as GPIO
 import time
 import sys
@@ -40,4 +41,8 @@ def Cores (cor):
 		AjusteCores (0, 0, 0, 0.0001)
 	
 Cores (cor)
+
+t = threading.Thread(target=Cores, args=(cor,))
+#threads.append(t)
+t.start()
 	
