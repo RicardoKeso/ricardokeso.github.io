@@ -7,41 +7,106 @@ import sys
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-cor = sys.argv[1]
+
 pinLedRed = 15
 pinLedGreen = 13
 pinLedBlue = 11
 
+cor = sys.argv[1]
+intensidade = sys.argv[2]
+
 GPIO.setup(pinLedRed, GPIO.OUT)
 GPIO.setup(pinLedGreen, GPIO.OUT)
 GPIO.setup(pinLedBlue, GPIO.OUT)
-
-def AjusteCores (red, green, blue, intensidade):
-	tempo = 0.0001
+# - - - - -
+def White (intensidade):
 	while (1):
-		GPIO.output(pinLedRed, red)
+		GPIO.output(pinLedRed, 1)
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, 0)
-		time.sleep(tempo)
+		time.sleep(0.0001)
 		
 		GPIO.output(pinLedRed, 0)
-		GPIO.output(pinLedGreen, green)
+		GPIO.output(pinLedGreen, 1)
 		GPIO.output(pinLedBlue, 0)
-		time.sleep(tempo)
+		time.sleep(0.0001)
 		
 		GPIO.output(pinLedRed, 0)
 		GPIO.output(pinLedGreen, 0)
-		GPIO.output(pinLedBlue, blue)
-		time.sleep(tempo)
+		GPIO.output(pinLedBlue, 1)
+		time.sleep(0.0001)
 		
 		GPIO.output(pinLedRed, 0)
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, 0)
 		time.sleep(intensidade)
+# - - - - -
+def Yellow (intensidade):
+	while (1):
+		GPIO.output(pinLedRed, 1)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 1)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(intensidade)
+# - - - - -
+def Magenta (intensidade):
+	while (1):
+		GPIO.output(pinLedRed, 1)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 1)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(intensidade)
+# - - - - -
+def Cyan (intensidade):
+	while (1):		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 1)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 1)
+		time.sleep(0.0001)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(intensidade)
+# - - - - -
+def AjusteCores (red, green, blue, intensidade):
+	while (1):
+		GPIO.output(pinLedRed, red)
+		GPIO.output(pinLedGreen, green)
+		GPIO.output(pinLedBlue, blue)
+		time.sleep(0.0001)
 
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(intensidade)
+# - - - - -
 def Cores (cor):
 	if (cor == "white"):
-		AjusteCores (1, 1, 1, 0)
+		White(0)
 	elif (cor == "red"):
 		AjusteCores (1, 0, 0, 0)
 	elif (cor == "green"):
@@ -49,16 +114,14 @@ def Cores (cor):
 	elif (cor == "blue"):
 		AjusteCores (0, 0, 1, 0)
 	elif (cor == "yellow"):
-		AjusteCores (1, 1, 0, 0)
+		Yellow(0)
 	elif (cor == "magenta"):
-		AjusteCores (1, 0, 1, 0)
+		Magenta(0)
 	elif (cor == "cyan"):
-		AjusteCores (0, 1, 1, 0)
+		Cyan(0)
 	else:
 		AjusteCores (0, 0, 0, 0)
-	
-Cores (cor)
-
+# - - - - -
 t = threading.Thread(target=Cores, args=(cor,))
 #threads.append(t)
 t.start()
