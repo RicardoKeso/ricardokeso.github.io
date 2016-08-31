@@ -24,7 +24,7 @@ def White (intensidade):
 		GPIO.output(pinLedRed, 1)
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, 0)
-		time.sleep(0.0003)
+		time.sleep(0.0004)
 		
 		GPIO.output(pinLedRed, 0)
 		GPIO.output(pinLedGreen, 1)
@@ -46,7 +46,7 @@ def Yellow (intensidade):
 		GPIO.output(pinLedRed, 1)
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, 0)
-		time.sleep(0.0003)
+		time.sleep(0.0004)
 		
 		GPIO.output(pinLedRed, 0)
 		GPIO.output(pinLedGreen, 1)
