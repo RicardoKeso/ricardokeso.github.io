@@ -13,7 +13,7 @@ pinLedGreen = 13
 pinLedBlue = 11
 
 cor = sys.argv[1]
-intensidade = sys.argv[2]
+#intensidade = sys.argv[2]
 
 GPIO.setup(pinLedRed, GPIO.OUT)
 GPIO.setup(pinLedGreen, GPIO.OUT)
