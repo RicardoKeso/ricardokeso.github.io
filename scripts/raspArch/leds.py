@@ -17,7 +17,7 @@ GPIO.setup(pinLedGreen, GPIO.OUT)
 GPIO.setup(pinLedBlue, GPIO.OUT)
 
 def AjusteCores (red, green, blue, tempo):
-	while (1);
+	while (1):
 		GPIO.output(pinLedRed, red)
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, 0)
