@@ -122,7 +122,10 @@ def Cores (cor):
 	else:
 		AjusteCores (0, 0, 0, 0)
 # - - - - -
-t = threading.Thread(target=Cores, args=(cor,))
+
+#t = threading.Thread(target=Cores, args=(cor,))
 #threads.append(t)
-t.start()
+#t.start()
+
+Cores(cor)
 	
