@@ -16,7 +16,8 @@ GPIO.setup(pinLedRed, GPIO.OUT)
 GPIO.setup(pinLedGreen, GPIO.OUT)
 GPIO.setup(pinLedBlue, GPIO.OUT)
 
-def AjusteCores (red, green, blue, tempo):
+def AjusteCores (red, green, blue, intensidade):
+	tempo = 0.0001
 	while (1):
 		GPIO.output(pinLedRed, red)
 		GPIO.output(pinLedGreen, 0)
@@ -32,24 +33,29 @@ def AjusteCores (red, green, blue, tempo):
 		GPIO.output(pinLedGreen, 0)
 		GPIO.output(pinLedBlue, blue)
 		time.sleep(tempo)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(intensidade)
 
 def Cores (cor):
 	if (cor == "white"):
-		AjusteCores (1, 1, 1, 0.0001)
+		AjusteCores (1, 1, 1, 0)
 	elif (cor == "red"):
-		AjusteCores (1, 0, 0, 0.0001)
+		AjusteCores (1, 0, 0, 0)
 	elif (cor == "green"):
-		AjusteCores (0, 1, 0, 0.0001)
+		AjusteCores (0, 1, 0, 0)
 	elif (cor == "blue"):
-		AjusteCores (0, 0, 1, 0.0001)
+		AjusteCores (0, 0, 1, 0)
 	elif (cor == "yellow"):
-		AjusteCores (1, 1, 0, 0.0001)
+		AjusteCores (1, 1, 0, 0)
 	elif (cor == "magenta"):
-		AjusteCores (1, 0, 1, 0.0001)
+		AjusteCores (1, 0, 1, 0)
 	elif (cor == "cyan"):
-		AjusteCores (0, 1, 1, 0.0001)
+		AjusteCores (0, 1, 1, 0)
 	else:
-		AjusteCores (0, 0, 0, 0.0001)
+		AjusteCores (0, 0, 0, 0)
 	
 Cores (cor)
 
