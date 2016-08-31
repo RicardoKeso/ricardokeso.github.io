@@ -17,10 +17,21 @@ GPIO.setup(pinLedGreen, GPIO.OUT)
 GPIO.setup(pinLedBlue, GPIO.OUT)
 
 def AjusteCores (red, green, blue, tempo):
-	GPIO.output(pinLedRed, red)
-	GPIO.output(pinLedGreen, green)
-	GPIO.output(pinLedBlue, blue)
-	time.sleep(tempo)
+	while (1);
+		GPIO.output(pinLedRed, red)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(tempo)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, green)
+		GPIO.output(pinLedBlue, 0)
+		time.sleep(tempo)
+		
+		GPIO.output(pinLedRed, 0)
+		GPIO.output(pinLedGreen, 0)
+		GPIO.output(pinLedBlue, blue)
+		time.sleep(tempo)
 
 def Cores (cor):
 	if (cor == "white"):
