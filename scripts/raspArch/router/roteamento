@@ -1,0 +1,4 @@
+echo 1 > /proc/sys/net/ipv4/ip_forward
+iptables -A FORWARD -i interface_AP -o interface_Internet -j ACCEPT
+iptables -t nat -A POSTROUTING -o interface_Internet -j MASQUERADE
+iptables -A FORWARD -i interface_Internet -o interface_AP -m state --state RELATED,ESTABLISHED -j ACCEPT
