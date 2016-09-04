@@ -1,19 +1,7 @@
-/bin/ 755 root:root
-rk_autoStart
-rk_conexoesWifi
-rk_monitorTorrent
-
-/etc/systemd/system/ 744 root:root
-rk_autoStart.service
-rk_conexoesWifi.service
-rk_monitorTorrent.service
-rk_transmission.service
-
-cd /etc/systemd/system/
-systemctl enable rk_autoStart.service
-systemctl enable rk_transmission.service
-systemctl start rk_autoStart.service
-systemctl start rk_transmission.service
+quando "error: failed retrieving file 'core.db' from mirror.archlinuxarm.org"
+pode ser um possivel ataque DDOS, solucao provisoria:
+echo "188.226.153.67  mirror.archlinuxarm.org" >> /etc/hosts
+lembrar de retirar depois
 
 criar as configuracoes das redes wifi com o script
 
