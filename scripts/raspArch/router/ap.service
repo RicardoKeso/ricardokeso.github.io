@@ -14,8 +14,10 @@ ExecStart=/sbin/ip addr add 192.168.2.1/24 broadcast 192.168.2.255 dev wlan0
 ExecStart=/usr/bin/hostapd -B /etc/hostapd/hostapd.conf
 ExecStart=/usr/sbin/dhcpd -4 -q wlan0
 
-ExecStop=/sbin/ip addr flush dev wlan0
-ExecStop=/sbin/ip link set dev wlan0 down
+## esses 2 comandos abaixo, tambem desabilitas a interface do netctl-auto@
+## deixei desabilitada por enquanto
+#ExecStop=/sbin/ip addr flush dev wlan0
+#ExecStop=/sbin/ip link set dev wlan0 down
 
 [Install]
 WantedBy=multi-user.target
