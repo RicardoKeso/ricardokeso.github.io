@@ -1,0 +1,4 @@
+# cat /etc/ssmtp/header.txt
+From: "valkyria.ricardokeso.com" <notificacao@ricardokeso.com>
+To: ricardo.keso@gmail.com
+Subject: (On-line)
