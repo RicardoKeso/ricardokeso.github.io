@@ -84,5 +84,6 @@ echo input | sudo tee /sys/class/leds/led1/trigger
 echo "0" > /sys/class/leds/led1/brightness
 
 ## o carregamento do wifi_usb edup eh mais rapido, entao ele assume o wlan0, para renomeá-lo criei e populei o seguinte arquivo
+## o roteador esta configurado nesta interface (wlan_1)
 cat /etc/udev/rules.d/10-network.rules
 SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="e8:4e:06:2d:da:24", NAME="wlan_1"
