@@ -52,6 +52,9 @@ ferramentasAnalise(){
   pacman -S aircrack-ng --noconfirm ###
   pacman -S nikto --noconfirm ###
   pacman -S gnu-netcat --noconfirm ###
+  pacman -S dnsutils --noconfirm ###
+  pacman -S ettercap --noconfirm ###
+  pacman -S dnsniff --noconfirm ###
 }
 
 linguagemRegiao(){
