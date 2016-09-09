@@ -1,4 +1,4 @@
-# cat /etc/systemd/system/ap.service 
+# cat /etc/systemd/system/rkm_ap.service 
 [Unit]
 Description=AP
 Wants=network.target
