@@ -1,0 +1,27 @@
+# cat /usr/bin/rkm_email 
+#!/bin/bash
+
+header=/etc/ssmtp/header.txt
+
+makeHeader(){
+	echo "From: \"`hostname`.ricardokeso.com\" <notificacao@ricardokeso.com>" > $header
+	echo "To: $1" >> $header
+	echo "Subject: On-line ($2)" >> $header
+}
+
+if [ "$#" == "2" ]; then
+	makeHeader $1 $2
+	mutt -H $header < /dev/null
+elif [ "$#" == "3" ]; then
+	makeHeader $1 $2
+	mutt -H $header -a $3 < /dev/null
+
+else
+	echo ""
+	echo "Erro no parametros. Apenas email+titulo ou email+titulo+anexo"
+	echo "ex.: $0 \"abc@abc.com\" \"titulo\""
+	echo "ex.: $0 \"abc@abc.com\" \"titulo\" \"caminhoDoAnexo\""
+	echo ""
+fi
+
+echo "" > $header
