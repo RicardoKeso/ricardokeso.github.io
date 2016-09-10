@@ -1,7 +1,7 @@
 # cat mail 
 #!/bin/bash
 
-header=./header.txt
+header=/etc/ssmtp/header.txt
 
 makeHeader(){
 	echo "From: \"`hostname`.ricardokeso.com\" <notificacao@ricardokeso.com>" > $header
