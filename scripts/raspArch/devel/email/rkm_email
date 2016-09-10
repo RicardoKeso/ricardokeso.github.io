@@ -4,6 +4,7 @@
 header=/etc/ssmtp/header.txt
 
 makeHeader(){
+	chmod 766 $header # so funciona para root
 	echo "From: \"`hostname`.ricardokeso.com\" <notificacao@ricardokeso.com>" > $header
 	echo "To: $1" >> $header
 	echo "Subject: On-line ($2)" >> $header
