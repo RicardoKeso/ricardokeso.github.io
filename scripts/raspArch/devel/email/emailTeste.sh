@@ -1,23 +1,25 @@
-# cat email
+# cat mail 
 #!/bin/bash
 
-# se nao houver parametros o e-mail sera enviado
-# para o endereco do Header.txt
+header=./header.txt
 
-destino=$1
-cabecalho="/etc/ssmtp/header.txt"
-anexo=""
-assunto="$3"
+makeHeader(){
+	echo "From: \"`hostname`.ricardokeso.com\" <notificacao@ricardokeso.com>" > $header
+	echo "To: $1" >> $header
+	echo "Subject: On-line (`curl -s checkip.amazonaws.com`)" >> $header
+}
 
-if [ "$#" == "0" ]; then
-        mutt -H $cabecalho < /dev/null
-elif [ "$#" == "3" ]; then
-        anexo="-a $3"
-        assunto="-s $2"
-        mutt $destino "$assunto" -H $cabecalho $anexo < /dev/null
+if [ "$#" == "1" ]; then
+	makeHeader $1
+	mutt -H $header < /dev/null
+elif [ "$#" == "2" ]; then
+	makeHeader $1
+	mutt -H $header -a $2 < /dev/null
 else
-        echo ""
-        echo "email 123@123.com \"assunto\" \"caminhoAnexo\" "
-        echo "email"
-        echo ""
+	echo ""
+	echo "Erro no parametros. Apenas email ou email e anexo"
+	echo "ex.: [$0 \"abc@abc.com\"] ou [$0 \"abc@abc.com\" \"caminhoDoAnexo\"]"
+	echo ""
 fi
+
+echo "" > $header
