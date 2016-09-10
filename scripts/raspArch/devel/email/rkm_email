@@ -15,7 +15,9 @@ if [ "$#" == "2" ]; then
 elif [ "$#" == "3" ]; then
 	makeHeader $1 $2
 	mutt -H $header -a $3 < /dev/null
-
+elif [ "$#" == "0" ]; then
+	makeHeader "ricardokeso@ricardokeso.com" "teste"
+	mutt -H $header < /dev/null
 else
 	echo ""
 	echo "Erro no parametros. Apenas email+titulo ou email+titulo+anexo"
