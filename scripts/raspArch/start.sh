@@ -52,14 +52,14 @@ cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
 
 ******DESFAZER AS PROXIMAS 3 LINHAS
-cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
-mv /srv/http /srv/http_orig
-ln -s /mnt/storage/bkp/srvHttp/ /srv/http
+#cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
+#mv /srv/http /srv/http_orig
+#ln -s /mnt/storage/bkp/srvHttp/ /srv/http
 
 # Habilitar audio
 echo "dtparam=audio=on" >> /boot/config.txt
 echo "snd-bcm2835" > /etc/modules-load.d/raspberrypi.conf
 
-# hostnamectl set-hostname NOME
+hostnamectl set-hostname pekka
 # pacman -Sc --noconfirm
 # shutdown -r now
