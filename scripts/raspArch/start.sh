@@ -30,7 +30,7 @@ pacman -S samba --noconfirm
 
 # Habilitar python GPIO
 pacman -S python2-pip --noconfirm
-pacmna -S base-devel --noconfirm
+pacman -S base-devel --noconfirm
 pip2.7 install RPi.GPIO
 
 mkdir /mnt/storage
