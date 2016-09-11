@@ -27,6 +27,7 @@ pacman -S dsniff --noconfirm
 pacman -S wpa_actiond --noconfirm
 pacman -s mpg123 --noconfirm
 pacman -S samba --noconfirm
+pacman -S hostapd --noconfirm
 
 # Habilitar python GPIO
 pacman -S python2-pip --noconfirm
@@ -39,7 +40,7 @@ mount /dev/sda1 /mnt/storage/
 cp /mnt/storage/bkp/etcNetctl/* /etc/netctl/
 cp /mnt/storage/bkp/usrBin/* /usr/bin/
 cp /mnt/storage/bkp/usrLibSystemdSystem/* /usr/lib/systemd/system/
-cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
+cp /mnt/storage/bkp/etcHttpdConf/httpd.conf /etc/httpd/conf/
 cp /mnt/storage/bkp/etcSsmtp/ssmtp.conf /etc/ssmtp/
 cp /mnt/storage/bkp/etc/dhcpd.conf /etc/
 cp /mnt/storage/bkp/etcHostapd/hostapd.conf /etc/hostapd/
