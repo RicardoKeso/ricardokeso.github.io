@@ -26,6 +26,7 @@ pacman -S ssmtp mutt --noconfirm
 pacman -S dsniff --noconfirm
 pacman -S wpa_actiond --noconfirm
 pacman -s mpg123 --noconfirm
+pacman -S samba --noconfirm
 
 # Habilitar python GPIO
 pacman -S python2-pip --noconfirm
@@ -38,6 +39,14 @@ mount /dev/sda1 /mnt/storage/
 cp /mnt/storage/bkp/etcNetctl/* /etc/netctl/
 cp /mnt/storage/bkp/usrBin/* /usr/bin/
 cp /mnt/storage/bkp/usrLibSystemdSystem/* /usr/lib/systemd/system/
+cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
+cp /mnt/storage/bkp/etcSsmtp/ssmtp.conf /etc/ssmtp/
+cp /mnt/storage/bkp/etc/dhcpd.conf /etc/
+cp /mnt/storage/bkp/etcHostapd/hostapd.conf /etc/hostapd/
+cp /mnt/storage/bkp/etcUdevRules.d/* /etc/udev/rules.d/
+
+cp -R /mnt/storage/bkp/srvHttp/* /srv/http/
+
 systemctl enable rkm_autoStart
 
 echo "color_prompt=yes" > /root/.bash_profile
@@ -50,11 +59,6 @@ echo "" >> /root/.bash_profile
 echo "clear" >> /root/.bash_profile
 cp /root/.bash_profile /home/ricardokeso/
 chown ricardokeso:ricardokeso /home/ricardokeso/.bash_profile
-
-******DESFAZER AS PROXIMAS 3 LINHAS
-#cp /mnt/storage/bkp/etcHttpConf/httpd.conf /etc/httpd/conf/
-#mv /srv/http /srv/http_orig
-#ln -s /mnt/storage/bkp/srvHttp/ /srv/http
 
 # Habilitar audio
 echo "dtparam=audio=on" >> /boot/config.txt
