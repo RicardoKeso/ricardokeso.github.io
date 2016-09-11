@@ -28,6 +28,7 @@ pacman -S wpa_actiond --noconfirm
 pacman -s mpg123 --noconfirm
 pacman -S samba --noconfirm
 pacman -S hostapd --noconfirm
+pacman -S dhcp --noconfirm
 
 # Habilitar python GPIO
 pacman -S python2-pip --noconfirm
