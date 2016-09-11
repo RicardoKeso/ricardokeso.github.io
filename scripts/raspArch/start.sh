@@ -65,5 +65,5 @@ echo "dtparam=audio=on" >> /boot/config.txt
 echo "snd-bcm2835" > /etc/modules-load.d/raspberrypi.conf
 
 hostnamectl set-hostname pekka
-# pacman -Sc --noconfirm
+pacman -Sc --noconfirm
 # shutdown -r now
