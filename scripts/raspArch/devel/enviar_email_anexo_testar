@@ -22,6 +22,8 @@ ConfigSSMTP(){
 	echo "hostname=$nomeMaquina" >> /etc/ssmtp/ssmtp.conf
 	echo " " >> /etc/ssmtp/ssmtp.conf
 	echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
+	
+	echo "root=notificacao@ricardokeso.com" >> /etc/ssmtp/revaliases
 }
 
 EmailHeader(){
