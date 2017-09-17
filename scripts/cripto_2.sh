@@ -44,7 +44,7 @@ essenciais(){
   pacman -S openvpn --noconfirm ### instala openVPN
   pacman -S cronie --noconfirm ### instala cron
   pacman -S rsync --noconfirm
-  #pacman -S zsh --noconfirm ### outro shell
+  pacman -S zsh --noconfirm ### outro shell
   pacman -S git --noconfirm ### github
   echo ""
 }
