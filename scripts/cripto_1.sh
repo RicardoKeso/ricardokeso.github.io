@@ -31,21 +31,21 @@ formatarParticoes(){
 	echo ""
 	dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
 	mkfs.ext4 /dev/sda1
-	mkfs.ext4 /dev/mapper/lvmcrypt-root
-	mkfs.ext4 /dev/mapper/lvmcrypt-home
-	mkswap /dev/mapper/lvmcrypt-swap
+	mkfs.ext4 /dev/mapper/lvm-root
+	mkfs.ext4 /dev/mapper/lvm-home
+	mkswap /dev/mapper/lvm-swap
 }
 
 montarParticoes(){
 	echo ""
 	echo " * * * * * MONTANDO PARTICOES * * * * * "
 	echo ""
-	mount /dev/mapper/lvmcrypt-root /mnt
+	mount /dev/mapper/lvm-root /mnt
 	mkdir /mnt/home
-	mount /dev/mapper/lvmcrypt-home /mnt/home
+	mount /dev/mapper/lvm-home /mnt/home
 	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-	swapon /dev/mapper/lvmcrypt-swap
+	swapon /dev/mapper/lvm-swap
 }
 
 instalarSistema(){
