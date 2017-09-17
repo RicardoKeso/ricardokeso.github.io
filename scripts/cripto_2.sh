@@ -217,7 +217,7 @@ final(){
 ##*******************************************************************************
 
 padrao(){
-  hostnamectl set-hostname ArchLinux_VM
+  hostnamectl set-hostname Kawasaki
   senhaRoot
   grub
   yaourt
