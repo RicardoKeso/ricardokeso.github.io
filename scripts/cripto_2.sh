@@ -249,12 +249,12 @@ multimidia(){
 
 padrao
 install
-## ferramentasExtras
-## rede
-## multilib
+#ferramentasExtras
+rede
+multilib
 personalizacao
-# multimidia
-## notebook
+multimidia
+notebook
 
 
 # para personalizar o ZSH executar no usuario ricardokeso o seguinte comando (disponivel em: http://ohmyz.sh/)
