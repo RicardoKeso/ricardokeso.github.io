@@ -11,7 +11,7 @@ grub(){
   pacman -S grub --noconfirm ### instala o pacote do grub (confirmar se o grub não vem no grupo base)
   echo "GRUB_ENABLE_CRYPTODISK=y" >> /etc/default/grub
   sed -i '/GRUB_TIMEOUT=/s/5/1/g' /etc/default/grub ### reduz o tempo da seleção de 5 para 2 segundos
-  sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda3:sda3"/g' /etc/default/grub ###
+  sed -i '/GRUB_CMDLINE_LINUX=/s/""/"cryptdevice=\/dev\/sda2:sda2"/g' /etc/default/grub ###
   #sed -i '/GRUB_GFXMODE=/s/auto/1024x768/g' /etc/default/grub ### mudar resolucao do terminal(utilizado em VM sem GUI)
   sed -i ':a;$!{N;ba;};s/\(.*\)filesystems/\1encrypt filesystems/' /etc/mkinitcpio.conf
   grub-install /dev/sda ### instala o grub no disco
@@ -40,7 +40,8 @@ essenciais(){
   pacman -S bash-completion --noconfirm ### instala ferramenta para autocomplemento (tab) no terminal
   pacman -S mlocate --noconfirm ### instala as funções de pesquisa (updatedb, locate)
   pacman -S gnupg --noconfirm ### instala gnupg (GPG)
-  pacman -S openssh --noconfirm ### instala openSSH
+  pacman -S openssh --noconfirm ### instala openSSH  
+  pacman -S openvpn --noconfirm ### instala openVPN
   pacman -S cronie --noconfirm ### instala cron
   pacman -S rsync --noconfirm
   #pacman -S zsh --noconfirm ### outro shell
@@ -190,6 +191,7 @@ sincronizarAtualizar(){
   echo ""
   echo " * * * * * SINCRONIZANDO E ATUALIZANDO PACOTES * * * * * "
   pacman -Syyu ### sincronizacao e atualizacao total
+  pacman -Sc --noconfirm ### limpa cache
   echo ""
 }
 
@@ -240,19 +242,19 @@ multimidia(){
   essenciaisGUI
   ferramentasAnaliseGUI
   servidorX
-  i3
-  personalizar_i3_terminator
+#  i3
+#  personalizar_i3_terminator
   audio
 }
 
 padrao
 install
-# ferramentasExtras
-# rede
-# multilib
+## ferramentasExtras
+## rede
+## multilib
 personalizacao
-multimidia
-# notebook
+# multimidia
+## notebook
 
 
 # para personalizar o ZSH executar no usuario ricardokeso o seguinte comando (disponivel em: http://ohmyz.sh/)
