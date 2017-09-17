@@ -22,7 +22,7 @@ criarVolumes(){
 	vgcreate lvm /dev/mapper/lvmcrypt # grupo de volumes
 	lvcreate -L 2G lvm -n swap
 	lvcreate -L 16G lvm -n root
-	lvcreate -L 100%FREE lvm -n home
+	lvcreate -l 100%FREE lvm -n home # o "L" realmente eh minusculo
 }
 
 formatarParticoes(){
