@@ -18,11 +18,11 @@ criptografar(){
 }
 
 criarVolumes(){
-	pvcreate /dev/mapper/sda2 # volume fisico
-	vgcreate lvmcrypt /dev/mapper/sda2 # grupo de volumes
-	lvcreate -L 2G lvmcrypt -n swap
-	lvcreate -L 16G lvmcrypt -n root
-	lvcreate -L 100%FREE lvmcrypt -n home
+	pvcreate /dev/mapper/lvmcrypt # volume fisico
+	vgcreate lvm /dev/mapper/lvmcrypt # grupo de volumes
+	lvcreate -L 2G lvm -n swap
+	lvcreate -L 16G lvm -n root
+	lvcreate -L 100%FREE lvm -n home
 }
 
 formatarParticoes(){
