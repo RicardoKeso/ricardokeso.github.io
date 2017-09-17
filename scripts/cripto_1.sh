@@ -18,8 +18,8 @@ criptografar(){
 }
 
 criarVolumes(){
-	pvcreate /dev/mapper/cryptolvm # volume fisico
-	vgcreate lvmcrypt /dev/mapper/cryptolvm # grupo de volumes
+	pvcreate /dev/mapper/sda2 # volume fisico
+	vgcreate lvmcrypt /dev/mapper/sda2 # grupo de volumes
 	lvcreate -L 2G lvmcrypt -n swap
 	lvcreate -L 16G lvmcrypt -n root
 	lvcreate -L 100%FREE lvmcrypt -n home
