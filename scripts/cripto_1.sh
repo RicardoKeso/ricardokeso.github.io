@@ -2,42 +2,58 @@ clear
 echo " * * * * * CRIANDO PARTICOES * * * * * "
 echo ""
 parted -s /dev/sda mklabel msdos
-parted -s /dev/sda mkpart primary linux-swap 1MiB 257MiB ### cria uma particao de SWAP de 256MB
-parted -s /dev/sda mkpart primary ext4 257MiB 321MiB ### cria particao de BOOT 64MB
-parted -s /dev/sda mkpart primary ext4 321MiB 4417MB ### cria particao raiz com 4GB
-parted -s /dev/sda set 2 boot on ### 
-mkswap /dev/sda1  ### formata a partição de swap
-swapon /dev/sda1  ### ativa a partição de swap
+parted -s /dev/sda mkpart primary ext4 1MiB 257MiB
+parted -s /dev/sda mkpart primary ext4 257MiB 100%
+parted -s /dev/sda set 1 boot on
+
 echo ""
-echo " * * * * * CRIPTOGRAFANDO PARTICAO RAIZ * * * * * "
+echo " * * * * * CRIPTOGRAFANDO * * * * * "
 echo ""
 modprobe dm-crypt ### carrega o módulo de criptografia
-cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda3 ### criptografa a partição selecionada
-cryptsetup luksOpen /dev/sda3 sda3 ### abre a partição criptografada e atribui um mapeamento
+cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
+cryptsetup luksOpen /dev/sda2 lvmcrypt
+
+pvcreate /dev/mapper/cryptolvm # volume fisico
+vgcreate lvmcrypt /dev/mapper/cryptolvm # grupo de volumes
+
+lvcreate -L 2G lvmcrypt -n swap
+lvcreate -L 16G lvmcrypt -n root
+lvcreate -L 100%FREE lvmcrypt -n home
+
 echo ""
 echo " * * * * * FORMATANDO PARTICOES * * * * * "
 echo ""
-mkfs.ext4 /dev/sda2 ### cria o sistema de arquivos na partição de boot que não pode ser criptografada
-mkfs.ext4 /dev/mapper/sda3 ### cria o sistema de arquivos através do mapeamento para a partição criptografada
+dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/mapper/lvmcrypt-root
+mkfs.ext4 /dev/mapper/lvmcrypt-home
+mkswap /dev/mapper/lvmcrypt-swap
+
 echo ""
 echo " * * * * * MONTANDO PARTICOES * * * * * "
 echo ""
-mkdir /mnt/boot ### para criar a raiz (/mnt) e o boot (/mnt/boot)
-mount /dev/sda2 /mnt/boot ### monta a partição de boot
-mount /dev/mapper/sda3 /mnt ### monta a partição raiz
+mount /dev/mapper/lvmcrypt-root /mnt
+mkdir /mnt/home
+mount /dev/mapper/lvmcrypt-home /mnt/home
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+swapon /dev/mapper/lvmcrypt-swap
+
 echo ""
 echo " * * * * * INSTALANDO SISTEMA * * * * * "
 echo ""
 pacstrap /mnt base base-devel grub-bios ### instala o sistema na partição raiz (cronie = agendador de tarefas)
+
 echo ""
 echo " * * * * * GERANDO A TABELA DE ARQUIVOS DE SISTEMAS * * * * * "
 echo ""
 genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
+
 echo ""
 echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 echo ""
-curl www.ricardokeso.com/scripts/2_config.sh > /mnt/root/2_config.sh
-chmod +x /mnt/root/2_config.sh
+curl www.ricardokeso.com/scripts/cripo_2.sh > /mnt/root/cripo_2.sh
+chmod +x /mnt/root/cripo_2.sh
 echo ""
-echo " * * * * * DIGITE: /root/2_config.sh* * * * * "
+echo " * * * * * DIGITE: /root/cripo_2.sh* * * * * "
 arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
