@@ -48,7 +48,7 @@ montarParticoes(){
 	swapon /dev/mapper/lvmcrypt-swap
 }
 
-instalarSistema(){}
+instalarSistema(){
 	echo ""
 	echo " * * * * * INSTALANDO SISTEMA * * * * * "
 	echo ""
