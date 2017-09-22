@@ -14,15 +14,15 @@ criptografar(){
 	echo ""
 	modprobe dm-crypt ### carrega o módulo de criptografia
 	cryptsetup -c aes-xts-plain64 -y -s 512 luksFormat /dev/sda2
-	cryptsetup luksOpen /dev/sda2 lvmcrypt
+	cryptsetup luksOpen /dev/sda2 sda2
 }
 
 criarVolumes(){
-	pvcreate /dev/mapper/lvmcrypt # volume fisico
-	vgcreate lvm /dev/mapper/lvmcrypt # grupo de volumes
-	lvcreate -L 2G lvm -n swap
-	lvcreate -L 16G lvm -n root
-	lvcreate -l 100%FREE lvm -n home # o "L" realmente eh minusculo
+	pvcreate /dev/mapper/sda2 # volume fisico
+	vgcreate lvmcrypt /dev/mapper/sda2 # grupo de volumes
+	lvcreate -L 2G lvmcrypt -n swap
+	lvcreate -L 16G lvmcrypt -n root
+	lvcreate -l 100%FREE lvmcrypt -n home # o "L" realmente eh minusculo
 }
 
 formatarParticoes(){
@@ -31,21 +31,21 @@ formatarParticoes(){
 	echo ""
 	#dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
 	mkfs.ext4 /dev/sda1
-	mkfs.ext4 /dev/mapper/lvm-root
-	mkfs.ext4 /dev/mapper/lvm-home
-	mkswap /dev/mapper/lvm-swap
+	mkfs.ext4 /dev/mapper/lvmcrypt-root
+	mkfs.ext4 /dev/mapper/lvmcrypt-home
+	mkswap /dev/mapper/lvmcrypt-swap
 }
 
 montarParticoes(){
 	echo ""
 	echo " * * * * * MONTANDO PARTICOES * * * * * "
 	echo ""
-	mount /dev/mapper/lvm-root /mnt
+	mount /dev/mapper/lvmcrypt-root /mnt
 	mkdir /mnt/home
-	mount /dev/mapper/lvm-home /mnt/home
+	mount /dev/mapper/lvmcrypt-home /mnt/home
 	mkdir /mnt/boot
 	mount /dev/sda1 /mnt/boot
-	swapon /dev/mapper/lvm-swap
+	swapon /dev/mapper/lvmcrypt-swap
 }
 
 instalarSistema(){
