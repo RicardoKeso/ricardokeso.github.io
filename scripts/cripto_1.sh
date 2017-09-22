@@ -29,7 +29,7 @@ formatarParticoes(){
 	echo ""
 	echo " * * * * * FORMATANDO PARTICOES * * * * * "
 	echo ""
-	dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
+	#dd if=/dev/zero of=/dev/sda1 bs=1M status=progress
 	mkfs.ext4 /dev/sda1
 	mkfs.ext4 /dev/mapper/lvm-root
 	mkfs.ext4 /dev/mapper/lvm-home
@@ -66,10 +66,10 @@ posInstalacao(){
 	echo ""
 	echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 	echo ""
-	curl www.ricardokeso.com/scripts/cripo_2.sh > /mnt/root/cripo_2.sh
-	chmod +x /mnt/root/cripo_2.sh
+	curl www.ricardokeso.com/scripts/cripto_2.sh > /mnt/root/cripto_2.sh
+	chmod +x /mnt/root/cripto_2.sh
 	echo ""
-	echo " * * * * * DIGITE: /root/cripo_2.sh* * * * * "
+	echo " * * * * * DIGITE: /root/cripto_2.sh* * * * * "
 	arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
 }
 
