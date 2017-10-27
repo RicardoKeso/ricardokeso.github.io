@@ -1,16 +1,25 @@
+# Para trocar o interpretador
+# encontre o caminho do novo e aplique: por exemplo
+# which zsh
+# chsh -s caminhoDoInterpretador
+
 autoload -Uz compinit promptinit
 compinit
 promptinit
 
 prompt off
 
+alias ls='ls --color=always'
+alias ping='echo "< < < Utilize MTR > > > "'
+
 #--------------------------------------------------
+super='%(!.%#.$)'
 acesso=`print -P '%y' | cut -c -3`
 
-if [ "$acesso" = "tty" ]; then
-        PROMPT='%F{red}$saida%#%f '
-elif [ "$acesso" = "pts" ]; then
-        PROMPT='%F{red}%m%f %B%#%b '
+if [ "$acesso" = "tty" ]; then # CONSOLE
+        PROMPT='%F{red} '$super' %f'
+elif [ "$acesso" = "pts" ]; then # REMOTO
+        PROMPT='%F{red}%m%f%B '$super' %b'
 fi
 #--------------------------------------------------
 
