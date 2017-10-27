@@ -17,7 +17,7 @@ super='%(!.%#.$)'
 acesso=`print -P '%y' | cut -c -3`
 
 if [ "$acesso" = "tty" ]; then # CONSOLE
-        PROMPT='%F{red} '$super' %f'
+        PROMPT='%F{red}>%f%B'$super' %b'
 elif [ "$acesso" = "pts" ]; then # REMOTO
         PROMPT='%F{red}%m%f%B '$super' %b'
 fi
