@@ -18,7 +18,8 @@ echo "super='%(!.%#.$)'" >> ~/.zshAux
 echo "" >> ~/.zshAux
 echo "if [ ! \"\$branch\" = \"\" ]; then" >> ~/.zshAux
 echo "    comp=\"on\"" >> ~/.zshAux
-echo "    [[ \`print -P %n\` = \"ricardokeso\" ]] && user=\"RicardoKeso\"" >> ~/.zshAux
+echo "    user=\`print -P %n\`" >> ~/.zshAux
+echo "    [[ \"\$user\" = \"ricardokeso\" ]] && user=\"RicardoKeso\"" >> ~/.zshAux
 echo "    PROMPT='%B%F{green}'\$user'%f at %F{yellow}%m%f in %F{blue}%~%f '\$comp' %F{cyan}'\$branch'%f" >> ~/.zshAux
 echo "'\$super'%b '" >> ~/.zshAux
 echo "else" >> ~/.zshAux
