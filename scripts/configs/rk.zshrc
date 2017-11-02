@@ -50,6 +50,6 @@ alias ping='print -P "%F{red}< < < Utilize MTR > > > "%f'
 alias less='/usr/share/vim/vim74/macros/less.sh'
 
 function cd () { 
-	chdir `pwd`/$@
+	chdir $@
 	. ~/.zshAux;
 }
