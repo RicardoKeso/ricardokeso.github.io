@@ -9,11 +9,10 @@ promptinit
 
 prompt off
 
+chdir ~
+
 echo "#!/bin/bash" > ~/.zshAux
 echo "" >> ~/.zshAux
-#echo "path=\`pwd\`" >> ~/.zshAux
-#echo "cd \$path/\$1" >> ~/.zshAux
-#echo "" >> ~/.zshAux
 echo "branch=\`git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3\`" >> ~/.zshAux
 echo "super='%(!.%#.$)'" >> ~/.zshAux
 echo "" >> ~/.zshAux
@@ -31,7 +30,6 @@ echo "        #PROMPT='%F{yellow}%m%f%B '\$super' %b'" >> ~/.zshAux
 echo "    #fi" >> ~/.zshAux
 echo "fi" >> ~/.zshAux
 echo "" >> ~/.zshAux
-#echo "echo \$path/\$1" >> ~/.zshAux
 
 #-----------------------------------------------------------------------------------------------------
 
