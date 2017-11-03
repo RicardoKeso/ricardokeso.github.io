@@ -9,6 +9,12 @@ promptinit
 
 prompt off
 
+export HISTFILE=~/.zsh_history
+export HISTFILESIZE=2500
+export HISTSIZE=250
+export HISTCONTROL=ignoredups
+export HISTCONTROL=erasedups
+
 chdir ~
 
 echo "
