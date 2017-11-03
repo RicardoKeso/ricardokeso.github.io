@@ -9,11 +9,13 @@ promptinit
 
 prompt off
 
-export HISTFILE=~/.zsh_history
-export HISTFILESIZE=2500
-export HISTSIZE=250
+export HISTFILE=$HOME/.zsh_history
+export HISTFILESIZE=5000
+export HISTSIZE=5000
 export HISTCONTROL=ignoredups
 export HISTCONTROL=erasedups
+export HISTTIMEFORMAT="%F %T "
+export SAVEHIST=5000
 
 chdir ~
 
