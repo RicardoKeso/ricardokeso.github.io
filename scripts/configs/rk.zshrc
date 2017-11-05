@@ -9,6 +9,8 @@ promptinit
 
 prompt off
 
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
+
 export HISTFILE=$HOME/.zsh_history
 export HISTFILESIZE=5000
 export HISTSIZE=5000
