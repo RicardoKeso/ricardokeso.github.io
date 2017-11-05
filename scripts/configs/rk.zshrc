@@ -26,16 +26,21 @@ echo "
 
 branch=\`git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3\`
 super='%(!.%#.$)'
+diretorio=\`pwd | grep -i \"repositorios_online\"\`
 
-if [ ! \"\$branch\" = \"\" ]; then
-    comp=\"on\"
+if [ ! \"\$diretorio\" = \"\" ]; then
+    if [ ! \"\$branch\" = \"\" ]; then
+        comp=\"on\"
+    else
+        comp=\"(!)\"
+    fi
     user=\`print -P %n\`
     sttus=\`git status 2> /dev/null | tail -n 1 | grep clean\`
 
     [[ \"\$user\" = \"ricardokeso\" ]] && user=\"RicardoKeso\"
     [[ \"\$sttus\" = \"\" ]] && sttus=\"%f%F{red}✗%f\" || sttus=\"%f%F{magenta}✓%f\"    
 
-    PROMPT='%B%F{green}'\$user'%f at %F{yellow}%m%f in %F{blue}%~%f '\$comp' %F{cyan}'\$branch' '\$sttus'%f
+    PROMPT='%B%F{green}'\$user'%f at %F{yellow}%m%f in %F{blue}%.%f '\$comp' %F{cyan}'\$branch' '\$sttus'%f
 '\$super'%b '
 else
     #acesso=\`print -P '%y' | cut -c -3\`
