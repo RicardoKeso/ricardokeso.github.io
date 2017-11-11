@@ -22,12 +22,14 @@ export SAVEHIST=5000
 chdir ~
 
 echo "
-#!/bin/bash
+#!/usr/bin/zsh
 
-branch=\`git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3\`
+#branch=\`git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3\`
 super='%(!.%#.$)'
-diretorio=\`print -P '%~' | grep -i \"github\\\|bitbucket\" | cut -d'/' -f4-15\`
+#diretorio=\`print -P '%~' | grep -i \"github\\\|bitbucket\" | cut -d'/' -f4-15\`
+line=\`print -P %l\`
 
+:<<'SCML'
 if [ ! \"\$diretorio\" = \"\" ]; then
     if [ ! \"\$branch\" = \"\" ]; then
         comp=\"on\"
@@ -43,13 +45,14 @@ if [ ! \"\$diretorio\" = \"\" ]; then
     PROMPT='%B%F{green}'\$user'%f at %F{yellow}%m%f in %F{blue}~/.../'\$diretorio'%f '\$comp' %F{cyan}'\$branch' '\$sttus'%f
 '\$super'%b '
 else
-    #acesso=\`print -P '%y' | cut -c -3\`
-    #if [ \"\$acesso\" = \"tty\" ]; then
-        PROMPT='%F{yellow}>%f%B '\$super'%b '
-    #elif [ \"\$acesso\" = \"pts\" ]; then
-        #PROMPT='%F{yellow}%m%f%B '\$super' %b'
-    #fi
-fi
+SCML
+    acesso=\`who -aH | grep \$line | grep \"(:0\"\`
+    if [ \"\$acesso\" = \"\" ]; then
+        PROMPT='%F{yellow}%m%f%B '\$super'%b '
+    else
+        PROMPT='%F{yellow}>%f%B '\$super' %b'
+    fi
+#fi
 " > ~/.zshAux
 
 #-----------------------------------------------------------------------------------------------------
