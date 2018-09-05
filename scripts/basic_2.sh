@@ -3,7 +3,6 @@ senhaRoot(){
   echo ""
   passwd # define a senha do root
   echo ""
-  clear
 }
 
 grub(){
@@ -15,7 +14,6 @@ grub(){
   grub-install /dev/sda ### instala o grub no disco
   mkinitcpio -p linux ### compila a imagem do sistema
   grub-mkconfig --output /boot/grub/grub.cfg ### configura o grub
-  clear
 }
 
 essenciais(){
@@ -25,7 +23,6 @@ essenciais(){
   pacman -S wget curl bash-completion openssh --noconfirm
   #pacman -S wpa_supplicant # instalado apenas para testes de configuracoes de wifi
   echo ""
-  clear
 }
 
 linguagemRegiao(){
@@ -37,7 +34,6 @@ linguagemRegiao(){
   echo LANG=pt_BR.UTF-8 > /etc/locale.conf ### define a codificação de localização do sistema
   export LANG=pt_BR.UTF-8
   hwclock --systohc --utc ### sincroniza o horário
-  clear
 }
 
 rede(){
@@ -51,7 +47,6 @@ sincronizarAtualizar(){
   echo " * * * * * SINCRONIZANDO E ATUALIZANDO PACOTES * * * * * "
   pacman -Syyu ### sincronizacao e atualizacao total
   echo ""
-  clear
 }
 
 final(){
