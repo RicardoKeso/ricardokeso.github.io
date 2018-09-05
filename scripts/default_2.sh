@@ -27,7 +27,7 @@ essenciais(){
   # (os pacotes tar bzip2 gzip pertencem ao grupo "base", sudo pertence ao grupo base-devel)
   echo " * * * * * INSTALANDO PACOTES * * * * * "
   echo ""
-  pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
+  #pacman -S yaourt --noconfirm ### instala o yaourt (repositório não oficial de usuários do Arch)
   pacman -S vim --noconfirm ### instala o sudo
   pacman -S unzip unrar p7zip --noconfirm ### instala ferramentas de compactação
   pacman -S ntfs-3g dosfstools --noconfirm ### instala as ferramentas necessárias para acesso e formatação de sistemas de arquivos microsoft
@@ -111,7 +111,7 @@ padrao(){
   hostnamectl set-hostname Proxy_Arch
   senhaRoot
   grub
-  yaourt
+  #yaourt
   ## multilib # apenas para sistemas 64bits
   essenciais
   #ferramentasAnalise
