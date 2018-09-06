@@ -15,6 +15,8 @@ echo "NTP=pool.ntp.br" > /etc/systemd/timesyncd.conf
 echo "FallbackNTP=pool.ntp.br" > /etc/systemd/timesyncd.conf
 
 pacman -Syyu --noconfirm
+
+pacman -S wpa_actiond --noconfirm 
 pacman -S python3 --noconfirm
 pacman -S apache php-apache --noconfirm
 pacman -S transmission-cli --noconfirm
