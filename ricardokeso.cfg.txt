@@ -14,10 +14,10 @@ echo "#                                      #";
 
 // * * * * * * * * * * GERAIS * * * * * * * * * * 
 name "PhiLdeR";
-net_graph "1";					// apresenta dados de fps, ping ...
-net_graphheight "9999";			// posiciona 9999 pxs acima, saindo do campo de visao
+net_graph "1";			// apresenta dados de fps, ping ...
+net_graphheight "9999";		// posiciona 9999 pxs acima, saindo do campo de visao
 cl_showfps "0";
-cl_autowepswitch "0"; 			// nao troca para a arma pega no chao
+cl_autowepswitch "0"; 		// nao troca para a arma pega no chao
 cl_color "0";
 cl_compass_enabled "1";
 cl_teammate_colors_show "1"; 	// mostra cores nos avatares
@@ -29,16 +29,16 @@ mat_queue_mode "2";
 r_eyegloss "0";
 
 // * * * * * * * * * * VIEWMODEL * * * * * * * * * * 
-cl_righthand "0";					// mao esquesda e direita 0/1
-viewmodel_fov "65"; 				// def-60 area visivel da arma (def 62.5, teste 65)
-viewmodel_offset_x "0.1"; 			// def- posicao lateral da arma em relacao ao boneco
-viewmodel_offset_y "-2"; 			// def- profundidade da arma em relacao ao boneco
-viewmodel_offset_z "-1.4";			// def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
-//viewmodel_presetpos "3";			// 1/2/3
-cl_bob_lower_amt "5"; 				// movimento frontal da arma ao andar 5/30
-cl_bobamt_lat "0.1";				// movimento lateral da arma ao andar 0.1/2
-cl_bobamt_vert "0.1"; 				// movimento vertical da arma ao andar 0.1/2
-cl_bobcycle "0.98";					// valor padrao (nao pode ser alterado)
+cl_righthand "0";			// mao esquesda e direita 0/1
+viewmodel_fov "65"; 			// def-60 area visivel da arma (def 62.5, teste 65)
+viewmodel_offset_x "0.1"; 		// def- posicao lateral da arma em relacao ao boneco
+viewmodel_offset_y "-2"; 		// def- profundidade da arma em relacao ao boneco
+viewmodel_offset_z "-1.4";		// def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
+//viewmodel_presetpos "3";		// 1/2/3
+cl_bob_lower_amt "5"; 			// movimento frontal da arma ao andar 5/30
+cl_bobamt_lat "0.1";			// movimento lateral da arma ao andar 0.1/2
+cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
+cl_bobcycle "0.98";			// valor padrao (nao pode ser alterado)
 cl_viewmodel_shift_left_amt "0.5";	// 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";	// 0.5 - 2
 
@@ -118,27 +118,27 @@ mat_queue_mode "2";
 
 // * * * * * * * * * * SOUND * * * * * * * * * * 
 // AUDIO
-volume "1"; 								// master
+volume "1"; 					// master
 snd_musicvolume_multiplier_inoverlay "0"; 	// steam overlay
-voice_caster_scale "0"; 					// gotv
-snd_surround_speakers "-1"; 				// output 
-sound_device_override ""; 					// device
-snd_hwcompat "0"; 							// 3d audio (0 on, 1 off)
-voice_enable "1"							// enable voice
-voice_scale "0.1"; 							// voip volume
-voice_positional "0"						// voice positional
-snd_mute_losefocus "1"						// play audio background (0 on, 1 off)
+voice_caster_scale "0"; 			// gotv
+snd_surround_speakers "-1"; 			// output 
+sound_device_override ""; 			// device
+snd_hwcompat "0"; 				// 3d audio (0 on, 1 off)
+voice_enable "1"				// enable voice
+voice_scale "0.1"; 				// voip volume
+voice_positional "0"				// voice positional
+snd_mute_losefocus "1"				// play audio background (0 on, 1 off)
 
 // * * * * * * * * * * MUSIC * * * * * * * * * *
-snd_menumusic_volume "0.0";					// main
-snd_roundend_volume "0";					// round start
-snd_roundstart_volume "0";					// round end
-snd_mapobjective_volume "0";				// bomb/hostage volume
-snd_tensecondwarning_volume "0";			// ten sec warn
-snd_deathcamera_volume "0";					// death cam
-snd_mvp_volume "0";							// mvp vol
+snd_menumusic_volume "0.0";			// main
+snd_roundend_volume "0";			// round start
+snd_roundstart_volume "0";			// round end
+snd_mapobjective_volume "0";			// bomb/hostage volume
+snd_tensecondwarning_volume "0";		// ten sec warn
+snd_deathcamera_volume "0";			// death cam
+snd_mvp_volume "0";				// mvp vol
 snd_mute_mvp_music_live_players "1";		// mute mvp
-snd_dzmusic_volume "0";						// danger zone music
+snd_dzmusic_volume "0";				// danger zone music
 
 snd_duckerattacktime "0.5";
 snd_duckerreleasetime "2.5";
@@ -155,21 +155,21 @@ snd_music_volume_onetime_reset_2 "1";
 snd_pitchquality "1"
 
 // * * * * * * * * * * RADAR/HUD * * * * * * * * * * 
-cl_showloadout "0";					// mostrar armas no hud 0/1
+cl_showloadout "0";			// mostrar armas no hud 0/1
 cl_radar_always_centered "1";		// posicao no centro do radar 0/1
 cl_radar_icon_scale_min "0.4"; 		// tamanho dos bonecos no radar
-cl_radar_rotate "1"; 				// rotacao do radar ativa 0/1
-cl_radar_scale "0.5"; 				// tamanho mapa 0.25/1
+cl_radar_rotate "1"; 			// rotacao do radar ativa 0/1
+cl_radar_scale "0.5"; 			// tamanho mapa 0.25/1
 cl_radar_square_with_scoreboard "1";
-cl_hud_radar_scale "1.3"; 			// tamanho radar 0.8/1.3
-cl_hud_color "8"; 					// cor do HUD 0-original, 1-branco, 2-azulClaro, 3-azulEscuro, 4-roxo, 5-vermelho, 6-laranja, 7-amarelo, 8-verdeClaro, 9-azulTurquesa e 10-rosa
+cl_hud_radar_scale "1.3"; 		// tamanho radar 0.8/1.3
+cl_hud_color "8"; 			// cor do HUD 0-original, 1-branco, 2-azulClaro, 3-azulEscuro, 4-roxo, 5-vermelho, 6-laranja, 7-amarelo, 8-verdeClaro, 9-azulTurquesa e 10-rosa
 cl_hud_playercount_showcount "1"; 	// avatar ou qtd pessoas 0/1
 cl_hud_playercount_pos "1"; 		// posicao placar 0/1
 cl_hud_background_alpha "0"; 		// transparencia HUD 0.0/1.0
-hud_scaling "1"; 					// tamanho do HUD 0.5/0.95
-safezoneX "0.85"					// centralizar HUD e RADAR horizontal
-safezoneY "0.85"					// centralizar HUD e RADAR vertical
-+cl_show_team_equipment 			// equipamentos do time
+hud_scaling "1"; 			// tamanho do HUD 0.5/0.95
+safezoneX "0.85"			// centralizar HUD e RADAR horizontal
+safezoneY "0.85"			// centralizar HUD e RADAR vertical
++cl_show_team_equipment 		// equipamentos do time
 
 // * * * * * * * * * * MIRA * * * * * * * * * * 
 cl_crosshair_dynamic_maxdist_splitratio "0.35";
@@ -185,18 +185,17 @@ cl_crosshaircolor_g "255.000000";
 cl_crosshaircolor_r "255.000000";
 cl_crosshairgap_useweaponvalue "0";
 		
-cl_crosshaircolor "1.000000";					// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-cl_crosshair_drawoutline "0"; 					// contorno da mira 0/1
-cl_crosshairdot "0"; 							// ponto central 0/1
-cl_crosshairthickness "2.5"; 					// espessura da linha
-cl_crosshairstyle "5"; 							// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica
-cl_crosshairgap "-4";  							// espaco entre as linhas
-cl_crosshairsize "1"; 							// tamanho da linha
-cl_crosshair_t "1";								// mira em T 0/1
+cl_crosshaircolor "1.000000";		// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
+cl_crosshairdot "0"; 			// ponto central 0/1
+cl_crosshairthickness "2.5"; 		// espessura da linha
+cl_crosshairstyle "5"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica
+cl_crosshairgap "-4";  			// espaco entre as linhas
+cl_crosshairsize "1"; 			// tamanho da linha
+cl_crosshair_t "1";			// mira em T 0/1
 
 // * * * * * * * * * * OPCOES DE ARRANQUE * * * * * * * * * *
 // (-novid -nojoy -threads 16 -noaafonts -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg)
-// sem erros (-novid -threads 16 +mat_queue_mode 2 -high +exec ricardokeso.cfg)
 
 // * * * * * * * * * * GRAVAR NO config.cfg * * * * * * * * * * 
 //host_writeconfig;
