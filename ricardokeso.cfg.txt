@@ -27,7 +27,6 @@ cl_color "0";
 cl_compass_enabled "1";
 cl_teammate_colors_show "1"; 	// mostra cores nos avatares - 0 Sem cor, 1 cores diferentes, 2 Cores e letras
 voice_enable "1";		// habilitar voz no audio e microfone
-r_drawparticles "0";		// fumaca da arma 0/1
 mat_queue_mode "2";		// multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
 r_eyegloss "0";
 fps_max "0";			// zero desabilita 0 limite de fps
@@ -128,13 +127,12 @@ volume "1"; 					// master
 snd_musicvolume_multiplier_inoverlay "0"; 	// steam overlay
 voice_caster_scale "0"; 			// gotv
 snd_surround_speakers "-1"; 			// output 
-sound_device_override ""; 			// device
 snd_hwcompat "0"; 				// 3d audio (0 on, 1 off)
 voice_enable "1";				// enable voice
 voice_loopback "0";				// escutar o proprio mic 0/1
 voice_scale "0.1"; 				// voip volume
 voice_positional "0";				// voice positional
-snd_mute_losefocus "1";				// play audio background (0 on, 1 off)
+//snd_mute_losefocus "1";				// play audio background (0 on, 1 off) devem ter desabilitado essa funcao
 //_______________________________________________________________________________________________________________________
 
 // * * * MUSIC * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
