@@ -25,12 +25,12 @@ cl_autowepswitch "0"; 		// nao troca para a arma pega no chao
 cl_color "0";
 cl_compass_enabled "1";
 cl_teammate_colors_show "1"; 	// mostra cores nos avatares
-voice_enable "1";
-
-cl_updaterate 128;
-cl_cmdrate 128;
-mat_queue_mode "2";
+voice_enable "1";			// habilitar voz no audio e microfone
+r_drawparticles "0";			// fumaca da arma 0/1
+mat_queue_mode "2";			// multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
 r_eyegloss "0";
+fps_max "0";			// zero desabilita 0 limite de fps
+cl_forcepreload "1";
 //_______________________________________________________________________________________________________________________
 
 // * * * VIEWMODEL * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -109,24 +109,14 @@ bind "TAB" "+scorenet";
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
+sensitivity "1.75";	//sense no jogo
+// windows: level 7
+// mouse: 1000 DPI 1000Hz
 m_rawinput "1";
 m_mouseaccel2 "0";
 m_mouseaccel1 "0";
 m_customaccel "0";
 m_mousespeed "0";
-
-sensitivity "1.75";	//sense no jogo
-// windows: level 7
-// mouse: 1000 DPI 1000Hz
-//_______________________________________________________________________________________________________________________
-
-// * * * RATES FPS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-cl_forcepreload "1";
-cl_cmdrate "128";
-rate "128000";
-fps_max "0";
-mat_queue_mode "2";
 //_______________________________________________________________________________________________________________________
 
 // * * * SOUND * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
