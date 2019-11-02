@@ -1,18 +1,22 @@
 // C:\Program Files (x86)\Steam\userdata\312978850\730\local\cfg
 
+
+// #  #  INICIO DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+//_______________________________________________________________________________________________________________________
+
 clear;
 
 echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191006.2111         #";
+echo "#       Versao:  20191102.0931         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
+//_______________________________________________________________________________________________________________________
 
-// #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  INICIO DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
+// * * * GERAIS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-// * * * * * * * * * * GERAIS * * * * * * * * * * 
 name "PhiLdeR";
 net_graph "1";			// apresenta dados de fps, ping ...
 net_graphheight "9999";		// posiciona 9999 pxs acima, saindo do campo de visao
@@ -27,8 +31,10 @@ cl_updaterate 128;
 cl_cmdrate 128;
 mat_queue_mode "2";
 r_eyegloss "0";
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * VIEWMODEL * * * * * * * * * * 
+// * * * VIEWMODEL * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 cl_righthand "0";			// mao esquesda e direita 0/1
 viewmodel_fov "65"; 			// def-60 area visivel da arma (def 62.5, teste 65)
 viewmodel_offset_x "0.1"; 		// def- posicao lateral da arma em relacao ao boneco
@@ -41,8 +47,10 @@ cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
 cl_bobcycle "0.98";			// valor padrao (nao pode ser alterado)
 cl_viewmodel_shift_left_amt "0.5";	// 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";	// 0.5 - 2
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * BINDs * * * * * * * * * *
+// * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 bind "END" "mp_restartgame 1"
 
 bind "F1" "buy vest; buy m4a1; buy ak47;";
@@ -66,7 +74,7 @@ bind "1" "flash_1";
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
 
-// bind "1" "use weapon_flashbang;";
+bind "1" "use weapon_flashbang;";
 bind "2" "use weapon_smokegrenade;";
 bind "3" "use weapon_hegrenade";
 bind "4" "use weapon_molotov; use weapon_incgrenade";
@@ -97,8 +105,10 @@ bind "TAB" "+scorenet";
 //alias +walkvol "volume 1; +speed;";
 //alias -walkvol "volume 0.5; -speed;";
 //bind shift +walkvol
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * MOUSE * * * * * * * * * * 
+// * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 m_rawinput "1";
 m_mouseaccel2 "0";
 m_mouseaccel1 "0";
@@ -108,15 +118,19 @@ m_mousespeed "0";
 sensitivity "1.75";	//sense no jogo
 // windows: level 7
 // mouse: 1000 DPI 1000Hz
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * RATES FPS * * * * * * * * * * 
+// * * * RATES FPS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 cl_forcepreload "1";
 cl_cmdrate "128";
 rate "128000";
 fps_max "0";
 mat_queue_mode "2";
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * SOUND * * * * * * * * * * 
+// * * * SOUND * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 volume "1"; 					// master
 snd_musicvolume_multiplier_inoverlay "0"; 	// steam overlay
 voice_caster_scale "0"; 			// gotv
@@ -127,8 +141,10 @@ voice_enable "1"				// enable voice
 voice_scale "0.1"; 				// voip volume
 voice_positional "0"				// voice positional
 snd_mute_losefocus "1"				// play audio background (0 on, 1 off)
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * MUSIC * * * * * * * * * *
+// * * * MUSIC * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 snd_menumusic_volume "0.0";			// main
 snd_roundend_volume "0";			// round start
 snd_roundstart_volume "0";			// round end
@@ -152,8 +168,10 @@ snd_mixahead "0.05";
 snd_music_selection "2";
 snd_music_volume_onetime_reset_2 "1";
 snd_pitchquality "1"
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * RADAR/HUD * * * * * * * * * * 
+// * * * RADAR/HUD * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 cl_showloadout "0";			// mostrar armas no hud 0/1
 cl_radar_always_centered "1";		// posicao no centro do radar 0/1
 cl_radar_icon_scale_min "0.4"; 		// tamanho dos bonecos no radar
@@ -169,8 +187,10 @@ hud_scaling "1"; 			// tamanho do HUD 0.5/0.95
 safezoneX "0.85"			// centralizar HUD e RADAR horizontal
 safezoneY "0.85"			// centralizar HUD e RADAR vertical
 +cl_show_team_equipment 		// equipamentos do time
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * MIRA * * * * * * * * * * 
+// * * * MIRA * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 cl_crosshair_dynamic_maxdist_splitratio "0.35";
 cl_crosshair_dynamic_splitalpha_innermod "1";
 cl_crosshair_dynamic_splitalpha_outermod "0.5";
@@ -192,19 +212,25 @@ cl_crosshairstyle "5"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinam
 cl_crosshairgap "-4";  			// espaco entre as linhas
 cl_crosshairsize "1"; 			// tamanho da linha
 cl_crosshair_t "1";			// mira em T 0/1
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * OPCOES DE ARRANQUE * * * * * * * * * *
+// * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 // (-novid -nojoy -threads 16 -noaafonts -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg)
+//_______________________________________________________________________________________________________________________
 
-// * * * * * * * * * * GRAVAR NO config.cfg * * * * * * * * * * 
+// * * * GRAVAR NO config.cfg * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 //host_writeconfig;
+//_______________________________________________________________________________________________________________________
 
-// #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  FIM DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 echo "#                                      #";
 echo "#       Fim do carregamento.           #";
 echo "#                                      #";
 echo "#--------------------------------------#";
 echo "";
+//_______________________________________________________________________________________________________________________
+// #  #  FIM DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #    #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 
 
 
