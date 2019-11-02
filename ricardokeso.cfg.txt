@@ -21,18 +21,25 @@ name "PhiLdeR";
 net_graph "1";			// apresenta dados de fps, ping ...
 net_graphheight "9999";		// posiciona 9999 pxs acima, saindo do campo de visao
 net_graphproportionalfont "0"; 	// tamanho do net_graf - 0 pequeno, 1 normal
-cl_showfps "0";
+cl_showfps "0";			// mostra fps no canto superior esquesdo da tela
 cl_autowepswitch "0"; 		// nao troca para a arma pega no chao
-cl_color "0";
-cl_compass_enabled "1";
+cl_color "0";			//
+cl_compass_enabled "1";		//
 cl_teammate_colors_show "1"; 	// mostra cores nos avatares - 0 Sem cor, 1 cores diferentes, 2 Cores e letras
 voice_enable "1";		// habilitar voz no audio e microfone
 mat_queue_mode "2";		// multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
-r_eyegloss "0";
 fps_max "0";			// zero desabilita 0 limite de fps
-cl_forcepreload "1";
+cl_forcepreload "1";		//
 hud_takesshots "1";		// Automaticamente tira um screenshot da pontuação no final do jogo
 gameinstructor_enable "0";	// mensagens do instrutor 0/1
+cl_disablehtmlmotd "1";		//
+r_eyegloss "0";			//
+r_eyemove "0";			//
+r_eyeshift_x "0";		//
+r_eyeshift_y "0";		//
+r_eyeshift_z "0";		//
+r_eyesize "0";			//
+
 //_______________________________________________________________________________________________________________________
 
 // * * * VIEWMODEL * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -49,6 +56,8 @@ cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
 cl_bobcycle "0.98";			// valor padrao (nao pode ser alterado)
 cl_viewmodel_shift_left_amt "0.5";	// 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";	// 0.5 - 2
+viewmodel_recoil "0";			//
+r_drawtracers_firstperson "0";		// desabilita tracos em primeira pessoa
 //_______________________________________________________________________________________________________________________
 
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -112,19 +121,19 @@ bind "TAB" "+scorenet";
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 sensitivity "1.75";	//sense no jogo
-// windows: level 7
+// windows: level 7	
 // mouse: 1000 DPI 1000Hz
-m_rawinput "1";
-m_mouseaccel2 "0";
-m_mouseaccel1 "0";
-m_customaccel "0";
-m_mousespeed "0";
+m_rawinput "1"; 	//
+m_mouseaccel2 "0";	//
+m_mouseaccel1 "0";	//
+m_customaccel "0";	//
+m_mousespeed "0";	//
 //_______________________________________________________________________________________________________________________
 
 // * * * SOUND * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 volume "1"; 					// master
-snd_musicvolume_multiplier_inoverlay "0"; 	// steam overlay
+snd_musicvolume_multiplier_inoverlay "0";	// steam overlay
 voice_caster_scale "0"; 			// gotv
 snd_surround_speakers "-1"; 			// output 
 snd_hwcompat "0"; 				// 3d audio (0 on, 1 off)
@@ -132,7 +141,7 @@ voice_enable "1";				// enable voice
 voice_loopback "0";				// escutar o proprio mic 0/1
 voice_scale "0.1"; 				// voip volume
 voice_positional "0";				// voice positional
-//snd_mute_losefocus "1";				// play audio background (0 on, 1 off) devem ter desabilitado essa funcao
+//snd_mute_losefocus "1";			// play audio background (0 on, 1 off) devem ter desabilitado essa funcao
 //_______________________________________________________________________________________________________________________
 
 // * * * MUSIC * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -146,20 +155,19 @@ snd_deathcamera_volume "0";		// death cam
 snd_mvp_volume "0";			// mvp vol
 snd_mute_mvp_music_live_players "1";	// mute mvp
 snd_dzmusic_volume "0";			// danger zone music
-
-snd_duckerattacktime "0.5";
-snd_duckerreleasetime "2.5";
-snd_duckerthreshold "0.15";
-snd_ducking_off "1";
-snd_ducktovolume "0.55";
-snd_hrtf_distance_behind "100";
-snd_hrtf_voice_delay "0.1";
-snd_mix_async "1";
-snd_mix_async_onetime_reset "1";
-snd_mixahead "0.05";
-snd_music_selection "2";
-snd_music_volume_onetime_reset_2 "1";
-snd_pitchquality "1"
+snd_duckerattacktime "0.5";		//
+snd_duckerreleasetime "2.5";		//
+snd_duckerthreshold "0.15";		//
+snd_ducking_off "1";			//
+snd_ducktovolume "0.55";		//
+snd_hrtf_distance_behind "100";		//
+snd_hrtf_voice_delay "0.1";		//
+snd_mix_async "1";			//
+snd_mix_async_onetime_reset "1";	//
+snd_mixahead "0.05";			//
+snd_music_selection "2";		//
+snd_music_volume_onetime_reset_2 "1";	//
+snd_pitchquality "1"			//
 //_______________________________________________________________________________________________________________________
 
 // * * * RADAR/HUD * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -207,7 +215,9 @@ cl_crosshair_t "1";			// mira em T 0/1
 
 // * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-// -novid -nojoy -noaafonts -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg
+// -novid -nojoy -noaafonts +cl_forcepreload 1 -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg
+// 
+//obs.: mudar valueMax e valueMin para 0 na busca do regedit como admin para a chave 0cc5b647-c1df-4637-891a-dec35c318583
 //_______________________________________________________________________________________________________________________
 
 // * * * GRAVAR NO config.cfg * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
