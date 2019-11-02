@@ -20,7 +20,7 @@ echo "#                                      #";
 name "PhiLdeR";
 net_graph "1";			// apresenta dados de fps, ping ...
 net_graphheight "9999";		// posiciona 9999 pxs acima, saindo do campo de visao
-net_graphproportionalfont "1"; 	// tamanho do net_graf - 0 pequeno, 1 normal
+net_graphproportionalfont "0"; 	// tamanho do net_graf - 0 pequeno, 1 normal
 cl_showfps "0";
 cl_autowepswitch "0"; 		// nao troca para a arma pega no chao
 cl_color "0";
