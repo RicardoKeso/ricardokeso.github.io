@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191103.1201         #";
+echo "#       Versao:  20191103.1345         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -18,32 +18,53 @@ echo "#                                      #";
 // * * * GERAIS * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 name "PhiLdeR";
-net_graph "1";			// apresenta dados de fps, ping ...
-net_graphheight "9999";		// posiciona 9999 pxs acima, saindo do campo de visao
-net_graphproportionalfont "0"; 	// tamanho do net_graf - 0 pequeno, 1 normal
-cl_showfps "0";			// mostra fps no canto superior esquesdo da tela
-cl_autowepswitch "0"; 		// nao troca para a arma pega no chao
-cl_color "0";			//
-cl_compass_enabled "1";		//
-cl_teammate_colors_show "1"; 	// mostra cores nos avatares - 0 Sem cor, 1 cores diferentes, 2 Cores e letras
-voice_enable "1";		// habilitar voz no audio e microfone
-mat_queue_mode "2";		// multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
-fps_max "0";			// zero desabilita 0 limite de fps
-cl_forcepreload "1";		//
-hud_takesshots "1";		// Automaticamente tira um screenshot da pontuação no final do jogo
-gameinstructor_enable "0";	// mensagens do instrutor 0/1
-cl_disablehtmlmotd "1";		//
-r_eyegloss "0";			//
-r_eyemove "0";			//
-r_eyeshift_x "0";		//
-r_eyeshift_y "0";		//
-r_eyeshift_z "0";		//
-r_eyesize "0";			//
+
+net_graph "1";				// apresenta dados de fps, ping ...
+net_graphheight "0";			// posicao vertical do netgraph
+net_graphholdsvframerate "0";		//
+net_graphipc "0";			//
+net_graphmsecs "400";			//
+net_graphpos "180";			// posicao horizontal do netgraph
+net_graphproportionalfont "0"; 		// tamanho do net_graf - 0 pequeno, 1 normal
+net_graphshowinterp "1";		//
+net_graphshowlatency "1";		//
+
+cl_showfps "0";				// mostra fps no canto superior esquesdo da tela
+cl_autowepswitch "0"; 			// nao troca para a arma pega no chao
+cl_color "0";				//
+cl_compass_enabled "1";			//
+cl_teammate_colors_show "1"; 		// mostra cores nos avatares - 0 Sem cor, 1 cores diferentes, 2 Cores e letras
+cl_forcepreload "1";			//
+cl_disablehtmlmotd "1";			//
+cl_autohelp "0";			//
+cl_detail_avoid_force "0";		//
+cl_detail_avoid_radius "0";		//
+cl_detail_avoid_recover_speed "0";	//
+cl_detail_max_sway "0";			//
+cl_disablefreezecam "1";		//
+cl_rumblescale "0";			//
+
+r_eyegloss "0";				//
+r_eyemove "0";				//
+r_eyeshift_x "0";			//
+r_eyeshift_y "0";			//
+r_eyeshift_z "0";			//
+r_eyesize "0";				//
+
+voice_enable "1";			// habilitar voz no audio e microfone
+mat_queue_mode "2";			// multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
+fps_max "0";				// zero desabilita 0 limite de fps
+hud_takesshots "1";			// Automaticamente tira um screenshot da pontuação no final do jogo
+gameinstructor_enable "0";		// mensagens do instrutor 0/1
+func_break_max_pieces "0";		//
+mm_dedicated_search_maxping "60";	//
+spec_replay_autostart "0";		//
+rate "786432";				//
 
 // so pdem ser utilizadas antes da conexao com o servidor
 //cl_interp "0";			//
-//cl_interp_ratio "1";		// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
-//cl_interpolate "1";		//
+//cl_interp_ratio "1";			// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+//cl_interpolate "1";			//
 
 //_______________________________________________________________________________________________________________________
 
@@ -114,9 +135,11 @@ alias "SLOT_1" "SLOT_2; slot1; bind q SLOT_2; bind MOUSE3 SLOT_3";
 alias "SLOT_2" "slot2; bind q SLOT_1; bind MOUSE3 SLOT_3";
 bind "q" "SLOT_2";
 
-alias "+scorenet" "+showscores; net_graphheight 0";
-alias "-scorenet" "-showscores; net_graphheight 9999";
-bind "TAB" "+scorenet";
+
+//net_graphheight "9999";	// posiciona 9999 pxs acima, saindo do campo de visao
+//alias "+scorenet" "+showscores; net_graphheight 0";
+//alias "-scorenet" "-showscores; net_graphheight 9999";
+//bind "TAB" "+scorenet";
 
 //alias +walkvol "volume 1; +speed;";
 //alias -walkvol "volume 0.5; -speed;";
