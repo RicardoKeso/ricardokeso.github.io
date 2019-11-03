@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191102.0931         #";
+echo "#       Versao:  20191103.1201         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -39,6 +39,9 @@ r_eyeshift_x "0";		//
 r_eyeshift_y "0";		//
 r_eyeshift_z "0";		//
 r_eyesize "0";			//
+cl_interp "0"			//
+cl_interp_ratio "1"		// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+cl_interpolate "1"		//
 
 //_______________________________________________________________________________________________________________________
 
@@ -215,10 +218,12 @@ cl_crosshair_t "1";			// mira em T 0/1
 
 // * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-// -novid -nojoy -noaafonts +cl_forcepreload 1 -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg
+// -novid  -nojoy -noaafonts -freq 75 -refresh 75 -w 1920 -h 1080 -high -threads 8  +exec ricardokeso.cfg
 // 
 // obs.: CPU Core Parking - Un-park CPU 
 // mudar valueMax e valueMin para 0 na busca do regedit como admin para a chave 0cc5b647-c1df-4637-891a-dec35c318583
+//
+// o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
 //_______________________________________________________________________________________________________________________
 
 // * * * GRAVAR NO config.cfg * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
