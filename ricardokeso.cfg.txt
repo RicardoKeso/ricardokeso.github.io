@@ -217,7 +217,7 @@ cl_crosshair_t "1";			// mira em T 0/1
 
 // -novid -nojoy -noaafonts +cl_forcepreload 1 -freq 75 -refresh 75 +mat_queue_mode 2 -high -w 1920 -h 1080 +exec ricardokeso.cfg
 // 
-//obs.: mudar valueMax e valueMin para 0 na busca do regedit como admin para a chave 0cc5b647-c1df-4637-891a-dec35c318583
+//obs.: UnparkCPU - mudar valueMax e valueMin para 0 na busca do regedit como admin para a chave 0cc5b647-c1df-4637-891a-dec35c318583
 //_______________________________________________________________________________________________________________________
 
 // * * * GRAVAR NO config.cfg * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
