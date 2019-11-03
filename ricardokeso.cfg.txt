@@ -39,9 +39,9 @@ r_eyeshift_x "0";		//
 r_eyeshift_y "0";		//
 r_eyeshift_z "0";		//
 r_eyesize "0";			//
-cl_interp "0"			//
-cl_interp_ratio "1"		// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
-cl_interpolate "1"		//
+cl_interp "0";			//
+cl_interp_ratio "1";		// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+cl_interpolate "1";		//
 
 //_______________________________________________________________________________________________________________________
 
