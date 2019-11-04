@@ -59,7 +59,7 @@ gameinstructor_enable "0";		// mensagens do instrutor 0/1
 func_break_max_pieces "0";		//
 mm_dedicated_search_maxping "60";	//
 spec_replay_autostart "0";		//
-rate"24576"				// Max Acceptable Game Traffic Bandwidth (valores no final)
+rate"24576"				// Max Acceptable Game Traffic Bandwidth (valores depois do fim do carregamento)
 
 // so pdem ser utilizadas antes da conexao com o servidor
 //cl_interp "0";			//
@@ -208,7 +208,7 @@ cl_radar_rotate "1"; 			// rotacao do radar ativa 0/1
 cl_radar_scale "0.5"; 			// tamanho mapa 0.25/1
 cl_radar_square_with_scoreboard "1";	// nas pontuacoes radasr quadrado ou redondo 0/1
 cl_hud_radar_scale "1.3"; 		// tamanho radar 0.8/1.3
-cl_hud_color "8"; 			// cor do HUD (valores no final do arquivo)
+cl_hud_color "8"; 			// cor do HUD (valores depois do fim do carregamento)
 cl_hud_playercount_showcount "1"; 	// avatar ou qtd pessoas 0/1
 cl_hud_playercount_pos "1"; 		// posicao placar 0/1
 cl_hud_background_alpha "0"; 		// transparencia HUD 0.0/1.0
