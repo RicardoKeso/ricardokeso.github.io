@@ -63,7 +63,7 @@ rate"24576"				// Max Acceptable Game Traffic Bandwidth (valores no final)
 
 // so pdem ser utilizadas antes da conexao com o servidor
 //cl_interp "0";			//
-//cl_interp_ratio "1";			// referente a qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+//cl_interp_ratio "1";			// qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
 //cl_interpolate "1";			//
 
 //_______________________________________________________________________________________________________________________
@@ -208,7 +208,7 @@ cl_radar_rotate "1"; 			// rotacao do radar ativa 0/1
 cl_radar_scale "0.5"; 			// tamanho mapa 0.25/1
 cl_radar_square_with_scoreboard "1";	// nas pontuacoes radasr quadrado ou redondo 0/1
 cl_hud_radar_scale "1.3"; 		// tamanho radar 0.8/1.3
-cl_hud_color "8"; 			// cor do HUD 0-original, 1-branco, 2-azulClaro, 3-azulEscuro, 4-roxo, 5-vermelho, 6-laranja, 7-amarelo, 8-verdeClaro, 9-azulTurquesa e 10-rosa
+cl_hud_color "8"; 			// cor do HUD (valores no final do arquivo)
 cl_hud_playercount_showcount "1"; 	// avatar ou qtd pessoas 0/1
 cl_hud_playercount_pos "1"; 		// posicao placar 0/1
 cl_hud_background_alpha "0"; 		// transparencia HUD 0.0/1.0
@@ -267,7 +267,12 @@ echo "";
 //
 // GRAVAR NO config.cfg 	host_writeconfig;
 //_______________________________________________________________________________________________________________________
-
+//
+// Cores do  HUD
+// 0-original, 1-branco, 2-azulClaro, 3-azulEscuro, 4-roxo, 
+// 5-vermelho, 6-laranja, 7-amarelo, 8-verdeClaro, 9-azulTurquesa
+// 10-rosa
+//_______________________________________________________________________________________________________________________
 // Max Acceptable Game Traffic Bandwidth
 // rate "24576"		extremely restricted	192 Kbps
 // rate "49152"		Below 384 Kbps
