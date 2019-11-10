@@ -59,11 +59,11 @@ gameinstructor_enable "0";		// mensagens do instrutor 0/1
 func_break_max_pieces "0";		//
 mm_dedicated_search_maxping "60";	//
 spec_replay_autostart "0";		//
-rate"24576"				// Max Acceptable Game Traffic Bandwidth (valores depois do fim do carregamento)
+rate "24576";				// Max Acceptable Game Traffic Bandwidth (valores depois do fim do carregamento)
 
 // so pdem ser utilizadas antes da conexao com o servidor
 //cl_interp "0";			//
-//cl_interp_ratio "1";			// qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+//cl_interp_ratio "3";			// qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
 //cl_interpolate "1";			//
 
 //_______________________________________________________________________________________________________________________
@@ -91,9 +91,10 @@ r_drawtracers_firstperson "0";		// desabilita tracos em primeira pessoa
 bind "END" "mp_restartgame 1";
 
 bind "F1" "buy vest; buy m4a1; buy ak47;";
-bind "F2" "buy fiveseven; buy tec9; slot2;";
-bind "F3" "buy p250; slot2;";
-bind "F4" "buy hkp2000; buy glock; slot2;";
+bind "F2" "slot2; buy fiveseven; buy tec9;";
+bind "F3" "slot2; buy p250; slot2;";
+bind "F4" "slot2; buy hkp2000; buy glock;";
+bind "F5" "buy awp;";
 
 bind "w" "+forward; r_cleardecals;";
 bind "a" "+moveleft; r_cleardecals;";
@@ -118,8 +119,8 @@ bind "4" "use weapon_molotov; use weapon_incgrenade";
 
 bindtoggle "h" "cl_righthand";
 
-alias "HUD_1" "cl_radar_scale "0.25"; cl_radar_always_centered "0"; bind "CapsLock" "HUD_2"; ";
-alias "HUD_2" "cl_radar_scale "0.5"; cl_radar_always_centered "1"; bind "CapsLock" "HUD_1";";
+alias "HUD_1" "cl_radar_scale "0."; cl_radar_always_centered "0"; bind "CapsLock" "HUD_2"; ";
+alias "HUD_2" "cl_radar_scale "0."; cl_radar_always_centered "1"; bind "CapsLock" "HUD_1";";
 bind "CapsLock" "HUD_1";
 
 //alias "+jumpthrow" "+jump; +attack;";
@@ -257,15 +258,48 @@ echo "";
 //_______________________________________________________________________________________________________________________
 
 // * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
 // -novid  -nojoy -noaafonts -freq 75 -refresh 75 -w 1920 -h 1080 -high -threads 8  +exec ricardokeso.cfg
-// 
-// obs.: CPU Core Parking - Un-park CPU 
-// mudar valueMax e valueMin para 0 na busca do regedit como admin para a chave 0cc5b647-c1df-4637-891a-dec35c318583
-//
 // o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
 //
-// GRAVAR NO config.cfg 	host_writeconfig;
+// Gravar no config.cfg 	host_writeconfig;
+// 
+// * * * ALTERACOES NO WINDOWS  * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// > > > CPU Core Parking - Un-park CPU < < <
+// reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+// reg add "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+//
+// > > > Setar Prioridade para Jogos < < <
+// reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f
+// reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d "8" /f
+// reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f
+//
+// > > > Remover Aplicativos pre-instalados (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
+// Get-AppxPackage *Xbox.TCUI* | Remove-AppxPackage
+// Get-AppxPackage *XboxSpeechToTextOverlay* | Remove-AppxPackage
+// Get-AppxPackage *XboxIdentityProvider* | Remove-AppxPackage
+// Get-AppxPackage *XboxGamingOverlay* | Remove-AppxPackage
+// Get-AppxPackage *XboxApp* | Remove-AppxPackage
+// Get-AppxPackage *XboxGameOverlay* | Remove-AppxPackage
+// Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage
+// Get-AppxPackage *MicrosoftSolitaireCollection* | Remove-AppxPackage
+// Get-AppxPackage *Microsoft3DViewer* | Remove-AppxPackage
+// Get-AppxPackage *ZuneVideo* | Remove-AppxPackage
+// Get-AppxPackage *ZuneMusic* | Remove-AppxPackage
+// Get-AppxPackage *Print3D* | Remove-AppxPackage
+// Get-AppxPackage *Messaging* | Remove-AppxPackage
+// Get-AppxPackage *Wallet* | Remove-AppxPackage
+// Get-AppxPackage *OneConnect* | Remove-AppxPackage
+// Get-AppxPackage *WindowsFeedbackHub* | Remove-AppxPackage
+// Get-AppxPackage *BingNews* | Remove-AppxPackage
+// Get-AppxPackage *SkypeApp* | Remove-AppxPackage
+// Get-AppxPackage *Office.OneNote* | Remove-AppxPackage
+// Get-AppxPackage *BingWeather* | Remove-AppxPackage
+// Get-AppxPackage *GetHelp* | Remove-AppxPackage
+// Get-AppxPackage *WindowsMaps* | Remove-AppxPackage
+// Get-AppxPackage *Getstarted* | Remove-AppxPackage
+// Get-AppxPackage *YourPhone* | Remove-AppxPackage
+// Get-AppxPackage *WindowsStore* | Remove-AppxPackage
+// Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
 //_______________________________________________________________________________________________________________________
 //
 // Cores do  HUD
