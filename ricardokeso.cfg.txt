@@ -316,6 +316,10 @@ echo "";
 // Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
 // Get-AppxPackage *MixedReality.Portal* | Remove-AppxPackage
 // Get-AppxPackage *Music.Preview* | Remove-AppxPackage
+// Get-AppxPackage *CommsPhone* | Remove-AppxPackage
+// Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage
+// Get-AppxPackage *Office.Sway* | Remove-AppxPackage
+// Get-AppxPackage *WindowsReadingList* | Remove-AppxPackage
 //
 // Reinstall Microsoft Store
 // Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
@@ -325,7 +329,6 @@ echo "";
 //
 // Get-AppxPackage | Select-Object Name
 // Get-AppxPackage –AllUsers | Select-Object Name
-//
 //_______________________________________________________________________________________________________________________
 //
 // Cores do  HUD
