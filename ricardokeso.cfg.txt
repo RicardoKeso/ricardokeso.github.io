@@ -298,7 +298,6 @@ echo "";
 // Get-AppxPackage *WindowsMaps* | Remove-AppxPackage
 // Get-AppxPackage *Getstarted* | Remove-AppxPackage
 // Get-AppxPackage *YourPhone* | Remove-AppxPackage
-// Get-AppxPackage *WindowsStore* | Remove-AppxPackage
 // Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
 //_______________________________________________________________________________________________________________________
 //
