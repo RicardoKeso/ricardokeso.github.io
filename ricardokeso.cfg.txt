@@ -273,32 +273,59 @@ echo "";
 // reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d "8" /f
 // reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f
 //
-// > > > Remover Aplicativos pre-instalados (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
+// > > > Remover Aplicativos pre-instalados "Bloatwares" (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
+// Get-AppxPackage *3DBuilder* | Remove-AppxPackage
+// Get-AppxPackage *Appconnector* | Remove-AppxPackage
+// Get-AppxPackage *BingFinance* | Remove-AppxPackage
+// Get-AppxPackage *BingNews* | Remove-AppxPackage
+// Get-AppxPackage *BingSports* | Remove-AppxPackage
+// Get-AppxPackage *BingTranslator* | Remove-AppxPackage
+// Get-AppxPackage *BingWeather* | Remove-AppxPackage
+// Get-AppxPackage *BingTravel* | Remove-AppxPackage
+// Get-AppxPackage *BingHealthAndFitness* | Remove-AppxPackage
+// Get-AppxPackage *BingFoodAndDrink* | Remove-AppxPackage
+// Get-AppxPackage *GamingServices* | Remove-AppxPackage
+// Get-AppxPackage *Microsoft3DViewer* | Remove-AppxPackage
+// Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage
+// Get-AppxPackage *MicrosoftPowerBIForWindows* | Remove-AppxPackage
+// Get-AppxPackage *MicrosoftSolitaireCollection* | Remove-AppxPackage
+// Get-AppxPackage *MinecraftUWP* | Remove-AppxPackage
+// Get-AppxPackage *NetworkSpeedTest* | Remove-AppxPackage
+// Get-AppxPackage *Office.OneNote* | Remove-AppxPackage
+// Get-AppxPackage *OneConnect* | Remove-AppxPackage
+// Get-AppxPackage *Print3D* | Remove-AppxPackage
+// Get-AppxPackage *SkypeApp* | Remove-AppxPackage
+// Get-AppxPackage *Wallet* | Remove-AppxPackage
+// Get-AppxPackage *windowscommunicationsapps* | Remove-AppxPackage
+// Get-AppxPackage *WindowsMaps* | Remove-AppxPackage
+// Get-AppxPackage *WindowsPhone* | Remove-AppxPackage
 // Get-AppxPackage *Xbox.TCUI* | Remove-AppxPackage
-// Get-AppxPackage *XboxSpeechToTextOverlay* | Remove-AppxPackage
-// Get-AppxPackage *XboxIdentityProvider* | Remove-AppxPackage
-// Get-AppxPackage *XboxGamingOverlay* | Remove-AppxPackage
 // Get-AppxPackage *XboxApp* | Remove-AppxPackage
 // Get-AppxPackage *XboxGameOverlay* | Remove-AppxPackage
-// Get-AppxPackage *MicrosoftOfficeHub* | Remove-AppxPackage
-// Get-AppxPackage *MicrosoftSolitaireCollection* | Remove-AppxPackage
-// Get-AppxPackage *Microsoft3DViewer* | Remove-AppxPackage
-// Get-AppxPackage *ZuneVideo* | Remove-AppxPackage
-// Get-AppxPackage *ZuneMusic* | Remove-AppxPackage
-// Get-AppxPackage *Print3D* | Remove-AppxPackage
-// Get-AppxPackage *Messaging* | Remove-AppxPackage
-// Get-AppxPackage *Wallet* | Remove-AppxPackage
-// Get-AppxPackage *OneConnect* | Remove-AppxPackage
-// Get-AppxPackage *WindowsFeedbackHub* | Remove-AppxPackage
-// Get-AppxPackage *BingNews* | Remove-AppxPackage
-// Get-AppxPackage *SkypeApp* | Remove-AppxPackage
-// Get-AppxPackage *Office.OneNote* | Remove-AppxPackage
-// Get-AppxPackage *BingWeather* | Remove-AppxPackage
-// Get-AppxPackage *GetHelp* | Remove-AppxPackage
-// Get-AppxPackage *WindowsMaps* | Remove-AppxPackage
-// Get-AppxPackage *Getstarted* | Remove-AppxPackage
+// Get-AppxPackage *XboxGamingOverlay* | Remove-AppxPackage
+// Get-AppxPackage *XboxSpeechToTextOverlay* | Remove-AppxPackage
 // Get-AppxPackage *YourPhone* | Remove-AppxPackage
+// Get-AppxPackage *ZuneMusic* | Remove-AppxPackage
+// Get-AppxPackage *ZuneVideo* | Remove-AppxPackage
+// Get-AppxPackage *XboxIdentityProvider* | Remove-AppxPackage
+// Get-AppxPackage *Messaging* | Remove-AppxPackage
+// Get-AppxPackage *WindowsFeedbackHub* | Remove-AppxPackage
+// Get-AppxPackage *GetHelp* | Remove-AppxPackage
+// Get-AppxPackage *Getstarted* | Remove-AppxPackage
+// Get-AppxPackage *WindowsStore* | Remove-AppxPackage
 // Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
+// Get-AppxPackage *MixedReality.Portal* | Remove-AppxPackage
+// Get-AppxPackage *Music.Preview* | Remove-AppxPackage
+//
+// Reinstall Microsoft Store
+// Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
+// 
+// Reinstall or restore all the built-in Windows 10 apps
+// Get-AppXPackage -allusers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+//
+// Get-AppxPackage | Select-Object Name
+// Get-AppxPackage –AllUsers | Select-Object Name
+//
 //_______________________________________________________________________________________________________________________
 //
 // Cores do  HUD
