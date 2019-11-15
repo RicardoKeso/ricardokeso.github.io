@@ -95,6 +95,7 @@ bind "F2" "slot2; buy fiveseven; buy tec9;";
 bind "F3" "slot2; buy p250; slot2;";
 bind "F4" "slot2; buy hkp2000; buy glock;";
 bind "F5" "buy awp;";
+bind "F6" "slot2; buy deagle;";
 
 bind "w" "+forward; r_cleardecals;";
 bind "a" "+moveleft; r_cleardecals;";
@@ -118,6 +119,7 @@ bind "3" "use weapon_hegrenade";
 bind "4" "use weapon_molotov; use weapon_incgrenade";
 
 bindtoggle "h" "cl_righthand";
+bindtoggle "0" "cl_draw_only_deathnotices";
 
 alias "HUD_1" "cl_radar_scale "0."; cl_radar_always_centered "0"; bind "CapsLock" "HUD_2"; ";
 alias "HUD_2" "cl_radar_scale "0."; cl_radar_always_centered "1"; bind "CapsLock" "HUD_1";";
@@ -258,7 +260,7 @@ echo "";
 //_______________________________________________________________________________________________________________________
 
 // * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// -novid  -nojoy -noaafonts -freq 75 -refresh 75 -w 1920 -h 1080 -high -threads 8  +exec ricardokeso.cfg
+// -novid  -nojoy -noaafonts -cl_forcepreload 1 -d3d9ex -freq 75 -refresh 75 -w 1920 -h 1080 -high +mat_queue_mode 2 +exec ricardokeso.cfg
 // o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
 //
 // Gravar no config.cfg 	host_writeconfig;
@@ -267,6 +269,14 @@ echo "";
 // > > > CPU Core Parking - Un-park CPU < < <
 // reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
 // reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+//
+// > > > ALTERAR PLANO DE ENERGIA < < <
+// powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+// powercfg /SETACTIVE 16f789bb-e4ac-49a7-9d54-aacdeb453d0b
+//
+// > > > DESATIVAR O DVR < < <
+// reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
+// reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f
 //
 // > > > Setar Prioridade para Jogos < < <
 // reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f
