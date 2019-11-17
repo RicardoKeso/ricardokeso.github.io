@@ -254,7 +254,7 @@ cl_crosshaircolor_r "255";
 cl_crosshairgap_useweaponvalue "0";
 		
 cl_crosshairscale "0"
-cl_crosshaircolor "1";				// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
 cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
 cl_crosshairdot "0"; 			// ponto central 0/1
 cl_crosshairthickness "2.5"; 		// espessura da linha
