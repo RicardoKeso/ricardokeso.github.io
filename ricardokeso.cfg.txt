@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191103.1345         #";
+echo "#       Versao:  20191117.1342         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -29,7 +29,8 @@ net_graphproportionalfont "0"; 		// tamanho do net_graf - 0 pequeno, 1 normal
 net_graphshowinterp "1";		//
 net_graphshowlatency "1";		//
 
-cl_showfps "0";				// mostra fps no canto superior esquesdo da tela
+cl_showpos "0";				// mostra posicao, velocidade e azimute 0/1
+cl_showfps "0";				// mostra fps no canto superior esquesdo da tela 0/1
 cl_autowepswitch "0"; 			// nao troca para a arma pega no chao
 cl_color "0";				//
 cl_compass_enabled "1";			//
@@ -75,7 +76,7 @@ cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
 cl_bobamt_lat "0.1";			// movimento lateral da arma ao andar 0.1/2
 cl_bob_lower_amt "5"; 			// movimento frontal da arma ao andar 5/30
 cl_righthand "0";			// mao esquesda e direita 0/1
-viewmodel_presetpos "0";		// 0/1/2/3
+//viewmodel_presetpos "";		// 1/2/3
 viewmodel_fov "65"; 			// def-60 area visivel da arma (def 62.5, teste 65)
 
 viewmodel_offset_z "-1.4";		// def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
@@ -89,6 +90,13 @@ viewmodel_recoil "0";			//
 //_______________________________________________________________________________________________________________________
 
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+// CLEAR BINDS
+unbind "MWHEELUP" "";
+unbind "MWHEELDOWN" "";
+unbind "c" "";
+unbind "CapsLock" "";
+//_  _  _  _  _  _  _  _  _
 
 bind "END" "mp_restartgame 1";
 
@@ -104,11 +112,14 @@ bind "a" "+moveleft; r_cleardecals;";
 bind "d" "+moveright; r_cleardecals;";
 bind "s" "+back; r_cleardecals";
 
-bind "MWHEELUP" "";
-bind "MWHEELDOWN" "";
+alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 0; cl_hud_color 5; bind x silencio_2;";
+alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
+bind "x" "silencio_1";
 
-bind "c" "toggle voice_enable 0 1; toggle cl_crosshaircolor 0 1; toggle cl_hud_color 5 8;";
+bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
+
 bind "v" "+voicerecord";
+
 bind "DEL" "callvote";
 
 bind "1" "flash_1";
@@ -119,13 +130,17 @@ bind "1" "use weapon_flashbang;";
 bind "2" "use weapon_smokegrenade;";
 bind "3" "use weapon_hegrenade";
 bind "4" "use weapon_molotov; use weapon_incgrenade";
+bind "5" "slot5";
 
 bindtoggle "h" "cl_righthand";
 bindtoggle "0" "cl_draw_only_deathnotices";
 
-alias "HUD_1" "cl_radar_scale "0."; cl_radar_always_centered "0"; bind "CapsLock" "HUD_2"; ";
-alias "HUD_2" "cl_radar_scale "0."; cl_radar_always_centered "1"; bind "CapsLock" "HUD_1";";
-bind "CapsLock" "HUD_1";
+alias "HUD_1" "cl_radar_scale "0.2"; cl_radar_always_centered "0"; bind "ENTER" "HUD_2"; ";
+alias "HUD_2" "cl_radar_scale "0.4"; cl_radar_always_centered "0"; bind "ENTER" "HUD_3"; ";
+alias "HUD_3" "cl_radar_scale "0.3"; cl_radar_always_centered "1"; bind "ENTER" "HUD_4";";
+alias "HUD_4" "cl_radar_scale "0.4"; cl_radar_always_centered "1"; bind "ENTER" "HUD_5";";
+alias "HUD_5" "cl_radar_scale "0.5"; cl_radar_always_centered "1"; bind "ENTER" "HUD_1";";
+bind "ENTER" "HUD_1";
 
 //alias "+jumpthrow" "+jump; +attack;";
 //alias "-jumpthrow" "-jump; -attack; bind mouse1 +attack;";
@@ -184,7 +199,7 @@ snd_menumusic_volume "0.0";		// main
 snd_roundend_volume "0";		// round start
 snd_roundstart_volume "0";		// round end
 snd_mapobjective_volume "0";		// bomb/hostage volume
-snd_tensecondwarning_volume "0";	// ten sec warn
+snd_tensecondwarning_volume "0.2";	// ten sec warn
 snd_deathcamera_volume "0";		// death cam
 snd_mvp_volume "0";			// mvp vol
 snd_mute_mvp_music_live_players "1";	// mute mvp
@@ -239,7 +254,7 @@ cl_crosshaircolor_r "255";
 cl_crosshairgap_useweaponvalue "0";
 		
 cl_crosshairscale "0"
-cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+cl_crosshaircolor "1";				// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
 cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
 cl_crosshairdot "0"; 			// ponto central 0/1
 cl_crosshairthickness "2.5"; 		// espessura da linha
