@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191117.1342         #";
+echo "#       Versao:  20191103.1345         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -131,6 +131,7 @@ bind "2" "use weapon_smokegrenade;";
 bind "3" "use weapon_hegrenade";
 bind "4" "use weapon_molotov; use weapon_incgrenade";
 bind "5" "slot5";
+bind "6" "use weapon_taser;";
 
 bindtoggle "h" "cl_righthand";
 bindtoggle "0" "cl_draw_only_deathnotices";
@@ -430,5 +431,5 @@ echo "";
 //	Granada Explosiva (hegrenade)
 //	Coquetel Molotov (molotov)
 //	Zeus x27 (Taser)
-//	* Para funcionar a compra de Zeus, você precisa colocar o T em letra maiúscula.
+//	* dependendo da funcao o T pode ser maiusculo ou minusculo
 //_______________________________________________________________________________________________________________________
