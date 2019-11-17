@@ -68,22 +68,24 @@ rate "24576";				// Max Acceptable Game Traffic Bandwidth (valores depois do fim
 
 //_______________________________________________________________________________________________________________________
 
-// * * * VIEWMODEL * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * * * VIEWMODEL FOV * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-cl_righthand "0";			// mao esquesda e direita 0/1
-viewmodel_fov "65"; 			// def-60 area visivel da arma (def 62.5, teste 65)
-viewmodel_offset_x "0.1"; 		// def- posicao lateral da arma em relacao ao boneco
-viewmodel_offset_y "-2"; 		// def- profundidade da arma em relacao ao boneco
-viewmodel_offset_z "-1.4";		// def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
-//viewmodel_presetpos "3";		// 1/2/3
-cl_bob_lower_amt "5"; 			// movimento frontal da arma ao andar 5/30
-cl_bobamt_lat "0.1";			// movimento lateral da arma ao andar 0.1/2
-cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
 cl_bobcycle "0.98";			// valor padrao (nao pode ser alterado)
+cl_bobamt_vert "0.1"; 			// movimento vertical da arma ao andar 0.1/2
+cl_bobamt_lat "0.1";			// movimento lateral da arma ao andar 0.1/2
+cl_bob_lower_amt "5"; 			// movimento frontal da arma ao andar 5/30
+cl_righthand "0";			// mao esquesda e direita 0/1
+viewmodel_presetpos "0";		// 0/1/2/3
+viewmodel_fov "65"; 			// def-60 area visivel da arma (def 62.5, teste 65)
+
+viewmodel_offset_z "-1.4";		// def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
+viewmodel_offset_y "-2"; 		// def- profundidade da arma em relacao ao boneco
+viewmodel_offset_x "0.1"; 		// def- posicao lateral da arma em relacao ao boneco
 cl_viewmodel_shift_left_amt "0.5";	// 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";	// 0.5 - 2
-viewmodel_recoil "0";			//
+
 r_drawtracers_firstperson "0";		// desabilita tracos em primeira pessoa
+viewmodel_recoil "0";			//
 //_______________________________________________________________________________________________________________________
 
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -226,16 +228,18 @@ cl_crosshair_dynamic_maxdist_splitratio "0.35";
 cl_crosshair_dynamic_splitalpha_innermod "1";
 cl_crosshair_dynamic_splitalpha_outermod "0.5";
 cl_crosshair_dynamic_splitdist "7";
-cl_crosshair_outlinethickness "1.000000";
+cl_crosshair_outlinethickness "1";
 cl_crosshair_sniper_show_normal_inaccuracy "0";
 cl_crosshair_sniper_width "1";
-cl_crosshairalpha "255.000000";	
-cl_crosshaircolor_b "255.000000";
-cl_crosshaircolor_g "255.000000";
-cl_crosshaircolor_r "255.000000";
+//cl_crosshairusealpha "1"
+cl_crosshairalpha "200";	
+cl_crosshaircolor_b "255";
+cl_crosshaircolor_g "255";
+cl_crosshaircolor_r "255";
 cl_crosshairgap_useweaponvalue "0";
 		
-cl_crosshaircolor "1.000000";		// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+cl_crosshairscale "0"
+cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
 cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
 cl_crosshairdot "0"; 			// ponto central 0/1
 cl_crosshairthickness "2.5"; 		// espessura da linha
