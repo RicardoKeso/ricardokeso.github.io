@@ -36,6 +36,7 @@ echo "[Seat:*]" >> /etc/lightdm/lightdm.conf
 echo "autologin-user=boss" >> /etc/lightdm/lightdm.conf
 echo "autologin-user-timeout=0" >> /etc/lightdm/lightdm.conf
 echo "autologin-session=openbox" >> /etc/lightdm/lightdm.conf
+echo "xserver-command=X -s 0 -dpms" >> /etc/lightdm/lightdm.conf
 
 mkdir -p /home/boss/.config/openbox/
 echo "chromium --incognito --first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble --start-maximized --kiosk \"http://monitordemetas.ip3.info/tvonline\" &" > /home/boss/.config/openbox/autostart
