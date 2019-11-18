@@ -25,8 +25,6 @@ apt-get update && apt-get upgrade
 # criar usuario "boss" na instalacao do sistema
 # useradd boss -m
 
-# CLIENT---------------------------------------------------------------------------------------------------------
-
 apt-get install -y sudo xorg chromium openbox lightdm unclutter
 
 sed -i 's/^\[Seat:\*\]/# \[Seat:\*\]/' /etc/lightdm/lightdm.conf
