@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # hostnamectl set-hostname XXXXXXX
 mv /etc/localtime /etc/localtime_orig
 ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime
