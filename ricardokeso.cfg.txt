@@ -92,10 +92,10 @@ viewmodel_recoil "0";			//
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // CLEAR BINDS
-unbind "MWHEELUP" "";
-unbind "MWHEELDOWN" "";
-unbind "c" "";
-unbind "CapsLock" "";
+bind "MWHEELUP" "";
+bind "MWHEELDOWN" "";
+bind "c" "";
+bind "CapsLock" "";
 //_  _  _  _  _  _  _  _  _
 
 bind "END" "mp_restartgame 1";
@@ -132,6 +132,7 @@ bind "3" "use weapon_hegrenade";
 bind "4" "use weapon_molotov; use weapon_incgrenade";
 bind "5" "slot5";
 bind "6" "use weapon_taser;";
+bind "0" "slot12"; // seringa
 
 bindtoggle "h" "cl_righthand";
 bindtoggle "0" "cl_draw_only_deathnotices";
@@ -163,9 +164,10 @@ bind "q" "SLOT_2";
 //bind "TAB" "+scorenet";
 bind "TAB" "+showscores"
 
-//alias +walkvol "volume 1; +speed;";
-//alias -walkvol "volume 0.5; -speed;";
-//bind shift +walkvol
+alias "VOIP_1" "voice_scale 0.5; bind CapsLock VOIP_2";
+alias "VOIP_2" "voice_scale 0.3; bind CapsLock VOIP_3";
+alias "VOIP_3" "voice_scale 0.1; bind CapsLock VOIP_1";
+bind "CapsLock" "VOIP_1"
 //_______________________________________________________________________________________________________________________
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -200,7 +202,7 @@ snd_menumusic_volume "0.0";		// main
 snd_roundend_volume "0";		// round start
 snd_roundstart_volume "0";		// round end
 snd_mapobjective_volume "0";		// bomb/hostage volume
-snd_tensecondwarning_volume "0.2";	// ten sec warn
+snd_tensecondwarning_volume "0.1";	// ten sec warn
 snd_deathcamera_volume "0";		// death cam
 snd_mvp_volume "0";			// mvp vol
 snd_mute_mvp_music_live_players "1";	// mute mvp
