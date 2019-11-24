@@ -94,18 +94,19 @@ viewmodel_recoil "0";			//
 // CLEAR BINDS
 bind "MWHEELUP" "";
 bind "MWHEELDOWN" "";
-bind "c" "";
-bind "CapsLock" "";
+
 //_  _  _  _  _  _  _  _  _
+bind "g" "drop"
 
 bind "END" "mp_restartgame 1";
 
 bind "F1" "buy vest; buy m4a1; buy ak47;";
-bind "F2" "slot2; buy fiveseven; buy tec9;";
-bind "F3" "slot2; buy p250; slot2;";
-bind "F4" "slot2; buy hkp2000; buy glock;";
+bind "F2" "buy vest; buy famas; buy galilar;";
+bind "F3" "slot2; buy fiveseven; buy tec9;";
+bind "F4" "slot2; buy p250; slot2;";
 bind "F5" "buy awp;";
 bind "F6" "slot2; buy deagle;";
+bind "F7" "slot2; buy hkp2000; buy glock;";
 
 bind "w" "+forward; r_cleardecals;";
 bind "a" "+moveleft; r_cleardecals;";
@@ -149,14 +150,12 @@ bind "ENTER" "HUD_1";
 //bind "ALT" "+jumpthrow";
 bind "ALT" "";
 
-alias "SLOT_3" "slot3; bind MOUSE3 SLOT_1_2;";
-alias "SLOT_1_2" "slot2; slot1; bind MOUSE3 SLOT_3; bind q SLOT_2;";
+alias "SLOT_1" "slot1; bind "q" "SLOT_2"; bind "MOUSE3" "SLOT_3";";
+alias "SLOT_2" "slot2; bind "q" "SLOT_1"; bind "MOUSE3" "SLOT_3";";
+alias "SLOT_3" "slot3; bind "MOUSE3" "SLOT_1_2";";
+alias "SLOT_1_2" "slot2; slot1; bind "MOUSE3" "SLOT_3"; bind "q" "SLOT_2";";
 bind "MOUSE3" "SLOT_3";
-
-alias "SLOT_1" "SLOT_2; slot1; bind q SLOT_2; bind MOUSE3 SLOT_3";
-alias "SLOT_2" "slot2; bind q SLOT_1; bind MOUSE3 SLOT_3";
-bind "q" "SLOT_2";
-
+bind "q" "SLOT_1";
 
 //net_graphheight "9999";	// posiciona 9999 pxs acima, saindo do campo de visao
 //alias "+scorenet" "+showscores; net_graphheight 0";
@@ -202,7 +201,7 @@ snd_menumusic_volume "0.0";		// main
 snd_roundend_volume "0";		// round start
 snd_roundstart_volume "0";		// round end
 snd_mapobjective_volume "0";		// bomb/hostage volume
-snd_tensecondwarning_volume "0.1";	// ten sec warn
+snd_tensecondwarning_volume "0.05";	// ten sec warn
 snd_deathcamera_volume "0";		// death cam
 snd_mvp_volume "0";			// mvp vol
 snd_mute_mvp_music_live_players "1";	// mute mvp
@@ -255,16 +254,27 @@ cl_crosshaircolor_b "255";
 cl_crosshaircolor_g "255";
 cl_crosshaircolor_r "255";
 cl_crosshairgap_useweaponvalue "0";
-		
 cl_crosshairscale "0"
+
+//MIRA1
+//cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+//cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
+//cl_crosshairdot "0"; 			// ponto central 0/1
+//cl_crosshairthickness "2.5"; 		// espessura da linha
+//cl_crosshairstyle "4"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
+//cl_crosshairgap "-4";  			// espaco entre as linhas
+//cl_crosshairsize "1"; 			// tamanho da linha
+//cl_crosshair_t "1";			// mira em T 0/1
+
+//MIRA2
 cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
 cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
 cl_crosshairdot "0"; 			// ponto central 0/1
-cl_crosshairthickness "2.5"; 		// espessura da linha
+cl_crosshairthickness "1"; 		// espessura da linha
+cl_crosshairsize "1.5"; 			// tamanho da linha
+cl_crosshairgap "-3";  			// espaco entre as linhas
 cl_crosshairstyle "4"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
-cl_crosshairgap "-4";  			// espaco entre as linhas
-cl_crosshairsize "1"; 			// tamanho da linha
-cl_crosshair_t "1";			// mira em T 0/1
+cl_crosshair_t "0";			// mira em T 0/1
 //_______________________________________________________________________________________________________________________
 
 echo "#                                      #";
