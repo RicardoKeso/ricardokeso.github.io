@@ -257,13 +257,13 @@ cl_crosshairgap_useweaponvalue "0";
 cl_crosshairscale "0"
 
 //MIRA1
-//cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-//cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
+//cl_crosshaircolor "1";		// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+//cl_crosshair_drawoutline "0"; 	// contorno da mira 0/1
 //cl_crosshairdot "0"; 			// ponto central 0/1
 //cl_crosshairthickness "2.5"; 		// espessura da linha
-//cl_crosshairstyle "4"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
-//cl_crosshairgap "-4";  			// espaco entre as linhas
-//cl_crosshairsize "1"; 			// tamanho da linha
+//cl_crosshairstyle "4"; 		// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
+//cl_crosshairgap "-4";  		// espaco entre as linhas
+//cl_crosshairsize "1"; 		// tamanho da linha
 //cl_crosshair_t "1";			// mira em T 0/1
 
 //MIRA2
@@ -271,7 +271,7 @@ cl_crosshaircolor "1";			// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-p
 cl_crosshair_drawoutline "0"; 		// contorno da mira 0/1
 cl_crosshairdot "0"; 			// ponto central 0/1
 cl_crosshairthickness "1"; 		// espessura da linha
-cl_crosshairsize "1.5"; 			// tamanho da linha
+cl_crosshairsize "1.5"; 		// tamanho da linha
 cl_crosshairgap "-3";  			// espaco entre as linhas
 cl_crosshairstyle "4"; 			// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
 cl_crosshair_t "0";			// mira em T 0/1
