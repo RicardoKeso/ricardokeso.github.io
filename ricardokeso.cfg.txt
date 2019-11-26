@@ -362,6 +362,9 @@ echo "";
 // Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage
 // Get-AppxPackage *Office.Sway* | Remove-AppxPackage
 // Get-AppxPackage *WindowsReadingList* | Remove-AppxPackage
+// Get-AppxPackage *king.com.BubbleWitch3Saga* | Remove-AppxPackage
+// Get-AppxPackage *king.com.CandyCrushFriends* | Remove-AppxPackage
+// Get-AppxPackage *SpotifyAB.SpotifyMusic* | Remove-AppxPackage
 //
 // Reinstall Microsoft Store
 // Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
