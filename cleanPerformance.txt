@@ -65,16 +65,6 @@ Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage
 Get-AppxPackage *Office.Sway* | Remove-AppxPackage
 Get-AppxPackage *WindowsReadingList* | Remove-AppxPackage
 
-' Reinstall Microsoft Store
-Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
-
-' Reinstall or restore all the built-in Windows 10 apps
-Get-AppXPackage -allusers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
-
-' Listar aplicativos nativos instalados
-Get-AppxPackage | Select-Object Name
-Get-AppxPackage –AllUsers | Select-Object Name
-
 ' > > > Limpar Arquivos nao utilizados do windows (CacheFiles) < < <
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders" /v "StateFlags0048" /t REG_DWORD /d "2" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\BranchCache" /v "StateFlags0048" /t REG_DWORD /d "2" /f
@@ -108,3 +98,17 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Wi
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Windows Upgrade Log Files" /v "StateFlags0048" /t REG_DWORD /d "2" /f
 
 cleanmgr /sagerun:48
+'
+'
+'
+'
+'
+' Reinstall Microsoft Store
+Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
+
+' Reinstall or restore all the built-in Windows 10 apps
+Get-AppXPackage -allusers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+' Listar aplicativos nativos instalados
+Get-AppxPackage | Select-Object Name
+Get-AppxPackage –AllUsers | Select-Object Name
