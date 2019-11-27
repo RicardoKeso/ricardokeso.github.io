@@ -305,7 +305,7 @@ echo "";
 // REN "videos" "videos_orig"
 //
 // > > > Script Para Limpeza e Melhoria de Desempenho < < <
-// https://www.ricardokeso.com/cleanPerformance.txt
+// https://www.ricardokeso.com/performance.txt
 //_______________________________________________________________________________________________________________________
 //
 // Cores do  HUD
