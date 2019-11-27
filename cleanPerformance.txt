@@ -1,21 +1,23 @@
-:: > > > CPU Core Parking - Un-park CPU < < <
-reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+' EXECUTAR OS COMANDOS NO POWERSHELL COM ADMINISTRADOR * * * * * * * * * * * * * * * * * * * * * * * * 
 
-:: > > > ALTERAR PLANO DE ENERGIA < < <
+' > > > ALTERAR PLANO DE ENERGIA < < <
 powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 powercfg /SETACTIVE 16f789bb-e4ac-49a7-9d54-aacdeb453d0b
 
-:: > > > DESATIVAR O DVR < < <
+' > > > CPU Core Parking - Un-park CPU < < <
+reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
+
+' > > > DESATIVAR O DVR < < <
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f
 
-:: > > > Setar Prioridade para Jogos < < <
+'> > > Setar Prioridade para Jogos < < <
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d "8" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f
 
-:: > > > Remover Aplicativos pre-instalados "Bloatwares" (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
+' > > > Remover Aplicativos pre-instalados "Bloatwares" (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
 Get-AppxPackage *3DBuilder* | Remove-AppxPackage
 Get-AppxPackage *Appconnector* | Remove-AppxPackage
 Get-AppxPackage *BingFinance* | Remove-AppxPackage
@@ -63,7 +65,17 @@ Get-AppxPackage *ConnectivityStore* | Remove-AppxPackage
 Get-AppxPackage *Office.Sway* | Remove-AppxPackage
 Get-AppxPackage *WindowsReadingList* | Remove-AppxPackage
 
-:: > > > Limpar Arquivos nao utilizados do windows (CacheFiles) < < <
+' Reinstall Microsoft Store
+Get-AppXPackage *WindowsStore* -AllUsers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"} 
+
+' Reinstall or restore all the built-in Windows 10 apps
+Get-AppXPackage -allusers | Foreach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+
+' Listar aplicativos nativos instalados
+Get-AppxPackage | Select-Object Name
+Get-AppxPackage –AllUsers | Select-Object Name
+
+' > > > Limpar Arquivos nao utilizados do windows (CacheFiles) < < <
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders" /v "StateFlags0048" /t REG_DWORD /d "2" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\BranchCache" /v "StateFlags0048" /t REG_DWORD /d "2" /f
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Content Indexer Cleaner" /v "StateFlags0048" /t REG_DWORD /d "2" /f
