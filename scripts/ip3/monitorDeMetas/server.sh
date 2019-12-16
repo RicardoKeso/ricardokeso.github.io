@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # hostnamectl set-hostname XXXXXXX
 mv /etc/localtime /etc/localtime_orig
 ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime
@@ -26,6 +24,29 @@ apt-get update && apt-get upgrade
 
 # criar usuario "boss" na instalacao do sistema
 # useradd boss -m
+
+# CLIENT---------------------------------------------------------------------------------------------------------
+
+apt-get install -y sudo xorg chromium openbox lightdm unclutter
+
+sed -i 's/^\[Seat:\*\]/# \[Seat:\*\]/' /etc/lightdm/lightdm.conf
+
+echo "" >> /etc/lightdm/lightdm.conf
+echo "[Seat:*]" >> /etc/lightdm/lightdm.conf
+echo "autologin-user=boss" >> /etc/lightdm/lightdm.conf
+echo "autologin-user-timeout=0" >> /etc/lightdm/lightdm.conf
+echo "autologin-session=openbox" >> /etc/lightdm/lightdm.conf
+
+mkdir -p /home/boss/.config/openbox/
+echo "chromium --incognito --first-run --disable --disable-translate --disable-infobars --disable-suggestions-service --disable-save-password-bubble --start-maximized --kiosk \"http://monitordemetas.ip3.info/tvonline\" &" > /home/boss/.config/openbox/autostart
+echo "unclutter -display 0:0 -noevents -grab &" >> /home/boss/.config/openbox/autostart
+chown -R boss:boss /home/boss/
+
+apt-get update && apt-get upgrade
+
+reboot
+
+# SERVER---------------------------------------------------------------------------------------------------------
 
 apt-get install apache2 php mysql-server
 apt-get install phpmyadmin
@@ -77,17 +98,13 @@ chmod +x /etc/rc.local
 echo "" >> /etc/ssh/sshd_config
 echo "DenyGroups ftpusers" >> /etc/ssh/sshd_config
 
-echo "alterar senha root"
-passwd // A!
-echo "alterar senha boss"
-passwd boss // A!
-echo "alterar senha tvonline"
-passwd tvonline // 
+mysql -u root -p
+//	UPDATE user SET Password=PASSWORD('---') WHERE User='root';
+//	CREATE DATABASE tvonline;
+//	CREATE USER 'tvonline'@'%' IDENTIFIED BY '---';
+//	GRANT ALL PRIVILEGES ON tvonline.* TO 'tvonline'@'localhost';
+//	FLUSH PRIVILEGES;
 
-echo "para configurar o banco, use os comandos no final do script"
-# mysql -u root -p
-##	UPDATE user SET Password=PASSWORD('A!') WHERE User='root';
-##	CREATE DATABASE tvonline;
-##	CREATE USER 'tvonline'@'%' IDENTIFIED BY 'SENHAAQUI';
-##	GRANT ALL PRIVILEGES ON tvonline.* TO 'tvonline'@'localhost';
-##	FLUSH PRIVILEGES;
+passwd //
+passwd boss // 
+passwd tvonline // 
