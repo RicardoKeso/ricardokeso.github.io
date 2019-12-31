@@ -1,7 +1,7 @@
-gpmc.msc  Group Police Management
-diskmgmt.msc  Disk Management
-wf.msc  Windows Defender Firewall with Advanced Security
-lusrmgr.msc Local Users and Groups
+gpmc.msc - Group Police Management
+diskmgmt.msc - Disk Management
+wf.msc - Windows Defender Firewall with Advanced Security
+lusrmgr.msc - Local Users and Groups
 
 CERTMGR.MSC 	  Certificates snap-in
 CERTSRV.MSC 	  Certification Services
