@@ -1,18 +1,18 @@
-gpmc.msc		Group Police Management
-diskmgmt.msc	Disk Management
-wf.msc			Windows Defender Firewall with Advanced Security
+gpmc.msc    Group Police Management
+diskmgmt.msc  	Disk Management
+wf.msc			  Windows Defender Firewall with Advanced Security
 lusrmgr.msc		Local Users and Groups
 
-CERTMGR.MSC 	Certificates snap-in
-CERTSRV.MSC 	Certification Services
+CERTMGR.MSC 	  Certificates snap-in
+CERTSRV.MSC 	  Certification Services
 CMD.EXE 		Command Prompt
-COMPMGMT.msc 	Computer Management
+COMPMGMT.msc 	  Computer Management
 DCPOL.MSC 		Domain Controller Security Policy
-DEVMGMT.msc 	Device Manager
+DEVMGMT.msc 	  Device Manager
 DFRG.MSC 		Disk Defragmenter
 DFSGUI.MSC 		Distributed File System
-DHCPMGMT.MSC 	DHCP Manager
-DNSMGMT.MSC 	DNS Manager
+DHCPMGMT.MSC 	  DHCP Manager
+DNSMGMT.MSC 	  DNS Manager
 DOMAIN.MSC 		Active Directory Domains & Trust
 DOMPOL.MSC 		Domain Security Policy
 DSA.MSC 		Active Directory Users & Computers
@@ -25,12 +25,12 @@ GPEDIT.MSC 		local Group Policy Editor
 IAS.MSC 		Internet Authentication Service
 INETMGR 		Internet Information Service (\Windows\system32\inetsrv)
 MMC.EXE 		Microsoft Management Console
-MSINFO32.EXE 	Hardware and software configuration information
-PERFMON.MSC 	Performance Monitor
-REGEDIT.EXE 	Run Registry Editor
-RRASMGMT.MSC 	Routing and Remote Access
+MSINFO32.EXE 	  Hardware and software configuration information
+PERFMON.MSC 	  Performance Monitor
+REGEDIT.EXE 	  Run Registry Editor
+RRASMGMT.MSC 	  Routing and Remote Access
 RSOP.MSC 		Resultant Set of Policy
 SECPOL.MSC 		Local Security Policy
-SERVICES.MSC 	Service Configuration
+SERVICES.MSC 	  Service Configuration
 TSCC.MSC 		Terminal Services
 MSTSC 			Remote Desktop
