@@ -34,3 +34,52 @@ SECPOL.MSC 		Local Security Policy
 SERVICES.MSC 	  Service Configuration
 TSCC.MSC 		Terminal Services
 MSTSC 			Remote Desktop
+
+Quality of Service Control Management	ACSsnap.msc
+ADSI Edit	ADSIedit.msc
+Authorization manager	AZman.msc
+Certificates Management - Local machine	Certlm.msc
+Certificates Management - Current user	Certmgr.msc
+Certification Authority Management	Certsrv.msc
+Certificate Templates	Certtmpl.msc
+Failover cluster Manager	Cluadmin.exe
+Component Services	Comexp.msc
+Computer Management	Compmgmt.msc
+Device Manager	Devmgmt.msc
+Notifications/Start menu/policy	DevModeRunAsUserConfig.msc
+Disk Defragmenter	Defrag.exe (formerly Dfrg.msc)
+Distributed File Service Mgmt	DFSmgmt.msc
+Disk Manager	DiskMgmt.msc
+DNS Manager	DNSmgmt.msc
+AD Domains and Trusts	Domain.msc
+AD Users and Computers	DSA.msc
+AD Sites and Services	DSsite.msc
+Embedded Lockdown Manager	EmbeddedLockdown.msc
+Event Viewer	Eventvwr.msc
+Shared Folders open files	FSmgmt.msc
+File Server Resource manager	FSRM.msc
+Local Group Policy Editor	GPedit.msc
+Group Policy Management	GPmc.msc
+Group Policy Management Editor	GPme.msc
+Group Policy Starter GPO Editor	GPTedit.msc
+Local Users and Groups Manager	LUsrMgr.msc
+Teminal Services RDP	MSTSC
+Teminal Services RDP to Console	MSTSC /v:[server] /console
+NAP client configuration	NapCLCfg
+Performance Monitor	PerfMon.msc
+Print Management	PrintManagement.msc
+Resultant Set of Policy	RSOP.msc
+Local Security Settings Manager	SecPol.msc
+Server Roles, Features	ServerManager.msc
+Services Management	Services.msc
+SQL Server configuration Manager	SQLServerManager11.msc
+Storage Mgmt	StorageMgmt.msc
+Telephony Management	TAPImgmt.msc
+Task Scheduler	TaskSchd.msc
+Trusted Platform Module	TPM.msc
+Terminal Server Manager	TSadmin.exe
+Remote Desktop	TSmmc.msc
+Windows Mangement Instrumentation	WmiMgmt.msc
+Windows Server Backup (Local+Remote)	WBadmin.msc
+Windows Local Backup	WLBadmin.msc
+Windows Firewall	WF.msc
