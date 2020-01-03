@@ -8,7 +8,7 @@ appwiz.cpl Programs and Features
 netplwiz 	Advanced User Accounts Control Panel
 timedate.cpl Date and Time Properties
 inetcpl.cpl Internet Properties
-
+virtmgmt.msc Hyper-V Manager
 
 
 CERTMGR.MSC 	  Certificates snap-in
