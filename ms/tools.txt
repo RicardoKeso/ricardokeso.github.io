@@ -9,6 +9,7 @@ netplwiz 	Advanced User Accounts Control Panel
 timedate.cpl Date and Time Properties
 inetcpl.cpl Internet Properties
 virtmgmt.msc Hyper-V Manager
+vmconnect.exe - Virtual Machine Connection
 
 
 CERTMGR.MSC 	  Certificates snap-in
