@@ -39,7 +39,7 @@ EVENTVWR.MSC 	Event Viewer
 FSMGMT.MSC 		Shared Folders
 GPEDIT.MSC 		local Group Policy Editor
 IAS.MSC 		Internet Authentication Service
-INETMGR 		Internet Information Service (\Windows\system32\inetsrv)
+.\inetsrv\InetMgr.exe	Internet Information Service (\Windows\system32\inetsrv)
 MMC.EXE 		Microsoft Management Console
 MSINFO32.EXE 	  Hardware and software configuration information
 PERFMON.MSC 	  Performance Monitor
