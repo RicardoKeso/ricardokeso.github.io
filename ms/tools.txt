@@ -1,15 +1,22 @@
+compmgmt.msc - Computer Management
+dhcpmgmt.msc - DHCP Manager
+dns.mgmt.msc - DNS Manager
 gpmc.msc - Group Police Management
+dsa.msc - Active Directory Users & Computers
+virtmgmt.msc - Hyper-V Manager
+vmconnect.exe - Virtual Machine Connection
+- - -
+iscsicpl - iSCSI Initiator configuration
 diskmgmt.msc - Disk Management
+ncpa.cpl - Network Connections
+----------------------------------------------------------
 wf.msc - Windows Defender Firewall with Advanced Security
 lusrmgr.msc - Local Users and Groups
-ncpa.cpl Network Connections
-main.cpl Mouse Properties
-appwiz.cpl Programs and Features
-netplwiz 	Advanced User Accounts Control Panel
-timedate.cpl Date and Time Properties
-inetcpl.cpl Internet Properties
-virtmgmt.msc Hyper-V Manager
-vmconnect.exe - Virtual Machine Connection
+main.cpl - Mouse Properties
+appwiz.cpl - Programs and Features
+netplwiz - Advanced User Accounts Control Panel
+timedate.cpl - Date and Time Properties
+inetcpl.cpl - Internet Properties
 
 
 CERTMGR.MSC 	  Certificates snap-in
