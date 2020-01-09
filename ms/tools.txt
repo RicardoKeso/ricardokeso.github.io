@@ -14,6 +14,7 @@ wf.msc - Windows Defender Firewall with Advanced Security
 lusrmgr.msc - Local Users and Groups
 main.cpl - Mouse Properties
 appwiz.cpl - Programs and Features
+optionalfeatures.exe - Windows Features
 netplwiz - Advanced User Accounts Control Panel
 timedate.cpl - Date and Time Properties
 inetcpl.cpl - Internet Properties
