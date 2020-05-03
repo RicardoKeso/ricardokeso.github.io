@@ -174,7 +174,7 @@ bind "CapsLock" "VOIP_1"
 
 // windows: level 7	
 // mouse: 1000 DPI 1000Hz
-sensitivity "1.75";	//sense no jogo
+sensitivity "1.5";	//sense no jogo
 m_rawinput "1"; 	//
 m_mouseaccel2 "0";	//
 m_mouseaccel1 "0";	//
