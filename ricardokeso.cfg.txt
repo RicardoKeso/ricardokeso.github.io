@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200503.2014         #";
+echo "#       Versao:  20191103.1345         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -172,9 +172,9 @@ bind "CapsLock" "VOIP_1"
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-// windows: level 7	
+// windows: level 5
 // mouse: 1000 DPI 1000Hz
-sensitivity "1.5";	//sense no jogo
+sensitivity "1.3";	//sense no jogo
 m_rawinput "1"; 	//
 m_mouseaccel2 "0";	//
 m_mouseaccel1 "0";	//
@@ -268,14 +268,25 @@ cl_crosshairscale "0"
 //cl_crosshair_t "1";						// mira em T 0/1
 
 //MIRA2
+//cl_crosshaircolor "1";					// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+//cl_crosshair_drawoutline "0"; 			// contorno da mira 0/1
+//cl_crosshairdot "0"; 						// ponto central 0/1
+//cl_crosshairthickness "1"; 				// espessura da linha
+//cl_crosshairsize "1.5"; 					// tamanho da linha
+//cl_crosshairgap "-3";  					// espaco entre as linhas
+//cl_crosshairstyle "4"; 					// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
+//cl_crosshair_t "0";						// mira em T 0/1
+
+//MIRA3
 cl_crosshaircolor "1";						// 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-cl_crosshair_drawoutline "0"; 				// contorno da mira 0/1
-cl_crosshairdot "0"; 						// ponto central 0/1
+cl_crosshair_drawoutline "1"; 				// contorno da mira 0/1
+cl_crosshairdot "1"; 						// ponto central 0/1
 cl_crosshairthickness "1"; 					// espessura da linha
-cl_crosshairsize "1.5"; 					// tamanho da linha
+cl_crosshairsize "0";	 					// tamanho da linha
 cl_crosshairgap "-3";  						// espaco entre as linhas
 cl_crosshairstyle "4"; 						// estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
 cl_crosshair_t "0";							// mira em T 0/1
+
 //_______________________________________________________________________________________________________________________
 
 echo "#                                      #";
