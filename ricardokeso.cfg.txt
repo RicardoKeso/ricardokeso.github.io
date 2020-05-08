@@ -184,16 +184,16 @@ m_mousespeed "0";	//
 
 // * * * SOUND * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-volume "1"; 								// master
-snd_musicvolume_multiplier_inoverlay "0";	// steam overlay
-voice_caster_scale "0"; 					// gotv
-snd_surround_speakers "-1"; 				// output 
-snd_hwcompat "0"; 							// 3d audio (0 on, 1 off)
-voice_enable "1";							// enable voice
-voice_loopback "0";							// escutar o proprio mic 0/1
-voice_scale "0.1"; 							// voip volume
-voice_positional "0";						// voice positional
-//snd_mute_losefocus "1";					// play audio background (0 on, 1 off) devem ter desabilitado essa funcao
+volume "1"; //________________________________ master
+snd_musicvolume_multiplier_inoverlay "0"; //__ steam overlay
+voice_caster_scale "0"; //____________________ gotv
+snd_surround_speakers "-1"; //________________ output 
+snd_hwcompat "0"; //__________________________ 3d audio (0 on, 1 off)
+voice_enable "1"; //__________________________ enable voice
+voice_loopback "0"; //________________________ escutar o proprio mic 0/1
+voice_scale "0.1"; //_________________________ voip volume
+voice_positional "0"; //______________________ voice positional
+//snd_mute_losefocus "1"; //__________________ play audio background (0 on, 1 off) devem ter desabilitado essa funcao
 //_______________________________________________________________________________________________________________________
 
 // * * * MUSIC * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
