@@ -198,28 +198,28 @@ voice_positional "0"; //______________________ voice positional
 
 // * * * MUSIC * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-snd_menumusic_volume "0.0";					// main
-snd_roundend_volume "0";					// round start
-snd_roundstart_volume "0";					// round end
-snd_mapobjective_volume "0";				// bomb/hostage volume
-snd_tensecondwarning_volume "0.05";			// ten sec warn
-snd_deathcamera_volume "0";					// death cam
-snd_mvp_volume "0";							// mvp vol
-snd_mute_mvp_music_live_players "1";		// mute mvp
-snd_dzmusic_volume "0";						// danger zone music
-snd_duckerattacktime "0.5";					//
-snd_duckerreleasetime "2.5";				//
-snd_duckerthreshold "0.15";					//
-snd_ducking_off "1";						//
-snd_ducktovolume "0.55";					//
-snd_hrtf_distance_behind "100";				//
-snd_hrtf_voice_delay "0.1";					//
-snd_mix_async "1";							//
-snd_mix_async_onetime_reset "1";			//
-snd_mixahead "0.05";						//
-snd_music_selection "2";					//
-snd_music_volume_onetime_reset_2 "1";		//
-snd_pitchquality "1"						//
+snd_menumusic_volume "0.0";                           // main
+snd_roundend_volume "0";                              // round start
+snd_roundstart_volume "0";                            // round end
+snd_mapobjective_volume "0";                          // bomb/hostage volume
+snd_tensecondwarning_volume "0.05";                   // ten sec warn
+snd_deathcamera_volume "0";                           // death cam
+snd_mvp_volume "0";                                   // mvp vol
+snd_mute_mvp_music_live_players "1";                  // mute mvp
+snd_dzmusic_volume "0";                               // danger zone music
+snd_duckerattacktime "0.5";                           //
+snd_duckerreleasetime "2.5";                          //
+snd_duckerthreshold "0.15";                           //
+snd_ducking_off "1";                                  //
+snd_ducktovolume "0.55";                              //
+snd_hrtf_distance_behind "100";                       //
+snd_hrtf_voice_delay "0.1";                           //
+snd_mix_async "1";                                    //
+snd_mix_async_onetime_reset "1";                      //
+snd_mixahead "0.05";                                  //
+snd_music_selection "2";                              //
+snd_music_volume_onetime_reset_2 "1";                 //
+snd_pitchquality "1"                                  //
 //_______________________________________________________________________________________________________________________
 
 // * * * RADAR/HUD * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
