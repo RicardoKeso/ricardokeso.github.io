@@ -125,12 +125,11 @@ bindtoggle "0" "cl_draw_only_deathnotices";           // noticias das mortes 0/1
 
 bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
 
+// COMBOS DE COMANDOS
 alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 0; cl_hud_color 5; bind x silencio_2;";
 alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 bind "x" "silencio_1";
 
-
-// COMBOS DE COMANDOS
 bind "1" "flash_1";
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
