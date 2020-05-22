@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20191103.1345         #";
+echo "#       Versao:  20200509.0029         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -84,7 +84,7 @@ viewmodel_offset_x "0.1";                             // def- posicao lateral da
 cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
 
-r_drawparticles "1";                                  // fumaca/fogo da arma 0/1
+//r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
 r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
 viewmodel_recoil "0";                                 //
 //_______________________________________________________________________________________________________________________
@@ -101,7 +101,8 @@ bind "F3" "slot2; buy fiveseven; buy tec9;";          //
 bind "F4" "slot2; buy p250; slot2;";                  //
 bind "F5" "buy awp;";                                 //
 bind "F6" "slot2; buy deagle;";                       //
-bind "F7" "slot2; buy hkp2000; buy glock;";           //
+bind "F7" "slot2; buy hkp2000; buy glock; buy usp;";  //
+bind "F8" "slot2; buy aug; buy sg553;                 //
 
 bind "w" "+forward; r_cleardecals;";                  //
 bind "a" "+moveleft; r_cleardecals;";                 //
@@ -114,8 +115,9 @@ bind "3" "use weapon_hegrenade";                      //
 bind "4" "use weapon_molotov; use weapon_incgrenade"; //
 bind "5" "slot5";                                     //
 bind "6" "use weapon_taser;";                         //
-bind "0" "slot12";                                    // seringa
+bind "7" "slot12";                                    // seringa
 
+bind "t" "lastinv"                                    //
 bind "v" "+voicerecord";                              //
 bind "DEL" "callvote";                                //
 bind "g" "drop";                                      //
@@ -126,16 +128,16 @@ bindtoggle "0" "cl_draw_only_deathnotices";           // noticias das mortes 0/1
 bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
 
 // COMBOS DE COMANDOS
-alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 0; cl_hud_color 5; bind x silencio_2;";
+alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
 alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 bind "x" "silencio_1";
 
-bind "1" "flash_1";
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
+bind "1" "flash_1";
 
-alias "HUD_1" "cl_radar_scale "0.2"; cl_radar_always_centered "0"; bind "ENTER" "HUD_2"; ";
-alias "HUD_2" "cl_radar_scale "0.4"; cl_radar_always_centered "0"; bind "ENTER" "HUD_3"; ";
+alias "HUD_1" "cl_radar_scale "0.2"; cl_radar_always_centered "0"; bind "ENTER" "HUD_2";";
+alias "HUD_2" "cl_radar_scale "0.4"; cl_radar_always_centered "0"; bind "ENTER" "HUD_3";";
 alias "HUD_3" "cl_radar_scale "0.3"; cl_radar_always_centered "1"; bind "ENTER" "HUD_4";";
 alias "HUD_4" "cl_radar_scale "0.4"; cl_radar_always_centered "1"; bind "ENTER" "HUD_5";";
 alias "HUD_5" "cl_radar_scale "0.5"; cl_radar_always_centered "1"; bind "ENTER" "HUD_1";";
@@ -143,10 +145,14 @@ bind "ENTER" "HUD_1";
 
 alias "SLOT_1" "slot1; bind "q" "SLOT_2"; bind "MOUSE3" "SLOT_3";";
 alias "SLOT_2" "slot2; bind "q" "SLOT_1"; bind "MOUSE3" "SLOT_3";";
-alias "SLOT_3" "slot3; bind "MOUSE3" "SLOT_1_2";";
-alias "SLOT_1_2" "slot2; slot1; bind "MOUSE3" "SLOT_3"; bind "q" "SLOT_2";";
+alias "SLOT_3" "slot3; bind "MOUSE3" "lastinv";";
 bind "MOUSE3" "SLOT_3";
 bind "q" "SLOT_1";
+
+//alias "arma" "primaria";
+//alias "primaria" "slot1; alias "arma" "secundaria";";
+//alias "secundaria" "slot2; alias "arma" "primaria";"
+//bind "j" "arma";
 
 //net_graphheight "9999";    // posiciona 9999 pxs acima, saindo do campo de visao
 //alias "+scorenet" "+showscores; net_graphheight 0";
@@ -169,8 +175,8 @@ bind "ALT" "";
 
 // windows: level 5
 // mouse: 1000 DPI 1000Hz
-sensitivity "1.3";                                    // sense no jogo
-m_rawinput "1";                                       //
+sensitivity "1.7";                                    // sense no jogo
+m_rawinput "1";                                       // aceita apenas a sensibilidade do mouse ignorando do windows
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
 m_customaccel "0";                                    //
@@ -250,37 +256,14 @@ cl_crosshaircolor_b "255";                            //
 cl_crosshaircolor_g "255";                            //
 cl_crosshaircolor_r "255";                            //
 cl_crosshairgap_useweaponvalue "0";                   //
-cl_crosshairscale "0";                                //
+//cl_crosshairscale "0";                              // (Unknown command "cl_crosshairscale")
+cl_crosshaircolor "1";                                // cor da mira
 
-// MIRA1
-//cl_crosshaircolor "1";                              // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-//cl_crosshair_drawoutline "0";                       // contorno da mira 0/1
-//cl_crosshairdot "0";                                // ponto central 0/1
-//cl_crosshairthickness "2.5";                        // espessura da linha
-//cl_crosshairstyle "4";                              // estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
-//cl_crosshairgap "-4";                               // espaco entre as linhas
-//cl_crosshairsize "1";                               // tamanho da linha
-//cl_crosshair_t "1";                                 // mira em T 0/1
+alias "MIRA_U" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairstyle "4"; cl_crosshairgap "-4"; cl_crosshairsize "1"; cl_crosshair_t "1"; bind "INS" "MIRA_DEF";";
+alias "MIRA_DEF" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshairstyle "4"; cl_crosshair_t "0"; bind "INS" "MIRA_PONTO";";
+alias "MIRA_PONTO" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1"; cl_crosshairsize "0"; cl_crosshairgap "-3"; cl_crosshairstyle "4"; cl_crosshair_t "0"; bind "INS" "MIRA_U";";
+bind "INS" "MIRA_U";
 
-// MIRA2 PEQUENA
-//cl_crosshaircolor "1";                              // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-//cl_crosshair_drawoutline "0";                       // contorno da mira 0/1
-//cl_crosshairdot "0";                                // ponto central 0/1
-//cl_crosshairthickness "1";                          // espessura da linha
-//cl_crosshairsize "1.5";                             // tamanho da linha
-//cl_crosshairgap "-3";                               // espaco entre as linhas
-//cl_crosshairstyle "4";                              // estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
-//cl_crosshair_t "0";                                 // mira em T 0/1
-
-// MIRA3 PONTO
-cl_crosshaircolor "1";                                // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
-cl_crosshair_drawoutline "1";                         // contorno da mira 0/1
-cl_crosshairdot "1";                                  // ponto central 0/1
-cl_crosshairthickness "1";                            // espessura da linha
-cl_crosshairsize "0";                                 // tamanho da linha
-cl_crosshairgap "-3";                                 // espaco entre as linhas
-cl_crosshairstyle "4";                                // estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
-cl_crosshair_t "0";                                   // mira em T 0/1
 //_______________________________________________________________________________________________________________________
 
 echo "#                                      #";
@@ -405,7 +388,16 @@ echo "";
 // rate "393216"    Up to 3 Mbps
 // rate "524288"    Up to 4 Mbps
 // rate "786432"    Unrestricted 6 Mbps
-
+//_______________________________________________________________________________________________________________________
+// MIRA DESCRICAO
+//cl_crosshaircolor "1";                              // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
+//cl_crosshair_drawoutline "0";                       // contorno da mira 0/1
+//cl_crosshairdot "0";                                // ponto central 0/1
+//cl_crosshairthickness "2.5";                        // espessura da linha
+//cl_crosshairstyle "4";                              // estilo da mira 1-aleta inimigo, 2-dinamica, 3-dinamica, 4-estatica (old 5)
+//cl_crosshairgap "-4";                               // espaco entre as linhas
+//cl_crosshairsize "1";                               // tamanho da linha
+//cl_crosshair_t "1";                                 // mira em T 0/1
 //_______________________________________________________________________________________________________________________
 // ARMAS AUTOMÁTICAS
 //    Scout (ssg08)
