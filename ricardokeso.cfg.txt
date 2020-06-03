@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200509.0029         #";
+echo "#       Versao:  20200531.1426         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //_______________________________________________________________________________________________________________________
@@ -54,13 +54,13 @@ r_eyesize "0";                                        //
 
 voice_enable "1";                                     // habilitar voz no audio e microfone
 mat_queue_mode "2";                                   // multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
-fps_max "0";                                          // zero desabilita 0 limite de fps
+fps_max "999";                                        // 
 hud_takesshots "1";                                   // Automaticamente tira um screenshot da pontuação no final do jogo
 gameinstructor_enable "0";                            // mensagens do instrutor 0/1
 func_break_max_pieces "0";                            //
 mm_dedicated_search_maxping "60";                     //
 spec_replay_autostart "0";                            //
-rate "24576";                                         // Max Acceptable Game Traffic Bandwidth (valores depois do fim do carregamento)
+rate "786432";                                        // Max Acceptable Game Traffic Bandwidth (irrestrito)
 
 // so podem ser utilizadas antes da conexao com o servidor
 //cl_interp "0";                                        //
@@ -75,7 +75,7 @@ cl_bobamt_vert "0.1";                                 // movimento vertical da a
 cl_bobamt_lat "0.1";                                  // movimento lateral da arma ao andar 0.1/2
 cl_bob_lower_amt "5";                                 // movimento frontal da arma ao andar 5/30
 cl_righthand "1";                                     // mao esquesda e direita 0/1
-//viewmodel_presetpos "";                               // 1/2/3
+//viewmodel_presetpos "";                             // 1/2/3
 viewmodel_fov "65";                                   // def-60 area visivel da arma (def 62.5, teste 65)
 
 viewmodel_offset_z "-1.4";                            // def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
@@ -84,7 +84,7 @@ viewmodel_offset_x "0.1";                             // def- posicao lateral da
 cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
 
-//r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
+r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
 r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
 viewmodel_recoil "0";                                 //
 //_______________________________________________________________________________________________________________________
@@ -95,14 +95,17 @@ viewmodel_recoil "0";                                 //
 bind "MWHEELUP" "";                                   //
 bind "MWHEELDOWN" "";                                 //
 
-bind "F1" "buy vest; buy m4a1; buy ak47;";            //
-bind "F2" "buy vest; buy famas; buy galilar;";        //
-bind "F3" "slot2; buy fiveseven; buy tec9;";          //
-bind "F4" "slot2; buy p250; slot2;";                  //
-bind "F5" "buy awp;";                                 //
-bind "F6" "slot2; buy deagle;";                       //
-bind "F7" "slot2; buy hkp2000; buy glock; buy usp;";  //
-bind "F8" "slot2; buy aug; buy sg553;                 //
+bind "MOUSE1" "+attack"
+bind "MOUSE2" "+attack2"
+
+bind "F1" "buy vest; buy m4a1; buy ak47;";            // M4A1 ou AK47
+bind "F2" "buy vest; buy famas; buy galilar;";        // Famas ou GalilAR
+bind "F3" "slot2; buy fiveseven; buy tec9;";          // FiveSeven ou Tec9
+bind "F4" "slot2; buy p250; slot2;";                  // P250
+bind "F5" "buy awp;";                                 // AWP
+bind "F6" "slot2; buy deagle;";                       // Desert Eagle
+bind "F7" "slot2; buy hkp2000; buy glock; buy usp;";  // P2000/USP ou Glock
+bind "F8" "slot2; buy aug; buy sg553;                 // AUG ou SG553
 
 bind "w" "+forward; r_cleardecals;";                  //
 bind "a" "+moveleft; r_cleardecals;";                 //
@@ -117,17 +120,27 @@ bind "5" "slot5";                                     //
 bind "6" "use weapon_taser;";                         //
 bind "7" "slot12";                                    // seringa
 
+bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
+bind "f" "+lookatweapon"                              //
+bind "g" "drop";                                      //
+bind "j" "+cl_mute_enemy_team"                        //
+bind "l" "+cl_show_team_equipment"                    //
 bind "t" "lastinv"                                    //
 bind "v" "+voicerecord";                              //
-bind "DEL" "callvote";                                //
-bind "g" "drop";                                      //
-bind "END" "mp_restartgame 1";                        //
-bindtoggle "h" "cl_righthand";                        // troca de mao
-bindtoggle "0" "cl_draw_only_deathnotices";           // noticias das mortes 0/1
 
-bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
+bind "DEL" "callvote";                                //
+bind "END" "mp_restartgame 1";                        //
+//bindtoggle "cl_righthand";                            // troca de mao
+//bindtoggle "cl_draw_only_deathnotices";               // noticias das mortes 0/1
+
 
 // COMBOS DE COMANDOS
+
+alias "NOTICES_1" "cl_drawhud "0"; bind "0" "NOTICES_2";";
+alias "NOTICES_2" "cl_drawhud "1"; cl_draw_only_deathnotices "0"; bind "0" "NOTICES_3";";
+alias "NOTICES_3" "cl_drawhud "1"; cl_draw_only_deathnotices "1"; bind "0" "NOTICES_1";";
+bind "0" "NOTICES_1";
+
 alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
 alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 bind "x" "silencio_1";
@@ -173,10 +186,10 @@ bind "ALT" "";
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-// windows: level 5
-// mouse: 1000 DPI 1000Hz
-sensitivity "1.7";                                    // sense no jogo
-m_rawinput "1";                                       // aceita apenas a sensibilidade do mouse ignorando do windows
+// windows: level 5                                   // valor descartado quando m_rawinput = 1
+// mouse: 2000DPI 1000Hz
+sensitivity "0.8";                                    // sense no jogo
+m_rawinput "0";                                       // aceita apenas a sensibilidade do mouse dentro do jogo, ignorando a do windows (nao esta funcionando)
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
 m_customaccel "0";                                    //
@@ -251,8 +264,8 @@ cl_crosshair_outlinethickness "1";                    //
 cl_crosshair_sniper_show_normal_inaccuracy "0";       //
 cl_crosshair_sniper_width "1";                        //
 //cl_crosshairusealpha "1";                           //
-cl_crosshairalpha "200";                              //
-cl_crosshaircolor_b "255";                            //
+cl_crosshairalpha "192";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
+cl_crosshaircolor_b "255";                            // 
 cl_crosshaircolor_g "255";                            //
 cl_crosshaircolor_r "255";                            //
 cl_crosshairgap_useweaponvalue "0";                   //
@@ -271,6 +284,13 @@ echo "#       Fim do carregamento.           #";
 echo "#                                      #";
 echo "#--------------------------------------#";
 echo "";
+
+
+
+
+
+
+
 //_______________________________________________________________________________________________________________________
 // #  #  FIM DO CFG  #  #  #  #  FIM DO CFG  #  #  #  #  FIM DO CFG  #  #  #  #  FIM DO CFG  #  #  #  #  FIM DO CFG  #  #
 //
@@ -281,7 +301,7 @@ echo "";
 //_______________________________________________________________________________________________________________________
 
 // * * * OPCOES DE ARRANQUE * * * * * * * * * ** * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// -novid -nojoy -noaafonts -cl_forcepreload 1 -d3d9ex -freq 75 -refresh 75 -w 1920 -h 1080 -high +mat_queue_mode 2 +exec ricardokeso.cfg
+// -novid -nojoy -noaafonts -cl_forcepreload 1 -d3d9ex -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +fps_max 999 +mat_queue_mode 2 +mat_queue_mod 2 +exec ricardokeso.cfg
 // o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
 //
 // Gravar no config.cfg     host_writeconfig;
@@ -381,13 +401,13 @@ echo "";
 // rate "49152"        Below 384 Kbps
 // rate "65536"        Below 512 Kbps
 // rate "98304"        Below 768 Kbps
-// rate "131072"    Below 1 Mbps
-// rate "196608"    Up to 1.5 Mbps
-// rate "262144"    Up to 2 Mbps
-// rate "327680"    Up to 2.5 Mbps
-// rate "393216"    Up to 3 Mbps
-// rate "524288"    Up to 4 Mbps
-// rate "786432"    Unrestricted 6 Mbps
+// rate "131072"       Below 1 Mbps
+// rate "196608"       Up to 1.5 Mbps
+// rate "262144"       Up to 2 Mbps
+// rate "327680"       Up to 2.5 Mbps
+// rate "393216"       Up to 3 Mbps
+// rate "524288"       Up to 4 Mbps
+// rate "786432"       Unrestricted 6 Mbps
 //_______________________________________________________________________________________________________________________
 // MIRA DESCRICAO
 //cl_crosshaircolor "1";                              // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
