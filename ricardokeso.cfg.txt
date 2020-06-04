@@ -193,7 +193,7 @@ bind "ALT" "";
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.6";                                    // sense no jogo
+sensitivity "1.8";                                    // sense no jogo
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
