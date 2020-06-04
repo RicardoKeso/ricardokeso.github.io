@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200531.1426         #";
+echo "#       Versao:  20200604.2052         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -97,8 +97,8 @@ viewmodel_recoil "0";                                 //
 bind "MWHEELUP" "";                                   //
 bind "MWHEELDOWN" "";                                 //
 
-bind "MOUSE1" "+attack"
-bind "MOUSE2" "+attack2"
+bind "MOUSE1" "+attack; r_cleardecals;";              //
+bind "MOUSE2" "+attack2";                             //  
 
 bind "F1" "buy m4a1; buy ak47;";                      // M4A1 ou AK47
 bind "F2" "buy famas; buy galilar;";                  // Famas ou GalilAR
@@ -116,7 +116,7 @@ bind "F11" "buy defuser;";                            // Kit de defuse
 bind "w" "+forward; r_cleardecals;";                  //
 bind "a" "+moveleft; r_cleardecals;";                 //
 bind "d" "+moveright; r_cleardecals;";                //
-bind "s" "+back; r_cleardecals";                      //
+bind "s" "+back; r_cleardecals;";                     //
 
 //bind "1" "";                                        // Combo entre Flash e Decoi
 bind "2" "use weapon_smokegrenade;";                  // Smoke
@@ -167,15 +167,6 @@ alias "SLOT_3" "slot3; bind "MOUSE3" "lastinv";";
 bind "MOUSE3" "SLOT_3";
 bind "q" "SLOT_1";
 
-//alias "arma" "primaria";
-//alias "primaria" "slot1; alias "arma" "secundaria";";
-//alias "secundaria" "slot2; alias "arma" "primaria";"
-//bind "j" "arma";
-
-//net_graphheight "9999";    // posiciona 9999 pxs acima, saindo do campo de visao
-//alias "+scorenet" "+showscores; net_graphheight 0";
-//alias "-scorenet" "-showscores; net_graphheight 9999";
-//bind "TAB" "+scorenet";
 bind "TAB" "+showscores";
 
 alias "VOIP_1" "voice_scale 0.5; bind CapsLock VOIP_2";
@@ -274,18 +265,20 @@ cl_crosshair_outlinethickness "1";                    //
 cl_crosshair_sniper_show_normal_inaccuracy "0";       //
 cl_crosshair_sniper_width "1";                        //
 //cl_crosshairusealpha "1";                           //
-cl_crosshairalpha "192";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
+cl_crosshairalpha "160";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
 cl_crosshaircolor_b "255";                            // 
 cl_crosshaircolor_g "255";                            //
 cl_crosshaircolor_r "255";                            //
 cl_crosshairgap_useweaponvalue "0";                   //
 //cl_crosshairscale "0";                              // (Unknown command "cl_crosshairscale")
 cl_crosshaircolor "1";                                // cor da mira
+cl_crosshairstyle "4";                                //
 
-alias "MIRA_U" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairstyle "4"; cl_crosshairgap "-4"; cl_crosshairsize "1"; cl_crosshair_t "1"; bind "INS" "MIRA_DEF";";
-alias "MIRA_DEF" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshairstyle "4"; cl_crosshair_t "0"; bind "INS" "MIRA_PONTO";";
-alias "MIRA_PONTO" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1"; cl_crosshairsize "0"; cl_crosshairgap "-3"; cl_crosshairstyle "4"; cl_crosshair_t "0"; bind "INS" "MIRA_U";";
-bind "INS" "MIRA_U";
+alias "MIRA_0" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairsize "1.0"; cl_crosshairgap "-4"; cl_crosshair_t "1"; bind "INS" "MIRA_1";";
+alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_2";";
+alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.7"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_3";";
+alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_0";";
+bind "INS" "MIRA_0";
 //___________________________________________________________________________________________________________________________________
 
 echo "#                                      #";
