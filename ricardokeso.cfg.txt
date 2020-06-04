@@ -80,9 +80,9 @@ cl_righthand "1";                                     // mao esquesda e direita 
 //viewmodel_presetpos "";                             // 1/2/3
 viewmodel_fov "65";                                   // def-60 area visivel da arma (def 62.5, teste 65)
 
-viewmodel_offset_z "-1.4";                            // def- posicao vertical da arma em relacao ao boneco (def -2, teste -1.4)
-viewmodel_offset_y "-2";                              // def- profundidade da arma em relacao ao boneco
-viewmodel_offset_x "0.1";                             // def- posicao lateral da arma em relacao ao boneco
+viewmodel_offset_z "-2";                              // def- posicao vertical da arma em relacao ao boneco (def -1.4)
+viewmodel_offset_y "0";                               // def- profundidade da arma em relacao ao boneco (-2)
+viewmodel_offset_x "0";                               // def- posicao lateral da arma em relacao ao boneco(0.1)
 cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
 
