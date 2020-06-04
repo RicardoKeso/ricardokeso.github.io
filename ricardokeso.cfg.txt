@@ -44,6 +44,8 @@ cl_detail_avoid_recover_speed "0";                    //
 cl_detail_max_sway "0";                               //
 cl_disablefreezecam "1";                              //
 cl_rumblescale "0";                                   //
+cl_updaterate "128";                                  //
+cl_cmdrate "128";                                     //
 
 r_eyegloss "0";                                       //
 r_eyemove "0";                                        //
@@ -201,50 +203,47 @@ m_mousespeed "0";                                     //
 
 // * * * SOUND - MUSIC * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-volume "1";                                           // masvolume geral/master
+volume "1";                                           // volume geral/master
+voice_caster_enable "0"                               //
 voice_caster_scale "0";                               // gotv
 voice_enable "1";                                     // enable voice
-voice_loopback "0";                                   // escutar o proprio mic 0/1
-voice_scale "0.1";                                    // voip volume
-voice_positional "0";                                 // voice positional
 voice_forcemicrecord "1";                             // 
 voice_mixer_boost "0";                                // Amplificacao do microfone 0-1
 voice_mixer_mute "0";                                 // 
 voice_mixer_volume "1";                               // Volume do microfone 0-1
 voice_modenable "1";                                  // Comunicacao por voz 0/1
-voice_threshold "2000";                               // Sensibilidade do microfone
+voice_positional "0";                                 // voice positional
+voice_scale "0.1";                                    // voip volume
+voice_system_enable "1";                              //   
+voice_threshold "4000";                               // Sensibilidade do microfone
 
 dsp_enhance_stereo "0";                               // 
-snd_musicvolume_multiplier_inoverlay "0";             // steam overlay
-snd_surround_speakers "-1";                           // output 
-snd_hwcompat "0";                                     // 3D audio 0/1
-snd_menumusic_volume "0";                             // 0-1 Musica do Menu
-snd_roundend_volume "0";                              // 0-1 Musica final de partida
-snd_roundstart_volume "0";                            // 0-1 Musica final de partida
-snd_mapobjective_volume "0";                          // bomb/hostage volume
-snd_tensecondwarning_volume "0.3";                    // 0-1 Musica dos 10 segundos finais
 snd_deathcamera_volume "0";                           // death cam
-snd_mvp_volume "0";                                   // mvp vol
-snd_mute_mvp_music_live_players "1";                  // mute mvp
-snd_dzmusic_volume "0";                               // danger zone music
 snd_duckerattacktime "0.5";                           //
 snd_duckerreleasetime "2.5";                          //
 snd_duckerthreshold "0.15";                           //
 snd_ducking_off "1";                                  //
 snd_ducktovolume "0.55";                              //
+snd_dzmusic_volume "0";                               // danger zone music
 snd_hrtf_distance_behind "100";                       //
 snd_hrtf_voice_delay "0.1";                           //
+snd_hwcompat "0";                                     // Compatibilidade de audio do hardware 0/1 (se estiver desligado habilita o Audio 3D)
+snd_mapobjective_volume "0";                          // bomb/hostage volume
+snd_menumusic_volume "0";                             // 0-1 Musica do Menu
 snd_mix_async "1";                                    //
 snd_mix_async_onetime_reset "1";                      //
+snd_mixahead "0.05";                                  // Reduz o atraso do som para 50ms
 snd_music_selection "2";                              //
 snd_music_volume_onetime_reset_2 "1";                 //
-snd_pitchquality "1";                                 //
+snd_musicvolume_multiplier_inoverlay "0";             // steam overlay
 snd_mute_losefocus "0";                               // Sons do jogo quando nao estiver em foco
-snd_musicvolume "0.5";                                // 0-1 Necessario para ouvir o a música dos 10seg finais
-snd_surround_speakers "-1";                           // -1 Default, 0 Stereo Headphones, 2 Stereo Speakers, 4 Quad Surround Sound, 5 5.1 Surround Sound
-snd_mixahead "0.05";                                  // Reduz o atraso do som para 50ms
-snd_legacy_surround "0";                              // 
-windows_speaker_config "1";                           // -1 Automatico, 1 Headset, 3 Speakers, 4 Stere0, 6 Surround
+snd_mute_mvp_music_live_players "1";                  // mute mvp
+snd_mvp_volume "0";                                   // mvp vol
+snd_pitchquality "1";                                 //
+snd_roundend_volume "0";                              // 0-1 Musica final de partida
+snd_roundstart_volume "0";                            // 0-1 Musica final de partida
+snd_surround_speakers "1";                            // -1 Default, 1 Stereo Headphones, 2 Stereo Speakers, 4 Quad Surround Sound, 5 5.1 Surround Sound
+snd_tensecondwarning_volume "0.062615";               // 0-1 Musica dos 10 segundos finais
 //___________________________________________________________________________________________________________________________________
 
 // * * * RADAR/HUD * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
