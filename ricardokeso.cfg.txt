@@ -86,7 +86,7 @@ viewmodel_offset_x "0.1";                             // def- posicao lateral da
 cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
 cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
 
-r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
+//r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
 r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
 viewmodel_recoil "0";                                 //
 //___________________________________________________________________________________________________________________________________
