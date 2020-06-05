@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200604.2052         #";
+echo "#       Versao:  20200604.2119         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -276,8 +276,9 @@ cl_crosshairstyle "4";                                //
 
 alias "MIRA_0" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairsize "1.0"; cl_crosshairgap "-4"; cl_crosshair_t "1"; bind "INS" "MIRA_1";";
 alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_2";";
-alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.7"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_3";";
-alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_0";";
+alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_3";";
+alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.5"; cl_crosshairsize "1.7"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "INS" "MIRA_4";";
+alias "MIRA_4" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_0";";
 bind "INS" "MIRA_0";
 //___________________________________________________________________________________________________________________________________
 
