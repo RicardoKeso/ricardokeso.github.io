@@ -136,6 +136,7 @@ bind "v" "+voicerecord";                              //
 
 bind "DEL" "callvote";                                //
 bind "END" "mp_restartgame 1";                        //
+bind "INS" "exec ricardokeso.cfg;";                   //
 //bindtoggle "cl_righthand";                            // troca de mao
 //bindtoggle "cl_draw_only_deathnotices";               // noticias das mortes 0/1
 
@@ -279,7 +280,7 @@ alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairt
 alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_3";";
 alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.5"; cl_crosshairsize "1.7"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "INS" "MIRA_4";";
 alias "MIRA_4" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_0";";
-bind "INS" "MIRA_0";
+bind "HOME" "MIRA_0";
 //___________________________________________________________________________________________________________________________________
 
 echo "#                                      #";
