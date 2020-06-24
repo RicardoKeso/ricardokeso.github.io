@@ -265,21 +265,22 @@ cl_crosshair_dynamic_splitdist "7";                   //
 cl_crosshair_outlinethickness "1";                    //
 cl_crosshair_sniper_show_normal_inaccuracy "0";       //
 cl_crosshair_sniper_width "1";                        //
-//cl_crosshairusealpha "1";                           //
-cl_crosshairalpha "160";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
+cl_crosshairalpha "224";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
 cl_crosshaircolor_b "255";                            // 
 cl_crosshaircolor_g "255";                            //
 cl_crosshaircolor_r "255";                            //
 cl_crosshairgap_useweaponvalue "0";                   //
-//cl_crosshairscale "0";                              // (Unknown command "cl_crosshairscale")
 cl_crosshaircolor "1";                                // cor da mira
 cl_crosshairstyle "4";                                //
+//cl_crosshairscale "0";                              // (Unknown command "cl_crosshairscale")
+//cl_crosshairusealpha "1";                           //
 
-alias "MIRA_0" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairsize "1.0"; cl_crosshairgap "-4"; cl_crosshair_t "1"; bind "INS" "MIRA_1";";
-alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_2";";
-alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_3";";
-alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.5"; cl_crosshairsize "1.7"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "INS" "MIRA_4";";
-alias "MIRA_4" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "INS" "MIRA_0";";
+alias "MIRA_0" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_1";";
+alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_2";";
+alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_3";";
+alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.5"; cl_crosshairsize "1.7"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "HOME" "MIRA_4";";
+alias "MIRA_4" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "2.0"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "HOME" "MIRA_5";";
+alias "MIRA_5" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairsize "1.0"; cl_crosshairgap "-4"; cl_crosshair_t "1"; bind "HOME" "MIRA_0";";
 bind "HOME" "MIRA_0";
 //___________________________________________________________________________________________________________________________________
 
