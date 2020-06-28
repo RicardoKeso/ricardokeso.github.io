@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200623.2315         #";
+echo "#       Versao:  20200604.2119         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -164,7 +164,7 @@ bind "ENTER" "HUD_1";
 
 alias "SLOT_1" "slot1; bind "q" "SLOT_2"; bind "MOUSE3" "SLOT_3";";
 alias "SLOT_2" "slot2; bind "q" "SLOT_1"; bind "MOUSE3" "SLOT_3";";
-alias "SLOT_3" "slot3; bind "MOUSE3" "lastinv";";
+alias "SLOT_3" "slot3; bind "MOUSE3" "SLOT_2;";";
 bind "MOUSE3" "SLOT_3";
 bind "q" "SLOT_1";
 
@@ -173,19 +173,19 @@ bind "TAB" "+showscores";
 alias "VOIP_1" "voice_scale 0.5; bind CapsLock VOIP_2";
 alias "VOIP_2" "voice_scale 0.3; bind CapsLock VOIP_3";
 alias "VOIP_3" "voice_scale 0.1; bind CapsLock VOIP_1";
-bind "CapsLock" "VOIP_1";
+//bind "CapsLock" "VOIP_1";
+bind "-" "VOIP_1";
 
-//alias "+jumpthrow" "+jump; +attack;";
-//alias "-jumpthrow" "-jump; -attack; bind mouse1 +attack;";
-//bind "ALT" "+jumpthrow";
-bind "ALT" "";
+alias "+jumpthrow" "+jump; -attack;";
+alias "-jumpthrow" "-jump;";
+bind "ALT" "+jumpthrow";
 //___________________________________________________________________________________________________________________________________
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.8";                                    // sense no jogo
+sensitivity "1.7";                                    // sense no jogo 1.8 def
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
