@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200722.2119         #";
+echo "#       Versao:  20200721.2145         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -126,7 +126,7 @@ bind "9" "slot9";                                     //
 
 bind "a" "+moveleft; r_cleardecals;";                 //
 bind "b" "buymenu";                                   //
-bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy"
+bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
 bind "d" "+moveright; r_cleardecals;";                //
 bind "e" "+use";                                      //
 bind "f" "+lookatweapon";                             // Inspecionar Arma
