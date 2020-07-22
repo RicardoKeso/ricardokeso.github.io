@@ -95,7 +95,7 @@ viewmodel_recoil "0";                                 //
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // CLEAR BINDS
-unbindall;                                            // Limpar Binds
+//unbindall;                                            // Limpar Binds
 bind "MWHEELUP" "";                                   // VAZIO
 bind "MWHEELDOWN" "";                                 // VAZIO
 bind "MOUSE1" "+attack; r_cleardecals;";              //
@@ -157,6 +157,10 @@ bind "ENTER" "";                                      // COMBO
 bind "HOME" "";                                       // COMBO
 bind "CapsLock" "";                                   // COMBO
 bind "ALT" "";                                        // COMBO
+bind "TAB" "+showscores";                             // COMBO
+bind "ESCAPE" "cancelselect";                         //
+bind "SHIFT" "+speed";                                //
+bind "CTRL" "+duck";                                  //
 //bindtoggle "cl_righthand";                          // troca de mao
 //bindtoggle "cl_draw_only_deathnotices";             // noticias das mortes 0/1
 
