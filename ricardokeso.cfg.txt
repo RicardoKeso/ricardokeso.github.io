@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200604.2119         #";
+echo "#       Versao:  20200722.2119         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -46,6 +46,7 @@ cl_disablefreezecam "1";                              //
 cl_rumblescale "0";                                   //
 cl_updaterate "128";                                  //
 cl_cmdrate "128";                                     //
+cl_show_team_equipment "1";                           //
 
 r_eyegloss "0";                                       //
 r_eyemove "0";                                        //
@@ -80,112 +81,137 @@ cl_righthand "1";                                     // mao esquesda e direita 
 //viewmodel_presetpos "";                             // 1/2/3
 viewmodel_fov "65";                                   // def-60 area visivel da arma (def 62.5, teste 65)
 
-viewmodel_offset_z "-2";                              // def- posicao vertical da arma em relacao ao boneco (def -1.4)
-viewmodel_offset_y "0";                               // def- profundidade da arma em relacao ao boneco (-2)
-viewmodel_offset_x "0";                               // def- posicao lateral da arma em relacao ao boneco(0.1)
-cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
-cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
+//viewmodel_offset_z "-2";                              // def- posicao vertical da arma em relacao ao boneco (def -1.4)
+//viewmodel_offset_y "0";                               // def- profundidade da arma em relacao ao boneco (-2)
+//viewmodel_offset_x "0";                               // def- posicao lateral da arma em relacao ao boneco(0.1)
+//cl_viewmodel_shift_left_amt "0.5";                    // 0.5 - 2
+//cl_viewmodel_shift_right_amt "0.5";                   // 0.5 - 2
 
 //r_drawparticles "1";                                  // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
-r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
+//r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
 viewmodel_recoil "0";                                 //
 //___________________________________________________________________________________________________________________________________
 
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // CLEAR BINDS
-bind "MWHEELUP" "";                                   //
-bind "MWHEELDOWN" "";                                 //
-
+unbindall;                                            // Limpar Binds
+bind "MWHEELUP" "";                                   // VAZIO
+bind "MWHEELDOWN" "";                                 // VAZIO
 bind "MOUSE1" "+attack; r_cleardecals;";              //
 bind "MOUSE2" "+attack2";                             //  
 
 bind "F1" "buy m4a1; buy ak47;";                      // M4A1 ou AK47
 bind "F2" "buy famas; buy galilar;";                  // Famas ou GalilAR
-bind "F3" "buy aug; buy sg553;                        // AUG ou SG553
+bind "F3" "buy aug; buy sg553";                       // AUG ou SG553
 bind "F4" "buy awp;";                                 // AWP
 bind "F5" "slot2; buy p250;";                         // P250
 bind "F6" "slot2; buy fiveseven; buy tec9;";          // FiveSeven ou Tec9
 bind "F7" "slot2; buy deagle;";                       // Desert Eagle
 bind "F8" "slot2; buy hkp2000; buy glock; buy usp;";  // P2000/USP ou Glock
-
 bind "F9" "buy vest;";                                // Colete 1
 bind "F10" "buy vesthelm;";                           // Colete 2
 bind "F11" "buy defuser;";                            // Kit de defuse
 
-bind "w" "+forward; r_cleardecals;";                  //
-bind "a" "+moveleft; r_cleardecals;";                 //
-bind "d" "+moveright; r_cleardecals;";                //
-bind "s" "+back; r_cleardecals;";                     //
-
-//bind "1" "";                                        // Combo entre Flash e Decoi
+bind "0" "";                                          // COMBO
+bind "1" "";                                          // COMBO entre Flash e Decoi
 bind "2" "use weapon_smokegrenade;";                  // Smoke
 bind "3" "use weapon_hegrenade";                      // HE
 bind "4" "use weapon_molotov; use weapon_incgrenade"; // Molotov/Incendiária
 bind "5" "slot5";                                     // Bomba ou Defuse Kit
 bind "6" "use weapon_taser;";                         // ZEUS
 bind "7" "slot12";                                    // Seringa
+bind "8" "slot8";                                     //
+bind "9" "slot9";                                     //
 
-bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy";
-bind "f" "+lookatweapon"                              //
-bind "g" "drop";                                      //
-bind "j" "+cl_mute_enemy_team"                        //
-bind "l" "+cl_show_team_equipment"                    //
-bind "t" "lastinv"                                    //
+bind "a" "+moveleft; r_cleardecals;";                 //
+bind "b" "buymenu";                                   //
+bind "c" "say Let's played fellas, It's Easy Peasy Lemon Squeezy"
+bind "d" "+moveright; r_cleardecals;";                //
+bind "e" "+use";                                      //
+bind "f" "+lookatweapon";                             // Inspecionar Arma
+bind "g" "drop";                                      // 
+bind "i" "show_loadout_toggle";                       //
+bind "j" "+cl_mute_enemy_team";                       //
+bind "k" "";                                          // VAZIO
+bind "l" "";                                          // bind "l" "+cl_show_team_equipment" (FIXO)
+bind "n" "teammenu";                                  //
+bind "p" "";                                          // VAZIO
+bind "q" "";                                          // COMBO
+bind "r" "+reload";                                   //
+bind "s" "+back; r_cleardecals;";                     //
+bind "t" "lastinv";                                   //
+bind "u" "messagemode2";                              //
 bind "v" "+voicerecord";                              //
+bind "w" "+forward; r_cleardecals;";                  //
+bind "m" "";                                          // COMBO
+bind "y" "messagemode";                               //
+bind "z" "radio";                                     //
 
 bind "DEL" "callvote";                                //
 bind "END" "mp_restartgame 1";                        //
 bind "INS" "exec ricardokeso.cfg;";                   //
-//bindtoggle "cl_righthand";                            // troca de mao
-//bindtoggle "cl_draw_only_deathnotices";               // noticias das mortes 0/1
+bind "SPACE" "+jump";                                 // bind "TAB" "+showscores";
+bind "-" "toggle voice_scale 0.1 0.3 0.5;";           //
+bind "ENTER" "";                                      // COMBO
+bind "HOME" "";                                       // COMBO
+bind "CapsLock" "";                                   // COMBO
+bind "ALT" "";                                        // COMBO
+//bindtoggle "cl_righthand";                          // troca de mao
+//bindtoggle "cl_draw_only_deathnotices";             // noticias das mortes 0/1
 
 
 // COMBOS DE COMANDOS
-alias "NOTICES_1" "cl_drawhud "0"; bind "0" "NOTICES_2";";
-alias "NOTICES_2" "cl_drawhud "1"; cl_draw_only_deathnotices "0"; bind "0" "NOTICES_3";";
-alias "NOTICES_3" "cl_drawhud "1"; cl_draw_only_deathnotices "1"; bind "0" "NOTICES_1";";
+alias "NOTICES_1" "cl_drawhud 0; bind 0 NOTICES_2;";
+alias "NOTICES_2" "cl_drawhud 1; cl_draw_only_deathnotices 0; bind 0 NOTICES_3;";
+alias "NOTICES_3" "cl_drawhud 1; cl_draw_only_deathnotices 1; bind 0 NOTICES_1;";
 bind "0" "NOTICES_1";
 
-alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
-alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
-bind "x" "silencio_1";
+alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind m silencio_2;";
+alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind m silencio_1;";
+bind "m" "silencio_1";
 
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
 bind "1" "flash_1";
 
-alias "HUD_1" "cl_radar_scale "0.2"; cl_radar_always_centered "0"; bind "ENTER" "HUD_2";";
-alias "HUD_2" "cl_radar_scale "0.4"; cl_radar_always_centered "0"; bind "ENTER" "HUD_3";";
-alias "HUD_3" "cl_radar_scale "0.3"; cl_radar_always_centered "1"; bind "ENTER" "HUD_4";";
-alias "HUD_4" "cl_radar_scale "0.4"; cl_radar_always_centered "1"; bind "ENTER" "HUD_5";";
-alias "HUD_5" "cl_radar_scale "0.5"; cl_radar_always_centered "1"; bind "ENTER" "HUD_1";";
+alias "HUD_1" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_2;";
+alias "HUD_2" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_3;";
+alias "HUD_3" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_4;";
+alias "HUD_4" "cl_radar_scale 0.3; cl_radar_always_centered 1; bind ENTER HUD_5;";
+alias "HUD_5" "cl_radar_scale 0.4; cl_radar_always_centered 1; bind ENTER HUD_1;";
 bind "ENTER" "HUD_1";
 
-alias "SLOT_1" "slot1; bind "q" "SLOT_2"; bind "MOUSE3" "SLOT_3";";
-alias "SLOT_2" "slot2; bind "q" "SLOT_1"; bind "MOUSE3" "SLOT_3";";
-alias "SLOT_3" "slot3; bind "MOUSE3" "SLOT_2;";";
+alias "MIRA_0" "cl_crosshair_drawoutline 1; cl_crosshairdot 1; cl_crosshairthickness 1.0; cl_crosshairsize 0.0; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_1;";
+alias "MIRA_1" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_2;";
+alias "MIRA_2" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_3;";
+alias "MIRA_3" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 2.0; cl_crosshairgap -2; cl_crosshair_t 0; bind HOME MIRA_4;"; 
+alias "MIRA_4" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.3; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_5;";
+alias "MIRA_5" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 1.7; cl_crosshairgap -2; cl_crosshair_t 0; bind HOME MIRA_6;";
+alias "MIRA_6" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 999; cl_crosshairgap -5; cl_crosshair_t 0; bind HOME MIRA_7;";
+alias "MIRA_7" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 2.5; cl_crosshairsize 1.0; cl_crosshairgap -4; cl_crosshair_t 1; bind HOME MIRA_0;";
+bind "HOME" "MIRA_0";
+
+alias "+mBomda" "MIRA_6; cl_crosshairalpha 96;";
+alias "-mBomda" "MIRA_5; cl_crosshairalpha 224;"; // atencao com o alpha
+bind "CapsLock" "+mBomda";
+
+alias "SLOT_1" "slot1; bind q SLOT_2; bind MOUSE3 SLOT_3;";
+alias "SLOT_2" "slot2; bind q SLOT_1; bind MOUSE3 SLOT_3;";
+alias "SLOT_3" "slot3; bind MOUSE3 SLOT_2;";
 bind "MOUSE3" "SLOT_3";
 bind "q" "SLOT_1";
 
-bind "TAB" "+showscores";
-
-alias "VOIP_1" "voice_scale 0.5; bind CapsLock VOIP_2";
-alias "VOIP_2" "voice_scale 0.3; bind CapsLock VOIP_3";
-alias "VOIP_3" "voice_scale 0.1; bind CapsLock VOIP_1";
-//bind "CapsLock" "VOIP_1";
-bind "-" "VOIP_1";
-
-alias "+jumpthrow" "+jump; -attack;";
-alias "-jumpthrow" "-jump;";
-bind "ALT" "+jumpthrow";
+alias "+jumpthrow" "+jump; -attack";
+alias "-jumpthrow" "-jump";
+bind "alt" "+jumpthrow";
 //___________________________________________________________________________________________________________________________________
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.7";                                    // sense no jogo 1.8 def
+sensitivity "1.9";                                    // sense no jogo 1.8 def
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
@@ -274,14 +300,6 @@ cl_crosshaircolor "1";                                // cor da mira
 cl_crosshairstyle "4";                                //
 //cl_crosshairscale "0";                              // (Unknown command "cl_crosshairscale")
 //cl_crosshairusealpha "1";                           //
-
-alias "MIRA_0" "cl_crosshair_drawoutline "1"; cl_crosshairdot "1"; cl_crosshairthickness "1.0"; cl_crosshairsize "0.0"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_1";";
-alias "MIRA_1" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_2";";
-alias "MIRA_2" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "1.5"; cl_crosshairgap "-3"; cl_crosshair_t "0"; bind "HOME" "MIRA_3";";
-alias "MIRA_3" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "0.5"; cl_crosshairsize "1.7"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "HOME" "MIRA_4";";
-alias "MIRA_4" "cl_crosshair_drawoutline "1"; cl_crosshairdot "0"; cl_crosshairthickness "1.0"; cl_crosshairsize "2.0"; cl_crosshairgap "-2"; cl_crosshair_t "0"; bind "HOME" "MIRA_5";";
-alias "MIRA_5" "cl_crosshair_drawoutline "0"; cl_crosshairdot "0"; cl_crosshairthickness "2.5"; cl_crosshairsize "1.0"; cl_crosshairgap "-4"; cl_crosshair_t "1"; bind "HOME" "MIRA_0";";
-bind "HOME" "MIRA_0";
 //___________________________________________________________________________________________________________________________________
 
 echo "#                                      #";
@@ -290,12 +308,6 @@ echo "#                                      #";
 echo "#--------------------------------------#";
 echo "";
 
-
-
-
-
-
-
 //___________________________________________________________________________________________________________________________________
 // #  #  FIM DO CFG  #  #  #  #  #  FIM DO CFG  #  #  #  #  #  FIM DO CFG  #  #  #  #  #  FIM DO CFG  #  #  #  #  #  FIM DO CFG  #  #
 //
@@ -305,7 +317,7 @@ echo "";
 //___________________________________________________________________________________________________________________________________
 //___________________________________________________________________________________________________________________________________
 //___________________________________________________________________________________________________________________________________
-
+//
 // * * * OPCOES DE ARRANQUE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 // -novid -nojoy -noaafonts -cl_forcepreload 1 -d3d9ex -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +fps_max 999 +mat_queue_mode 2 +mat_queue_mod 2 +exec ricardokeso.cfg
 // o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
@@ -319,17 +331,17 @@ echo "";
 // 10-rosa
 //___________________________________________________________________________________________________________________________________
 // Max Acceptable Game Traffic Bandwidth
-// rate "24576"        extremely restricted    192 Kbps
-// rate "49152"        Below 384 Kbps
-// rate "65536"        Below 512 Kbps
-// rate "98304"        Below 768 Kbps
-// rate "131072"       Below 1 Mbps
-// rate "196608"       Up to 1.5 Mbps
-// rate "262144"       Up to 2 Mbps
-// rate "327680"       Up to 2.5 Mbps
-// rate "393216"       Up to 3 Mbps
-// rate "524288"       Up to 4 Mbps
-// rate "786432"       Unrestricted 6 Mbps
+// rate "24576"                                       // extremely restricted    192 Kbps
+// rate "49152"                                       // Below 384 Kbps
+// rate "65536"                                       // Below 512 Kbps
+// rate "98304"                                       // Below 768 Kbps
+// rate "131072"                                      // Below 1 Mbps
+// rate "196608"                                      // Up to 1.5 Mbps
+// rate "262144"                                      // Up to 2 Mbps
+// rate "327680"                                      // Up to 2.5 Mbps
+// rate "393216"                                      // Up to 3 Mbps
+// rate "524288"                                      // Up to 4 Mbps
+// rate "786432"                                      // Unrestricted 6 Mbps
 //___________________________________________________________________________________________________________________________________
 // MIRA DESCRICAO
 //cl_crosshaircolor "1";                              // 0-vermelho, 1-verde, 2-amarelo, 3-azul, 4-ciano, 5-personalizado
@@ -393,5 +405,15 @@ echo "";
 //    Coquetel Molotov (molotov)
 //    Zeus x27 (Taser)
 //    * dependendo da funcao o T pode ser maiusculo ou minusculo
+//___________________________________________________________________________________________________________________________________
+// HS%      Porcentagem de Tiros na Cabeca
+// ADR      Media de dano por Round
+// DPR      Media de mortes por Round
+// KDR      Media de eliminacoes por Round
+// KDD      Diferenca entre eliminacoes e mortes
+// UD       Dano por utilitaria (Granadas)
+// KAST     Percentual de rounds onde o jogador fez alguma eliminação, assistência ou trocas de eliminações
+//
+// Points   Soma de pontos por cada acao (eliminacoes, assistencia, plantar/defusar a bomba)
 //___________________________________________________________________________________________________________________________________
 //___________________________________________________________________________________________________________________________________
