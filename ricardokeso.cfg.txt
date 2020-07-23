@@ -135,7 +135,8 @@ bind "i" "show_loadout_toggle";                       //
 bind "j" "+cl_mute_enemy_team";                       //
 bind "k" "";                                          // VAZIO
 bind "l" "";                                          // bind "l" "+cl_show_team_equipment" (FIXO)
-bind "n" "teammenu";                                  //
+bind "m" "teammenu";                                  //
+bind "n" "";                                          // 
 bind "p" "";                                          // VAZIO
 bind "q" "";                                          // COMBO
 bind "r" "+reload";                                   //
@@ -144,7 +145,7 @@ bind "t" "lastinv";                                   //
 bind "u" "messagemode2";                              //
 bind "v" "+voicerecord";                              //
 bind "w" "+forward; r_cleardecals;";                  //
-bind "m" "";                                          // COMBO
+bind "x" "";                                          // COMBO
 bind "y" "messagemode";                               //
 bind "z" "radio";                                     //
 
@@ -171,9 +172,9 @@ alias "NOTICES_2" "cl_drawhud 1; cl_draw_only_deathnotices 0; bind 0 NOTICES_3;"
 alias "NOTICES_3" "cl_drawhud 1; cl_draw_only_deathnotices 1; bind 0 NOTICES_1;";
 bind "0" "NOTICES_1";
 
-alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind m silencio_2;";
-alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind m silencio_1;";
-bind "m" "silencio_1";
+alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
+alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
+bind "x" "silencio_1";
 
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
