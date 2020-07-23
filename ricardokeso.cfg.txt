@@ -134,9 +134,9 @@ bind "g" "drop";                                      //
 bind "i" "show_loadout_toggle";                       //
 bind "j" "+cl_mute_enemy_team";                       //
 bind "k" "";                                          // VAZIO
-bind "l" "";                                          // bind "l" "+cl_show_team_equipment" (FIXO)
+bind "l" "";                                          // FIXO no grupo GERAIS
 bind "m" "teammenu";                                  //
-bind "n" "";                                          // 
+bind "n" "";                                          // VAZIO
 bind "p" "";                                          // VAZIO
 bind "q" "";                                          // COMBO
 bind "r" "+reload";                                   //
@@ -152,13 +152,13 @@ bind "z" "radio";                                     //
 bind "DEL" "callvote";                                //
 bind "END" "mp_restartgame 1";                        //
 bind "INS" "exec ricardokeso.cfg;";                   //
-bind "SPACE" "+jump";                                 // bind "TAB" "+showscores";
+bind "SPACE" "+jump";                                 // 
 bind "-" "toggle voice_scale 0.1 0.3 0.5;";           //
 bind "ENTER" "";                                      // COMBO
 bind "HOME" "";                                       // COMBO
 bind "CapsLock" "";                                   // COMBO
 bind "ALT" "";                                        // COMBO
-bind "TAB" "+showscores";                             // COMBO
+bind "TAB" "+showscores";                             // 
 bind "ESCAPE" "cancelselect";                         //
 bind "SHIFT" "+speed";                                //
 bind "CTRL" "+duck";                                  //
