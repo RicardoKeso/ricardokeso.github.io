@@ -63,6 +63,7 @@ gameinstructor_enable "0";                            // mensagens do instrutor 
 func_break_max_pieces "0";                            //
 mm_dedicated_search_maxping "60";                     //
 spec_replay_autostart "0";                            //
+spec_show_xray "1";                                   // Ativar Raio-X como espectador
 rate "786432";                                        // Max Acceptable Game Traffic Bandwidth (irrestrito)
 
 // so podem ser usadas antes da conexao com o servidor//
@@ -180,9 +181,9 @@ alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
 bind "1" "flash_1";
 
-alias "HUD_1" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_2;";
-alias "HUD_2" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_3;";
-alias "HUD_3" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_4;";
+alias "HUD_1" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_2;";
+alias "HUD_2" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_3;";
+alias "HUD_3" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_4;";
 alias "HUD_4" "cl_radar_scale 0.3; cl_radar_always_centered 1; bind ENTER HUD_5;";
 alias "HUD_5" "cl_radar_scale 0.4; cl_radar_always_centered 1; bind ENTER HUD_1;";
 bind "ENTER" "HUD_1";
@@ -191,10 +192,11 @@ alias "MIRA_0" "cl_crosshair_drawoutline 1; cl_crosshairdot 1; cl_crosshairthick
 alias "MIRA_1" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_2;";
 alias "MIRA_2" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_3;";
 alias "MIRA_3" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 1.0; cl_crosshairsize 2.0; cl_crosshairgap -2; cl_crosshair_t 0; bind HOME MIRA_4;"; 
-alias "MIRA_4" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.3; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_5;";
-alias "MIRA_5" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 1.7; cl_crosshairgap -2; cl_crosshair_t 0; bind HOME MIRA_6;";
-alias "MIRA_6" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 999; cl_crosshairgap -5; cl_crosshair_t 0; bind HOME MIRA_7;";
-alias "MIRA_7" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 2.5; cl_crosshairsize 1.0; cl_crosshairgap -4; cl_crosshair_t 1; bind HOME MIRA_0;";
+alias "MIRA_4" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.3; cl_crosshairsize 1.5; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_5;"; 
+alias "MIRA_5" "cl_crosshair_drawoutline 1; cl_crosshairdot 1; cl_crosshairthickness 0.3; cl_crosshairsize 1.5; cl_crosshairgap -0; cl_crosshair_t 0; bind HOME MIRA_6;";
+alias "MIRA_6" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 1.7; cl_crosshairgap -2; cl_crosshair_t 0; bind HOME MIRA_7;";
+alias "MIRA_7" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthickness 0.5; cl_crosshairsize 999; cl_crosshairgap -5; cl_crosshair_t 0; bind HOME MIRA_8;";
+alias "MIRA_8" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 2.5; cl_crosshairsize 1.0; cl_crosshairgap -4; cl_crosshair_t 1; bind HOME MIRA_0;";
 bind "HOME" "MIRA_0";
 
 alias "+mBomda" "MIRA_6; cl_crosshairalpha 96;";
@@ -216,7 +218,7 @@ bind "alt" "+jumpthrow";
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.9";                                    // sense no jogo 1.8 def
+sensitivity "1.85";                                    // sense no jogo 1.8 def
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
@@ -236,7 +238,7 @@ voice_mixer_mute "0";                                 //
 voice_mixer_volume "1";                               // Volume do microfone 0-1
 voice_modenable "1";                                  // Comunicacao por voz 0/1
 voice_positional "0";                                 // voice positional
-voice_scale "0.1";                                    // voip volume
+voice_scale "0.2";                                    // voip volume
 voice_system_enable "1";                              //   
 voice_threshold "4000";                               // Sensibilidade do microfone
 
@@ -387,38 +389,39 @@ echo "";
 //    Negev (negev)
 //    
 // PISTOLAS
-//    228 Compact (p228)
-//    Glock (glock)
-//    Dual Elites (elite)
-//    Five Seven (fn57/fiveseven)
-//    Desert Eagle (deagle)
-//    Tec9 (tec9)
-//    HKP2000 (hkp2000)
-//    P250 (p250)
-//    CZ75-Auto (tec9/fiveseven)
+//    228 Compact (p228)               $
+//    Glock (glock)                    $200
+//    Dual Elites (elite)              $400
+//    Five Seven (fn57/fiveseven)      $500
+//    Desert Eagle (deagle)            $700
+//    Tec9 (tec9)                      $500
+//    HKP2000 (hkp2000)                $200
+//    P250 (p250)                      $300
+//    CZ75-Auto (tec9/fiveseven)       
 // * Para comprar a CZ você deve usar o mesmo da Tec-9 ou da Fiveseven, pois ela substitui estes slots.
 //    
 // GRANADAS E ACESSÓRIOS
-//    Colete (vest)
-//    Colete+Capacete (vesthelm)
-//    Kit de Defuse (defuser)
-//    Decoy (decoy)
-//    Granada Incendiária (incgrenade)
-//    Granada de Luz (flashbang)
-//    Granada de Fumaça (smokegrenade)
-//    Granada Explosiva (hegrenade)
-//    Coquetel Molotov (molotov)
-//    Zeus x27 (Taser)
+//    Colete (vest)                    $
+//    Colete+Capacete (vesthelm)       $
+//    Kit de Defuse (defuser)          $
+//    Decoy (decoy)                    $
+//    Granada Incendiária (incgrenade) $
+//    Granada de Luz (flashbang)       $
+//    Granada de Fumaça (smokegrenade) $
+//    Granada Explosiva (hegrenade)    $
+//    Coquetel Molotov (molotov)       $
+//    Zeus x27 (Taser)                 $
 //    * dependendo da funcao o T pode ser maiusculo ou minusculo
 //___________________________________________________________________________________________________________________________________
-// HS%      Porcentagem de Tiros na Cabeca
-// ADR      Media de dano por Round
-// DPR      Media de mortes por Round
-// KDR      Media de eliminacoes por Round
-// KDD      Diferenca entre eliminacoes e mortes
-// UD       Dano por utilitaria (Granadas)
-// KAST     Percentual de rounds onde o jogador fez alguma eliminação, assistência ou trocas de eliminações
+// HS%    (%TC)     Porcentagem de Tiros na Cabeca
+// K/D    (V/M)     Relacao (V)Eliminacaoes/Mortes
+// ADR    (DMR)     Dano Medio por Round
+// UD     (DU)      Dano por utilitaria (Granadas)
+// EF     (IC)      Inimigos Cegados (Enemies Flashed)
 //
-// Points   Soma de pontos por cada acao (eliminacoes, assistencia, plantar/defusar a bomba)
+// Points (Pontos)  Pontos somados por cada acao (eliminacao, assistencia, plantar/defusar a bomba, MVP)
+// DPR              Media de mortes por Round
+// KDR              Media de eliminacoes por Round
+// KAST             Percentual de rounds onde o jogador fez alguma eliminação, assistência ou trocas de eliminações
 //___________________________________________________________________________________________________________________________________
 //___________________________________________________________________________________________________________________________________
