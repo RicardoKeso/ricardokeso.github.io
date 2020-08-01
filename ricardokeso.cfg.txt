@@ -10,7 +10,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200721.2145         #";
+echo "#       Versao:  20200801.2042         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -154,14 +154,13 @@ bind "DEL" "callvote";                                // Votacao de mapa ou kick
 bind "END" "mp_restartgame 1";                        // Reninicar partida (mapa de )
 bind "INS" "exec ricardokeso.cfg;";                   // Carregar cfg
 bind "SPACE" "+jump";                                 // 
-bind "-" "toggle voice_scale 0.1 0.3 0.5;";           // 
 bind "ENTER" "";                                      // COMBO
 bind "HOME" "";                                       // COMBO
 bind "CapsLock" "";                                   // COMBO
 bind "ALT" "";                                        // COMBO
 bind "TAB" "+showscores";                             // 
 bind "ESCAPE" "cancelselect";                         //
-bind "SHIFT" "+speed";                                //
+bind "SHIFT" "";                                      // COMBO
 bind "CTRL" "+duck";                                  //
 //bindtoggle "cl_righthand";                          // troca de mao
 //bindtoggle "cl_draw_only_deathnotices";             // noticias das mortes 0/1
@@ -173,9 +172,15 @@ alias "NOTICES_2" "cl_drawhud 1; cl_draw_only_deathnotices 0; bind 0 NOTICES_3;"
 alias "NOTICES_3" "cl_drawhud 1; cl_draw_only_deathnotices 1; bind 0 NOTICES_1;";
 bind "0" "NOTICES_1";
 
-alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
-alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
-bind "x" "silencio_1";
+//alias "silencio_1" "say_team * Silencio ATIVADO *; voice_enable 0; cl_crosshaircolor 1; cl_hud_color 5; bind x silencio_2;";
+//alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
+//bind "x" "silencio_1";
+
+alias "+WalkVolume" "+speed; volume 1; voice_enable 0;";
+alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1;";
+bind "SHIFT" "+WalkVolume";
+
+bind "x" "toggle voice_scale 0.1 0.3 0.5;";
 
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
@@ -199,8 +204,8 @@ alias "MIRA_7" "cl_crosshair_drawoutline 1; cl_crosshairdot 0; cl_crosshairthick
 alias "MIRA_8" "cl_crosshair_drawoutline 0; cl_crosshairdot 0; cl_crosshairthickness 2.5; cl_crosshairsize 1.0; cl_crosshairgap -4; cl_crosshair_t 1; bind HOME MIRA_0;";
 bind "HOME" "MIRA_0";
 
-alias "+mBomda" "MIRA_6; cl_crosshairalpha 96;";
-alias "-mBomda" "MIRA_5; cl_crosshairalpha 224;"; // atencao com o alpha
+alias "+mBomda" "MIRA_7; cl_crosshairalpha 96;";
+alias "-mBomda" "MIRA_6; cl_crosshairalpha 224;"; // atencao com o alpha
 bind "CapsLock" "+mBomda";
 
 alias "SLOT_1" "slot1; bind q SLOT_2; bind MOUSE3 SLOT_3;";
@@ -228,7 +233,7 @@ m_mousespeed "0";                                     //
 
 // * * * SOUND - MUSIC * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
-volume "1";                                           // volume geral/master
+volume "0.7";                                         // volume geral/master
 voice_caster_enable "0"                               //
 voice_caster_scale "0";                               // gotv
 voice_enable "1";                                     // enable voice
@@ -238,7 +243,7 @@ voice_mixer_mute "0";                                 //
 voice_mixer_volume "1";                               // Volume do microfone 0-1
 voice_modenable "1";                                  // Comunicacao por voz 0/1
 voice_positional "0";                                 // voice positional
-voice_scale "0.2";                                    // voip volume
+voice_scale "0.1";                                    // voip volume
 voice_system_enable "1";                              //   
 voice_threshold "4000";                               // Sensibilidade do microfone
 
