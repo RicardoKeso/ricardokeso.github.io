@@ -1,6 +1,10 @@
 // C:\Program Files (x86)\Steam\userdata\312978850\730\local\cfg
-
-
+//
+// https://convars.com/csgostats/en/76561198273244578
+// https://csgo-stats.com/player/76561198273244578
+// https://tracker.gg/csgo/profile/steam/76561198273244578/overview
+//
+//
 // #  #  INICIO DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 //___________________________________________________________________________________________________________________________________
 
@@ -10,7 +14,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200801.2042         #";
+echo "#       Versao:  20200814.1724         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -80,7 +84,7 @@ cl_bobamt_lat "0.1";                                  // movimento lateral da ar
 cl_bob_lower_amt "5";                                 // movimento frontal da arma ao andar 5/30
 cl_righthand "1";                                     // mao esquesda e direita 0/1
 //viewmodel_presetpos "";                             // 1/2/3
-viewmodel_fov "65";                                   // def-60 area visivel da arma (def 62.5, teste 65)
+//viewmodel_fov "65";                                 // def-60 area visivel da arma (def 62.5, teste 65)
 
 //viewmodel_offset_z "-2";                            // def- posicao vertical da arma em relacao ao boneco (def -1.4)
 //viewmodel_offset_y "0";                             // def- profundidade da arma em relacao ao boneco (-2)
@@ -176,19 +180,19 @@ bind "0" "NOTICES_1";
 //alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 //bind "x" "silencio_1";
 
-alias "+WalkVolume" "+speed; volume 1; voice_enable 0;";
-alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1;";
+alias "+WalkVolume" "+speed; volume 1; voice_enable 0; voice_scale 0.0";
+alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1; voice_scale 0.3";
 bind "SHIFT" "+WalkVolume";
 
-bind "x" "toggle voice_scale 0.1 0.3 0.5;";
+bind "x" "toggle voice_scale 0.5 0.7 0.9;";
 
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
 bind "1" "flash_1";
 
-alias "HUD_1" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_2;";
-alias "HUD_2" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_3;";
-alias "HUD_3" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_4;";
+alias "HUD_1" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_2;";
+alias "HUD_2" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_3;";
+alias "HUD_3" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_4;";
 alias "HUD_4" "cl_radar_scale 0.3; cl_radar_always_centered 1; bind ENTER HUD_5;";
 alias "HUD_5" "cl_radar_scale 0.4; cl_radar_always_centered 1; bind ENTER HUD_1;";
 bind "ENTER" "HUD_1";
@@ -211,12 +215,13 @@ bind "CapsLock" "+mBomda";
 alias "SLOT_1" "slot1; bind q SLOT_2; bind MOUSE3 SLOT_3;";
 alias "SLOT_2" "slot2; bind q SLOT_1; bind MOUSE3 SLOT_3;";
 alias "SLOT_3" "slot3; bind MOUSE3 SLOT_2;";
-bind "MOUSE3" "SLOT_3";
+bind "MOUSE3" "SLOT_3;";
 bind "q" "SLOT_1";
 
 alias "+jumpthrow" "+jump; -attack";
 alias "-jumpthrow" "-jump";
 bind "alt" "+jumpthrow";
+
 //___________________________________________________________________________________________________________________________________
 
 // * * * MOUSE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -331,8 +336,35 @@ echo "";
 //___________________________________________________________________________________________________________________________________
 //
 // * * * OPCOES DE ARRANQUE * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-// -novid -nojoy -noaafonts -cl_forcepreload 1 -d3d9ex -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +fps_max 999 +mat_queue_mode 2 +mat_queue_mod 2 +exec ricardokeso.cfg
-// o processador tem 8 cores e 16 threads, mas nao uso o hyperthreading ficando apenas com os 8 nucleos
+//
+// -novid                                             // desabilita a abertura do jogo
+// -nojoy                                             // desabilita o joystick
+// -noaafonts                                         // desativa o antialiasing
+// -fullscreen                                        // tela cheia
+// -window                                            // modo janela
+// -cl_forcepreload 1                                 // faz o pre-carregamento de texturas, modelos, sons e outros arquivos na memoria quando possivel
+// -freq 75                                           // frequencia do monitor
+// -refresh 75                                        // atualizacao do monitor
+// -w 1920                                            // largura do resolucao
+// -h 1080                                            // altura da resolucao
+// -threads 4                                         // numero de threads utilizados
+// -high                                              // prioridade do jogo no processador para o sistema operacional
+// -mat_queue_mode 2                                  // modo do processador (-1) padrao, (0) uma thread sincrona, (1) uma thread assincrona, (2) multithread
+// +fps_max 999                                       // fps máximo no jogo, existem controversias sobre o uso do ZERO
+// +fps_max_menu 999                                  // fps máximo no menu
+// -nod3d9ex                                          // acelera a transicao alt+tab
+// -r_emulate_g                                       // habilita o OpenGL
+// +exec ricardokeso.cfg                              // CFG personalizada no carregamento
+//
+// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high -mat_queue_mode 2 +fps_max 999 -nod3d9ex -r_emulate_g +exec ricardokeso.cfg
+//
+// nao percebi nenhum incremento de fps com os comandos abaixo
+// -forcenovsync                                      // desativa o vsync
+// -limitvsconst                                      // limita os calculos de efeitos especiais em objetos 3D a 256
+// -softparticlesdefaultoff                           // reduz a qualidade da renderizacao de particulas
+// +mat_disable_fancy_blending 1                      //
+// -disable_d3d9ex                                    // desabilita o DirectX9ex (?)
+// +r_dynamic 0                                       // desabilita o flash das armas e utilitarios, mas ainda deixa o boneco cego com a flash (nao aconselhavel)
 //
 // Gravar no config.cfg     host_writeconfig;
 //___________________________________________________________________________________________________________________________________
