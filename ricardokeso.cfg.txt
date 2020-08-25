@@ -4,6 +4,8 @@
 // https://csgo-stats.com/player/76561198273244578
 // https://tracker.gg/csgo/profile/steam/76561198273244578/overview
 //
+// Trade URL: https://steamcommunity.com/tradeoffer/new/?partner=312978850&token=qKzNYI_H
+//
 //
 // #  #  INICIO DO CFG  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 //___________________________________________________________________________________________________________________________________
@@ -14,7 +16,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200814.1724         #";
+echo "#       Versao:  20200824.2109         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -32,6 +34,15 @@ net_graphpos "180";                                   // posicao horizontal do n
 net_graphproportionalfont "0";                        // tamanho do net_graf - 0 pequeno, 1 normal
 net_graphshowinterp "1";                              //
 net_graphshowlatency "1";                             //
+net_allow_multicast "1";                              //
+net_graphshowsvframerate "0";                         //
+net_graphsolid "1";                                   //
+net_graphtext "1";                                    //
+net_maxroutable "1200";                               //
+net_scale "5";                                        //
+net_steamcnx_allowrelay "1";                          //
+
+mm_dedicated_search_maxping "40";                     // max acceptable matchmaking ping
 
 cl_showpos "0";                                       // mostra posicao, velocidade e azimute 0/1
 cl_showfps "0";                                       // mostra fps no canto superior esquerdo da tela 0/1
@@ -48,9 +59,9 @@ cl_detail_avoid_recover_speed "0";                    //
 cl_detail_max_sway "0";                               //
 cl_disablefreezecam "1";                              //
 cl_rumblescale "0";                                   //
-cl_updaterate "128";                                  //
-cl_cmdrate "128";                                     //
-cl_show_team_equipment "1";                           //
+cl_updaterate "128";                                  // pacotes por segundo solicitados ao servidor
+cl_cmdrate "128";                                     // pacotes por segundo enviados ao servidor
+//cl_show_team_equipment "1";                         //
 
 r_eyegloss "0";                                       //
 r_eyemove "0";                                        //
@@ -62,7 +73,7 @@ r_eyesize "0";                                        //
 voice_enable "1";                                     // habilitar voz no audio e microfone
 mat_queue_mode "2";                                   // multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
 fps_max "999";                                        // 
-hud_takesshots "1";                                   // Automaticamente tira um screenshot da pontuação no final do jogo
+hud_takesshots "1";                                   // Automaticamente tira um screenshot da pontuação no final do jogo quando positiva
 gameinstructor_enable "0";                            // mensagens do instrutor 0/1
 func_break_max_pieces "0";                            //
 mm_dedicated_search_maxping "60";                     //
@@ -70,9 +81,14 @@ spec_replay_autostart "0";                            //
 spec_show_xray "1";                                   // Ativar Raio-X como espectador
 rate "786432";                                        // Max Acceptable Game Traffic Bandwidth (irrestrito)
 
-// so podem ser usadas antes da conexao com o servidor//
-//cl_interp "0";                                      //
-//cl_interp_ratio "3";                                // qualidade da conexao de internet (perda de pacotes) 1-low, 2-midle, 3-high
+// ATENCAO                                            // so podem ser usadas antes da conexao com o servidor
+//cl_interp_ratio "?";                                // (perda de pacotes) 1-low, 2-midle, 3-high
+//cl_interp "0";                                      // valor default
+//cl_interp "0.015625"; cl_interp_ratio "1";          // ping 0-30 ms
+cl_interp "0.015625"; cl_interp_ratio "2";            // ping 30-59 ms
+//cl_interp "0.015625"; cl_interp_ratio "3";          // ping 60-89 ms
+//cl_interp "0.031250"; cl_interp_ratio "2";          // ping 90-109 ms
+//cl_interp "0.031250"; cl_interp_ratio "3";          // ping 110+ ms
 //cl_interpolate "1";                                 //
 //___________________________________________________________________________________________________________________________________
 
@@ -136,6 +152,7 @@ bind "d" "+moveright; r_cleardecals;";                //
 bind "e" "+use";                                      //
 bind "f" "+lookatweapon";                             // Inspecionar Arma
 bind "g" "drop";                                      // 
+bind "h" "toggle voice_enable 0 1";                   // 
 bind "i" "show_loadout_toggle";                       //
 bind "j" "+cl_mute_enemy_team";                       //
 bind "k" "";                                          // VAZIO
@@ -168,7 +185,7 @@ bind "SHIFT" "";                                      // COMBO
 bind "CTRL" "+duck";                                  //
 //bindtoggle "cl_righthand";                          // troca de mao
 //bindtoggle "cl_draw_only_deathnotices";             // noticias das mortes 0/1
-
+//-use
 
 // COMBOS DE COMANDOS
 alias "NOTICES_1" "cl_drawhud 0; bind 0 NOTICES_2;";
@@ -180,21 +197,24 @@ bind "0" "NOTICES_1";
 //alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 //bind "x" "silencio_1";
 
-alias "+WalkVolume" "+speed; volume 1; voice_enable 0; voice_scale 0.0";
-alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1; voice_scale 0.3";
+alias "+WalkVolume" "+speed; volume 1; voice_enable 0;";
+alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1;";
 bind "SHIFT" "+WalkVolume";
 
-bind "x" "toggle voice_scale 0.5 0.7 0.9;";
+bind "x" "toggle voice_scale 0.2 0.4 0.6;";
 
 alias "flash_1" "use weapon_flashbang; bind 1 flash_2";
 alias "flash_2" "use weapon_decoy; bind 1 flash_1";
 bind "1" "flash_1";
 
-alias "HUD_1" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_2;";
-alias "HUD_2" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_3;";
-alias "HUD_3" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_4;";
-alias "HUD_4" "cl_radar_scale 0.3; cl_radar_always_centered 1; bind ENTER HUD_5;";
-alias "HUD_5" "cl_radar_scale 0.4; cl_radar_always_centered 1; bind ENTER HUD_1;";
+alias "HUD_1" "cl_radar_scale 0.2; cl_radar_always_centered 1; bind ENTER HUD_2;";
+alias "HUD_2" "cl_radar_scale 0.3; cl_radar_always_centered 1; bind ENTER HUD_3;";
+alias "HUD_3" "cl_radar_scale 0.4; cl_radar_always_centered 1; bind ENTER HUD_4;";
+alias "HUD_4" "cl_radar_scale 0.5; cl_radar_always_centered 1; bind ENTER HUD_5;";
+alias "HUD_5" "cl_radar_scale 0.2; cl_radar_always_centered 0; bind ENTER HUD_6;";
+alias "HUD_6" "cl_radar_scale 0.3; cl_radar_always_centered 0; bind ENTER HUD_7;";
+alias "HUD_7" "cl_radar_scale 0.4; cl_radar_always_centered 0; bind ENTER HUD_8;";
+alias "HUD_8" "cl_radar_scale 0.5; cl_radar_always_centered 0; bind ENTER HUD_1;";
 bind "ENTER" "HUD_1";
 
 alias "MIRA_0" "cl_crosshair_drawoutline 1; cl_crosshairdot 1; cl_crosshairthickness 1.0; cl_crosshairsize 0.0; cl_crosshairgap -3; cl_crosshair_t 0; bind HOME MIRA_1;";
@@ -228,7 +248,7 @@ bind "alt" "+jumpthrow";
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.85";                                    // sense no jogo 1.8 def
+sensitivity "1.9";                                    // sense no jogo 1.8 def
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
@@ -284,11 +304,6 @@ snd_tensecondwarning_volume "0.062615";               // 0-1 Musica dos 10 segun
 // * * * RADAR/HUD * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 cl_showloadout "1";                                   // mostrar armas no hud 0/1
-cl_radar_always_centered "1";                         // posicao no centro do radar 0/1
-cl_radar_icon_scale_min "0.4";                        // tamanho dos bonecos no radar
-cl_radar_rotate "1";                                  // rotacao do radar ativa 0/1
-cl_radar_scale "0.5";                                 // tamanho mapa 0.25/1
-cl_radar_square_with_scoreboard "1";                  // nas pontuacoes radasr quadrado ou redondo 0/1
 cl_hud_radar_scale "1.3";                             // tamanho radar 0.8/1.3
 cl_hud_color "8";                                     // cor do HUD (valores depois do fim do carregamento)
 cl_hud_playercount_showcount "1";                     // avatar ou qtd pessoas 0/1
@@ -297,6 +312,11 @@ cl_hud_background_alpha "0";                          // transparencia HUD 0.0/1
 hud_scaling "1";                                      // tamanho do HUD 0.5/0.95
 safezoneX "0.85";                                     // centralizar HUD e RADAR horizontal
 safezoneY "0.85";                                     // centralizar HUD e RADAR vertical
+cl_radar_square_with_scoreboard "1";                  // nas pontuacoes radasr quadrado ou redondo 0/1
+cl_radar_rotate "1";                                  // rotacao do radar ativa 0/1
+cl_radar_icon_scale_min "0.4";                        // tamanho dos bonecos no radar (min 0.4)
+//cl_radar_always_centered "1";                       // posicao no centro do radar 0/1
+//cl_radar_scale "0.5";                               // tamanho mapa 0.25/1
 //___________________________________________________________________________________________________________________________________
 
 // * * * MIRA * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -307,7 +327,7 @@ cl_crosshair_dynamic_splitalpha_outermod "0.5";       //
 cl_crosshair_dynamic_splitdist "7";                   //
 cl_crosshair_outlinethickness "1";                    //
 cl_crosshair_sniper_show_normal_inaccuracy "0";       //
-cl_crosshair_sniper_width "1";                        //
+cl_crosshair_sniper_width "2";                        //
 cl_crosshairalpha "224";                              // transparencia da mira (0 32 64 96 128 160 192 224 255) 
 cl_crosshaircolor_b "255";                            // 
 cl_crosshaircolor_g "255";                            //
@@ -450,6 +470,15 @@ echo "";
 //    Zeus x27 (Taser)                 $
 //    * dependendo da funcao o T pode ser maiusculo ou minusculo
 //___________________________________________________________________________________________________________________________________
+//
+// CS-GO Skins Float | Conditions
+// 0.00-0.07 | Factory New (FN) - Nova de Fábrica
+// 0.07-0.15 | Minimal Wear (MW) - Pouco Desgastada
+// 0.15-0.38 | Field-Tested (FT) - Testada em Campo
+// 0.38-0.45 | Well-Worn (WW) - Bem Desgastada
+// 0.45-1.00 | Battle-Scarred (BS) - Veterana de Guerra
+//___________________________________________________________________________________________________________________________________
+//
 // HS%    (%TC)     Porcentagem de Tiros na Cabeca
 // K/D    (V/M)     Relacao (V)Eliminacaoes/Mortes
 // ADR    (DMR)     Dano Medio por Round
@@ -461,4 +490,12 @@ echo "";
 // KDR              Media de eliminacoes por Round
 // KAST             Percentual de rounds onde o jogador fez alguma eliminação, assistência ou trocas de eliminações
 //___________________________________________________________________________________________________________________________________
+// 256		Realtime
+// 128		High
+// 32768	Above normal
+// 32		Normal
+// 16384	Below normal
+// 64		Low
+// 
+// wmic process where 'name="csgo.exe"' call setpriority "256"
 //___________________________________________________________________________________________________________________________________
