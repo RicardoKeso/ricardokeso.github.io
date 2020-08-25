@@ -10,9 +10,26 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power\PowerSettings\54533251-82be
 powercfg /duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
 powercfg /SETACTIVE 16f789bb-e4ac-49a7-9d54-aacdeb453d0b
 #____________________________________________________________________________________________________________________________________________________________________________________
+# > > > Habilitar atalhos de arquivos no Menu Iniciar < < <
+reg add "HKCR\AllFileSystemObjects\shellex\ContextMenuHandlers\{470C0EBD-5D73-4d58-9CED-E91E22E23282}" /v "(Default)" /t REG_SZ /d "Pin to Start" /f
+#____________________________________________________________________________________________________________________________________________________________________________________
 # > > > DESATIVAR O DVR < < <
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f
+#____________________________________________________________________________________________________________________________________________________________________________________
+# > > > Desabilitar Atualizacao do último acesso NTFS < < <
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableLastAccessUpdate" /t REG_DWORD /d "80000003" /f
+fsutil behavior set disablelastaccess 3
+# o padrao eh: reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableLastAccessUpdate" /t REG_DWORD /d "80000002" /f
+# fsutil behavior set disablelastaccess 2
+#____________________________________________________________________________________________________________________________________________________________________________________
+# > > > Desabilitar Windows Search < < <
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d "0" /f
+# o padrao eh: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d "1" /f
+#____________________________________________________________________________________________________________________________________________________________________________________
+# > > > Desabilitar SuperFetch < < <
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
+# o padrao eh: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "3" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Setar Prioridade para Jogos < < <
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Priority" /t REG_DWORD /d "6" /f
@@ -114,3 +131,5 @@ cleanmgr /sagerun:48
 # Listar aplicativos nativos instalados
 #Get-AppxPackage | Select-Object Name
 #Get-AppxPackage –AllUsers | Select-Object Name
+
+#
