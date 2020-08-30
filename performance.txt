@@ -16,6 +16,8 @@ reg add "HKCR\AllFileSystemObjects\shellex\ContextMenuHandlers\{470C0EBD-5D73-4d
 # > > > DESATIVAR O DVR < < <
 reg add "HKCU\System\GameConfigStore" /v "GameDVR_Enabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f
+reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "HistoricalCaptureEnabled" /t REG_DWORD /d "0" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Desabilitar Atualizacao do último acesso NTFS < < <
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\FileSystem" /v "NtfsDisableLastAccessUpdate" /t REG_DWORD /d "80000003" /f
@@ -36,6 +38,9 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "GPU Priority" /t REG_DWORD /d "8" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "0" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /d "High" /f
+#____________________________________________________________________________________________________________________________________________________________________________________
+# > > > Desabilitar Windows Defender AntiSpyware < < <
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Remover Aplicativos pre-instalados "Bloatwares" (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
 Get-AppxPackage *3DBuilder* | Remove-AppxPackage
