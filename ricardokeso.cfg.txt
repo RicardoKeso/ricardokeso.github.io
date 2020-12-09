@@ -2,7 +2,7 @@
 //
 // https://convars.com/csgostats/en/76561198273244578
 // https://csgo-stats.com/player/76561198273244578
-// https://tracker.gg/csgo/profile/steam/76561198273244578/overview
+// https://tracker.gg/csgo/profile/steam/76561198273244578
 //
 // Trade URL: https://steamcommunity.com/tradeoffer/new/?partner=312978850&token=qKzNYI_H
 //
@@ -16,7 +16,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20200824.2109         #";
+echo "#       Versao:  20201209.2027         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -54,6 +54,7 @@ cl_forcepreload "1";                                  //
 cl_disablehtmlmotd "1";                               //
 cl_autohelp "0";                                      //
 cl_detail_avoid_force "0";                            //
+cl_debugrumble "0";                                   //
 cl_detail_avoid_radius "0";                           //
 cl_detail_avoid_recover_speed "0";                    //
 cl_detail_max_sway "0";                               //
@@ -69,17 +70,37 @@ r_eyeshift_x "0";                                     //
 r_eyeshift_y "0";                                     //
 r_eyeshift_z "0";                                     //
 r_eyesize "0";                                        //
+r_drawtracers_firstperson "0";                        // tracos em primeira pessoa 0/1
 
 voice_enable "1";                                     // habilitar voz no audio e microfone
 mat_queue_mode "2";                                   // multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
+mat_powersavingsmode "0";                             //
+mat_queue_report "0";                                 //
 fps_max "999";                                        // 
 hud_takesshots "1";                                   // Automaticamente tira um screenshot da pontuação no final do jogo quando positiva
 gameinstructor_enable "0";                            // mensagens do instrutor 0/1
 func_break_max_pieces "0";                            //
-mm_dedicated_search_maxping "60";                     //
+muzzleflash_light "0";                                //
 spec_replay_autostart "0";                            //
 spec_show_xray "1";                                   // Ativar Raio-X como espectador
 rate "786432";                                        // Max Acceptable Game Traffic Bandwidth (irrestrito)
+
+clear_anim_cache;
+clear_debug_overlays;
+r_flushlod;
+r_lightstyle "-1";                                    //
+r_radiosity "4";                                      //
+r_skin "0";                                           //
+r_updaterefracttexture "0";                           //
+r_ambientfraction "0.1";                              //
+r_avglight "1";                                       //
+r_avglightmap "0";                                    //
+mat_loadtextures "1";                                 //
+mat_norendering "0";                                  //
+mat_show_texture_memory_usage "0";                    //
+mat_softwareskin "0";                                 //
+mat_setvideomode 1920 1080 0;                         //
+
 
 // ATENCAO                                            // so podem ser usadas antes da conexao com o servidor
 //cl_interp_ratio "?";                                // (perda de pacotes) 1-low, 2-midle, 3-high
@@ -99,18 +120,17 @@ cl_bobamt_vert "0.1";                                 // movimento vertical da a
 cl_bobamt_lat "0.1";                                  // movimento lateral da arma ao andar 0.1/2
 cl_bob_lower_amt "5";                                 // movimento frontal da arma ao andar 5/30
 cl_righthand "1";                                     // mao esquesda e direita 0/1
-//viewmodel_presetpos "";                             // 1/2/3
-//viewmodel_fov "65";                                 // def-60 area visivel da arma (def 62.5, teste 65)
 
-//viewmodel_offset_z "-2";                            // def- posicao vertical da arma em relacao ao boneco (def -1.4)
-//viewmodel_offset_y "0";                             // def- profundidade da arma em relacao ao boneco (-2)
-//viewmodel_offset_x "0";                             // def- posicao lateral da arma em relacao ao boneco(0.1)
+viewmodel_recoil "0";                                 //
+viewmodel_fov "60";                                   // def-60 area visivel da arma (def 62.5, teste 65)
+viewmodel_offset_z "-1";                              // def- posicao vertical da arma em relacao ao boneco (def -1.4)
+viewmodel_offset_y "2";                               // def- profundidade da arma em relacao ao boneco (def 1) 
+viewmodel_offset_x "1";                               // def- posicao lateral da arma em relacao ao boneco(def 1)
+
+//viewmodel_presetpos "";                             // 1/2/3
 //cl_viewmodel_shift_left_amt "0.5";                  // 0.5 - 2
 //cl_viewmodel_shift_right_amt "0.5";                 // 0.5 - 2
-
 //r_drawparticles "1";                                // fumaca/fogo da arma 0/1 (Can't use cheat cvar r_drawparticles in multiplayer)
-//r_drawtracers_firstperson "0";                      // tracos em primeira pessoa 0/1
-viewmodel_recoil "0";                                 //
 //___________________________________________________________________________________________________________________________________
 
 // * * * BINDs * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -130,7 +150,7 @@ bind "F5" "slot2; buy p250;";                         // P250
 bind "F6" "slot2; buy fiveseven; buy tec9;";          // FiveSeven ou Tec9
 bind "F7" "slot2; buy deagle;";                       // Desert Eagle
 bind "F8" "slot2; buy hkp2000; buy glock; buy usp;";  // P2000/USP ou Glock
-bind "F9" "buy vest;";                                // Colete 1
+bind "F9" "buy ssg08;";                               // Colete 1
 bind "F10" "buy vesthelm;";                           // Colete 2
 bind "F11" "buy defuser;";                            // Kit de defuse
 
@@ -197,8 +217,8 @@ bind "0" "NOTICES_1";
 //alias "silencio_2" "say_team * Silencio DESATIVADO *; voice_enable 1; cl_crosshaircolor 1; cl_hud_color 8; bind x silencio_1;";
 //bind "x" "silencio_1";
 
-alias "+WalkVolume" "+speed; volume 1; voice_enable 0;";
-alias "-WalkVolume" "-speed; volume 0.7; voice_enable 1;";
+alias "+WalkVolume" "+speed; volume 1; voice_scale 0.0;";
+alias "-WalkVolume" "-speed; volume 0.7; voice_scale 0.2;";
 bind "SHIFT" "+WalkVolume";
 
 bind "x" "toggle voice_scale 0.2 0.4 0.6;";
@@ -268,7 +288,7 @@ voice_mixer_mute "0";                                 //
 voice_mixer_volume "1";                               // Volume do microfone 0-1
 voice_modenable "1";                                  // Comunicacao por voz 0/1
 voice_positional "0";                                 // voice positional
-voice_scale "0.1";                                    // voip volume
+voice_scale "0.2";                                    // voip volume
 voice_system_enable "1";                              //   
 voice_threshold "4000";                               // Sensibilidade do microfone
 
@@ -372,11 +392,11 @@ echo "";
 // -mat_queue_mode 2                                  // modo do processador (-1) padrao, (0) uma thread sincrona, (1) uma thread assincrona, (2) multithread
 // +fps_max 999                                       // fps máximo no jogo, existem controversias sobre o uso do ZERO
 // +fps_max_menu 999                                  // fps máximo no menu
-// -nod3d9ex                                          // acelera a transicao alt+tab
 // -r_emulate_g                                       // habilita o OpenGL
 // +exec ricardokeso.cfg                              // CFG personalizada no carregamento
 //
-// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high -mat_queue_mode 2 +fps_max 999 -nod3d9ex -r_emulate_g +exec ricardokeso.cfg
+// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +mat_queue_mode 2 +fps_max 999 -r_emulate_g +exec ricardokeso.cfg
+// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +mat_queue_mode 2 +fps_max 999 +exec ricardokeso.cfg
 //
 // nao percebi nenhum incremento de fps com os comandos abaixo
 // -forcenovsync                                      // desativa o vsync
