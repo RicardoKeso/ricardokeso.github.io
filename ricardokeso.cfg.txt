@@ -16,7 +16,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20201209.2027         #";
+echo "#       Versao:  20201225.1317         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -54,7 +54,6 @@ cl_forcepreload "1";                                  //
 cl_disablehtmlmotd "1";                               //
 cl_autohelp "0";                                      //
 cl_detail_avoid_force "0";                            //
-cl_debugrumble "0";                                   //
 cl_detail_avoid_radius "0";                           //
 cl_detail_avoid_recover_speed "0";                    //
 cl_detail_max_sway "0";                               //
@@ -74,33 +73,13 @@ r_drawtracers_firstperson "0";                        // tracos em primeira pess
 
 voice_enable "1";                                     // habilitar voz no audio e microfone
 mat_queue_mode "2";                                   // multithread -1 automatico, 0 singleN1, 1 singleN2, 2 multithread
-mat_powersavingsmode "0";                             //
-mat_queue_report "0";                                 //
 fps_max "999";                                        // 
 hud_takesshots "1";                                   // Automaticamente tira um screenshot da pontuação no final do jogo quando positiva
 gameinstructor_enable "0";                            // mensagens do instrutor 0/1
 func_break_max_pieces "0";                            //
-muzzleflash_light "0";                                //
 spec_replay_autostart "0";                            //
 spec_show_xray "1";                                   // Ativar Raio-X como espectador
 rate "786432";                                        // Max Acceptable Game Traffic Bandwidth (irrestrito)
-
-clear_anim_cache;
-clear_debug_overlays;
-r_flushlod;
-r_lightstyle "-1";                                    //
-r_radiosity "4";                                      //
-r_skin "0";                                           //
-r_updaterefracttexture "0";                           //
-r_ambientfraction "0.1";                              //
-r_avglight "1";                                       //
-r_avglightmap "0";                                    //
-mat_loadtextures "1";                                 //
-mat_norendering "0";                                  //
-mat_show_texture_memory_usage "0";                    //
-mat_softwareskin "0";                                 //
-mat_setvideomode 1920 1080 0;                         //
-
 
 // ATENCAO                                            // so podem ser usadas antes da conexao com o servidor
 //cl_interp_ratio "?";                                // (perda de pacotes) 1-low, 2-midle, 3-high
@@ -144,7 +123,7 @@ bind "MOUSE2" "+attack2";                             //
 
 bind "F1" "buy m4a1; buy ak47;";                      // M4A1 ou AK47
 bind "F2" "buy famas; buy galilar;";                  // Famas ou GalilAR
-bind "F3" "buy aug; buy sg553";                       // AUG ou SG553
+bind "F3" "buy ssg08";                                // SSG 08
 bind "F4" "buy awp;";                                 // AWP
 bind "F5" "slot2; buy p250;";                         // P250
 bind "F6" "slot2; buy fiveseven; buy tec9;";          // FiveSeven ou Tec9
@@ -268,7 +247,7 @@ bind "alt" "+jumpthrow";
 
 // windows: level 11/11                               // valor descartado quando m_rawinput = 1
 // mouse: 1000DPI 1000Hz
-sensitivity "1.9";                                    // sense no jogo 1.8 def
+sensitivity "2.0";                                    // sense no jogo 1.8 def
 m_rawinput "1";                                       // seta a sensibilidade do windows para o jogo em 6/11
 m_mouseaccel2 "0";                                    //
 m_mouseaccel1 "0";                                    //
@@ -327,7 +306,7 @@ cl_showloadout "1";                                   // mostrar armas no hud 0/
 cl_hud_radar_scale "1.3";                             // tamanho radar 0.8/1.3
 cl_hud_color "8";                                     // cor do HUD (valores depois do fim do carregamento)
 cl_hud_playercount_showcount "1";                     // avatar ou qtd pessoas 0/1
-cl_hud_playercount_pos "1";                           // posicao placar 0/1
+cl_hud_playercount_pos "0";                           // posicao placar 0/1
 cl_hud_background_alpha "0";                          // transparencia HUD 0.0/1.0
 hud_scaling "1";                                      // tamanho do HUD 0.5/0.95
 safezoneX "0.85";                                     // centralizar HUD e RADAR horizontal
