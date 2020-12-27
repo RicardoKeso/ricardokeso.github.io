@@ -16,7 +16,7 @@ echo "";
 echo "#--------------------------------------#";
 echo "#                                      #";
 echo "#       Arquivo: RICARDOKESO.CFG       #";
-echo "#       Versao:  20201225.1317         #";
+echo "#       Versao:  20201226.2136         #";
 echo "#       Nome:    PhiLdeR               #";
 echo "#                                      #";
 //___________________________________________________________________________________________________________________________________
@@ -342,6 +342,8 @@ echo "#                                      #";
 echo "#       Fim do carregamento.           #";
 echo "#                                      #";
 echo "#--------------------------------------#";
+echo "# Video: www.ricardokeso.com/video.txt #";
+echo "#--------------------------------------#";
 echo "";
 
 //___________________________________________________________________________________________________________________________________
@@ -374,8 +376,7 @@ echo "";
 // -r_emulate_g                                       // habilita o OpenGL
 // +exec ricardokeso.cfg                              // CFG personalizada no carregamento
 //
-// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +mat_queue_mode 2 +fps_max 999 -r_emulate_g +exec ricardokeso.cfg
-// -novid -nojoy -noaafonts -fullscreen -cl_forcepreload 1 -freq 75 -refresh 75 -w 1920 -h 1080 -threads 4 -high +mat_queue_mode 2 +fps_max 999 +exec ricardokeso.cfg
+// -novid -nojoy -noaafonts -cl_forcepreload 1 -freq 75 -refresh 75 -threads 4 +fps_max 999 +exec ricardokeso.cfg
 //
 // nao percebi nenhum incremento de fps com os comandos abaixo
 // -forcenovsync                                      // desativa o vsync
