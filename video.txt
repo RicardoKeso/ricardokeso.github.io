@@ -1,0 +1,27 @@
+"VideoConfig"
+{
+	"setting.aspectratiomode"            "1"           // Screen Ratio: 0=4:3; 1=16:9; 2=21:9
+	"setting.defaultres"                 "1920"        // Resolution Screen x-Ax
+	"setting.defaultresheight"           "1080"        // Resolution Screen y-Ax
+	"setting.fullscreen"                 "1"           // Full screen: 0/1/2
+	"setting.nowindowborder"             "0"           // No border limitation in windowed mode: 0/1
+	
+	"setauto.csm_quality_level"          "0"           // Global Shadow Quality: 0/1/2/3
+	"setting.gpu_mem_level"              "0"           // Model Texture Details: 0/1/2
+	"setting.mat_texturestreaming"       "1"           // Texture Streaming: 0/1
+	"setting.cpu_level"                  "0"           // Effect Detail: 0/1/2/3
+	"setting.gpu_level"                  "0"           // Shader Detail: 0/1/2/3/4
+	"setting.r_player_visibility_mode"   "1"           // Boost Player Contrast: 0/1
+	"setting.mat_queue_mode"             "2"           // Multicore Rendering: -1/0/1/2
+	"setting.mat_antialias"              "0"           // Anti-Aliasing Smoothing Edges: 0/1/2/4/8/16
+	"setting.mat_aaquality"              "0"           // Anti-Aliasing Quality FXAA: 0/1/2/4
+	"setting.mat_forceaniso"             "0"           // Anisotropic Filter: 0/2/4/8/16
+	"setting.mat_vsync"                  "0"           // Vertical Syncronisation: 0/1
+	"setting.mat_motion_blur_enabled"    "0"           // Motion Sharpness: 0/1
+	"setting.mat_triplebuffered"         "0"           // Triple Buffering: 0/1
+	"setting.mat_enable_uber_shaders"    "0"           // Use Uber Shaders: 0/1
+
+	"setting.mat_grain_scale_override"   "-1.000000"   // Removes the grain: effect on the screen (?)
+	"setting.mem_level"                  "2"           // Additional Memory: 0/1/2 (?)
+	"setting.mat_software_aa_strength"   "0"           // Smoothing Edges Factor: 0/1/2/4/8/16
+}
