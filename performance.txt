@@ -81,8 +81,6 @@ Get-AppxPackage *Messaging* | Remove-AppxPackage
 Get-AppxPackage *WindowsFeedbackHub* | Remove-AppxPackage
 Get-AppxPackage *GetHelp* | Remove-AppxPackage
 Get-AppxPackage *Getstarted* | Remove-AppxPackage
-Get-AppxPackage *WindowsStore* | Remove-AppxPackage
-Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
 Get-AppxPackage *MixedReality.Portal* | Remove-AppxPackage
 Get-AppxPackage *Music.Preview* | Remove-AppxPackage
 Get-AppxPackage *CommsPhone* | Remove-AppxPackage
@@ -92,6 +90,9 @@ Get-AppxPackage *WindowsReadingList* | Remove-AppxPackage
 Get-AppxPackage *king.com.BubbleWitch3Saga* | Remove-AppxPackage
 Get-AppxPackage *king.com.CandyCrushFriends* | Remove-AppxPackage
 Get-AppxPackage *SpotifyAB.SpotifyMusic* | Remove-AppxPackage
+#
+Get-AppxPackage *WindowsStore* | Remove-AppxPackage
+Get-AppxPackage *StorePurchaseApp* | Remove-AppxPackage
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > > > > > > > > > > > > > > > > Limpar Arquivos nao utilizados do windows (CacheFiles) < < < < < < < < < < < < < < < < < <
 reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Active Setup Temp Folders" /v "StateFlags0048" /t REG_DWORD /d "2" /f
