@@ -1,6 +1,7 @@
-# > > > Desabilitar hibernacao do windows 10 Versao 2004 < < <
+# > > > Desabilitar corretamente a hibernacao do windows < < <
 powercfg /S 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
-powercfg /hibernate off
+## powercfg /hibernate off # uma parte do arquivo de hibernacao eh utilizada para o carregamento rapido do sistema
+powercfg /h /type reduced # reduz o arquivo de hibernacao, mantendo a inicializacao rapida
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > CPU Core Parking - Un-park CPU < < <
 reg add "HKLM\SYSTEM\ControlSet001\Control\Power\PowerSettings\54533251-82be-4824-96c1-47b60b740d00\0cc5b647-c1df-4637-891a-dec35c318583" /v "ValueMax" /t REG_DWORD /d "0" /f
@@ -30,7 +31,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCorta
 # o padrao eh: reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v "AllowCortana" /t REG_DWORD /d "1" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Desabilitar SuperFetch < < <
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
+## reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "0" /f
 # o padrao eh: reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v "EnablePrefetcher" /t REG_DWORD /d "3" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Setar Prioridade para Jogos < < <
@@ -40,7 +41,7 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProf
 reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks\Games" /v "Scheduling Category" /t REG_SZ /d "High" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Desabilitar Windows Defender AntiSpyware < < <
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
+## reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows Defender" /v "DisableAntiSpyware" /t REG_DWORD /d "1" /f
 #____________________________________________________________________________________________________________________________________________________________________________________
 # > > > Remover Aplicativos pre-instalados "Bloatwares" (Cuidado ao remover a loja da Microsoft (WindowsStore, StorePurchaseApp)) < < <
 Get-AppxPackage *3DBuilder* | Remove-AppxPackage
