@@ -43,7 +43,7 @@ scriptsPosInstalacao(){
 	echo ""
 	echo " * * * * * BAIXANDO SCRIPTS DE POS INSTALACAO * * * * * "
 	echo ""
-	curl www.ricardokeso.com/scripts/default_2.sh > /mnt/root/default_2.sh
+	curl www.ricardokeso.com/scripts/Linux/default_2.sh > /mnt/root/default_2.sh
 	chmod +x /mnt/root/default_2.sh
 	echo ""
 	echo " * * * * * DIGITE: /root/default_2.sh* * * * * "
@@ -55,3 +55,5 @@ formatarParticoes
 montarParticoes
 instalarSistema
 #scriptsPosInstalacao
+
+# para baixar este script: www.ricardokeso.com/scripts/Linux/default_1.sh
