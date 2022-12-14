@@ -54,6 +54,6 @@ criarParticoes
 formatarParticoes
 montarParticoes
 instalarSistema
-#scriptsPosInstalacao
+scriptsPosInstalacao
 
 # para baixar este script: www.ricardokeso.com/scripts/Linux/default_1.sh
