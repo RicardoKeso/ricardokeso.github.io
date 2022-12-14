@@ -32,7 +32,7 @@ instalarSistema(){
 	echo ""
 	echo " * * * * * INSTALANDO SISTEMA * * * * * "
 	echo ""
-	pacstrap /mnt base # base-devel grub-bios ### instala o sistema na partição raiz (cronie = agendador de tarefas)
+	pacstrap -K /mnt base linux linux-firmware # base-devel grub-bios ### instala o sistema na partição raiz (cronie = agendador de tarefas)
 	echo ""
 	echo " * * * * * GERANDO A TABELA DE ARQUIVOS DE SISTEMAS * * * * * "
 	echo ""
