@@ -6,13 +6,12 @@ mkswap /dev/sda1
 swapon /dev/sda1
 
 mkfs.ext4 /dev/sda2
+parted -s /dev/sda set 2 boot on
 mount /dev/sda2 /mnt
 
-pacstrap -K /mnt base #linux
-#genfstab -U /mnt >> /mnt/etc/fstab
-genfstab -U -p /mnt >> /mnt/etc/fstab
-#arch-chroot /mnt
+pacstrap /mnt base
+genfstab -p /mnt >> /mnt/etc/fstab
 
-#ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
-#hwclock --systohc
-#passwd
+# pacstrap -K /mnt base #linux
+# genfstab -U /mnt >> /mnt/etc/fstab
+# genfstab -U -p /mnt >> /mnt/etc/fstab
