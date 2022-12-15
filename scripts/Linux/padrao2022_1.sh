@@ -17,7 +17,7 @@ mount /dev/sda3 /mnt
 pacstrap /mnt base linux
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
-curl www.ricardokeso.com/scripts/padrao2022_2.sh > /mnt/root/padrao2022_2.sh
+curl www.ricardokeso.com/scripts/Linux/padrao2022_2.sh > /mnt/root/padrao2022_2.sh
 chmod +x /mnt/root/padrao2022_2.sh
 
 arch-chroot /mnt /bin/bash
