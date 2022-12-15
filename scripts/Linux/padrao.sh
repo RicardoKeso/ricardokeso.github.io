@@ -8,7 +8,7 @@ swapon /dev/sda1
 mkfs.ext4 /dev/sda2
 mount /dev/sda2 /mnt
 
-pacstrap -K /mnt base linux
+pacstrap -K /mnt base #linux
 #genfstab -U /mnt >> /mnt/etc/fstab
 genfstab -U -p /mnt >> /mnt/etc/fstab
 #arch-chroot /mnt
