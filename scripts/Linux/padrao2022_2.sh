@@ -33,6 +33,7 @@ mv /etc/localtime /etc/localtime_orig
 ln -s /usr/share/zoneinfo/America/Bahia /etc/localtime
 hwclock --systohc --utc
 
+pacman -S dhcp --noconfirm
 systemctl enable dhcpcd
 
 echo "" >> /etc/pacman.conf 
