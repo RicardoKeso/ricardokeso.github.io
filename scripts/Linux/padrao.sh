@@ -10,6 +10,6 @@ mkfs.ext4 /dev/sda3 ### cria o sistema de arquivos
 mkdir /mnt/boot ### para criar a raiz (/mnt) e o boot (/mnt/boot)
 mount /dev/sda2 /mnt/boot ### monta a partição de boot
 mount /dev/sda3 /mnt ### monta a partição raiz
-pacstrap /mnt base grub-bios
+pacstrap /mnt base linux-firmware #grub-bios linux linux-firmware
 genfstab -U -p /mnt >> /mnt/etc/fstab ### cria a tabela de discos
 arch-chroot /mnt /bin/bash ### retorna para o sistema instalado
