@@ -8,9 +8,11 @@ mkfs.ext4 /dev/sda2
 swapon /dev/sda1
 mount /dev/sda2 /mnt
 
-pacstrap -K /mnt base linux linux-firmware
-genfstab -U /mnt >> /mnt/etc/fstab
+pacstrap -K /mnt base linux
+#genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
-ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
-hwclock --systohc
-passwd
+
+#ln -sf /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+#hwclock --systohc
+#passwd
