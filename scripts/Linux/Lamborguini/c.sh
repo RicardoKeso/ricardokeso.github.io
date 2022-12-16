@@ -63,14 +63,14 @@ personalizarTerminal(){
 
 personalizar_i3_terminator(){
   mkdir -p /home/ricardokeso/.config/terminator/
-  curl www.ricardokeso.com/scripts/configs/rk.config/terminator/config > /home/ricardokeso/.config/terminator/config
+  curl www.ricardokeso.com/scripts/Linux/configs/rk.config/terminator/config > /home/ricardokeso/.config/terminator/config
 
   mkdir -p /home/ricardokeso/.config/i3/
-  curl www.ricardokeso.com/scripts/configs/rk.config/i3/config > /home/ricardokeso/.config/i3/config
-  curl www.ricardokeso.com/scripts/configs/rk.config/i3/i3status.conf > /home/ricardokeso/.config/i3/i3status.conf
+  curl www.ricardokeso.com/scripts/Linux/configs/rk.config/i3/config > /home/ricardokeso/.config/i3/config
+  curl www.ricardokeso.com/scripts/Linux/configs/rk.config/i3/i3status.conf > /home/ricardokeso/.config/i3/i3status.conf
 
-  curl www.ricardokeso.com/scripts/configs/rk.bash_profile > /home/ricardokeso/.bash_profile
-  curl www.ricardokeso.com/scripts/configs/rk.bashrc > /home/ricardokeso/.bashrc
+  curl www.ricardokeso.com/scripts/Linux/configs/rk.bash_profile > /home/ricardokeso/.bash_profile
+  curl www.ricardokeso.com/scripts/Linux/configs/rk.bashrc > /home/ricardokeso/.bashrc
 }
 
 configsDiversas(){
@@ -91,7 +91,7 @@ gerenciamentoenergia(){
 notebook(){
   pacman -S wireless_tools wpa_supplicant wpa_actiond dialog --noconfirm ### instala os pacotes para a wireless
   pacman -S acpi acpid --noconfirm ### instala gerenciadores de bateria para notebook
-  curl www.ricardokeso.com/scripts/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
+  curl www.ricardokeso.com/scripts/Linux/configs/etc-X11-xorg.conf.d/50-synaptics.conf > /etc/X11/xorg.conf.d/50-synaptics.conf
 }
 
 audio(){
