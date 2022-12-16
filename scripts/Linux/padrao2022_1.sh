@@ -2,6 +2,7 @@ parted -s /dev/sda mklabel msdos
 parted -s /dev/sda mkpart primary linux-swap 1MiB 512MiB
 parted -s /dev/sda mkpart primary ext4 512MiB 640MiB
 parted -s /dev/sda mkpart primary ext4 640MiB 100%
+
 parted -s /dev/sda set 2 boot on
 
 mkswap /dev/sda1
