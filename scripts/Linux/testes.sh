@@ -12,7 +12,7 @@ grub-mkconfig --output /boot/grub/grub.cfg
 
 
 
-
+video=1920x1080
 
 
 pacman -S xf86-video-fbdev xorg xorg-xinit --noconfirm ### instala o servidor X
